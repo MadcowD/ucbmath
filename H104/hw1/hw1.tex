@@ -1,0 +1,162 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%                      Homework 1                            %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[letter]{article}
+
+\usepackage{lipsum}
+\usepackage[pdftex]{graphicx}
+\usepackage[margin=1.5in]{geometry}
+\usepackage[english]{babel}
+\usepackage{listings}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{framed} 
+\usepackage{amsmath}
+\usepackage{titling}
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{definition}{Definition}
+
+\newenvironment{menumerate}{%
+  \edef\backupindent{\the\parindent}%
+  \enumerate%
+  \setlength{\parindent}{\backupindent}%
+}{\endenumerate}
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%
+%% DOC INFO %%%
+%%%%%%%%%%%%%%%
+\newcommand{\bHWN}{1}
+\newcommand{\bCLASS}{MATH H110}
+
+\title{\bCLASS: Homework \bHWN}
+\author{William Guss\\26793499\\wguss@berkeley.edu}
+
+\fancyhead[L]{\bCLASS}
+\fancyhead[CO]{Homework \bHWN}
+\fancyhead[CE]{GUSS}
+\fancyhead[R]{\thepage}
+\fancyfoot[LR]{}
+\fancyfoot[C]{}
+\usepackage{csquotes}
+
+%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+
+%%%%%%% Be sure to set the counter and use menumerate
+\section{Real Numbers}
+
+\begin{menumerate}
+	\setcounter{enumi}{2}
+	\item Recast the following English sentences in mathematics, using correct mathematical grammar. Preserve their meaning.
+		\begin{menumerate}
+			\item \textit{2 is the smallest prime number.} Let $P \subset \mathbb{N}$ denote the set of prime numbers.
+			Consider that $t = 2$ is clearly a member of P.
+			Then for all $p \in P$, $t \leq P$.
+
+			\item \textit{The area of any bounded plane region is bisected by some line parallel to $x$-axis.} 
+
+			Before we claim the above we must first rigorize the notion of a bounded plane region. The following uses a notion of open and closed sets in $\mathbb{R}^2$.
+
+			\begin{definition}
+				 We say that $B_r(x_0)$ is an open ball of radius $r>0$ if and only if
+				 $$B_r(x_0) = \{ x \in \mathbb{R}^2 \ |\ \|x - x_0 \| < r \}.$$
+				 Furthermore $\bar{B}_r(x_0)$ is a closed ball of radius $r>0$ if and only if
+				 $$\bar{B}_r(x_0) = \{ x \in \mathbb{R}^2 \ |\ \|x - x_0 \| \leq r \}.$$
+			 \end{definition} 
+ 			 Using the above definition we now give our notion of a bounded plane reigon. 
+ 			 \begin{definition}
+ 			 	If $A$ is a subset of $\mathbb{R}^2$ we will say that $A$ is the area of a bounded plane region if and only if for every $x \in A$, there is an open or closed ball centered at $x$ which is a subset of $A.$
+ 			 \end{definition}
+ 			 Lastly, we give the notion of a parallel line to the $x$-axis
+ 			 \begin{definition}
+ 			 	We say that $L_r \subset \mathbb{R}^2$ is a line parallel to the $x$-axis at radius $r$ if and only if 
+ 			 		$$L_r = \{ (x,y) \in \mathbb{R}\ | \ y = r \}.$$ 
+ 			 \end{definition}
+			 
+			 Now it is simple to propose the theorem of symantic equivalence to the question.
+
+			 \begin{theorem}
+			 Let $A$ be the area of a bounded plane region in $\mathbb{R}^2$. Then, there exists some line parallel to the $x$-axis of height $r$, $L_r$, such that $L_r \cap A \neq \emptyset$ and both
+			 	\begin{equation}
+			 			A_L = \{ (x,y) \in A\ |\ y < r \}\ \mathrm{and}\ 
+			 			A_U = \{ (x,y) \in A\ |\ y \geq r\}
+	 			\end{equation}	
+	 		are areas of bounded plane regions.
+
+ 			 \end{theorem}
+
+ 			 \item \textit{"All that glitters is mot gold."}  Let $G$ be the set of all object which glitter. Then let $A$ be the set of all gold objects. $A\neq G$.
+
+		\end{menumerate} 
+
+	\setcounter{enumi}{11}
+	\item \textit{Prove the following.}
+		 \begin{theorem}
+			There exists no smallest positive real number.
+		\end{theorem}
+		\begin{proof}
+		 Suppose that there exists a smallest real number, say $a \in \mathbb{R}$. Clearly $a >0$ and so is $\frac{a}{2}$. Furthermore $\frac{a}{2} < a,$  and hence we reach a contradiciton. Therefore does not exist a smallest postivie real number.
+		\end{proof}
+		\begin{theorem}
+			There exist no smallest positive rational number. 
+		\end{theorem}
+		\begin{proof}
+			 Suppose that there exists a smallest rational number, say $q \in \mathbb{Q}$. Clearly $q >0$ and so is $\frac{q}{2}$. Furthermore $\frac{q}{2} < q,$  and hence we reach a contradiciton. Therefore does not exist a smallest postivie rational number.
+		\end{proof}
+
+		\begin{theorem}
+			Let $x \in \mathbb{R}.$ Then there does not exist a smallest real number $y$ such that $y > x$.
+		\end{theorem}
+		\begin{proof}
+			Suppose that such a $y$ exists. Now consider $\frac{x+y}{2}= b$. Clearly $b > x$, and remarkably $b < y$. Hence $y$ is not the smallest real number such that $y > x$. This leads to a contradiction, and therefore there is no smallest $y$ satisfying the conditions.
+			
+		\end{proof}
+
+	\setcounter{enumi}{21}
+	\item \textit{Show the following.} 
+		\begin{menumerate}
+			\item Fixed points: \begin{theorem}
+				The function $f: A \to A$ has a fixed point if and only if the graph of $f$ interesects the diagonal.
+			\end{theorem}
+			\begin{proof}
+				We first show the right implication. If $f$ has a fixed point, then there is some $a \in A$ such that $f(a) = a$. Now consider the graph of $f$, 
+				$$f(A) = \{(a, f(a) \in A\}.$$ 
+				Since $f$ has a fixed point, $f(A)$ contains $(a,a).$ Hence the intersection of $f(A)$ with the diagonal of $A\times A$,$D,$ must contain $(a,a)$ at the least and hence is nonempty.
+
+				On the otherhand if the graph of $f$ intersects the diagonal, then there exists some $(a,a) \in D$ such that $(a,a) \in f(A).$ Then by definition of the graph of $f$, $(a,a) = (a,f(a))$, which implies that $f(a) = a.$ This completes the proof.
+			\end{proof}
+
+
+			\item Intermediate fixed point
+			\begin{theorem}
+				Every continuous function $f: [0,1] \to [0,1]$ has at least one fixed-point.
+			\end{theorem}
+			\begin{proof}
+				To show this we recall the intermediate value theorem. More specifically we want to find a function whose $0$ exists on $[0,1]$ which implies the theorem. Consider that $f(x) =x$ implies that $0 = f(x) - x$, so let's simply let $q(x) = f(x) - x$. By definition of the bound on the codomain, $g(0) \geq 0$ and $g(1) \leq 0$. Then application of the intermediate value theorem yields that there exists at $c \in [0,1]$ with $g(c) = 0.$ Hence, $f(a) = a$. This completes the proof.
+			\end{proof}
+			\item No, consider the case of some function for which $f(x) > x$ on $(0,1)$. Such a function need not attain the value $f(0) = 0, f(1) = 1$ because such values could not possiblt exist on its graph. Hence, $f(x) \neq x$ for all $x$. 
+			\item No, consider the function $f(x) = x+0.5$ when $0\leq x < 0.5$, and $f(x) = x-0.5$ when $0.5 \leq x \leq 1$. This function never is equivalent to $g(x) = x.$
+		\end{menumerate}
+
+		
+		
+\end{menumerate}
+
+
+\end{document}
