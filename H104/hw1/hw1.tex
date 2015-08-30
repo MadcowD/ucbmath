@@ -154,6 +154,34 @@
 			\item No, consider the function $f(x) = x+0.5$ when $0\leq x < 0.5$, and $f(x) = x-0.5$ when $0.5 \leq x \leq 1$. This function never is equivalent to $g(x) = x.$
 		\end{menumerate}
 
+	\item \textit{Show the following.} 
+		\begin{menumerate}
+			\item Dyadic squares:
+				\begin{theorem}
+					 If $x$ and $y$ are two dyadic squares, then they are either identical, intersect along a common edge, intersect at a common vertex, or do not intersect at all.
+				\end{theorem}
+				\begin{proof}
+					Since we must show all cases, let us consider them with respect to the general definition of a planar dyadic cube. In particular, $x,y \in \mathbb{Q}_2^2.$ Let us fix $x$ such that
+					$$x = \left[\frac{p}{2^k}, \frac{p+1}{2^k}\right]^2 \mathrm{and}\ y = \left[\frac{q}{2^k}, \frac{q+1}{2^k}\right]^2$$
+					for some $p, k, q \in \mathbb{Z}.$
+
+					If $q = p$, then $y = x$ naturaly. In the case that $q > p+1$ or $q+1 < p$, we have that $x \cap y = \emptyset$. Next consider intersections along different edges. If
+					 $$y = \left[\frac{p}{2^k}, \frac{p+1}{2^k}\right]\times \left[\frac{p+1}{2^k}, \frac{p+2}{2^k}\right],$$
+					 then $y \cap x = [(\frac{p}{2^k}\frac{p+1}{2^k}), (\frac{p+1}{2^k},\frac{p+1}{2^k})]$. In general, 
+					 $$y = \left[\frac{p+r}{2^k}, \frac{p+r+1}{2^k}\right]\times \left[\frac{p+s}{2^k}, \frac{p+s+1}{2^k}\right]$$
+					 implies the following intersections.
+
+					 If $r = 1, s = 0$, then $x \cap y = \left[(\frac{p+1}{2^k},\frac{p}{2^k}),(\frac{p+1}{2^k}, \frac{p+1}{2^k})\right]$. If $r = -1, s= 0$, then  $x \cap y = \left[(\frac{p}{2^k},\frac{p}{2^k}),(\frac{p}{2^k}, \frac{p+1}{2^k})\right].$ If $r= 0, s = 1$, then  $x \cap y = \left[(\frac{p}{2^k},\frac{p+1}{2^k}),(\frac{p+1}{2^k}, \frac{p+1}{2^k})\right]$. If $r=0,s=-1,$ then  $x \cap y = \left[(\frac{p}{2^k},\frac{p}{2^k}),(\frac{p+1}{2^k}, \frac{p}{2^k})\right]$.
+
+					 Lastly we need to consider the vertex edge cases. If $r =1, s= 1$, then $x \cap y = \{(\frac{p+1}{2^k},\frac{p+1}{2^k})\}$. If $r =-1, s= 1$, then $x \cap y = \{(\frac{p}{2^k},\frac{p+1}{2^k})\}$. If $r =-1, s= -1$, then $x \cap y = \{(\frac{p}{2^k},\frac{p}{2^k})\}$. If $r =1, s= -1$, then $x \cap y = \{(\frac{p+1}{2^k},\frac{p}{2^k})\}$.  
+
+					 Furthermore if $r$ and $s$ attain other values, we have those cases previously considered. Hence the proof is complete.
+
+ 				\end{proof}
+
+ 			\item
+		\end{menumerate} 
+
 		
 		
 \end{menumerate}
