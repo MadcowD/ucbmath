@@ -13,6 +13,7 @@
 \usepackage{amssymb}
 \usepackage{framed} 
 \usepackage{amsmath}
+\usepackage{mathabx}
 \usepackage{titling}
 \usepackage{fancyhdr}
 
@@ -38,7 +39,7 @@
 %% DOC INFO %%%
 %%%%%%%%%%%%%%%
 \newcommand{\bHWN}{1}
-\newcommand{\bCLASS}{MATH H110}
+\newcommand{\bCLASS}{MATH H104}
 
 \title{\bCLASS: Homework \bHWN}
 \author{William Guss\\26793499\\wguss@berkeley.edu}
@@ -179,8 +180,40 @@
 
  				\end{proof}
 
- 			\item
+ 			\item For the following problem we adopt the following notation.
+ 				\begin{definition}
+ 				 We say that say that some $X \subset \mathbb{R}^n$ is a dyadic hyper-interval of partition $2^{-\gamma}$ if and only if 
+ 				 $$X \in \overline{\Delta_n^k} = \left\{ Y \subset \mathbb{R}^n\ |\ Y = \bigtimes_{i=1}^k2^{-\gamma}\left[(m_1,\dots,m_n),(m_1 , \dots,m_i +1,\dots, m_n)\right], m_j \in \mathbb{Z} \right\}. $$
+ 				\end{definition}
+ 					So now we need to operationalize this proof. If $x$ and $y$ are two dyadic squares, then they are either identical, intersect along a common edge, intersect at a common vertex, or do not intersect at all.
+				\begin{theorem}
+					  In other words, if $X,Y \in \overline{\Delta_n^n}$ are of the same partition, $2^{-\gamma}$, let
+					   $$Y = \bigtimes_{i=1}^k2^{-\gamma}\left[(m_1 + r_1,\dots,m_n + r_n),(m_1 + r_1, \dots,m_i +1 + r_i,\dots, m_n + r_n\right],$$ 
+					   where the $m_j$ are those which define $X$, and $r_j \in \mathbb{Z}.$ Then, if $|r_j| <= 1$ for all $j$, the following two results hold. If $k = n - \sum_i|r_i| > 0$,  $X \cap Y \in \overline{\Delta_n^k}$. If $k = 0$, $X \cap Y \subset \mathbb{Q}_2^n$. Otherwise if there exists some $j$ such that $|r_j| > 1$ or $k < 0$, then $X \cap Y = \emptyset.$
+
+				\end{theorem}
+				\begin{proof}
+					We denote $X_j, Y_j$ as the $j^\mathrm{th}$ interval composing $X$ and $Y$. In the above definition of $Y$ we wish to explore a multitude of different $r_j$ values so as to express the theorem.
+
+					In the simplest case, $|r_j| > 1$ for some $j$ then $y_j = 2^{-k}[m_j + r_j, m+r_j+1].$. Because $m_j + 1 < m_j + r$, then $y_j \intersect x_j = \emptyset$
+ 				\end{proof}
 		\end{menumerate} 
+
+
+		\setcounter{enumi}{31}
+		\item \textit{Suppose that $E$ is a convex region in the plane bounded by a curve $C.$}
+			\begin{menumerate}
+				\item \textit{Show the following}
+					\begin{theorem}
+						The curve $C$ has a tangent line except at a countable number of points.
+					\end{theorem}
+
+					\begin{proof}
+						By definition if $E$ is a convex region, then for any two points $x,y \in E$, all points on the line $L(x,y) = \{z \in E\ :\ tx +sy = z, t+s = 1, 0 \leq t,s\leq 1\}.$ 
+
+						Let $a,b_t$ be two points on the curve $C$. 
+					\end{proof}
+			\end{menumerate} 
 
 		
 		
