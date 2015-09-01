@@ -183,35 +183,36 @@
  			\item For the following problem we adopt the following notation.
  				\begin{definition}
  				 We say that say that some $X \subset \mathbb{R}^n$ is a dyadic hyper-interval of partition $2^{-\gamma}$ if and only if 
- 				 $$X \in \overline{\Delta_n^k} = \left\{ Y \subset \mathbb{R}^n\ |\ Y = \bigtimes_{i\in\delta_k}2^{-\gamma}\left[(m_1,\dots,m_n),(m_1 , \dots,m_i +1,\dots, m_n)\right]\right\}, $$
- 				 where $\delta_k$ is the index set of dimensions in which the interval is non-empty and non-singular. Furthermore, $|\delta_k| = k$, and $m_i \in \mathbb{Z}.$
- 				\end{definition}
- 					So now we need to operationalize this proof. If $x$ and $y$ are two dyadic squares, then they are either identical, intersect along a common edge, intersect at a common vertex, or do not intersect at all.
+ 				 $$X \in \overline{\Delta_n^k} = \left\{ Y \subset \mathbb{R}^n\ |\ Y = \bigtimes_{i\in\delta_k}2^{-\gamma}\left[m_i,m_i +1\right]\right 
+ 				 \},$$
+ 				 where $\delta_k$ is the index set of dimensions in which the interval is non-empty and non-singular. Furthermore, $|\delta_k| = k$.
+ 				 \end{definition}
+ 					So now we need to operationalize this proof. If $x$ and $y$ are two dyadic hypercubes of $\mathbb{R}^n$, then they are either identical, intersect along a common hyper-edge, intersect at a common vertex, or do not intersect at all.
 				\begin{theorem}
 					  In other words, if $X,Y \in \overline{\Delta_n^n}$ are of the same partition, $2^{-\gamma}$, let
-					   $$Y = \bigtimes_{i=1}^k2^{-\gamma}\left[(m_1 + r_1,\dots,m_n + r_n),(m_1 + r_1, \dots,m_i +1 + r_i,\dots, m_n + r_n)\right],$$ 
+					   $$Y = \bigtimes_{i=1}^k2^{-\gamma}\left[m_i+r_i,m_i +1 + r_i\right],$$ 
 					   where the $m_j$ are those which define $X$, and $r_j \in \mathbb{Z}.$ Then, if $|r_j| \leq 1$ for all $j$, the following two results hold. If $k = n - \sum_i|r_i| > 0$,  $X \cap Y \in \overline{\Delta_n^k}$. If $k = 0$, $X \cap Y \subset \mathbb{Q}_2^n$ with $|X\cap Y| = 1$. Otherwise if there exists some $j$ such that $|r_j| > 1$, then $X \cap Y = \emptyset.$
 
 				\end{theorem}
 				\begin{proof}
 					We denote $X_j, Y_j$ as the $j^\mathrm{th}$ interval composing $X$ and $Y$. In the above definition of $Y$ we wish to explore a multitude of different $r_j$ values so as to express the theorem.
 
-					In the simplest case, $|r_j| > 1$ for some $j$ then $$y_j = 2^{-k}[(m_1 + r_1,\dots,m_j + r_j\dots,m_1+r_1),(m_1+r_1,\dots m_j+r_j+1,\dots,m_n+r_n)].$$ Clearly $m_j + 1 < m_j + r$ or $m_j  > m_j +r_j + 1$, and thus $y_j \cap x_j = \emptyset$, we have that the whole cartesian product, 
+					In the simplest case, $|r_j| > 1$ for some $j$ then $$y_j = 2^{-k}[m_j+r_j,m_j+r_j+1].$$ Clearly $m_j + 1 < m_j + r$ or $m_j  > m_j +r_j + 1$, and thus $y_j \cap x_j = \emptyset$, we have that the whole cartesian product, 
 						$$X\cap Y = \emptyset \times \left(\bigtimes_{i\neq j}^n x_j\cap y_j\right) = \emptyset,$$ 
 						because $\emptyset \times B$ cannot form any pair $(a,b)$ as there is no $a\in\emptyset.$
 
-					We claim that when $|r_i| \leq 1 $, $X \cap Y\in \overline{\Delta_n^k}$ for $k = n - \sum_{i=1}^n|r_i| > 0.$ Let $(n_p)$ denote the finite (possibly empty) list of indices for which $|r_j| = 1.$ In other words, for all $p$, $|r_{n_p}| = 1,$ else $|r_j| = 0.$ The intersection as aforementioned is the cartesian product of all $x_j, y_j$. Hence for $j \notin \{n_p\}$,  $x_j \cap y_j \in \overline{\Delta_n^1}$ with $\delta_1 = {j}.$ Hence, the cartesian product of all such $j$ is $X^* \cap Y^* \in \overline{\Delta_n^c}$ with $\delta_{c} = \{j \neq n_p \forall p\},$ and $c= n-|\{n_p\}|.$ We claim that $X \cap Y$ cannot exist in any higher dimenisonality than $X^* \cap Y^*.$ 
+					We claim that when $|r_i| \leq 1 $, $X \cap Y\in \overline{\Delta_n^k}$ for $k = n - \sum_{i=1}^n|r_i| > 0.$ Let $(n_p)$ denote the finite (possibly empty) list of indices for which $|r_j| = 1.$ In other words, for all $p$, $|r_{n_p}| = 1,$ else $|r_j| = 0.$ The intersection as aforementioned is the cartesian product of all $x_j, y_j$. Hence for $j \notin \{n_p\}$,  $x_j \cap y_j \in \overline{\Delta_n^1}$ with $\delta_1 = {j}.$ The cartesian product of all such $j$ is $X^* \cap Y^* \in \overline{\Delta_n^c}$ with $\delta_{c} = \{j \neq n_p \forall p\},$ and $c= n-|\{n_p\}| = k.$ We claim that $X \cap Y$ cannot exist in any higher dimenisonality than $X^* \cap Y^*.$ 
 
 					Suppose $X \cap Y \in \overline{\Delta_n^d},$ with $n \geq d > c$.  This implies that there exists a $q \in \{n_p\}$ such that $x_q \cap y_q = z_q$ is non-singular and non-empty. We have that
 					\begin{equation*}
 						\begin{aligned}
-							z_q &= [(m_1,\dots,m_q,\dots,m_n), (m_1,\dots,m_q+1,\dots,m_n)]\\
-								&\;\;\;\;\; \cap  [(m_1,\dots,m_q \pm 1,\dots,m_n), (m_1,\dots,m_q+1 \pm 1,\dots,m_n)] \\
-								&= \left\{\left(m_1,\dots,m_q+\frac{1\pm1}{2},\dots,m_n  \right)\right\}
-
+							z_q &= 2^{-\gamma}[m_q, m_q+1]\cap  2^{-\gamma}[m_q \pm 1, m_q+1 \pm 1] \\
+								&= 2^{-\gamma}\left\{m_q+\frac{1\pm1}{2}\right\}
 						\end{aligned}
 					\end{equation*}
-					is singular. Hence we reach a contradiction nad $X\cap Y \in \overline{\Delta_n^c}. $
+					is singular. Hence we reach a contradiction and $X\cap Y \in \overline{\Delta_n^k}. $
+
+					Lastly in the case that $|r_j| = 1$ for all $j$ if and only if $k = 0$, the intersection is a cartesian product of $n$ singular points as in $z_q.$ Thus $X\cap Y \in \mathbb{Q}_2^m$. This completes the proof.
 
  				\end{proof}
 		\end{menumerate} 
