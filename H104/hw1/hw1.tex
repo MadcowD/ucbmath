@@ -224,7 +224,7 @@
 				\end{theorem}
 
 				\begin{proof}
-				     Let $B_c^2$ be a disk of radius $\sqrt{\frac{\epsilon}{\pi}} \leq c < \pi$. Then consider the finite set $S_k$ of all dyadic squares of partition $2^{-\gamma} = \frac{\pi - c}{2}$ such that $B^2 \supset \bigcup S_k \supset B_c^2$. Clearly the area of $\bigcup S_k > \pi - \epsilon$ but less that $\pi.$ Hence for any $\epsilon > 0$, take $S_k$ as aforementioned, and these satisfying squares do not intersect. The proof is complete.
+				     Let $B_c^2$ be a disk of radius $\sqrt{\frac{\epsilon}{\pi}} \leq c < 1$. Then consider the finite set $S_k$ of all dyadic squares of partition $2^{-\gamma} = \frac{1 - c}{2}$ such that $B^2 \supset \bigcup S_k \supset B_c^2$. Clearly the area of $\bigcup S_k > \pi - \epsilon$ but less that $\pi.$ Hence for any $\epsilon > 0$, take $S_k$ as aforementioned, and these satisfying squares do not intersect. The proof is complete.
 				\end{proof}
 
 			\item Disjoint dyadic squares.
@@ -233,9 +233,42 @@
 				\end{theorem}
 
 				\begin{proof}
-				 	As previously, for any $\epsilon > 0$. Given any $\epsilon >0, $ let $B_c^2$ be the disk with radius $c = \pi - \epsilon.$ Then the largest dyadic square for which $B_c^2$ is a superset is given by partition $2^-k = \frac{\pi - \epsilon}{2},$. Let the difference of area between is then $\epsilon_1$
+				 	For any $\epsilon > 0,$ let $r = \frac{1+\sqrt{\frac{\epsilon}{\pi}}}{2}.$ Clearly such a point is the average radfius of the unit ball and the unit ball with radius $r.$ Now as before, divide the inside into pices of side length $2^{-n+1} = 1 - \sqrt{\frac{\epsilon}{\pi}}. $ If only every second square in every direction is selected, that set, say $S_1$, is clearly disjoint. Furthermore the total area of this set is at least $$a_1 = \frac{\alpha_0}{4} = \frac{\pi r^2}{4}.$$
 
-				 	As previously, given any $\epsilon > 0,$ let $B_{e}^2$ denote the disk of radius $e = \pi-\epsilon$. 
+				 	Now for those dyadics not selected, subdivide those sets into $8$ pieces in basis direction, and choose every other dyadic which is disjoint from $S_1$ and dyadics of the same class. Let $S_2$ be the set of $S_1$ union with this new set. The area of $S_2$ is at least  
+				 	$$a_2 = a_1 + \frac{\alpha_0-a_1}{4}.$$
+
+				 	Upon repeating this process we yield the following recurrence relation, $$a_n = a_{n-1} + \frac{\alpha_0-a_{n-1}}{4}.$$ Hence, we apply the methods of non-homogeneous recurrence relations and find that the general solution is clearly $a_n = c_1\left(\frac34\right)^n$. Then we solve for the particular solution, and yield that $a_n^p = \pi r^2.$ So we simply solve $a_1 = \frac{\alpha_0}{4}=c_1\frac34 + \alpha_0$ for $c_1.$ Upon yielding $c_1 = -\alpha_0$, we find the total solution to the area upon $n$ repitions of the process is 
+				 	$$a_n = -\alpha_0\left(\frac34\right)^n + \alpha_0.$$
+
+				 	Now we show that there exists an $N$ such that for some $n > N$, $a_n > \pi - \epsilon.$ Observe, \begin{equation}
+				 		\begin{aligned}
+				 			\alpha_0 - \alpha_0\left(\frac34\right)^n &< \pi - \epsilon \\
+				 			 \left(\frac34\right)^n &> \frac{\epsilon-\pi}{\alpha_0} + 1 \\
+				 			 	n \ln\left(\frac34\right) &> \ln\left(\frac{\epsilon-\pi}{\alpha_0} + 1\right).
+				 		\end{aligned}
+				 	\end{equation} Hence, let $N(\epsilon) = \frac{\ln\left(\frac{\epsilon-\pi}{\alpha_0} + 1\right)}{\ln\left(\frac34\right)} $. By the logic of derivation for $N,$ for every $\epsilon > 0$ and for all $n > N(\epsilon),$ $a_n > \pi - \epsilon.$ 
+
+				 	Take the first such $n.$ Then the set of disjoint dyadics, $S_n$, which induce the area $a_n$ is finite, and the proof is complete.
+				\end{proof}
+
+				\item Dyadic hypercubes filling a ball.
+				\begin{theorem}
+				Given $\epsilon > 0,$ show that the unit ball contains finitely many dyadic hypercubes whose total hypervolume exceeds $V_m(1) -\epsilon = \frac{\pi^{m/2}}{\Gamma(\frac{m}{2}+1)} - \epsilon,$ and which intersect with eachother only along their boundries.
+				\end{theorem}
+
+				\begin{proof}
+				     Let $B_c^m$ be a ball of hypervolume $\epsilon < v < V_m(1),$ and therefore radius $\frac{\left(\epsilon\Gamma(\frac{m}{2} + 1)\right)^{1/m}}{\sqrt{\pi}} \leq c < 1$. Then consider the finite set $S_k \subset \overline{\Delta_m^m}$ of all dyadic hypercubes of partition $2^{-\gamma} = \frac{1 - c}{2}$ such that $B^m \supset \bigcup S_\gamma \supset B_c^m$. These cubes will fill the ball of radius $\frac{\left(\epsilon\Gamma(\frac{m}{2} + 1)\right)^{1/m}}{\sqrt{\pi}}$ at least. Clearly the hypervolume of $\bigcup S_k > V_m(1) - \epsilon$ but less than $V_m(1).$ Hence for any $\epsilon > 0$, take $S_\gamma$ as aforementioned, and these satisfying hypercubes do not intersect except along common edges (as proved in $23$. The proof is complete.
+				\end{proof}
+
+
+				\item
+				\begin{proof}
+					Given $\epsilon > 0.$ Let $B^2_{-\gamma/2}$ denote the disk inscribed in the dyadic square $\delta \in \overline{\Delta_2^2}$ of partition $2^{-\gamma}$ at some position in $\mathbb{Q}_2^2.$ Now consider the unit square and the square at the origin of area $\epsilon_2$ and sidelength $\sqrt{\epsilon}+c.$ Define $\gamma$ to be the rounded solution of $2^{-\gamma} = \frac{1- \sqrt{\epsilon}+c}{2}.$ Then let $S_1$ be the family of every other dyadic square of partition $2^{-\gamma}$ filling the square of area $\epsilon_2$ completeley and then some. The area of such squares is at least $a_1 = \frac{\epsilon_2}{4}. $ Then the area of union of the family of ball inscribing all dyadic squares in $S_1$ is $b_1 = \frac{\epsilon_2}{8}.$ 
+
+					For those squares not selected subdivide them into $16$ dyadic squares and choose every other such that these squares are disjoint from one another and their family is disjoint from $S_1.$ Take the union of their family and $S_1$ to produce $S_2$ whose area is at least $a_2 = a_1 + \frac{\epsilon_2-a_1}{8}.$ Taking those circles inscribed yields that $b_2 = b_1 + \frac{\epsilon_2-a_1}{32}.$
+
+					Repeating this process yields a geometric series $b_n$ similar to $a_n$ in part (b). By the same logic in part (b), there will exist an $n$ such that $b_n> \epsilon$ and hence a finite disjoint dyadic partitioning of the unit square such that the area of disk inscription of this partitioning has area greater than $\epsilon$ which approaches $\epsilon_2$. This completes the proof. 
 				\end{proof}
 			\end{menumerate}
 
@@ -244,13 +277,15 @@
 			\begin{menumerate}
 				\item \textit{Show the following}
 					\begin{theorem}
-						The curve $C$ has a tangent line except at a countable number of points.
+						The curve $C$ has a unique tangent line except at a countable number of points.
 					\end{theorem}
 
 					\begin{proof}
-						By definition if $E$ is a convex region, then for any two points $x,y \in E$, all points on the line $L(x,y) = \{z \in E\ :\ tx +sy = z, t+s = 1, 0 \leq t,s\leq 1\}.$ 
+						We first show that their exists a tangent line for every point $c\in C.$ Let $$T_c = \left\{x\in\mathbb{R}^2\;|\;x=c+rt, t \in \mathbb{R}\right\}, $$ for some slope vector $r$ such that $T_c \cap (E\setminus C) = \emptyset.$ We show that $\forall c, T_c \cap E \neq \emptyset.$ 
+						Take some $c \in C$ and fix it. Then for some sequence of points on the curve, $q_n$, which start at some other point $c'$ and increase monotonically with respect to angle from the center of $E$ such that $q_n \to c.$ Let the secant line to $c$ at some point $q$ be denoted, $$S_q = \left\{x \in \mathbb{R}^2\ |\ q + \frac{(c-q)}{\|c-q\|}t, t\in \mathbb{R}\right\}.$$
+						Consider that $[q_n,c] \subset S_{q_n},$ and $ S_{q_n} \setminus {[q_n,c]} \cap E =\emptyset.$ For all $n$, $[q_n,c]$ is clearly non-empty (it contains at least, $c$), so $\bigcap_n[q_n,c]$ is also non-empty. Therefore, as $q_n \to c$, $S_{q_n} \to S_{c} \supset \bigcap_n S_{q_n} = {c}$. $S_c$ could not possibly contain an element of $E \setminus C.$ Suppose it contains, $e \in E \setminus C,$ for the purpose of reaching a contradiction. Then $e \in [c,c]$ such that $e\neq c,$ which leads to a contradiction. Therefore, $S_c = T_c$ for some tangent line satisfying the definition.
 
-						Let $a,b_t$ be two points on the curve $C$. 
+						Now we show that $T_c$ is unique except at countably many points. Let us define the function $\tau : C \to [0,2\pi]$ which assigns to every point on the curve $C$ the angle of its tangent line. By the logic above, for every p $\tau(p)$ exists. Let $\phi:\mathbb{R}\to C$ be a bijective paramaterization of $C$ starting at some point $q$ such that one walks counter clockwise with respect to $q$ a distance $t$ and yields $\phi(t).$ We show that $\tau \circ \phi$ is monotonic. 
 					\end{proof} 
 			\end{menumerate} 
 

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.6.10)  1 SEP 2015 17:08
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.6.10)  2 SEP 2015 13:10
 entering extended mode
 **C:/Users/William/Desktop/math/H104/hw1/hw1.tex
 (C:/Users/William/Desktop/math/H104/hw1/hw1.tex
@@ -666,7 +666,7 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 {C:/Users/William/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}] [2] [3] [
 4] [5]
-(C:\Users\William\Desktop\math\H104\hw1\hw1.aux) ) 
+[6] [7] (C:\Users\William\Desktop\math\H104\hw1\hw1.aux) ) 
 Here is how much of TeX's memory you used:
  5788 strings out of 493921
  77028 string characters out of 3144870
@@ -675,24 +675,28 @@ Here is how much of TeX's memory you used:
  17821 words of font info for 63 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
  30i,11n,43p,831b,416s stack positions out of 5000i,500n,10000p,200000b,50000s
- <C:\Users\William\AppData\Lo
-cal\MiKTeX\2.9\fonts\pk\ljfour\public\mathabx\dpi600\mathx10.pk> <C:\Users\Will
-iam\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\public\mathabx\dpi600\matha7.pk> <
-C:\Users\William\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\public\mathabx\dpi600
-\matha10.pk><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/c
-mbx10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmb
-x12.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi1
-0.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi5.p
-fb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi7.pfb>
-<C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:
-/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Pr
-ogram Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Progr
-am Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program F
-iles (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Program Fil
-es (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on hw1.pdf (5 pages, 175098 bytes).
+ <C:\Users\William\Ap
+pData\Local\MiKTeX\2.9\fonts\pk\ljfour\public\mathabx\dpi600\matha5.pk> <C:\Use
+rs\William\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\public\mathabx\dpi420\mathx
+10.pk> <C:\Users\William\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\public\mathab
+x\dpi600\mathx10.pk> <C:\Users\William\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour
+\public\mathabx\dpi600\matha7.pk> <C:\Users\William\AppData\Local\MiKTeX\2.9\fo
+nts\pk\ljfour\public\mathabx\dpi600\matha10.pk><C:/Program Files (x86)/MiKTeX 2
+.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Program Files (x86)/MiKTeX 2.9
+/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Files (x86)/MiKTeX 2.9/f
+onts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fon
+ts/type1/public/amsfonts/cm/cmmi5.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/
+type1/public/amsfonts/cm/cmmi7.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/typ
+e1/public/amsfonts/cm/cmr10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/
+public/amsfonts/cm/cmr12.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/pub
+lic/amsfonts/cm/cmr17.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public
+/amsfonts/cm/cmr5.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/ams
+fonts/cm/cmr7.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfont
+s/cm/cmti10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/
+symbols/msbm10.pfb>
+Output written on hw1.pdf (7 pages, 205279 bytes).
 PDF statistics:
- 122 PDF objects out of 1000 (max. 8388607)
+ 159 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
