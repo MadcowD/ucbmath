@@ -208,14 +208,36 @@
 							z_q &= [(m_1,\dots,m_q,\dots,m_n), (m_1,\dots,m_q+1,\dots,m_n)]\\
 								&\;\;\;\;\; \cap  [(m_1,\dots,m_q \pm 1,\dots,m_n), (m_1,\dots,m_q+1 \pm 1,\dots,m_n)] \\
 								&= \left\{\left(m_1,\dots,m_q+\frac{1\pm1}{2},\dots,m_n  \right)\right\}
-
 						\end{aligned}
 					\end{equation*}
-					is singular. Hence we reach a contradiction nad $X\cap Y \in \overline{\Delta_n^c}. $
+					is singular. Hence we reach a contradiction and $X\cap Y \in \overline{\Delta_n^c}. $
 
  				\end{proof}
 		\end{menumerate} 
 
+
+		\item Show the following
+			\begin{menumerate}
+			\item Dyadic squares in the unit ball.
+				\begin{theorem}
+				Given $\epsilon > 0,$ show that the unit disc contains finitely many dyadic squares whose total area exceeds $\pi - \epsilon,$ and which intersect with eachother only along their boundries.
+				\end{theorem}
+
+				\begin{proof}
+				     Let $B_c^2$ be a disk of radius $\sqrt{\frac{\epsilon}{\pi}} \leq c < \pi$. Then consider the finite set $S_k$ of all dyadic squares of partition $2^{-\gamma} = \frac{\pi - c}{2}$ such that $B^2 \supset \bigcup S_k \supset B_c^2$. Clearly the area of $\bigcup S_k > \pi - \epsilon$ but less that $\pi.$ Hence for any $\epsilon > 0$, take $S_k$ as aforementioned, and these satisfying squares do not intersect. The proof is complete.
+				\end{proof}
+
+			\item Disjoint dyadic squares.
+				\begin{theorem}
+				Given $\epsilon > 0,$ show that the unit disc contains finitely many dyadic squares whose total area exceeds $\pi - \epsilon,$ and which are disjoint.
+				\end{theorem}
+
+				\begin{proof}
+				 	As previously, for any $\epsilon > 0$. Given any $\epsilon >0, $ let $B_c^2$ be the disk with radius $c = \pi - \epsilon.$ Then the largest dyadic square for which $B_c^2$ is a superset is given by partition $2^-k = \frac{\pi - \epsilon}{2},$. Let the difference of area between is then $\epsilon_1$
+
+				 	As previously, given any $\epsilon > 0,$ let $B_{e}^2$ denote the disk of radius $e = \pi-\epsilon$. 
+				\end{proof}
+			\end{menumerate}
 
 		\setcounter{enumi}{31}
 		\item \textit{Suppose that $E$ is a convex region in the plane bounded by a curve $C.$}

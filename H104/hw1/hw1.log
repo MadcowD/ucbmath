@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.6.10)  1 SEP 2015 01:03
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.6.10)  1 SEP 2015 17:08
 entering extended mode
 **C:/Users/William/Desktop/math/H104/hw1/hw1.tex
 (C:/Users/William/Desktop/math/H104/hw1/hw1.tex
@@ -664,106 +664,9 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 58.
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
-{C:/Users/William/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}] [2] [3]
-! Missing $ inserted.
-<inserted text> 
-                $
-l.211 
-      
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-! Missing } inserted.
-<inserted text> 
-                }
-l.211 
-      
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-! Missing } inserted.
-<inserted text> 
-                }
-l.211 
-      
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-! Missing } inserted.
-<inserted text> 
-                }
-l.211 
-      
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-! Missing \cr inserted.
-<inserted text> 
-                \cr 
-l.211 
-      
-I'm guessing that you meant to end an alignment here.
-
-! Missing { inserted.
-<inserted text> 
-                {
-l.211 
-      
-I've put in what seems to be necessary to fix
-the current column of the current alignment.
-Try to go on, since this might almost work.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.211 
-      
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-! Misplaced \crcr.
-\endaligned ->\crcr 
-                    \egroup \restorecolumn@ \egroup 
-l.212 						\end{aligned}
-                         
-I can't figure out why you would want to use a tab mark
-or \cr or \span just now. If something like a right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-! Extra }, or forgotten \endgroup.
-\endaligned ->\crcr \egroup 
-                            \restorecolumn@ \egroup 
-l.212 						\end{aligned}
-                         
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-! Extra }, or forgotten \endgroup.
-\endaligned ...cr \egroup \restorecolumn@ \egroup 
-                                                  
-l.212 						\end{aligned}
-                         
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-[4] [5] (C:\Users\William\Desktop\math\H104\hw1\hw1.aux) ) 
+{C:/Users/William/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}] [2] [3] [
+4] [5]
+(C:\Users\William\Desktop\math\H104\hw1\hw1.aux) ) 
 Here is how much of TeX's memory you used:
  5788 strings out of 493921
  77028 string characters out of 3144870
@@ -772,24 +675,24 @@ Here is how much of TeX's memory you used:
  17821 words of font info for 63 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
  30i,11n,43p,831b,416s stack positions out of 5000i,500n,10000p,200000b,50000s
- <C:\Users\William\Ap
-pData\Local\MiKTeX\2.9\fonts\pk\ljfour\public\mathabx\dpi600\mathx10.pk> <C:\Us
-ers\William\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\public\mathabx\dpi600\math
-a7.pk> <C:\Users\William\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\public\mathab
-x\dpi600\matha10.pk><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfo
-nts/cm/cmbx10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfont
-s/cm/cmbx12.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/
-cm/cmmi10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm
-/cmmi5.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cm
-mi7.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10
-.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pf
-b><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><
-C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/P
-rogram Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Pro
-gram Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on hw1.pdf (5 pages, 170077 bytes).
+ <C:\Users\William\AppData\Lo
+cal\MiKTeX\2.9\fonts\pk\ljfour\public\mathabx\dpi600\mathx10.pk> <C:\Users\Will
+iam\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\public\mathabx\dpi600\matha7.pk> <
+C:\Users\William\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\public\mathabx\dpi600
+\matha10.pk><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/c
+mbx10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmb
+x12.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi1
+0.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi5.p
+fb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi7.pfb>
+<C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:
+/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Pr
+ogram Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Progr
+am Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program F
+iles (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Program Fil
+es (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on hw1.pdf (5 pages, 175098 bytes).
 PDF statistics:
- 119 PDF objects out of 1000 (max. 8388607)
+ 122 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
