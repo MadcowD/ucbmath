@@ -132,7 +132,7 @@
 	\setcounter{enumi}{21}
 	\item \textit{Show the following.} 
 		\begin{menumerate}
-			\item Fixed points: \begin{theorem}
+			\item \textit{Fixed points}: \begin{theorem}
 				The function $f: A \to A$ has a fixed point if and only if the graph of $f$ interesects the diagonal.
 			\end{theorem}
 			\begin{proof}
@@ -144,7 +144,7 @@
 			\end{proof}
 
 
-			\item Intermediate fixed point
+			\item \textit{Intermediate fixed point}
 			\begin{theorem}
 				Every continuous function $f: [0,1] \to [0,1]$ has at least one fixed-point.
 			\end{theorem}
@@ -157,7 +157,7 @@
 
 	\item \textit{Show the following.} 
 		\begin{menumerate}
-			\item Dyadic squares:
+			\item \textit{Dyadic squares:}
 				\begin{theorem}
 					 If $x$ and $y$ are two dyadic squares, then they are either identical, intersect along a common edge, intersect at a common vertex, or do not intersect at all.
 				\end{theorem}
@@ -180,7 +180,7 @@
 
  				\end{proof}
 
- 			\item For the following problem we adopt the following notation.
+ 			\item \textit{For the following problem we adopt the following notation.}
  				\begin{definition}
  				 We say that say that some $X \subset \mathbb{R}^n$ is a dyadic hyper-interval of partition $2^{-\gamma}$ if and only if 
  				 $$X \in \overline{\Delta_n^k} = \left\{ Y \subset \mathbb{R}^n\ |\ Y = \bigtimes_{i\in\delta_k}2^{-\gamma}\left[(m_1,\dots,m_n),(m_1 , \dots,m_i +1,\dots, m_n)\right]\right\}, $$
@@ -216,9 +216,9 @@
 		\end{menumerate} 
 
 
-		\item Show the following
+		\item \textit{Show the following}
 			\begin{menumerate}
-			\item Dyadic squares in the unit ball.
+			\item \textit{Dyadic squares in the unit ball.}
 				\begin{theorem}
 				Given $\epsilon > 0,$ show that the unit disc contains finitely many dyadic squares whose total area exceeds $\pi - \epsilon,$ and which intersect with eachother only along their boundries.
 				\end{theorem}
@@ -227,7 +227,7 @@
 				     Let $B_c^2$ be a disk of radius $\sqrt{\frac{\epsilon}{\pi}} \leq c < 1$. Then consider the finite set $S_k$ of all dyadic squares of partition $2^{-\gamma} = \frac{1 - c}{2}$ such that $B^2 \supset \bigcup S_k \supset B_c^2$. Clearly the area of $\bigcup S_k > \pi - \epsilon$ but less that $\pi.$ Hence for any $\epsilon > 0$, take $S_k$ as aforementioned, and these satisfying squares do not intersect. The proof is complete.
 				\end{proof}
 
-			\item Disjoint dyadic squares.
+			\item \textit{Disjoint dyadic squares.}
 				\begin{theorem}
 				Given $\epsilon > 0,$ show that the unit disc contains finitely many dyadic squares whose total area exceeds $\pi - \epsilon,$ and which are disjoint.
 				\end{theorem}
@@ -252,7 +252,7 @@
 				 	Take the first such $n.$ Then the set of disjoint dyadics, $S_n$, which induce the area $a_n$ is finite, and the proof is complete.
 				\end{proof}
 
-				\item Dyadic hypercubes filling a ball.
+				\item \textit{Dyadic hypercubes filling a ball.}
 				\begin{theorem}
 				Given $\epsilon > 0,$ show that the unit ball contains finitely many dyadic hypercubes whose total hypervolume exceeds $V_m(1) -\epsilon = \frac{\pi^{m/2}}{\Gamma(\frac{m}{2}+1)} - \epsilon,$ and which intersect with eachother only along their boundries.
 				\end{theorem}
@@ -262,7 +262,7 @@
 				\end{proof}
 
 
-				\item
+				\item \textit{Prove theorem 10 when the unit ball is replaced with the unit square, and circles are inscribed on the dyadic hypercube lattice.}
 				\begin{proof}
 					Given $\epsilon > 0.$ Let $B^2_{-\gamma/2}$ denote the disk inscribed in the dyadic square $\delta \in \overline{\Delta_2^2}$ of partition $2^{-\gamma}$ at some position in $\mathbb{Q}_2^2.$ Now consider the unit square and the square at the origin of area $\epsilon_2$ and sidelength $\sqrt{\epsilon}+c.$ Define $\gamma$ to be the rounded solution of $2^{-\gamma} = \frac{1- \sqrt{\epsilon}+c}{2}.$ Then let $S_1$ be the family of every other dyadic square of partition $2^{-\gamma}$ filling the square of area $\epsilon_2$ completeley and then some. The area of such squares is at least $a_1 = \frac{\epsilon_2}{4}. $ Then the area of union of the family of ball inscribing all dyadic squares in $S_1$ is $b_1 = \frac{\epsilon_2}{8}.$ 
 
@@ -285,9 +285,90 @@
 						Take some $c \in C$ and fix it. Then for some sequence of points on the curve, $q_n$, which start at some other point $c'$ and increase monotonically with respect to angle from the center of $E$ such that $q_n \to c.$ Let the secant line to $c$ at some point $q$ be denoted, $$S_q = \left\{x \in \mathbb{R}^2\ |\ q + \frac{(c-q)}{\|c-q\|}t, t\in \mathbb{R}\right\}.$$
 						Consider that $[q_n,c] \subset S_{q_n},$ and $ S_{q_n} \setminus {[q_n,c]} \cap E =\emptyset.$ For all $n$, $[q_n,c]$ is clearly non-empty (it contains at least, $c$), so $\bigcap_n[q_n,c]$ is also non-empty. Therefore, as $q_n \to c$, $S_{q_n} \to S_{c} \supset \bigcap_n S_{q_n} = {c}$. $S_c$ could not possibly contain an element of $E \setminus C.$ Suppose it contains, $e \in E \setminus C,$ for the purpose of reaching a contradiction. Then $e \in [c,c]$ such that $e\neq c,$ which leads to a contradiction. Therefore, $S_c = T_c$ for some tangent line satisfying the definition.
 
-						Now we show that $T_c$ is unique except at countably many points. Let us define the function $\tau : C \to [0,2\pi]$ which assigns to every point on the curve $C$ the angle of its tangent line. By the logic above, for every p $\tau(p)$ exists. Let $\phi:\mathbb{R}\to C$ be a bijective paramaterization of $C$ starting at some point $q$ such that one walks counter clockwise with respect to $q$ a distance $t$ and yields $\phi(t).$ We show that $\tau \circ \phi$ is monotonic. 
+						Now we will show that $T_c$ is unique except at countably many points. Let us define the function $\tau : C \to [0,2\pi]$ which assigns to every point on the curve $C$ the angle of its tangent line ,with respect to some starting angle of a point $q\in C$. By the logic above, for every p $\tau(p)$ exists. Let $\phi:\mathbb{R}\to C$ be a bijective paramaterization of $C$ starting at some point $q$ such that one walks counter clockwise with respect to $q$ a distance $t$ and yields $\phi(t).$
+
+						It is easy to see that $\phi(t)$ is a continuous function because the region $E$ is connected. We claim that $\tau \circ \phi (\mathbb{R})$ has countably many discontinuities. For every $p,$ $\tau(p)$ is the angle of the tangent to $p.$ If no angle exists, there must exist more than one tangent by the previous logic. Furthermore angle for which there is no tangent lies in some open interval. In other words, $\tau(\phi(S \subset \mathbb{R}))$ experiences discontinuities in disjoint intervals.
+
+						Given a family of open disjoint intervals in $\mathbb{R}$, we claim that those disjoint families are countable. This holds because for each interval there exists a unique rational number therein, and since the rationals are countable, the family must be countable. Therefore, the discontinuities in  $\tau(\phi(S \subset \mathbb{R}))$ are countably many. Geometrically speaking, the points at which there exist no unique tangent in the convex curve $C$ surrounding a convex region $E$ are therefore countably many.
+
+						This completes the proof.
 					\end{proof} 
+
+					\item\textit{Show the following.}
+					\begin{theorem}
+						If $f$ is a convex function, then it has a derivative except at countably many points.
+					\end{theorem}
+
+					\begin{proof}
+						If $f$ is a convex function, then for any $x,y \in [a,b]=I$, $m = \min_I f$, $M= \max_I f$, the line segment $\overline{f(x),f(y)}$ is contained in the region $$S = \left\{(x,y)\in I \ |\ m \leq b \leq f(a)\right\}.$$ Let $C$ be the curve, $C = \{(x,f(x))\}_{x\in I} \cup [(a,m),(a,f(a))] \cup [(a,m),(b,m)] \cup [(b,m), (b,f(b))].$ Since $S$ is convex and bounded by $C$, $C$ has tangents everywhere except at countably many points. Since $G = \{(x,f(x))\}_{x\in I}\subset C$ then the graph $G$ has tangents except at countably many points. In other words, in any $[a,b]$, $f$ has derivatives at except at countably many points. The proof is complete.
+					\end{proof}
 			\end{menumerate} 
+
+			\setcounter{enumi}{44}
+				\item \textit{Let $(a_n)$ be a sequence of real numbers. It is bounded if the set $A = \{a_1, a_2, \dots \}$ is bounded. The limit supremum, or lim sup, of a bounded sequence $(a_n)$ as $n\to\infty$ is}
+				$$\limsup_{n\to\infty }a_n = \lim_{n\to\infty}\left(\sup_{k\geq n} a_k\right)$$
+				\begin{menumerate}
+				\item \textit{Why does lim sup exist?} It exists because if $A$ is bounded, so is any subset. Therefore the set of $a_k$ with $k\geq n$ must be a bounded set in $\mathbb{R}$ with an upper bound $\sup_{k\geq n}{a_n}.$
+				\item \textit{If $\sup{a_n} = \infty$, how should we define $\limsup_{n\to\infty}a_n$?}. One should define $\limsup a_n = \infty,$ as every subsequence diverges.
+				\item \textit{If $\lim a_n = -\infty$, how should we define $\limsup_{n\to\infty}a_n$?}. One should define $\limsup a_n = -\infty,$ as every subsequence diverges.
+
+			\item Prove the following.
+
+				\begin{definition} We say $(s_{n})$ is a sequence of supremums for a sequence $(a_n)$ if and only if,$ s_n = \sup\{a_k : k \geq n\}.$
+	 			\end{definition}
+				\begin{theorem}
+			    Let $\{a_n\}, \{b_n\}$ be sequences in $\mathbb{R}$. If $\limsup a_n$ and $\limsup b_n$ are finite, 
+			    then $\limsup\left(a_n + b_n\right) \leq \limsup a_n + \limsup b_n$.
+			    \end{theorem}
+			    
+			    \begin{proof}
+			    Consider the sequences of supremums for both $a_n$ and $b_n$ respectively, $\{s_{a,k}\}, \{s_{b,k}\}$.
+			    Also consider the sequence of supremums for $a_n + b_n$, that is $\{s_{c,k}\}$.
+			    
+			    
+			    We have that for fixed $k$, $a_n + b_n \leq s_{a,k} +  s_{b,k}$ for all $n \geq k$ 
+			    by adding the inequalities defined for $s_{a,k}$ and $s_{b,k}$.
+			    
+			    Then notice that $\sup_{n\geq k} a_n +b_n$ is less than or
+			    equal to $  s_{a,k} + s_{b,k}$ for $k$ fixed. 
+			    So
+			    \begin{equation}
+			    \sup s_{c,k} \leq  s_{a,k} +  s_{b,k}
+			    \end{equation}
+			    holds as $k\to \infty$. Therefore $\limsup{(a_n + b_n)} \leq \limsup{a_n} + \limsup{b_n}$.
+			    This completes the proof.
+			    \end{proof}
+				\newpage
+			\item \textit{Define the limit infinum and relate it to the limit supremum.}
+				\begin{definition} We say $(i_{n})$ is a sequence of infinums for a sequence $(a_n)$ if and only if,$ i_n = \inf\{a_k : k \geq n\}.$ 
+	 			\end{definition}
+	 			\begin{definition} If $(a_n)$ is a sequence and $(i_n)$ is defined as above, then
+	 			$$\liminf a_n = \lim i_n.$$
+	 			\end{definition}
+
+	 			\begin{theorem}
+	 				Every limit of subsequences $(a_n)$ is between $\liminf a_n$ and $\limsup a_n.$
+	 			\end{theorem}
+	 			\begin{proof}
+	 				If some subsequence $(a_{m_k})$ converges, it follows that because $(i_n), (s_n)$ are both non-decreasing/non-increasing sequences for all $n,$ $i_n \leq a_n \leq s_n.$ Therefore $i_{n_k} \leq a_{n_k} \leq s_{n_k}.$ Because $(i_n)$ and $(s_n)$ both have limits, then each of their subsequences converge. Then by squeeze theorem we have that $$\liminf a_n \leq \lim a_{n_k} \leq \limsup {a_n}.$$ 
+	 			\end{proof}
+
+
+			\item \textit{Show that a sequence has a limit if its limit supremum and limit infimum are the same.}
+				\begin{theorem}
+				 	A sequence $(a_n)$ has a limit iff $$\limsup a_n = \liminf a_n = a.$$
+				 \end{theorem} 
+			 	\begin{proof}
+			 	 As above we have that $i_n \leq a_n \leq s_n.$ Since $\lim i_n = \lim s_n = b$, it follows from the squeeze theorem that $\lim a_n = b.$
+			 	 On the other hand if $\lim a_n = a,$ we have that every subsequence of $(a_n)$ has a limit, say $b$. Since $\limsup a_n, \liminf a_n$ are limits of subsequences of $a_n$, then they must both be $b.$ This completes the proof.
+			 	\end{proof}
+			\end{menumerate}
+
+			\newpage
+			\setcounter{enumi}{47}
+			\item \textit{Deform the treifoil knot in $4$ dimensions.} 
+
+
 
 		
 		
