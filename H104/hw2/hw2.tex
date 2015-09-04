@@ -1,0 +1,96 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%                      Homework 2                            %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[letter]{article}
+
+\usepackage{lipsum}
+\usepackage[pdftex]{graphicx}
+\usepackage[margin=1.5in]{geometry}
+\usepackage[english]{babel}
+\usepackage{listings}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{framed} 
+\usepackage{amsmath}
+\usepackage{titling}
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{definition}{Definition}
+
+\newenvironment{menumerate}{%
+  \edef\backupindent{\the\parindent}%
+  \enumerate%
+  \setlength{\parindent}{\backupindent}%
+}{\endenumerate}
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%
+%% DOC INFO %%%
+%%%%%%%%%%%%%%%
+\newcommand{\bHWN}{2}
+\newcommand{\bCLASS}{Math H104}
+
+\title{\bCLASS: Homework \bHWN}
+\author{William Guss\\26793499\\wguss@berkeley.edu}
+
+\fancyhead[L]{\bCLASS}
+\fancyhead[CO]{Homework \bHWN}
+\fancyhead[CE]{GUSS}
+\fancyhead[R]{\thepage}
+\fancyfoot[LR]{}
+\fancyfoot[C]{}
+\usepackage{csquotes}
+
+%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+
+%%%%%%% Be sure to set the counter and use menumerate
+\section{Real Numbers}
+\begin{menumerate}
+	\setcounter{enumi}{35}
+	\item \textit{Without using the Schroeder-Bernstein Theorem,}
+		\begin{menumerate}
+		 	\item \textit{Prove the following}
+		 		\begin{theorem}
+		 			The cardinalities of $[a,b], (a,b], (a,b)$ are equivalent.
+		 			 That is, $[a,b]\sim (a,b]\sim (a,b)$.
+	 			 \end{theorem}
+	 			 \begin{proof}
+	 			 	To show cardinal equivalence, we must find a bijection between the three sets. This argument follows from Hilberts's hotel. Consider the two sets set $A^o = (a,b), A^h = (a,b].$ Because every uncountable set has a countable subset, let $$A^o_C = \left\{a_n \in A^o\  | \ a_n = \frac{an +b}{n+1} ,\  n \in \mathbb{N} \right\}.$$
+	 			 	In the same light, let $$A^h_C = \left\{a_n \in A^h\  |\ a_n = \frac{a(n-1) +b}{n} ,\   n \in \mathbb{N} \right\}.$$
+	 			 	Then $f: A^o_C \to A^h_C $, such that $f(\frac{an +b}{n+1}) = \frac{a(n-1) +b}{n}$, is clearly a bijection.
+
+	 			 	We now make a functiong $g: A^o \to   A^h$ such that for $x \in A^o_C$, $g(x) = f(x)$, otherwise $g(x) = x.$ Since $f$ is a a bijection, then $g$ is a bijection on $A^o_C$. Furthermore since $b \notin A^h \setminus A^h_C,$ we have that $g$ surjective when $x \notin A^o_C.$ Furthermore if $x \neq y,$ then clearly $g(x) = x \neq y = g(y).$ So $g$ is injective, and therefore bijective. We have shown that $A^o \sim A^h.$
+
+	 			 	Lastly, we will prove that $A^c = [a,b]$ is bijective to $A^h.$ 
+	 			 \end{proof}
+		 \end{menumerate} 
+\end{menumerate}
+
+
+\section{A Taste of Topology}
+\begin{menumerate}
+	\item \textit{An ant walks on the floor,ceiling, and walls of a cubical room. What metric is natural for the ant's view of its world? What metric would a spider consider natural? If the ant wants to walk from a point $p$ to a point $q$, how could it determine the shortest path?} Simple! The ant exists on subspaces of three space. In fact, the ant exists on planes within three space. This means that the ant can only move from one location to another using the inherited metric of a plane subspace in $\mathbb{R}^3,$ not the one provided for $\mathbb{R}^3$ itself. To give a precise definition, if the ant wants to travel from the center of the ceiling to the floor, he must take the shortest path to the closest contiguous plane series to that of the floor. Put more simply, the ant needs to walk to the wall and then to the floor to get to his destination.
+
+	 In this sense we can actually construct a homeomorphism from the ant's $3$-space domain, to a simple subset of $\mathbb{R}^2.$ Take all of the planes constructing the walls and the floor and knock them down such that they become six planes adjacent in a cross pattern. It is easy to see that the ant must use the standard metric in $\mathbb{R}^2$ between those points, $p,q$ in contiguously adjacent subplanes. If the planes are not adjacent, the ant must find the best possible from one plane to another and then readopt the $\mathbb{R}^2$ metric.
+
+	 The spider's space would be endowed with the ant metric except for when the spider wishes to go from points on the ceiling, $C$, to the floor $F$, in that case, the spider would use the taxicab metric for $\mathbb{R}^3$ to reach a point directly below the point on the ceiling, on the floor, and then again assume the ant metric. This process would not work in reverse however, considering that the ant cannot ascend, unless a web has already been created (a can of worms into which we will not venture!).
+
+	 \item
+\end{menumerate}
+
+\end{document}
