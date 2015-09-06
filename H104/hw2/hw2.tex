@@ -90,7 +90,49 @@
 
 	 The spider's space would be endowed with the ant metric except for when the spider wishes to go from points on the ceiling, $C$, to the floor $F$, in that case, the spider would use the taxicab metric for $\mathbb{R}^3$ to reach a point directly below the point on the ceiling, on the floor, and then again assume the ant metric. This process would not work in reverse however, considering that the ant cannot ascend, unless a web has already been created (a can of worms into which we will not venture!).
 
-	 \item
+	 \item If $M = \mathbb{R}^2$ is a metric space, we say that it is endowed with the taxicab metric if and only if $$d(x,y)=\|x-y\|_1=|x_1 - y_1| + |x_2 - y_2|.$$ This name arises if one considers the natural metric for a taxicab driver. Clearly the driver must stay aligned to the grid system which is a subset of $\mathbb{R}^2$. Hence if such a driver wishes to travel from point $q$ to point $p$. He must first go a long the grid in the $x$ direction until his $x$ position coincides with $p$, and then head in the $y$ direction untill his $x$ and $y$ positions are at $p$. The process requires that he travel the distances in the $x$ and $y$ directions independently. Essentially $d(p,q) = \mathrm{distance\_x\_direction} + \mathrm{distance\_y\_direction} =\|x-y\|_1=|p_1 - q_1| + |p_2 - q_2|$. Therefore it is natural to arive at our definition of the taxicab metric.
+
+	 \setcounter{enumi}{7}
+	 \item \textit{Prove the following}
+	 	\begin{menumerate}
+	 	 	\item \textit{Absolute convegence}
+	 	 		\begin{theorem}
+	 	 		 	Let $(x_n)$ be a convegent sequence in $\mathbb{R}.$ Then, the sequence of absolute values $(|x_n|)$ converges in $\mathbb{R}.$
+	 	 		 \end{theorem} 
+	 	 		 \begin{proof}
+	 	 		 	If $(x_n)$ converges, then there exists a limit $x$ such that for every $\epsilon > 0$, there exists an $N$ such that for all $n > N$, $d(x_n,x) < \epsilon$. Since the natural metric on $\mathbb{R}$ is the absolute value, we have that $|x_n - x| < \epsilon.$ This holds for any sign of $x_n$ and $x$, so $||x_n| - |x||\leq |x_n - x| < \epsilon$ implies that $|x_n| \to |x|.$
+	 	 		 \end{proof}
+ 	 		 \item \textit{State the converse.}
+ 	 		 	\begin{theorem}
+ 	 		 	 	If for some sequence $(x_n)$ in $\mathbb{R}$, $|x_n| \to |L|$, then $*(x_n)$ converges to some limit.
+ 	 		 	 \end{theorem} 
+	 		 \item \textit{Disprove the the previous statement. } We show by counter example, the theorem cannot be true. Take $(a_n) = (-1)^n$. Clearly $|a_n| \to 1,$ but there exists and $\epsilon >0, $ say $\epsilon = 0.5$, such that for all $N$ there exists an $n$, (take the next odd $n$), such that $|a_n - 1| = |-1 - 1| = 2 \geq 0.5 = \epsilon.$ Hence $(a_n)$ does not converge to the limit of its absolute value sequence. The theorem cannot be true. 
+	 	 \end{menumerate} 
+
+ 	 \setcounter{enumi}{11}
+ 	 \item \textit{Prove the following}
+ 	 	\begin{menumerate}
+ 	 		\item \textit{Bijective:} 
+		 	 	\begin{theorem}
+		 	 		If $(p_n)$ is a sequence, and $f: \mathbb{N} \to \mathbb{N}$  is a bijection, then the sequence $(q_k)_{k\in \mathbb{N}}$ with $q_k = p_{f(k)}$ is a rearangement. If $p_n \to L, $ then $q_n \to L$ for all such $f.$
+		 	 	\end{theorem}
+		 	 	\begin{proof}
+		 	 		If $p_n \to L$, then for all $\epsilon > 0$ $p_n$ is a distance less than $\epsilon$ from $L$ for all but finiteley many $n$. Let $N$ be the number of those first elements of the sequence which are more than $\epsilon$ to L. Since $f$ is bijective, the set $f^{-1}(\{0,...,N\})$ is also finite, and therefore there exists and element $M \in \mathbb{N}$ such that for all $n \in f^{-1}(\{0,\dots,N\}), M > n$. Therefore, for all $m > M$, we have that $|q_m - L|< \epsilon$ if and only if $q_m \to L$.
+		 	 	\end{proof}
+	 	 	\item \textit{Injective}
+		 	 	\begin{theorem}
+		 	 		If $(p_n)$ is a sequence, and $f: \mathbb{N} \to \mathbb{N}$  is an injection, then the sequence $(q_k)_{k\in \mathbb{N}}$ with $q_k = p_{f(k)}$ is a rearangement. If $p_n \to L, $ then $q_n \to L$ for all such $f.$
+		 	 	\end{theorem}
+		 	 	\begin{proof}
+		 	 	If $f$ is an injection the theorem will still hold. Recall that an injection implies that each element in the range has a singleton pre-image. Furthermore, each element in the co-domain has a singleton or empty pre-image. Thus if $p_n$ is convergent, then for all $\epsilon > 0$, there exists an $N$ such that for all $n > N$, $ |p_n - L | < \epsilon$. Hence $\bigcup_{j=1}^N f^{pre}(j) = P$ is finite and contains the $n$ for which $q_n$ is a distance greater than or equal to $\epsilon$ away from L. Thus take the maximal element of, $P$, say $M$. Then for all $n > M$ (such that there exists a $x$ with $f(x) = n$. Note: there must be infinitely many such $n$), \  $|q_n - L | < \epsilon$, and hence $q_n \to L.$
+		 	 	\end{proof}
+	 	 \item \textit{Surjective:}
+	 	 	In the case that $f$ is only a surjection, then we show that not all rearrangements converge by counterexample. Take, for example, a sequence $p_n = \frac{n}{n+1}.$ This sequence clearly converges to $1$, but consider the surjective rearrangement, $f(2n) = 1, f(2n-1) = n.$ Such a map  takes even elements and maps them to $1$, and otherwise takes odd elements and maps them to half their double. It's easy to see that this function is surjective, $f(1) = 1, f(2) = 1, f(3) = 2, f(4) =1, \dots$. However, there exists an $\epsilon > 0,$ say $\epsilon = 0.5$, such that for all $N$, $n > N$, and $n= 2N$  implies that $|p_{f(n)} - 1| \geq \epsilon.$ Hence, the rearrangement does not converge. By counterexample, not all surjective rearrangements converge if the normal sequence does.
+
+ 	 	\end{menumerate}
+
+ 	 	
+ 	 	
 \end{menumerate}
 
 \end{document}
