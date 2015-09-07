@@ -98,9 +98,33 @@
  			 		We have that $$\mathbb{R}\setminus C = (-\infty,a_1)\cup \left[\bigcup_{i\in I \setminus \{1\}}(a_{i-1},a_i)\right]\cup (\sup C,\infty).$$ So it follows,
  			 		 $$\mathbb{R} = (-\infty,a_1]\cup \left[\bigcup_{i\in I \setminus \{1\}}[a_{i-1},a_i]\right]\cup [\sup C,\infty).$$ We will now constuct a bijection $f:\mathbb{R}\setminus C \to \mathbb{R}.$ By Theorem 1, there exists a bijective function $h_i : (a_{i-1}, a_i) \to [a_{i-1}, a_i].$ In the edge cases, we propose the following method of producing a bijection.
 
- 			 		 Let $A_L^o = (-\infty, a_1)$ and for $$
- 			 	\end{proof}
+ 			 		 Let $A_L^o = (-\infty, a_1)$. Then clearly, $(-\infty, b] \subset \mathbb{R}$ for any $b < a_1.$ Hence we can use $(-\infty,b] \cup [b,a_1) = A_L^o.$ By theorem there exists an $h_L:[b,a_1) \to [b,a_1].$ Again for the upperbound, let $A_U^o = (\sup C, \infty).$ We have that $A_U^o = (\sup C, d] \cup [d, \infty)$. Let $h_U : (\sup C, d] \to [\sup C, d]$ be the bijection producable from Theorem 1. Finally let $g_1: (-\infty,b]\to (-\infty,b]$ and $g_2: [d,\infty)\to [d,\infty)$ be the identity functions. 
+
+ 			 		 Taking all aforementioned functions and defining a new function $f$ which acts as each function along its corresponding domain, we have a bijection from $\mathbb{R}$ to $\mathbb{R}\setminus C$ when $C$ is bounded. 
+
+ 			 		 If $C$ is not bounded, we can use the fact that $C$ is listable to inductively create a mapping. Let $L:\mathbb{N}\to C$ be the listing function for $C$ itself. We propose that $\mathbb{R} \sim \mathbb{R} \setminus \{L(n)\}_{n=0}^\infty$.
+
+ 			 		 In the base case we have that $\mathcal{L}_1 = \{L(0)\}$ is a countable and finite set, so by the first half of this proof, $\mathbb{R} \sim \mathbb{R} \setminus \mathcal{L}_1.$ Now suppose $\mathbb{R} \sim \mathbb{R} \setminus \mathcal{L}_k.$ It follows that because $\mathcal{L}_k$ is countable, $\mathcal{L}_{k+1} = \mathcal{L}_k \cup \{L(k+1)\}$ is also countable and bounded. Hence by the first half of the proof, $\mathbb{R} \sim \mathbb{R} \setminus \mathcal{L}_{k+1}$.
+					 Using the induction hypothesis we have shown that for all m, $\mathbb{R} \sim \mathbb{R} \setminus \{L(n)\}_{n=0}^m$. Hence $\mathbb{R} \sim \mathbb{R} \setminus \{L(n)\}_{n=0}^\infty$ if and only if  $\mathbb{R} \sim \mathbb{R} \setminus C$. This completes the proof.
+
+	 		  \end{proof}
+
+	 		  \item \textit{Infer the thing about $\mathbb{Q}$ } 
+	 		  	\begin{theorem}
+	 		  		The set of irrational numbers has the same cardinality as $\mathbb{R}.$
+	 		  	\end{theorem}
+	 		  	\begin{proof}
+	 		  	Simple! We establish that $\mathbb{Q}$ is countable. Then, it follows since $\mathbb{Q}$ is not bounded, that $\mathbb{R} \sim \mathbb{R} \setminus \mathbb{Q}$ by Theorem 2.
+	 		  	\end{proof}
 		 \end{menumerate} 
+		 \item \textit{Prove that the plane is bijective to the line.}
+		 	\begin{theorem}
+		 		The real plane $\mathbb{R}^2$ has the same cardinality as the real line $\mathbb{R}.$
+		 	\end{theorem}
+		 	\begin{proof}
+		 		To show that there is equivalent cardinality between the plane and the line, we must find a bijection. It follows from the Schroeder-Bernstein theorem, that if two injections are found, there exists a hyper-composite bijection.
+		 	\end{proof}
+
 \end{menumerate}
 
 
