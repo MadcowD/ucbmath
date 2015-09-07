@@ -76,8 +76,30 @@
 
 	 			 	We now make a functiong $g: A^o \to   A^h$ such that for $x \in A^o_C$, $g(x) = f(x)$, otherwise $g(x) = x.$ Since $f$ is a a bijection, then $g$ is a bijection on $A^o_C$. Furthermore since $b \notin A^h \setminus A^h_C,$ we have that $g$ surjective when $x \notin A^o_C.$ Furthermore if $x \neq y,$ then clearly $g(x) = x \neq y = g(y).$ So $g$ is injective, and therefore bijective. We have shown that $A^o \sim A^h.$
 
-	 			 	Lastly, we will prove that $A^c = [a,b]$ is bijective to $A^h.$ 
+	 			 	Lastly, we will prove that $A^c = [a,b]$ is bijective to $A^h.$ Redefine again the following countable subsets
+	 			 	$$A^h_C = \left\{a_n \in A^g\  | \ a_n = \frac{a +bn}{n+1} ,\  n \in \mathbb{N} \right\}.$$
+	 			 	In the same light, let $$A^c_C = \left\{a_n \in A^c\  |\ a_n = \frac{a +b(n-1)}{n} ,\   n \in \mathbb{N} \right\}.$$
+
+	 			 	Now take the function $f:A^h_C \to A^c_C$ to map $(\frac{a +bn}{n+1}) \mapsto \frac{a +b(n-1)}{n}$. The function $f$ is a clear bijection. Finally let $g: A^h \to A^c$ be such that $x \in A^h_C \implies g(x) = f(x),$ otherwise $g(x) = x$. This new function is clearly a bijection in the same sense that the previous definition of $f$ was, and hence we have shown that $A^c \sim A^h$.
+
+	 			 	Therefore by bijective composition, $A^c \sim A^h \sim A^o$, and the proof is complete. 
+
 	 			 \end{proof}
+
+ 			 \item \textit{Prove the following.} 
+ 			 	\begin{theorem}
+ 			 	If $C$ is countable, then $\mathbb{R}\setminus C \sim \mathbb{R} \sim \mathbb{R} \cup C.$
+ 			 	\end{theorem}
+ 			 	\begin{proof}
+ 			 		We are going to assume that $C$ is a countable set of real numbers, the union of the real numbers and the set of all dogs, probably is not worth studying, and I presume that's not what this question is about. If I do assume this, it is simple to see that $\mathbb{R} \cup C \cup \mathbb{R} = \mathbb{R},$ which raises the question as to why it has been included in the theorem. However, I shan't digress. 
+
+ 			 		To show this theorem, we first find a bijection between $\mathbb{R}$ and $\mathbb{R} \setminus C$. Because $C$ is a countable, we can take an index set $I = \{1,2,\dots\},$ which is finite if and only if $C$ is finite and contiguous such that $|I| = |C|.$ We then can define $C = \left\{a_i \right\}_{i \in I}$ for real numbers $a_i \in C,$ such that $i > j \implies a_i > a_j$.
+
+ 			 		We have that $$\mathbb{R}\setminus C = (-\infty,a_1)\cup \left[\bigcup_{i\in I \setminus \{1\}}(a_{i-1},a_i)\right]\cup (\sup C,\infty).$$ So it follows,
+ 			 		 $$\mathbb{R} = (-\infty,a_1]\cup \left[\bigcup_{i\in I \setminus \{1\}}[a_{i-1},a_i]\right]\cup [\sup C,\infty).$$ We will now constuct a bijection $f:\mathbb{R}\setminus C \to \mathbb{R}.$ By Theorem 1, there exists a bijective function $h_i : (a_{i-1}, a_i) \to [a_{i-1}, a_i].$ In the edge cases, we propose the following method of producing a bijection.
+
+ 			 		 Let $A_L^o = (-\infty, a_1)$ and for $$
+ 			 	\end{proof}
 		 \end{menumerate} 
 \end{menumerate}
 
