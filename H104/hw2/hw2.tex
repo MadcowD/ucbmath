@@ -91,7 +91,7 @@
  			 	If $C$ is countable, then $\mathbb{R}\setminus C \sim \mathbb{R} \sim \mathbb{R} \cup C.$
  			 	\end{theorem}
  			 	\begin{proof}
- 			 		We are going to assume that $C$ is a countable set of real numbers, the union of the real numbers and the set of all dogs, probably is not worth studying, and I presume that's not what this question is about. If I do assume this, it is simple to see that $\mathbb{R} \cup C \cup \mathbb{R} = \mathbb{R},$ which raises the question as to why it has been included in the theorem. However, I shan't digress. 
+ 			 		 If $C$ is a countable subset of $\mathbb{R},$ then clearly $\mathbb{R} \cup C = \mathbb{R}$ and hence there is equivalence. In the other case, consider the following. 
 
  			 		To show this theorem, we first find a bijection between $\mathbb{R}$ and $\mathbb{R} \setminus C$. Because $C$ is a countable, we can take an index set $I = \{1,2,\dots\},$ which is finite if and only if $C$ is finite and contiguous such that $|I| = |C|.$ We then can define $C = \left\{a_i \right\}_{i \in I}$ for real numbers $a_i \in C,$ such that $i > j \implies a_i > a_j$.
 
@@ -102,11 +102,18 @@
 
  			 		 Taking all aforementioned functions and defining a new function $f$ which acts as each function along its corresponding domain, we have a bijection from $\mathbb{R}$ to $\mathbb{R}\setminus C$ when $C$ is bounded. 
 
- 			 		 If $C$ is not bounded, we can use the fact that $C$ is listable to inductively create a mapping. Let $L:\mathbb{N}\to C$ be the listing function for $C$ itself. We propose that $\mathbb{R} \sim \mathbb{R} \setminus \{L(n)\}_{n=0}^\infty$.
 
- 			 		 In the base case we have that $\mathcal{L}_1 = \{L(0)\}$ is a countable and finite set, so by the first half of this proof, $\mathbb{R} \sim \mathbb{R} \setminus \mathcal{L}_1.$ Now suppose $\mathbb{R} \sim \mathbb{R} \setminus \mathcal{L}_k.$ It follows that because $\mathcal{L}_k$ is countable, $\mathcal{L}_{k+1} = \mathcal{L}_k \cup \{L(k+1)\}$ is also countable and bounded. Hence by the first half of the proof, $\mathbb{R} \sim \mathbb{R} \setminus \mathcal{L}_{k+1}$.
-					 Using the induction hypothesis we have shown that for all m, $\mathbb{R} \sim \mathbb{R} \setminus \{L(n)\}_{n=0}^m$. Hence $\mathbb{R} \sim \mathbb{R} \setminus \{L(n)\}_{n=0}^\infty$ if and only if  $\mathbb{R} \sim \mathbb{R} \setminus C$. This completes the proof.
 
+ 			 		 If $C$ is not bounded, we can use the fact that $C$ is listable to strongly inductively create a mapping. Let $L:\mathbb{N}\to C$ be the listing function for $C$ itself. We propose that $\mathbb{R} \sim \mathbb{R} \setminus \{L(n)\}_{n=0}^\infty$.
+
+ 			 		 In the base case we have that $\mathcal{L}_1 = \{L(0)\}$ is a countable and finite set, so by the first half of this proof, $\mathbb{R} \sim \mathbb{R} \setminus \mathcal{L}_1.$ Now suppose $\mathbb{R} \sim \mathbb{R} \setminus \bigcup_n^k \mathcal{L}_k;$ assume that removing all previous points using this method yields an injection from $\mathbb{R}$ onto $\mathbb{R} \setminus \bigcup_n^k \mathcal{L}_k$ It follows that because $\mathcal{L}_k$ is countable, $\mathcal{L}_{k+1} = \mathcal{L}_k \cup \{L(k+1)\}$ is also countable and bounded. Hence by the first half of the proof, $\mathbb{R} \sim \mathbb{R} \setminus \bigcup_n^k \mathcal{L}_k \sim \mathbb{R} \setminus \left( \bigcup_n^k \mathcal{L}_k \cup \mathcal{L}_{k+1} \right).$ Repeating this process without stopping, we get that  $\mathbb{R} \sim \mathbb{R} \setminus \{L(n)\}_{n=0}^\infty$ if and only if  $\mathbb{R} \sim \mathbb{R} \setminus C$. This completes the proof for $C$ as numbers.
+
+					 Now if $C$ is not a set of numbers, then clearly $\mathbb{R} \setminus C = \mathbb{R}$ since $\mathbb{R}$ only contains numbers. If we wish to add a countable set of let's say dogs. Let us denote these dogs $d_j$, simply said "scrappy j", for the $j$th dog. Now take the following sequence $D_j = \{x \in \mathbb{R} \cup {d_j}\ | \ x = n + \frac{1}{j}+j, n =0 \implies x = d_j , n \in \mathbb{N}\}.$  The sequence $D^o_j = \{x \in \mathbb{R} | \ x = n + \frac{1}{j}+j, n =0 \implies x = \frac{1}{j}+j , n \in \mathbb{N}\}.$ Clearly there is a mapping which is bijective  between these two sequences as follows. The function $f_j$ maps scrappy $j$ to the first element of $D^o_j$ and then maps the second element of $D_j$ to the third element of $D^o_j$ and so on and so forth. This function is clearly bijective. Then consider a function $g_j$ which will map $x \in \mathbb{R} \setminus D_j$ to $\mathbb{R} \setminus D_j^o$ with the mapping $x \mapsto x.$ In the case that $g_j \in D_j$, $x \mapsto f_j(x).$ Since $g_j$ is bijective, we have that $\mathbb{R} \sim \mathbb{R} \cup D_j = \mathbb{R} \cup \{d_j\}.$
+
+					  Now that we have shown for arbitrary dogs, we can add such dogs to $\mathbb{R}$ and maintain cardinal equivalence, consider the following process. Since all $D_j$ are disjoint, we may repeat this process infinitely. We first take $\mathbb{R}$ and embed $d_1$ into the reals and find an equivalence. Let us denote the first $n$ scrappies embedded in $\mathbb{R}$, $\mathcal{D}_n$. Then we can put $d_2$ into $\mathcal{L}_1$ since $D_1 \cap D_2 = \emptyset$. We call this new set $\mathcal{D}_2$, and combining $f_1,f_2$ and the identity function otherwise to find a bijection $g_2$ from $\mathbb{R}$ onto $\mathcal{D}_2.$ We can repeat this process with out stopping since the set $C$ of dogs is denumerable, and when this process finishes, we will have that $\mathbb{R} \cup C \sim \mathbb{R} \sim \mathbb{R} \sim \mathbb{R} \setminus C.$
+
+					  This completes the proof. 
+ 
 	 		  \end{proof}
 
 	 		  \item \textit{Infer the thing about $\mathbb{Q}$ } 
