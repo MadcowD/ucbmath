@@ -122,7 +122,9 @@
 		 		The real plane $\mathbb{R}^2$ has the same cardinality as the real line $\mathbb{R}.$
 		 	\end{theorem}
 		 	\begin{proof}
-		 		To show that there is equivalent cardinality between the plane and the line, we must find a bijection. It follows from the Schroeder-Bernstein theorem, that if two injections are found, there exists a hyper-composite bijection.
+		 		To show that there is equivalent cardinality between the plane and the line, we must find a bijection. It follows from the Schroeder-Bernstein theorem, that if two injections are found, there exists a hyper-composite bijection. Let $f: \mathbb{R} \to \mathbb{R}^2$ such that $x \mapsto (0, x) \in \mathbb{R}.$ If $z\neq w,$ then $f(z) = (0,z) \neq (0,w) = f(w).$ Hence, $f$ is injective. Let $g:\mathbb{R}^2 \to \mathbb{R}$, such that for every decimal expansion (not nine-non terminating) of $(a,b) = (a_1.a_2a_3\dots,b_1.b_2b_3\dots),\  g\left((a,b)\right) \mapsto a_1.b_1a_2b_2\dots.$ Clearly $g$ is an injection for if $z \neq w,$ then the decimal expansion is non-equal at some index. This implies that $f(z) \neq f(w)$.
+
+		 		Now by the the Shroeder-Bernstein theorem, we have that there exists a bijection from $\mathbb{R}^2 \to \mathbb{R}.$ Hence $\mathbb{R} \sim \mathbb{R}^2.$
 		 	\end{proof}
 
 \end{menumerate}
