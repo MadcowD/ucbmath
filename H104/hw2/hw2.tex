@@ -129,11 +129,116 @@
 		 		The real plane $\mathbb{R}^2$ has the same cardinality as the real line $\mathbb{R}.$
 		 	\end{theorem}
 		 	\begin{proof}
-		 		To show that there is equivalent cardinality between the plane and the line, we must find a bijection. It follows from the Schroeder-Bernstein theorem, that if two injections are found, there exists a hyper-composite bijection. Let $f: \mathbb{R} \to \mathbb{R}^2$ such that $x \mapsto (0, x) \in \mathbb{R}.$ If $z\neq w,$ then $f(z) = (0,z) \neq (0,w) = f(w).$ Hence, $f$ is injective. Let $g:\mathbb{R}^2 \to \mathbb{R}$, such that for every decimal expansion (not nine-non terminating) of $(a,b) = (a_1.a_2a_3\dots,b_1.b_2b_3\dots),\  g\left((a,b)\right) \mapsto a_1.b_1a_2b_2\dots.$ Clearly $g$ is an injection for if $z \neq w,$ then the decimal expansion is non-equal at some index. This implies that $f(z) \neq f(w)$.
+		 		To show that there is equivalent cardinality between the plane and the line, we must find a bijection. It follows from the Schroeder-Bernstein theorem, that if two injections are found, there exists a hyper-composite bijection. Let $f: \mathbb{R} \to \mathbb{R}^2$ such that $x \mapsto (0, x) \in \mathbb{R}.$ If $z\neq w,$ then $f(z) = (0,z) \neq (0,w) = f(w).$ Hence, $f$ is injective. Let $g:\mathbb{R}^2 \to \mathbb{R}$, such that for every decimal expansion (not nine-non terminating) of $(a,b) = (a_1.a_2a_{u(3)}\dots,b_1.b_2b_{u(3)}\dots),\  g\left((a,b)\right) \mapsto a_1.b_1a_2b_2\dots.$ Clearly $g$ is an injection for if $z \neq w,$ then the decimal expansion is non-equal at some index. This implies that $f(z) \neq f(w)$.
 
 		 		Now by the the Shroeder-Bernstein theorem, we have that there exists a bijection from $\mathbb{R}^2 \to \mathbb{R}.$ Hence $\mathbb{R} \sim \mathbb{R}^2.$
 		 	\end{proof}
+ 		\item \textit{Cardinality of power sets }
+	 		\begin{menumerate}
+				\item \textit{Prove the following}
+				\begin{theorem}
+					Let $S$ be a set and, $\mathcal{P} = \mathcal{P}(S)$ be the power set of $S.$ Furthermore let $\mathcal{F}$ be the set of functions $f: S \to \{0,1\}$. There exists a natural bijection from $\mathcal{F}$ onto $\mathcal{P}$ defined by $$f \mapsto \{s \in S:f(s) = 1\}.$$
+				\end{theorem}
 
+				\begin{proof}
+					For this proof, we referr to the above transformation as $A.$ We will first show that this mapping is clearly a surjection. Given any $Q \in \mathcal{P}(S),$ consider the following function $f_Q:S \to {0,1},$ such that if $x \in Q$, $x\mapsto 1$ otherwise, $x \mapsto 0$. Clearly, $f \in \mathcal{F},$ and applying $A(f)$ yields $Q.$ Hence $A$ is surjective.
+
+					To show that there is a bijection, we must show that if $f\neq g$ then $A(f) \neq A(g).$ In the case that $f \neq g,$ then there exists a $x \in S$ such that $f(x) \neq g(x).$ Then it follows that either $A(f)$ or $A(g)$ contains $x$, but not both (if both did, then $f(x) = g(x).$) Hence $A(f) \neq A(g).$ This concludes that $A$ is injective.
+
+					As $A$ is both surjective and injective, $A$ must be bijective by definition. This completes the proof.
+				\end{proof}
+				
+
+
+				\begin{theorem}
+				Let $S$ be a set and, $\mathcal{P} = \mathcal{P}(S)$ be the power set of $S.$ Furthermore let $\mathcal{F}$ be the set of functions $f: S \to \{0,1\}$. The cardinality of $\mathcal{P}$ is greater than the cardinality of $S$ even when $S$ is empty or finite.
+				\end{theorem}
+
+				\begin{proof}
+				We will show that theorem holds for the finite, empty, and non-finite cases.
+
+				If $S$ is empty, it follows that $\mathcal{P}$ has cardinality $1$ since $S \subset S$, but $S$ has cardinality $0$ since it is empty.If $S$ is finite, consider that for every $s \in S, \{s\} \in \mathcal{P}(S) $ and $S \in \mathcal{P}(S)$, so the cardinality of the powerset $\mathcal{P}(S)$ is at least one more than that of $S$. 
+
+				If $S$ is not finite we wish to show that there cannot exist a bijection from $\mathcal{P}(S) \to S$ because $\mathcal{P}(S)$ has larger cardinality. By theorem 5, it follows that if there does not exist a bijection from $\mathcal{P} \to \mathcal{F},$ then the cardinalities are clearly not equal.
+
+				Suppose that there existed such a bijection, $B:S\to \mathcal{F}.$ Then for every $s \in S$, $B(s) = f_s: S \to \{0,1\},$ and for each $f_s \in \mathcal{F}$ there exists a unique $s \in S$ such that $B(s) = f_s.$
+				Now consider $G:S\to\{0,1\}$ as follows. For every $s$, if $(Bs)(s) = f_s(s) =1, g(s) = 0,$ or if $(Bs)(s) = f_s(s) =0, g(s) = 1.$ Clearly such a $g$ exist and for each $s$, $g \neq f_s \neq B(s)$. However, we supposed that for every $h \in \mathcal{F}$ there existed a $s \in S$ such that $B(s) = h;$ so we reach a contradiction.
+
+				Since such a bijection cannot exist, $\mathcal{P}(S) \sim \mathcal{F} \nsim S$, and in particular because there exists an injection from $S$ to $\mathcal{F}$ but not a surjection, the cardinality of $ \mathcal{F} $ is greater than $S.$ This completes the proof.
+				\end{proof}
+	 		\end{menumerate}
+
+ 		\item \textit{Show the following.}.
+	 		\begin{menumerate}
+	 		 	\item \textit{Denumerability of the algebraic numbers.} 
+	 		 		\begin{theorem}
+	 		 			The set $A$ of all algebraic numbers is denumerable; that is, $A \sim \mathbb{N}.$
+	 		 		\end{theorem}
+	 		 		\begin{proof}
+	 		 			In order to show that the set of all algebraic numbers is denumerable, we must show that the set of all polynomial roots is denumerable. We will introduce the following notation. We say that $\mathcal{P}^m$ denotes the set of polynomials up to order $n$ such that if $p\in \mathcal{P}^m$,$$p(x) = \alpha \prod_{n=1}^m(a_nx + \beta_n),$$ where $a_n \in \{0,1\}$ is an activation constant. We denote the order of a $p \in \mathcal{P}^m$ with $R(p)$ such that $R(p)$ is equal to the number of non-zero activation constants in $p.$ Furthermore, we say that $\mathcal{R}^m \subset \mathbb{R}$ is the set of roots for all polynomials $p\in\mathcal{P}^m.$ This notation implies that $\mathcal{R}^\infty = A$. Lastly, observe that by definition, if $n \leq m,$ $\mathcal{P}^m \supset \mathcal{P}^n.$
+
+	 		 			Now we wish to define an upperbound for cardinality of $\mathcal{R}^m$. Take some $p \in \mathcal{P}^m.$ Clearly this polynomial has up to $n$ roots, and these roots can be translated countably many times by changes in coefficients. Therefore, the cardinality of $\mathcal{R}^m$ is roughly less than $n^{2m+1}$ as $n$ approaches infinity. In fact it is possible to show that these roots are countable using a diagonalization argument. Let $r_{k_1,k_2,\dots,k_{2m+1}}$ be the root of the $p\in\mathcal{P}^m$ when $\alpha = k_1, a_1 = k_2,\dots \beta_m = k_{2m+1}.$ Arrange these roots in a $2m+1$ dimensional integer lattice, and perform the diagonalization procedure. It is easy to see that such a procedure list all possible roots of $\mathcal{P}^m$; that is, $\mathcal{R}^m$ is denumerable. 
+
+	 		 			Suppose that $\mathcal{R}^m$ is listed by some function $f_m:\mathbb{N}\to \mathcal{R}^m$. We must now find a procedure such that the roots of all polynomials is denumerable. Consider the following arrangement:
+	 		 			\begin{equation*}	
+	 		 				\begin{array}{|c|cccccc}
+	 		 					\hline
+								  & n \to \infty & \\
+								\hline
+								 m & f_1(1) & f_1(2) & f_1(3) & \dots & f_1(n) &\dots \\
+								 \downarrow  & f_2(1) & f_2(2) & f_2(3) & \dots   & f_2(n) &\dots  \\
+								  \infty & f_{u(3)}(1) & f_{u(3)}(2) & f_{u(3)}(3) & \dots  & f_{u(3)}(n) & \dots   \\
+								  & \vdots & \vdots & \vdots &\ddots & \vdots & \ddots \\
+								  & f_m(1) & f_m(2) & f_m(3) & \dots & f_m(n) & \dots \\
+								   & \vdots & \vdots & \vdots &\ddots & \vdots & \ddots \\
+							\end{array}
+	 		 			\end{equation*}
+	 		 			We can perform the diagonalization procedure on this table without stopping and yield a listing function $L:\mathbb{N} \to \mathcal{R}^\infty = A.$ Therefore $A$ is denumerable and so the set of algebraic numbers is countable.
+	 		 		\end{proof}
+
+	 		 		\item \textit{Arbitrary countable coefficient sets}
+	 		 		\begin{theorem}
+	 		 			The set $A$ of all roots for polynomials whose coefficients belong to an arbitrary denumerable set $S \subset \mathbb{R}$ is denumerable; that is, $A \sim \mathbb{N}.$
+	 		 		\end{theorem}
+
+	 		 		\begin{proof}
+	 		 			Simple but not obvious! Consider the proof of Theorem 7 above. Suppose the coefficients $\alpha$ and $\beta_n$ belong to $S$. Then we referr to $\mathcal{P}^m$ as the set of all $m$th order polynomial which only employ $m+1$ coefficients from $S$. Furthermore denote $\mathcal{R}^m$ as the set of all roots for the polynomials of $\mathcal{P}^m.$ 
+
+	 		 			Clearly the upperbound for the cardinality of $\mathcal{R}^m$ is bounded again by $n^{2m+1}$ as we vary each coefficient in $S$ such that $\beta_1,\dots,\beta_m \in B=\{s_j,\dots,s_q\}, (|B| = m, B\subset S)$ where $s_i$ is the $i$th element of $S$. 
+	 		 			Since the upperbound still holds, we perform the same $2m+1$ dimensional lattice diagonalization method on the $S^{m+1} \times \mathbb{N}^{m}$ lattice of roots $r_{k_1,\dots,k_{2m+1}}$ as $n$ grows. 
+
+	 		 			This process yields similar listing functions $f_m$ as in the proof above that can be arranged in a similar diagonalization table as before. We then perform the same listing process and yields that $\mathcal{R}^\infty = A$ is denumerable. This completes the proof.
+	 		 		\end{proof}
+
+ 		 		\item \textit{Trigonometric polynomials}
+ 		 		\begin{theorem}
+ 		 			The set of all roots of trigonometric polynomials $A$ is countable.
+ 		 		\end{theorem}
+ 		 		\begin{proof}
+ 		 		 We say that $\tau^m$ is the set of trigonometric polynomials of order $m$ such that $t \in \tau$ implies that $$t(x) = \sum_{j=1}^m sin(a_jx) + cos(b_j x)$$ where $a_j, b_j$ are arbitrary integer coefficients. For the purpose of the first half of this proof we only wish to consider the roots in the interval $[0,2\pi].$ Let $\mathcal{R}_u^m$ denote the set of roots for trigonometric polynomials of order $m$ in $[0,1]$. 
+
+ 		 		 Assuming that $a\sin(nx)$ has $n$ roots in $[0,\pi]$ we claim that the cardinality of $\mathcal{R}_u^m$ is bounded by $n^{2m}$ as $a_j,b_j$ vary in $\mathbb{Z}$ and $n \to \infty.$ To see this, let $r_{k_1,\dots,k_{2m}}$ be a root in $\mathcal{R}_u^m$ where $k_1 = a_1,\dots, k_{2m} = b_m.$ Then construct a $2m$ dimensional lattice where the $j$th axis is the coefficient $k_j$ varying in $\mathbb{Z}.$ We can easily perform the diagonalization procedure on such a lattice to yield a listing function $f_m:\mathbb{N} \to \mathcal{R}_u^m$ for the roots of $m$th order trigonometric polynomials in this basic interval $u = [0,2\pi].$
+
+ 		 		 Similar to Theorem 7. We then perform a listing procedure using the diagonalization argument on a table of $f_m(n)$ as both $m$ and $n$ vary in $\mathbb{Z}.$ This yields a listing function for the roots of all trigonmetric polynomials in the basic interval $u$, $\mathcal{L}_u:\mathbb{N} \to \mathcal{R}_u^\infty.$
+
+ 		 		 Define $u(\eta) = [-(2\pi + \eta-1), 2\pi + \eta-1], \eta \in \mathbb{N}.$ Again let us create a diagonalization table similar to theorem 7, as follows:
+ 		 		 \begin{equation*}	
+	 		 				\begin{array}{|c|cccccc}
+	 		 					\hline
+								  & n \to \infty & \\
+								\hline
+								 \eta & \mathcal{L}_{u(1)}(1) & \mathcal{L}_{u(1)}(2) & \mathcal{L}_{u(1)}(3) & \dots & \mathcal{L}_{u(1)}(n) &\dots \\
+								 \downarrow  & \mathcal{L}_{u(2)}(1) & \mathcal{L}_{u(2)}(2) & \mathcal{L}_{u(2)}(3) & \dots   & \mathcal{L}_{u(2)}(n) &\dots  \\
+								  \infty & \mathcal{L}_{u(3)}(1) & \mathcal{L}_{u(3)}(2) & \mathcal{L}_{u(3)}(3) & \dots  & \mathcal{L}_{u(3)}(n) & \dots   \\
+								  & \vdots & \vdots & \vdots &\ddots & \vdots & \ddots \\
+								  & \mathcal{L}_{u(\eta)}(1) & \mathcal{L}_{u(\eta)}(2) & \mathcal{L}_{u(\eta)}(3) & \dots & \mathcal{L}_{u(\eta)}(n) & \dots \\
+								   & \vdots & \vdots & \vdots &\ddots & \vdots & \ddots \\
+							\end{array}
+	 		 			\end{equation*}
+ 		 			Since $$\bigcup_{\eta_2=0}^\infty\left[-(\eta_2+2\pi), 2\pi + \eta_2\right] = \mathbb{R},$$diagonalizing this table leads to a function $\mathfrak{L}:\mathbb{N}\to A$ which denumerates the set of all trigonometric polynomial roots on the reals. This completes proof.
+ 		 		\end{proof}
+ 		 		\item The transcendental numbers which are the compliment of the algebraic numbers must be dense in $\mathbb{R}$ as the algebraic numbers $A \nsim \mathbb{R}.$ Hence if one were to choose some real at random, the 'probabiltity' that such a number is  transcendental is roughly $\sim\%100$. That is to say, the majority of numbers in $\mathbb{R}$ are transcendental.
+	 		 \end{menumerate} 
 \end{menumerate}
 
 
