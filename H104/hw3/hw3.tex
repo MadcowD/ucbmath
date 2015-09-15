@@ -104,14 +104,18 @@
 
 
 		\setcounter{enumi}{20}
-		\item \emph{Prove the following.}
+		\item \emph{Is the plane without four points on the $x$-axis homeomorphic to the plane without four points in arbitrary configuration?} Yes. Consider the following less rigorous argument. Consider that we can draw a continuous curve from the origin through the four points of aribtrary configuration. We can find a cointinuous deformation of the $x$-axis to this line. That is we can bend the initial plane continuouskly so that the $x$-axis becomes this curve, and essentially there is a homeomorphism between these two spaces. We then can stretch (contract/expand) the line so that the points line up. So these two spaces are topologically equivalent. 
+		\item \emph{Prove the following}
 			\begin{theorem}
-				The plane minus four points on the $x$-axis is homeomorphic to the plane minus four points in an arbitrary configuration.
+				If every subset of a metric space $M$, which closed and bounded, is compact then the metric space $M$ is complete.
 			\end{theorem}
 			\begin{proof}
-			
+				If $\{x_n\} \subset A^{closed,bounded,compact}$ is a cauchy sequence then for every $\epsilon/2 > 0$ there exists an $N_1$ such that for all $n,m > N_1$, $d(x_n,x_m)<\epsilon.$ Since $A$ is compact we have for some subsequence $x_{q_k},$ there exists an $N_2$ such that for every $k > N_2$, $d(x_{q_k}, x) < \epsilon/2.$ Then for every $n > \max\{N_2,N_1\} = N,$ $d(x_n,x) \leq d(x_n, x_{q_n}) + d(x_{q_n}, x) < \epsilon$. So a sequence cauchy in $A$ implies that such a sequence converges. 
+
+				Hence, $M$ is complete, as is the proof!
 			\end{proof}
-		\item
+
+
 		\item \textit{Prove that $(0,1)$ is an open subset of $\mathbb{R}$ but 
 			not of $\mathbb{R}^2,$ when we think of $\mathbb{R}$ as the $x$-axis in $\mathbb {R}^2$.} 
 			\begin{theorem}
