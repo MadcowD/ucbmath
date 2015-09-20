@@ -1,0 +1,201 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%                      Homework 4                            %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[letter]{article}
+
+\usepackage{lipsum}
+\usepackage[pdftex]{graphicx}
+\usepackage[margin=1.5in]{geometry}
+\usepackage[english]{babel}
+\usepackage{listings}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{framed} 
+\usepackage{amsmath}
+\usepackage{titling}
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{definition}{Definition}
+
+\newenvironment{menumerate}{%
+  \edef\backupindent{\the\parindent}%
+  \enumerate%
+  \setlength{\parindent}{\backupindent}%
+}{\endenumerate}
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%
+%% DOC INFO %%%
+%%%%%%%%%%%%%%%
+\newcommand{\bHWN}{4}
+\newcommand{\bCLASS}{MATH H104}
+
+\title{\bCLASS: Homework \bHWN}
+\author{William Guss\\26793499\\wguss@berkeley.edu}
+
+\fancyhead[L]{\bCLASS}
+\fancyhead[CO]{Homework \bHWN}
+\fancyhead[CE]{GUSS}
+\fancyhead[R]{\thepage}
+\fancyfoot[LR]{}
+\fancyfoot[C]{}
+\usepackage{csquotes}
+
+%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+
+%%%%%%% Be sure to set the counter and use menumerate
+\setcounter{section}{1}
+\section{A Taste of Topology}
+
+	\begin{menumerate}
+		\setcounter{enumi}{28}
+		\item \emph{Show the following.}
+			\begin{theorem}
+				Let $\mathcal{T}$ be the collection of open subsets of a metric space $M$, and $\mathcal{K}$ be the collection of closed subsets. Show that there is a bijection from $\mathcal{T}$ onto $\mathcal{K}$.
+			\end{theorem}
+			\begin{proof}
+				We wish to find a function $f: \mathcal{T} \to \mathcal{K}$ bijective. To do so observe the following fact about compliments in $M$: $A^c = B$ is the unique compliment of $A.$ Suppose that there were another compliment such that $A^c = C \neq B$ which was the compliment of $A$. By definition $C = \{x \in M | x \notin A\} = B$, so there cannot exist another set which is also the compliment of $A.$
+
+				As follows from above, the compliment of an open set is closed and the compliment of a closed set is open. Therefore, let $f: A \mapsto A^c.$ Then, $f$ is in an injection by the uniqueness of compliments. Furthermore, if $S \in \mathcal{K},$ there exists a set, $Q$, in $\mathcal{T}$ such that $f(Q) = S,$ nameley $S^c.$ This follows by $S^c \in \mathcal{T}$ and $f(S^c) = {S^c}^c = S$. Hence $f$ is a bijection.
+
+				This completes the proof, and $\mathcal{K} \sim \mathcal{T}.$
+			\end{proof}
+
+
+
+		\setcounter{enumi}{31}
+		\item \emph{Prove the following and then remark.}
+			\begin{theorem}
+				Every subset of $\mathbb{N}$ is clopen.
+			\end{theorem}
+			\begin{proof}
+				To show that every subset of $\mathbb{N}$ is clopen the definitions of openness and closedness must hold on every set. Take an arbitrary subset $S$ of the natural numbers. If $S$ is empty or the whole space $\mathbb{N}$ then it is clopen.
+
+				Otherwise, for every $q \in S$ there exists an $r > 0,$ say $0.5$, such that $d(q,p) \implies p \in S.$ To see this, consider  that the only such $p$ for which the definition of openness holds is $q$ itself. Therefore, $S$ is open.
+
+				The subset $S$ must also be closed because $S^c$ is an open subset of the naturals, and ${S^c}^c = S$ must be closed by compliments. Hence $S$ is clopen and the proof is complete. 
+			\end{proof}
+
+			\textbf{Remark.} Any function mapping the natural numbers to some metric space $M$ must be continuous. Consider some $Q \subset f(\mathbb{N}).$ If $Q$ is open then, $f^{pre}(Q)$ is open. Conversely, if $Q$ is closed then, $f^{pre}(Q)$ is closed. Furthermore if $M$ is any discrete space (or one with a discrete metric) then $f$ is an open mapping.
+
+
+		
+		\item \emph{Find a metric space for which the boundary of the $r$ neighboorhood need not always be the r-sphere.} 
+
+		\textbf{Example.} Let $M = \mathbb{N}$ be a metric space with its inherited metric from $\mathbb{R}.$ We show that it is not true that for each $M_r(p),$ the boundary is the $r$-sphere. Consider that the closure of $M_r(p)$ is $M_r(p)$ as every set in $M$ is clopen. Then  the closure of the compliment is just compliment. By definition $\partial M_r(p) = \overline{M_r(p)} \cap \overline{M_r^c(p)} = \emptyset.$ However  for all $r \in \mathbb{N},$ $S_r(p) = \{x \in M\ | \ d(x,p) = r\} \neq \emptyset.$ So there are cases in which the boundry is not the $r$-sphere.
+
+		Suppose that $x$ were in the boundary of some $M_r(p)$ and not in the unit sphere. Then $d(x,p) \nleq r \implies d(x,p) > r.$ By virtue of $x$ being in the boundary, $x$ must be in every closed subset containing $M_r(p)$. However, $x \notin S_r(p)$ (the $r$-sphere at $p$) and $S_r(p) \supset M_r(p)$ is closed; a contradiction! So, the boundary must be contained within the $r$-sphere at $p$. 
+
+
+		\setcounter{enumi}{39}
+		\item \emph{Prove the following.}
+			\begin{theorem}
+				If $M$ be a metric space with metric $d$, then the following are equivalent:
+				\begin{menumerate}
+					\item $M$ is homeomorphic to $M$ equipped with the discrete metric.
+					\item Every function $f:M \to M$ is continuous.
+					\item Every bijection $g: M \to M$ is a homeomorphism.
+					\item $M$ has no cluster points.
+					\item Every subset of $M$ is clopen.
+					\item Every compact subset of $M$ is finite.
+				\end{menumerate}
+			\end{theorem}
+			\begin{proof}
+				$(a) \implies (e)$. Since $(M,d) \cong (M,d_{discrete})$, then for some function $f:M \to M$ where the domain has the discrete metric, every subset of the domain is clopen, and thereby every image of a subset of the domain is clopen by the homeomorphism.
+
+ 
+				$(b) \implies (c).$ If every function in $M^{M}$ is continuous, then consider an arbitrary bijection $g: M \to M.$ Clearly $g$ is continuous, and it's inverse map $g^-1 : M \to M$ is also continuous.
+
+
+					TODO: PROVE
+			\end{proof}
+			
+
+
+		\setcounter{enumi}{41}
+		\item \emph{What is wrong with the proof of Theorem 28?}
+
+		 The misstep in the proof is the statement that there exist subsequences $(a_{n_k}), (b_{n_k}) $ which converge. Compactness sureley implies that there exists an index sequence $n_k$ such that $a_{n_k} \to a \in A$ but that exact index set may not be one which allows $b_{n_k} \to b$. 
+
+		To solve this problem consider the following argument. Since any subsequence of $(a_{n_k})$ converges to $a$ by the convergence of $(a_{n_k})$, and $B$ compact, we can take a subsequence, $(b_{n_{k(l)}})$ which converges to $b$. So the sequence $((a_{n_{k(l)}}),(b_{n_{k(l)}})) \to (a,b).$
+
+
+		\item \emph{Prove the following.}
+			\begin{theorem}
+				If the cartesian product of two non-empty sets $A \subset M, B \subset N$ is compact in $M\times N$, $A$ and $B$ are compact.
+			\end{theorem}
+			\begin{proof}
+				By the compactness of $C = A \times B$, all sequences $(a_n,b_n)$ have subsequences which converge to some $(a,b) \in C.$ Take one such particular sequence. Since $a_n \in A$ and $a \in A$. Then the  subsequential convergence of the product sequence implies the subsequential convergence of $a_n$. The same argument holds for $b_n.$ In general, $C$ contains the product of all sequences in $A$ and $B$. So for any sequence in $A$, there exists some sequence in the product whose subsequence converges thereby impling the convergence of some subsequence of the original sequence in $A$. Again, the same argument holds for any given sequence in $B$.
+
+				This completes the proof.
+			\end{proof}
+
+
+		\setcounter{enumi}{47}
+		\item \emph{Prove the following.}
+			\begin{theorem}
+				There exists an embedding of the line as a closed subset of the plane, and there is an embedding of the line as a bounded subset of the plane, but there is no embedding of the line as a closed and bounded subset of the plane.
+			\end{theorem}
+			\begin{proof}
+				By the line, we assume that $\mathbb{R}$ is meant. Consider the following function $f: \mathbb{R} \to {L_u} \subset \mathbb{R}^2$ such that $x \mapsto (x,0) \in \mathbb{R}^2.$ When $L_u = \{(x,y) \in \mathbb{R}^2\ : \ y = 0\}$ is the codomain, $f$ is clearly surjective and injective. Hence we have that $f$ is bijective. Furthermore, take some open set in $L_u,$ say $S$. Then $f^{-1}(S) = \{x \in \mathbb{R} | (x,0) \in S \}$. If for every $s \in S$ there exists an $r > 0$, such that $d(s,q) < r \implies q \in S$, we have that $d((s_x,0),(q_x,0)) < r.$ Since $f^{-1}s = s_x$ and $f^{-1}q = q_x$ then $d(s_x, q_x) < r$ and thereby $q_x \in \mathbb{R}.$ So it must follow that for every $s_x$ in $\mathbb{R}$ there exists an $r > 0$ such that $d(s_x, q_x) < r \implies q_x \in \mathbb{R}$. It suffices to say that $f$ is a homeomorphism when the converse argument is applied.
+
+				Knowing that $f$ embeds $\mathbb{R}$ onto $\mathbb{R}^2,$ we show that such an embedding is a closed subset. $L_u$ is closed if and only if it contains all of its limit points. Suppose $(x_n)$ is a sequence in $L_u$ such that $x_n \to x$. We wish to show that $x \in L_u.$ By the convergence of $x_n$ for every $\epsilon > 0,$ there exists an $N$, such that for all $n \geq N$, $d(x_n, x) < \epsilon.$ if $x$ is not in $L_u$, then $x = (a,b)$ wih $b \neq 0.$ So if $d(x_n,x) < \epsilon$ then take $\epsilon = b - 0.1.$ In this case, $d(x_n,x) < \epsilon \implies x_n \notin L_u$ which is a contradiction. Ergo, $L_u$ is a closed embedding of the line in the plane.
+
+				In a different case, it is clear that $\mathbb{R} \cong (0,1).$ It suffices to show that $(0,1)$ has an embedding in $\mathbb{R}^2$ which is bounded. Simple! Take $f: (0,1) \to \mathbb{R}^2$ such that $x\mapsto (x,0).$ The function $f$ embeds $(0,1)$ by the same argument supplied for the first case. Furthermore, $f((0,1))$ is bounded because the set $[0,1]\times[0,1]$ contains the embedding ($x$ is always between $1$ and $0$ and the $y$ component is always $0$.) 
+
+				In the last case, suppose there existed a closed and bounded subset of the plane such that $\mathbb{R}$ was embedded to that set by some homeomorphism $h$. Then, by some theorem that embedding is compact as a subset of $\mathbb{R}^2$ and by topological equivalence, $\mathbb{R}$ must also be compact; a contradiction! Therefore, only the first two cases hold.
+			\end{proof}
+
+		\setcounter{enumi}{53}
+		\item \emph{If $f: A \to B$ and $g: C \to B$ such that $A \subset C$ and for each $a \in A$ we have that $f(a) = g(a)$ then $g$ \textbf{extends} $f$. We also say that $g$ \textbf{extends to} $g$. Assume that $f: S \to \mathbb{R}$ is a uniformly continuous function defined on a subset $S$ of a metric space $M$. Prove the following:}
+
+			\begin{menumerate}
+				\item \emph{Extension to closure.}
+					\begin{theorem}
+						The function $f$ extends to a uniformly continuous function $\bar f: \bar S \to \mathbb{R}.$
+					\end{theorem}
+					\begin{proof}
+						If $f$ is uniformly continuous, then for every $\epsilon > 0$ there exists a $\delta > 0$ such that for all $p,q \in S$, $d(p,q) < \delta \implies d(fp,dq) < \epsilon.$ Since $f$ is continuous it preserves convergence of sequences. So adding the closure of $S$ to $S$ through union lets all sequences in this new set $\bar S$ converge to elements in $\bar S$. Adding these elements we construct a function based on the convergence of limits. $g : \bar S \to \mathbb{R}$  such that if $x \in S$, then $x \mapsto fx$ and otherwise if $x \notin S$ and $x \in \bar S$ we know the following. The element $x$ is a limit of a sequence in $s$, say $x_n$. Then for every $r > 0$ there exists an $N$ such that for all $n > N$, $d(x_n,x) < r.$ Using the function, $f(x_n) \to y \in \mathbb{R}$. Let $g(x) = y.$ Then for all $\epsilon < 0,$ there exists such an $N$ that $n>N$ implies $d(g x_n, g x) < \epsilon.$ In this case let $\delta = r = \epsilon$ from before. Then the limit is perserved and $g$ is uniformly continuous at $x$. Hence $f$ extends to a uniformly continuous function $\bar f = g$.
+					\end{proof}
+
+				\item \emph{Uniqueness}
+					\begin{theorem}
+						The function $\bar f$ is the unique extension of $f$.
+					\end{theorem}
+					\begin{proof}
+						Suppose that there exists another extension of $\bar f$ to the closure of $S,$ say g. Then for every $a \in S$, $f(a) = \bar f(a) = g(a),$ by extension, and if $x \in \bar S$ then $\bar f(x) \neq g(x).$ Consider a sequence which converges to $x$ as a subset of $S$. Then for all $\epsilon > 0$ there exists an $N_1$ such that for all $n > N_1$, $$d(\bar fx_n, fx) < \epsilon/2.$$ Since $g$ is also continuous we have that for some $N_2$ and all $n> N_2$ $$d(gx_n,gx) < \epsilon/2.$$ Remember that our assumption implies that $\bar f(x) \neq g(x).$ Take $N = \max{N_1, N_2}$ then for all $n > N$ we have that 
+						$$d(\bar fx,gx) \leq d(\bar fx, \bar fx_n) + d(\bar fx_n, gx_n) + d(gx_n, gx) < \epsilon/2 + 0 + \epsilon/2,$$
+						by extension of $f.$ So it is clear, $\bar f(x) = g(x);$ a contradiction!
+
+						Therefore $\bar f$ is unique and the proof is complete.
+					\end{proof}
+
+				\item \emph{General complete metric space.}
+					\begin{theorem}
+						Let $f:S \to N$ be a uniformly continuous function defined on $S \subset M$ with $M$ a metric space. Then $\bar f: \bar S \to N$ is a unique uniformly continuous extension of $f.$
+					\end{theorem}
+					\begin{proof}
+					
+						TODO: PROVE
+					The uniqueness of $\bar f$ is proved by (b) without loss of generality. Hence take the previous theorem with $N$ as the domain.
+					\end{proof}
+			\end{menumerate}
+
+	\end{menumerate}
+
+\end{document}
