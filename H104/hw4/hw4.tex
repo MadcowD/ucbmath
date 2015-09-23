@@ -118,11 +118,24 @@
 			\begin{proof}
 				$(a) \implies (e)$. Since $(M,d) \cong (M,d_{discrete})$, then for some function $f:M \to M$ where the domain has the discrete metric, every subset of the domain is clopen, and thereby every image of a subset of the domain is clopen by the homeomorphism.
 
+
+				$(e) \implies (b).$ If every set of $M$ is clopen then consider any $f: M \to M$. Since $f(A)$ is clopen for any $A,$ and $f^{pre}(f(A))$ is clopen by the assumption, then $f$ is continuous! This completes the proof.
  
 				$(b) \implies (c).$ If every function in $M^{M}$ is continuous, then consider an arbitrary bijection $g: M \to M.$ Clearly $g$ is continuous, and it's inverse map $g^-1 : M \to M$ is also continuous.
 
+				$(c) \implies (f).$ We will attempt to show that the converse is true. If $S$ is compact and not finite then there exists a bijectyion $g:M\to M$ such that $g$ is not bicontinuous. 	Clearly $S$ is compact if and only if for all $x_n$ sequences in $S$ there exists a $(n_k)$ such that $x_{n_k} \to X \in S.$ Furthermore $S$ is infinite if and only if there 
+					exists a sequence $(x_n) $ in $S$ with all of its elements distinct. These two facts inmply that there exists a sequence $(x_n)$ in $S$ distinct which converges to $x$. Conisder the set $S = \{x_n\} \cup \{x\}.$ Then let us examine the following bijection. Take $g: M \to M$ as the bijection which maps the first $x_k$ which is not $x$ to $x$ and then $x$ to such an $x_k$. Since $x_n \to x$, if $g$ homeomorphism then $g(x_n) \to g(x)$ but this is not true since $g(x_n) \to g(x_k)$ so $g$ does not preserve convergence and therefore we have found satisfying  nonhomeomorphic bijective $g$. This completes the proof.'
 
-					TODO: PROVE
+				$(e) \implies (d).$ For the purpose of contradiction suppose that every subset clopen implies that $M$ has a cluster point $p$. Every $S \subset M$ is clopen if and only if every set is closed. Let $S = \{p\}$ be the set of the cluster point in $M$ then by the assumption, for all $x \in S$ there exists an $\epsilon > 0$ such that $$d(x,q) < \epsilon \implies q \in S$$, which holds namely if $x = q= s.$ Since $p$ is a cluster point for all $r > 0$ there exists a $q$ such that $d(q,p) < r$ and $q \neq p.$ Take $r = \epsilon.$ and we reach a contradiction because $p \neq q,$ but $q \in S.$ Hence the assumption implies that $M$ has no cluster points.
+
+				$(d) \implies (e).$ Suppose that $M$ has no cluster points. 
+
+
+
+				$(f) \implies (a).$
+					$S$ is finite if and only if $S$ is compact. Consider a sequence of distinct point which converges to $a.$ Let the set of elements in the sequence be $\{a_n\},$ then the set is compact and non finite which is a contradiction. Hence, all convergent sequences are not distinct, which implies that eventually they are constant. So let $f:M \to M_d$ be the identity map. This map is clearly a bijection, so all that remains to be shown is that $f$ is a bicontinuous function.
+
+					If $a_n \to a$ in $M$, then there exists an $n$ for all $n > N$ $f(x_n) = c$ which implies that $f(x_n) \to c.$ Hence $f$ is continuous. On the other hand if $x_n \to x \in M_d$ then $x_n$ must eventually be constant as $M_d$ is endowed with the discrete metric. Thus $f^{-1}(x_n)$ is eventually constant and hence converges. Thus $f$ is a bicontionuous function, thereby implying that $f$ is a homeomorphism. This completes the proof.
 			\end{proof}
 			
 
@@ -161,7 +174,13 @@
 				In the last case, suppose there existed a closed and bounded subset of the plane such that $\mathbb{R}$ was embedded to that set by some homeomorphism $h$. Then, by some theorem that embedding is compact as a subset of $\mathbb{R}^2$ and by topological equivalence, $\mathbb{R}$ must also be compact; a contradiction! Therefore, only the first two cases hold.
 			\end{proof}
 
-		\setcounter{enumi}{53}
+		\setcounter{enumi}{52}
+		\item 
+
+
+
+
+
 		\item \emph{If $f: A \to B$ and $g: C \to B$ such that $A \subset C$ and for each $a \in A$ we have that $f(a) = g(a)$ then $g$ \textbf{extends} $f$. We also say that $g$ \textbf{extends to} $g$. Assume that $f: S \to \mathbb{R}$ is a uniformly continuous function defined on a subset $S$ of a metric space $M$. Prove the following:}
 
 			\begin{menumerate}
@@ -183,16 +202,6 @@
 						by extension of $f.$ So it is clear, $\bar f(x) = g(x);$ a contradiction!
 
 						Therefore $\bar f$ is unique and the proof is complete.
-					\end{proof}
-
-				\item \emph{General complete metric space.}
-					\begin{theorem}
-						Let $f:S \to N$ be a uniformly continuous function defined on $S \subset M$ with $M$ a metric space. Then $\bar f: \bar S \to N$ is a unique uniformly continuous extension of $f.$
-					\end{theorem}
-					\begin{proof}
-					
-						TODO: PROVE
-					The uniqueness of $\bar f$ is proved by (b) without loss of generality. Hence take the previous theorem with $N$ as the domain.
 					\end{proof}
 			\end{menumerate}
 
