@@ -128,7 +128,9 @@
 
 				$(e) \implies (d).$ For the purpose of contradiction suppose that every subset clopen implies that $M$ has a cluster point $p$. Every $S \subset M$ is clopen if and only if every set is closed. Let $S = \{p\}$ be the set of the cluster point in $M$ then by the assumption, for all $x \in S$ there exists an $\epsilon > 0$ such that $$d(x,q) < \epsilon \implies q \in S$$, which holds namely if $x = q= s.$ Since $p$ is a cluster point for all $r > 0$ there exists a $q$ such that $d(q,p) < r$ and $q \neq p.$ Take $r = \epsilon.$ and we reach a contradiction because $p \neq q,$ but $q \in S.$ Hence the assumption implies that $M$ has no cluster points.
 
-				$(d) \implies (e).$ Suppose that $M$ has no cluster points. 
+				$(d) \implies (e).$ Suppose that $M$ has no cluster points. Then for all $p\in M$ there exists an $r >0$ such that for all $q \in M_r(p)$, $q = p.$ Let $S$ be an arbitray subset of $M.$ Then $M$ having no cluster points implies that any subset has no cluster points, and therefore for all $p \in S$ there exists an $r > 0$ such that $d(p,q) < r$ implies that $p=q\in S$. 
+
+				Because every set in $M$ is open, then all compliments are closed. By virtue of membership in $M$ the compliments are also open. Then the compliment of the compliment being the original set is therefore closed. Hence all sets are clopen. This completes the proof.
 
 
 
@@ -175,7 +177,18 @@
 			\end{proof}
 
 		\setcounter{enumi}{52}
-		\item 
+		\item \emph{Suppose that $(K_n)$ is a nested sequence of compact nonempty sets, $K_1 \subset K_2 \subset \dots$, and $K = \bigcap K_n.$}
+			\begin{theorem}
+				If for some $\mu > 0$, $diam\ K_n \geq \mu$ for all $n$, then $diam\ K \geq \mu.$
+			\end{theorem}
+			\begin{proof}
+				Simple! If for every $n$, $K_n$ compact, then the countable intersection of $K_n$, $K$, must be compact. By a theorem of the book, $K\times K$ is compact.
+
+					Consider the sequence $\{(x_n, y_n)\} \subset K \times K.$
+				For this sequence in particular, take $(x_1,y_1)$ as the pair of vectors such that $d(x_1,y_1) = diam\ K_1 > \mu.$ Repeating this process for any $n$, take $(x_n,y_n)$ as the pair of vectors such that $d(x_n,y_n) = diam\ K_n > \mu.$ Since there exists a $\mu> 0$ such that for all $N$ and for every $n \geq N$, $d(x_n, y_n) > \mu$ we might say that $d(x_n, y_n) \nrightarrow c$ where $c <\mu.$
+
+					Now by the compactness of $K$ there exists a subsequence of $((x_n,y_n))$ which converges, and furthermore by the monotonicity and boundedness of $d(x_n,y_n)$ we have that it converges to a distance say $d(x,y) \geq \mu.$ Recall however that $x,y \in K_n$ for every $n$ and so $diam \ K \geq d(x,y) \geq  \mu$. This completes the proof.
+			\end{proof}
 
 
 
