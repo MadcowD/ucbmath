@@ -1,0 +1,125 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%                      Homework 5                            %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[letter]{article}
+
+\usepackage{lipsum}
+\usepackage[pdftex]{graphicx}
+\usepackage[margin=1.5in]{geometry}
+\usepackage[english]{babel}
+\usepackage{listings}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{framed} 
+\usepackage{amsmath}
+\usepackage{titling}
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{definition}{Definition}
+
+\newenvironment{menumerate}{%
+  \edef\backupindent{\the\parindent}%
+  \enumerate%
+  \setlength{\parindent}{\backupindent}%
+}{\endenumerate}
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%
+%% DOC INFO %%%
+%%%%%%%%%%%%%%%
+\newcommand{\bHWN}{5}
+\newcommand{\bCLASS}{MATH H104}
+
+\title{\bCLASS: Homework \bHWN}
+\author{William Guss\\26793499\\wguss@berkeley.edu}
+
+\fancyhead[L]{\bCLASS}
+\fancyhead[CO]{Homework \bHWN}
+\fancyhead[CE]{GUSS}
+\fancyhead[R]{\thepage}
+\fancyfoot[LR]{}
+\fancyfoot[C]{}
+\usepackage{csquotes}
+
+%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+
+%%%%%%% Be sure to set the counter and use menumerate
+\setcounter{section}{2}
+\begin{menumerate}
+	\setcounter{enumi}{55}
+	\item \emph{Prove the following.}
+		\begin{theorem}
+			The 2-sphere is not homeomorphic to the plane.
+		\end{theorem}
+		\begin{proof}
+			For this proof we make use of the heine-borel theorem and the preservation of topological properties through embedding. Take the two sphere $S^2.$ Take the embedding $h: S^2 \to S \subset \mathbb{R}^3.$ This embedding exists as $S = \{r \in \mathbb{R}^3 \ | \ \|x\| = 1\}$ is a natural image. By the Heine-Borel theorem $S$ is compact because it is closed and bounded. Then, because $h$ is an embedding, $S^2$ is also compact, a topological invariant. By $\mathbb{R}^2$ not compact, we have that $S^2 \ncong \mathbb{R}^2$, and the proof is complete.
+		\end{proof}
+	\setcounter{enumi}{56}
+	\item Prove the following.
+		\begin{theorem}
+			If $S$ is connected, its interior may be disconnected.
+		\end{theorem}
+		\begin{proof}
+			Consider the following counter example. Denote the closed $r$-ball $B^c_r(y) = \{x \in \mathbb{R}^2\ |\ \|x-y\| \leq r\}$ furthermore let the open$r$-ball $B^o_r$ be the interior of $B^c_r(y).$ If $S = B^c_1(-1,0) \cup B^c_1(1,0)$, then the interior of $S$ is clearly $B^o_1(-1,0) \cup B^o_1(1,0).$ Since these two sets are disjoint, we have that $int(S) =B^o_1(-1,0) \sqcup B^o_1(1,0).$ Lastly since $B^o_1(-1,0)$ and $B^o_1(1,0)$ open in $int(S)$, they are also closed since they are compliments. The counter example is complete as $int(S)$ is disconnected in contrast to $S$ connected.
+		\end{proof}
+	\item \emph{Theorem 49 states that the closure of a connected set is connected.}
+		\begin{menumerate}
+		\item \emph{The closure of a disconnected set is disconnected.}If $M$ disconnected then, $M = A \sqcup B$ for $A,B$ disjoint clopen subsets of $M.$ The closure of $M$ is the intersection of all; closed sets containing $M$, which is trivially $M.$ Hence the closure of $M$ is $M$ which is disconnected.
+		\item \emph{What about the interior of a disconnected set?} If $M$ is disconnected, then the interior of $M$ is the union of sets in the topology of $M.$ Since $M$ is clopen and in the topology of $M$, the interior of $M$ is maximally $M.$ Therefore, the interior of $M$ is disconnected. 
+		\end{menumerate}
+	\setcounter{enumi}{58}
+	\item 
+	\item \emph{Prove the following.}
+		\begin{menumerate}
+			\item \emph{Integer domain:}
+				\begin{theorem}
+					If $f: M \to \mathbb{Z}$ is continuous, then $M$ connected implies that $f(M) = \{c\}$ is a singleton.
+				\end{theorem}
+				\begin{proof}
+					Suppose for the sake of contradiction that $B = \{a \in M\ |\ f(a) \neq c\}$ is non=empty.
+					Then $f(M) = \{c\} \sqcup f(B) \subset \mathbb{Z}.$ By $\mathbb{Z}$ disconnected, we have that $f(M)$ is discoinnected. This is a contradiction to $M$ connected, implies $f(M)$ connected (by continuity). Hence, $f(M)$ is a singleton.
+				\end{proof}
+			\item \emph{Rational domain:}
+				\begin{lemma}
+					$\mathbb{Q}$ is totally disconnected.
+				\end{lemma}
+				\begin{proof}
+					We will show the theorem if for every $x,y \in \mathbb{Q}$ there exist $A,B$ separations of $\mathbb{Q}$ with $x\in A, x \in B$. Without loss of generality, assume $x < y.$ Since between two rationals there is an irrational, take the the irrational $z$ to be in between $x$ and $y$. Let $A' = (-\infty, z)$ and $B' = (z, \infty).$ Then if $A = A'_\mathbb{Q} = A' \cap \mathbb{Q}$ and $B = B'_\mathbb{Q}$, we have that $\mathbb{Q} = (-\infty,z)_\mathbb{Q} \sqcup (z, \infty)_\mathbb{Q} = A \sqcup B.$ Clearly $x \in A, y \in B$. Therefore $\mathbb{Q}$ is totally disconnected.
+				\end{proof}
+
+				\begin{theorem}
+					If $f:M\to\mathbb{Q}$ continuous, $M$ connected implies that $f(M)$ is trivially the singleton.
+				\end{theorem}
+				\begin{proof}
+					Suppose $f(M)$ is not trival (not the singleton, nor empty), then $f(M) \subset \mathbb{Q}$ implies that $f(M)$ is totally disconnected by the previous lemma. This is a contradiction to $M$ connected, by $M$ connected implies $f(M)$ connected. Therefore $f(M)$ is the singleton.
+				\end{proof}
+		\end{menumerate}
+	\setcounter{enumi}{71}
+	\item \emph{Connectedness of graphs}
+		\begin{menumerate}
+			\item \emph{}
+		\end{menumerate}
+	\setcounter{enumi}{101}
+	\item
+	\item
+	\setcounter{enumi}{107}
+	\item
+\end{menumerate}
+
+\end{document}
