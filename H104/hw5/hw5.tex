@@ -147,7 +147,13 @@
 			Consider the following sequence of space filling curves, $f_n : [0,1] \to [-n,n]^n.$ These functions are continuous surjections by theorem $68$ using cantor surjections and linear functions in between each cantor map. Let $f_n(0) = f_n(1) = 0$ be the $0$ vector. Then we can construct a mapping which takes $[0,1] \mapsto f_1[0,1]$ and $[1,2] \mapsto f_2[0,1]$ infinitely and we yield a new mapping $f: [0,\infty) \to \mathbb{R}^m$ continuously surjectively. Finally construct $g$ which is the 0 vector if its domain is negative and $f$ applied to its positive domain. This completes the proof. 
 		\end{proof}
 	\setcounter{enumi}{107}
-	\item
+	\item \emph{Identity mapping.}
+		\begin{theorem}
+			If $i: C_{max} \to C_{int}$ is the identity map, then it is isomorphic but not hemomorphic.
+		\end{theorem}
+		\begin{proof}
+		Clearly $i$ is an injection. To see this, if $i(f) \neq i(g),$ then $d_m(f,g) > 0.$ Hence $$0 < \|f -g \|_\infty < \|f-g\|_1 \implies f \neq g.$$  $i$ is also surjective. If $h' \in C_{int}$ then $\|h'-0\|_1 = d(h,0) \in \mathbb{R}$
+ 		\end{proof}
 \end{menumerate}
 
 \end{document}
