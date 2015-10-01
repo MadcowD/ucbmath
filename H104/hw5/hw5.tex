@@ -113,11 +113,39 @@
 	\setcounter{enumi}{71}
 	\item \emph{Connectedness of graphs}
 		\begin{menumerate}
-			\item \emph{}
-		\end{menumerate}
+			\item \emph{Hyperbola connection}
+			\begin{theorem}
+				Let $H = \{ (x,y) \in \mathbb{R}^2\ |\ xy = 1\},$ and $X$ be the $x$-axis. If $S = H \cup X$, then $S$ is disconnected.
+			\end{theorem}
+			\begin{proof}
+				We show first that $H$ is open. $H$ is open if and only if for every $p\in H$, there exists an $\epsilon > 0$ such that $d(p,q) < \epsilon \implies q \in H$. Furthermore if $q \in H, q \notin X.$ There fore if we show that $q \in X$ causes a contradiction, $q$ must be in $H.$ Suppose that $q \in X$ or that $H$ is not open. Take $\epsilon = 1/p_1$. Then $$d(p,q) = \sqrt{d(p_1,q_1)^2 + d(1/p_2, 0)^2} < \epsilon$$Clearly $p_1 = p_2$ if the above expression holds. Hence $d(1/p_2,0) < \epsilon = 1/p_2$ which is a contradiction. Therefore $q \in H$, and $H$ open. 
+				$H$ is also closed since it is closed in its parent metric space $\mathbb{R}^2.$ Therefore $H$ is clopen and disjoint from $X$ which implies that $S$ is disconnected.
+			\end{proof}
+
+			\item \emph{Positive definite functions}
+			\begin{theorem}
+				Let $f:(0,\infty) \to \mathbb{R}$ be always positive. If $G = f((0,\infty))$ then $S = G \cup X$ is not always disconnected.
+			\end{theorem}
+			\begin{proof}
+				Consider the following example. Let $f(x) = x$ across the same domain as above. We show that $G$ is not closed in $S.$ $G$ is not closed if and only if it does not contain all of its limit points in $S.$ Consider the sequence $x_n = ((1/n,1/n))_\mathbb{N}.$ By the main limit theorem (see Foundations of Analysis, Joseph E. Taylor), we have that $x_n \to (0,0) \in X.$ Therefore $G$ does not contain all of its limit points in $S,$ and essentially $S = G \sqcup X$ is not the disjoint union of two proper clopen subsets!  
+			\end{proof}
+			\item \emph{What about if $f$ has a discontinuity?} If $f$ has exactly one discontinuity, we can again consider a counterexemplary case. Obviously for $G$ which are nowhere near the $x$-axis, $S$ is disconnected, but consider the following graph. Let $f$ map $x$ such that: if $x\in (0,1]$ $x\mapsto x$,  if $x \in (1,2)$, $x\mapsto -(x-1)$, if $x = 2$, $x\mapsto 1$, if $x \in (2,\infty), $ $x\mapsto (x-2).$ The graph can be seen in the margin. Upon examining sequences $x_n = ((1/n,1/n))$ and $y_n = (\frac{1+(n-1)2}{n},1/n)$ imply that $G$ is not closed and not seperable. Thus $S$ is connected.
+ 		\end{menumerate}
 	\setcounter{enumi}{101}
-	\item
-	\item
+	\item \emph{Peano surjection}
+		\begin{theorem}
+			No Peano curve is one-to-one.
+		\end{theorem}
+		\begin{proof}
+			A peano curve is a continuous surjective mapping $\tau: [0,1] \to E$ such that $E$ has a non-empty interior. To show that no peano curve is one-to-one, we need simply show that there does not exist a homeomorphism from $[0,1]$ to a set with a non-empty interior. Consider that the interior of a set is an open-set which is a member of its topology. Any set which is homeomorphic to the line must preserve the closedness of its interior. Since the interior of the interval is the emptyset, it is closed. However since $E$ has a non-empty only open interior, there cannot exist a preservation of closedness through a bicontinuous bijection. In otherwords, no homeomorphism exists. Therefore no Peano curve is one-to-one.
+		\end{proof}
+	\item Prove the following.
+		\begin{theorem}
+			There is a continuous surjection from $\mathbb{R} \to \mathbb{R}^n.$ 
+		\end{theorem}
+		\begin{proof}
+			Consider the following sequence of space filling curves, $f_n : [0,1] \to [-n,n]^n.$ These functions are continuous surjections by theorem $68$ using cantor surjections and linear functions in between each cantor map. Let $f_n(0) = f_n(1) = 0$ be the $0$ vector. Then we can construct a mapping which takes $[0,1] \mapsto f_1[0,1]$ and $[1,2] \mapsto f_2[0,1]$ infinitely and we yield a new mapping $f: [0,\infty) \to \mathbb{R}^m$ continuously surjectively. Finally construct $g$ which is the 0 vector if its domain is negative and $f$ applied to its positive domain. This completes the proof. 
+		\end{proof}
 	\setcounter{enumi}{107}
 	\item
 \end{menumerate}
