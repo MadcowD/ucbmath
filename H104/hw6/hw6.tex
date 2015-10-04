@@ -1,0 +1,107 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%                      Homework 6                            %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[letter]{article}
+
+\usepackage{lipsum}
+\usepackage[pdftex]{graphicx}
+\usepackage[margin=1.5in]{geometry}
+\usepackage[english]{babel}
+\usepackage{listings}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{framed} 
+\usepackage{amsmath}
+\usepackage{titling}
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{definition}{Definition}
+
+\newenvironment{menumerate}{%
+  \edef\backupindent{\the\parindent}%
+  \enumerate%
+  \setlength{\parindent}{\backupindent}%
+}{\endenumerate}
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%
+%% DOC INFO %%%
+%%%%%%%%%%%%%%%
+\newcommand{\bHWN}{6}
+\newcommand{\bCLASS}{[DEPT] [CLASSN]}
+
+\title{\bCLASS: Homework \bHWN}
+\author{William Guss\\26793499\\wguss@berkeley.edu}
+
+\fancyhead[L]{\bCLASS}
+\fancyhead[CO]{Homework \bHWN}
+\fancyhead[CE]{GUSS}
+\fancyhead[R]{\thepage}
+\fancyfoot[LR]{}
+\fancyfoot[C]{}
+\usepackage{csquotes}
+
+%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+
+%%%%%%% Be sure to set the counter and use menumerate
+\setcounter{section}{1}
+\section{A Taste of Topology}
+\begin{menumerate}
+	%%%%%%%%%%%%%%%%%%%%%%%%%% 115 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\setcounter{enumi}{114} % 
+	\item \emph{Rotate the unit circle by a fixed angle $\alpha$, say $R: S \to S$.}
+		\begin{menumerate}
+			\item \emph{Show the following.}
+			\begin{theorem}
+				If $\alpha/\pi$ is rational, each orbit of $R$ is a finite set.
+			\end{theorem}
+			\begin{proof}
+				Simple! Since $d = \alpha/\pi \in \mathbb{Q}$ we have that the rotation is equivalently $d = p/q.$ Then, multiplication of $d$ by two times its reciprocal is $2.$ Under such a relation, $2\alpha\pi$ is a complete rotation from the origin of the orbit. Thereafter. That is by eventual partial rotation, we achieve the identity element of the orbit. The orbital group must be finite since only a finite rational amount of rotations were required to acheive this identity.
+			\end{proof}
+
+			\item \emph{Show the following.}
+			\begin{theorem}
+				If $\alpha/\pi$ is irrational, each orbit is infinite and has closure equivalent to $S^1$,
+			\end{theorem}
+		\end{menumerate}
+
+	\setcounter{enumi}{125}
+	%%%%%%%%%%%%%%%%%%%%%%%%%% 126 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\item
+	%%%%%%%%%%%%%%%%%%%%%%%%%% 127 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\item
+	%%%%%%%%%%%%%%%%%%%%%%%%%% 128 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\item
+	%%%%%%%%%%%%%%%%%%%%%%%%%% 129 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\item
+	%%%%%%%%%%%%%%%%%%%%%%%%%% 130 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\item 
+	%%%%%%%%%%%%%%%%%%%%%%%%%% 131 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\item
+
+
+	\setcounter{enumi}{132}
+	%%%%%%%%%%%%%%%%%%%%%%%%%% 133 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\item
+
+	\setcounter{enumi}{151}
+	%%%%%%%%%%%%%%%%%%%%%%%%%% 152 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\item 
+\end{menumerate}
+
+\end{document}
