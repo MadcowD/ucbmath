@@ -38,7 +38,7 @@
 %% DOC INFO %%%
 %%%%%%%%%%%%%%%
 \newcommand{\bHWN}{6}
-\newcommand{\bCLASS}{[DEPT] [CLASSN]}
+\newcommand{\bCLASS}{MATH H104}
 
 \title{\bCLASS: Homework \bHWN}
 \author{William Guss\\26793499\\wguss@berkeley.edu}
@@ -82,7 +82,25 @@
 
 	\setcounter{enumi}{125}
 	%%%%%%%%%%%%%%%%%%%%%%%%%% 126 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	\item
+	\item \emph{Prove the following.} 
+	\begin{theorem}
+		If $E$ is an unvountable subset of $\mathbb{R}$, then there exsists a point at which $E$ condenses.
+	\end{theorem}
+	\begin{proof}
+		We know that $p\in E$ is a condensation point iff for every $r > 0$ $\mathbb{R}_r (p)$ contains uncountably many points of $E.$ We wish to show this by using a decimal expansion of $p.$ There exists an interval $[n,n+1)$ containing uncountably many elements of $E$.  Suppose for the sake of contradiction that there were no particulart interval in which uncountable elements of $E$ resided.Intuitively, this means that at the least there is a collection of intervals $\{I_i = [i, i+1)\}$ such that $\bigcup_i I_i \supset E$, and furthermore for each $I_i, E \cap I_i$ is countable. Since there is a rational in each of these intervals the collection of intervals is countable. Therefore the whole set $E$ must be countable, a contradiction to $E$ uncountable. 
+
+		Let the containing interval be $E_0.$ We will use the following notation for sub intervals. Let $I^k_i$ denote the interval of the form
+		 $$I^k_i = \left[ \sum_j^k \frac{\omega_j}{10^j}, \sum_j^k \frac{\omega_j}{10^j}  + \frac{i}{10^{k+1}}\right]$$
+		  We want to show that for every $k$ there exists a sequence of $\omega_k$ such that $I^k_i$ is uncountable for some $i.$ Let $I^0 = E_0$ be uncountable with $\omega_0 = n$. Furthermore, if $I^k_i$ is satisfied by some $i$, let $\omega_{k+1} = i.$
+
+
+		  Suppose that $E_k = I^k_i$ for a satisfying $i$ is uncountable. Then we wish to show that $E_k$ contains a subinterval where uncountably many elements of $E$ reside. Suppose for the sake of contradiction that for every $i$, 
+		  $I^{k+1}_i \cap E$ is countable. Because $i$ is finite and enumerable, we have that $ \bigcup_i I^{k+1}_i \cap E$ is countable which is a contradiction to $I^k_{\omega_k} = E_k \cap E$ being uncountable. So there is a subinterval $I^{k+1}_i$ which contains uncountably many elements of $E$. Choose $\omega_{k+1} := i$. 
+
+		  Therefore by the induction hypothesis, $E_k$ is uncountable for all $k$. Lastly we must show that there is a $p$ common to all $E_k$ and then that for every $\epsilon$ neighboorhood of $p$, there are uncountably many elements of $E$ therein. Let $$p_n = \omega_1.\omega_2\omega_3\dots\omega_n$$. For every $\epsilon > 0,$ there exists an $N = \log_{10} \epsilon ^-1$ such that for all $m,n \geq N$, where without loss of generality $n>m$,  $$|\omega_0.\omega_1\dots\omega_n - \omega_0.\omega_1\dots\omega_m| = 10^{-m}|\omega_m\dots\omega_n| \leq 10^{-M} = \epsilon. $$ Hence $p_n \to p \in E$ by the completeness of $\mathbb{R}$ and for all $r > 0$ consider $E_j$ such that $j$ is the ceiling of $\log_{10}r^-1+1$. The set $E_j \subset \mathbb{R}_r(p)$ contains uncountably many elements of $E$ as aforementioned, and so every $r$ neighboorhood of $p \in E$ contains uncountably many points, and $p$ is a cluster point.
+
+		  This completes the proof.
+	\end{proof}
 	%%%%%%%%%%%%%%%%%%%%%%%%%% 127 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\item
 	%%%%%%%%%%%%%%%%%%%%%%%%%% 128 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -92,16 +110,31 @@
 	%%%%%%%%%%%%%%%%%%%%%%%%%% 130 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\item 
 	%%%%%%%%%%%%%%%%%%%%%%%%%% 131 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	\item
+	\item . \\
+	. \\ 
+	. \\ 
+	 . \\
+	 . \\
+	 . \\
 
 
 	\setcounter{enumi}{132}
 	%%%%%%%%%%%%%%%%%%%%%%%%%% 133 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	\item
+	\item 
 
 	\setcounter{enumi}{151}
 	%%%%%%%%%%%%%%%%%%%%%%%%%% 152 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	\item 
+	\item \textbf{Greens theorem:}
+
+	\emph{If $E$ is $2$-cell \\
+		and $\phi$ is $1$-form, \\ 
+		then over $E$'s $\partial$ \\
+		the trace must transform }
+
+		\emph{		A volume may be \\
+		with $\phi$'s' diff'rential \\
+		again over $E$ \\
+		a sure bit equal.}
 \end{menumerate}
 
 \end{document}
