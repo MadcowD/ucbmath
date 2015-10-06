@@ -73,11 +73,6 @@
 			\begin{proof}
 				Simple! Since $d = \alpha/\pi \in \mathbb{Q}$ we have that the rotation is equivalently $d = p/q.$ Then, multiplication of $d$ by two times its reciprocal is $2.$ Under such a relation, $2\alpha\pi$ is a complete rotation from the origin of the orbit. Thereafter. That is by eventual partial rotation, we achieve the identity element of the orbit. The orbital group must be finite since only a finite rational amount of rotations were required to acheive this identity.
 			\end{proof}
-
-			\item \emph{Show the following.}
-			\begin{theorem}
-				If $\alpha/\pi$ is irrational, each orbit is infinite and has closure equivalent to $S^1$,
-			\end{theorem}
 		\end{menumerate}
 
 	\setcounter{enumi}{125}
@@ -102,20 +97,96 @@
 		  This completes the proof.
 	\end{proof}
 	%%%%%%%%%%%%%%%%%%%%%%%%%% 127 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	\item
+	\item \emph{The metric space $M$ is separable if and only iof it contains a countable dense subset.}
+		\begin{menumerate}
+			\item \emph{Prove the following.}
+			\begin{theorem}
+				The metric space $\mathbb{R}^n$ is separable.
+			\end{theorem}
+			\begin{proof}
+				Consider the following dense subset $\mathbb{Q}^n \subset \mathbb{R}^n.$ Since $ \overline{\mathbb{Q}} = \mathbb{R},$ the closure holds over cartesian product. Therefore, $\mathbb{R}^n$ is separable. 
+			\end{proof}
+
+			\item \emph{Prove the following.}
+			\begin{theorem}
+				Every compact metric space $M$ is separable.
+			\end{theorem}
+			\begin{proof}
+				We wish to show that there is a countable subset of $M$ whose closure is $M$. First observe that $\bigcap_n^\infty M_{\frac{1}{n}}(p) = \{p\}. $ This fact will help us observe an interesting notion about finite subcoverings of $M$.
+				
+				Let $\mathcal{V}_n$ be the family of open neighboorhoods of all points in $M$ with radius $1/n.$ Clearly $\mathcal{V}_n$ is a covering of $M,$ and by $M$ compact there is a finite subcovering, say $\mathcal{V}_n^f = V_{n,1},\dots V_{n,k_n}$ where $k_n$ is cardinality of this finite subcovering. Consider the intersection of all such finite sub-coverings; that is, $$P =\bigcap_{n=1}^\infty \bigcup \mathcal{V}_n^f = \bigcap_{n=1}^\infty \bigcup_{m=1}^{k_n} V_{n,m} = \bigcup_{m'=1}^{\infty} {p_{m'}}.$$
+				We observe some fundamenmtal facts about $P.$ Clearly $P$ is countable since each $\mathcal{V}_n^f$ is finite and as $n\to \infty$, $\mathcal{V}_n^f$ becomes countable. The previous assertion that $P$ is a set of singletons follows from the observation that the intesection of the open ball approaches a singleton. Lastly, since for all $n$, $\overline{\bigcup \mathcal{V}_n^f} = M,$ it follows that $\overline{P} = M.$ 
+				Hence $M$ is separable.
+			\end{proof}
+		\end{menumerate}
 	%%%%%%%%%%%%%%%%%%%%%%%%%% 128 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	\item
+	\item \emph{Using results from the previous exercise prove the following theorems.}
+		\begin{menumerate}
+			\item \emph{Separable spaces:}
+			\begin{theorem}
+				Every metric subspace of a separable metric space is separable.
+			\end{theorem}
+			\begin{proof}
+				If $M$ is a separable metric space and $Q \subset M$ is a dense countable subset, then consider a metric subspace $A \subset M$. The topological base of $A$ is a subset of the topological base of $M.$ Since $M$ is separable the topolgical base of $M$ is countable, which implies that the topological base of $A$ is countable. By the first theorem of exercise $131$, $A$ is separable.
+			\end{proof}
+			\begin{theorem}
+			    Every subspace of a compact metric space is separable.
+			\end{theorem}
+			\begin{proof}
+				Since a compact metric space is separable by exercise 127 its submetric space is separable by the previouis theorem.
+			\end{proof}
+			\item The property is topological as can be seen in the proof of the converse of the first theorem of $131.$ We only require that $M$ have open neighboorhoods.
+			\item Yes since continuity preserves second countability which thereby preserves separability. 
+		\end{menumerate}
+
 	%%%%%%%%%%%%%%%%%%%%%%%%%% 129 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	\item
+	\item Consider the line composed of uncountable disjoint unit intervals which themseleves are isometric to $[0,1).$ Such a set could not possibly have a countable base and therefore is not separable.
 	%%%%%%%%%%%%%%%%%%%%%%%%%% 130 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	\item 
+	\item \emph{Prove the following.}
+		\begin{menumerate}
+			\item \emph{Countable topological base.}
+			\begin{theorem}
+				$\mathcal{B}$ is countable.
+			\end{theorem}
+			\begin{proof}
+				Since every ball has rational coordinate and a rational radius, assign to each ball the rational $(m+1)$-tuple. This gives a bijective mapping $M:\mathbb{Q}^{m+1} \to \mathcal{B}.$ Hence $\mathcal{B} \sim \mathbb{Q}^{m+1} \sim \mathbb{N}.$
+			\end{proof}
+			\item \emph{Topological bijection.}
+			\begin{theorem}
+				If $A$ is an open subset then there is a counable union of some subfamily of $\mathcal{B}$ which is equal to $A.$
+			\end{theorem}
+			\begin{proof}
+				We wish to find a $\mathcal{V} \subset \mathcal{B}$ such that $\bigcup \mathcal{V} = A.$ Consider the set $\mathbb{Q}^m \cap A = A_\mathbb{Q}. $ Let the following subfamily be  $$\mathcal{A}_n = \left\{\mathbb{R}_{1/n}^m(p)\ \Big|\ p \in A_\mathbb{Q}, d(p,q) < \frac{1}{n} \implies q \in A\right\} \subset \mathcal{B}.$$
+				Clearly $\bigcup \mathcal{A}_n$ is open. Furthermore $\bigcup_n^\infty \mathcal{A}_n \subset \mathcal{B}$ is countable since $\mathcal{B}$ is countable. It follows then that $\bigcup \left( \bigcup_n^\infty \mathcal{A}_n\right)$ is countable. Let $\mathcal{V} = \bigcup_n^\infty \mathcal{A}_n.$
+
+				We claim $\bigcup \mathcal{V} = A$. Suppose for the sake of contradiction that this was not true; that is, there exists an $x\in A$ such that for all $n$, $x\notin \bigcup \mathcal{A}_n.$ Since $A$ is open there exists an$r >0$ such that $d(x,q) < 2r$ implies that $q \in A.$ Choose $N$ such that  $1/N < r,$ then take $y \in A_\mathbb{Q}$ such that $d(x,y) < 1/N.$ It is true that $x \in \mathbb{R}^m_{1/N}(y)$ and therefore $x \in \bigcup \mathcal{A}_{N}$ which is a contradiciton! So the countable union $\bigcup V$ must be entirely $A.$
+
+				Converseley, if $M$ has a countable base for its topology,  
+			\end{proof}
+		\end{menumerate}
 	%%%%%%%%%%%%%%%%%%%%%%%%%% 131 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	\item . \\
-	. \\ 
-	. \\ 
-	 . \\
-	 . \\
-	 . \\
+	\item \emph{Prove the following results.}
+		\begin{theorem}
+			 $M$ is a separable metric space, with dense copuntable subset $Q$ if and only if it has a countable base for its topology. 
+		\end{theorem}
+		\begin{proof}
+			Consider the family of open balls in $M$ denoted $$\mathcal{B} = \left\{M_r(q) \ |\ q \in Q, r \in \mathbb{Q}\right\}.$$ We claim that this family is a countable topological base if $Q$ is a dense countable subset (lattice) in $M.$ The base is countable since $\mathcal{B} \sim Q \times \mathbb{Q} \sim Q \times \mathbb{N} \sim \mathbb{N}.$ Take somew open subset $A \subset M$. We denote the separation of $A$, $A \cap Q = A_Q$. Let the following subfamily be 
+			Let the following subfamily be  $$\mathcal{A}_n = \left\{M_{1/n}(p)\ \Big|\ p \in A_Q, d(p,q) < \frac{1}{n} \implies q \in A\right\} \subset \mathcal{B}.$$
+			Since $\mathcal{A}_n \subset \mathcal{B},$ we know that $\mathcal{A}_n$ is countable and therefore $\bigcup \mathcal{A}_n$ is open.
+
+			Let $\mathcal{V} = \bigcup_{n=1}^\infty \mathcal{A}_n$ be the family of all rational $\epsilon$-neighborhoods over the $Q$ lattice in $A.$ Clearly $\mathcal{V}$ is countable and all $B \in \mathcal{V}$ are open. We claim $\bigcup \mathcal{V} = A.$  Suppose for the sake of contradiction that this was not true; that is, there exists an $x\in A$ such that for all $n$, $x\notin \bigcup \mathcal{A}_n.$ Since $A$ is open there exists an $r >0$ such that $d(x,q) < 2r$ implies that $q \in A.$ Choose $N$ such that  $1/N < r,$ then take $y \in A_Q$ such that $d(x,y) < 1/N$ (such a $y$ exists since $A_Q$ is dense in $A$). It is true that $x \in \mathbb{M}_{1/N}(y)$ and therefore $x \in \bigcup \mathcal{A}_{N}$ which is a contradiciton to $x \notin \mathcal{V}$! So the countable union $\bigcup \mathcal{V}$ must be entirely $A.$
+
+				In the converse direction, suppose that $M$ has a separable base, $\mathcal{B}.$ Then for all $B_n \in \mathcal{B}$ assume without loss of generality that $B_n$ is non empty. Let $Q = \{x_n \in B_n \ |\ B_n \in \mathcal{B}\}$. Clearly $Q$ is countable. Now we have to check if $Q$'s closure is $M.$ Take any open subset of $M$ say $A$. Since $A$ can be constructed by the union of finiteley many $B_n$, there exists an $x_n \in A.$ For any element $y$ of $M$ and every open neighborhood of $y,$ there is an $x_n \in Q$ therein contained. This implies that $y$ is a limit of $Q.$ We have shown that every point of $M$ is a limit of $Q,$ therefore, $\overline{Q} = M$, and $Q$ is a dense set in $M.$ 
+
+				This completes the proof.  
+			
+		\end{proof}
+		\begin{theorem}
+		Every compact metric space has a countable base for its topology.
+		\end{theorem}
+		\begin{proof}
+			Simple! Every compact space is separable and therefore has a countable base.
+		\end{proof}
 
 
 	\setcounter{enumi}{132}
@@ -124,17 +195,17 @@
 
 	\setcounter{enumi}{151}
 	%%%%%%%%%%%%%%%%%%%%%%%%%% 152 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	\item \textbf{Greens theorem:}
+	\item \textbf{Greens theorem (pay attention to punctuation):}
 
-	\emph{If $E$ is $2$-cell \\
+	\emph{If $E$ is $2$-cell, \\
 		and $\phi$ is $1$-form, \\ 
-		then over $E$'s $\partial$ \\
+		then over $E$'s $\partial$, \\
 		the trace must transform }
 
-		\emph{		A volume may be \\
-		with $\phi$'s' diff'rential \\
-		again over $E$ \\
-		a sure bit equal.}
+		\emph{		The real volume may be, 
+		with $\phi$'s' infintesmal \\
+		again over $E$, \\
+		totally equal.}
 \end{menumerate}
 
 \end{document}
