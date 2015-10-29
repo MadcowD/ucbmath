@@ -1,0 +1,113 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%                      Homework 8                            %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[letter]{article}
+
+\usepackage{lipsum}
+\usepackage[pdftex]{graphicx}
+\usepackage[margin=1.5in]{geometry}
+\usepackage[english]{babel}
+\usepackage{listings}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{framed} 
+\usepackage{amsmath}
+\usepackage{titling}
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{definition}{Definition}
+
+\newenvironment{menumerate}{%
+  \edef\backupindent{\the\parindent}%
+  \enumerate%
+  \setlength{\parindent}{\backupindent}%
+}{\endenumerate}
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%
+%% DOF INFO %%%
+%%%%%%%%%%%%%%%
+\newcommand{\bHWN}{8}
+\newcommand{\bFLASS}{MATH H104}
+
+\title{\bFLASS: Homework \bHWN}
+\author{William Guss\\26793499\\wguss@berkeley.edu}
+
+\fancyhead[L]{\bFLASS}
+\fancyhead[FO]{Homework \bHWN}
+\fancyhead[FE]{GUSS}
+\fancyhead[R]{\thepage}
+\fancyfoot[LR]{}
+\fancyfoot[F]{}
+\usepackage{csquotes}
+
+%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+
+%%%%%%% Be sure to set the counter and use menumerate
+%30, 31, 34, 36, 37, 50, 52, 53, 55.
+\begin{menumerate}
+
+
+\setcounter{enumi}{29}
+	\item I'll prove this one in reverse, first defining the general $\beta$ cantor set.
+	\begin{definition}
+		The $\beta$ cantor set, $F_\beta$, is defined as an iterative process of which the first iteration is defined for $0 < \beta < 1$ by taking the middle $\beta$ of $[0,1]$ and letting $F^1_\beta$ be the remaining two intervals of outermeasure $\frac{1-\beta}{2}.$ In general, at any iteration of the process $n$, $F^n_\beta$ is comprised of $2^n$ pieces, each of outer measure $P_n.$ The process for generating $P_{n+1}$ is the same as for the first iteration: remove $P_n\beta$ from each piece of outer measure $P_n$ and yield two pieces of outer measure $P_n(1-\beta)/2.$ Lastly, $F_\beta \subset F_\beta^n\subset F_\beta^{n-1.}$ for all $n.$
+	\end{definition}
+
+	\begin{theorem}
+		For any $0 < \beta < 1,$ $F_\beta$ is a zero set.
+	\end{theorem}
+	\begin{proof}
+	To show this, for every $\epsilon > 0$ we need to find a countable collection of open sets which cover $F_\beta$ and have outer measure less than $\epsilon.$ By the definition of $F_n$ we have that at any iteration $n$ the total outer measure is $P_n2^n.$ Thus we solve the recurrance relation, $$P_n = P_{n-1}\frac{(1-\beta)}{2},$$ by letting $P_n = \frac{(1-\beta)}{2}$ and solving for the initial conditions that $P_0 = 1.$ Thus the total outer measure of $F^n_\beta$ is defined as 
+	$$outer(F^n_\beta) = \frac{(1-\beta)^n}{2^n}2^n = (1-\beta)^n \to 0$$
+	by $0<1-\beta<1.$ So for every $\epsilon$ there is a large enough $N$ such that by extending $F_\beta^N$ to a very close open interval containing $F_\beta^N$ and thereby $F_\beta,$ the outer measure is less than $\epsilon.$ So $F_\beta$ is a zero set.
+	\end{proof}
+
+	It follows simply that the middle fourths cantor set is a zero-set.
+
+	\item Again I'll provide a definition for the general fat cantor set and apply it to the specifc definition provided.
+	\begin{definition}
+		The fat $\beta$ cantor set, $F_\beta$, is defined as an iterative process of which the first iteration is defined for $0 < \beta < 1$ by taking the middle $\beta^n$ of $[0,1]$ and letting $F^1_\beta$ be the remaining two intervals of outermeasure $\frac{1-\beta^n}{2}.$ In general, at any iteration of the process $n$, $F^n_\beta$ is comprised of $2^n$ pieces, each of outer measure $P_n.$ The process for generating $P_{n+1}$ is the same as for the first iteration: remove $P_n\beta^n$ from each piece of outer measure $P_n$ and yield two pieces of outer measure $P_n(1-\beta^n)/2.$ Lastly, $F_\beta \subset F_\beta^n\subset F_\beta^{n-1.}$ for all $n.$
+	\end{definition}
+
+	\begin{theorem}
+		The fat $\beta$ cantor set is not zero set.
+	\end{theorem}
+	\begin{proof}
+	We essentially need to show that as $F_\beta^n$ approaches $F_\beta$, the outer measure of $F_\beta^n$ does not tend towards $0$. By the definition of $F_n$ we have that at any iteration $n$ the total outer measure is $P_n2^n.$ Thus we solve the recurrance relation, $$P_n = P_{n-1}\frac{(1-\beta^n)}{2}.$$ Using intuition from the $\beta$ canot set case, we let $P_n$ be for the form $$P_n = \frac{(1-\beta^n)}^a_n{2^N}$$ for some sequence $a_n$ depending on $n.$ Then we can find $a_n$ by considering the ratio $P_n/P_{n-1}.$ This essentially yields that $a_n - a_{n-1} = 1.$ Ommitting the application of variation of parameters to this recurrence relation, we yield $a_n = n.$ Thus the total outer measure of $F^n_\beta$ is defined as 
+	$$outer(F^n_\beta) = \frac{(1-\beta^n)^n}{2^n}2^n = (1-\beta^n)^n \to 1$$
+	by $0<1-\beta<1.$ So there could not possibly be a sequence of countable open coverings of $F_\beta$ with outer measure approaching $0.$ This completes the proof.
+	\end{proof}
+
+	In the particular case of the problem, letting $\beta = 1/4$ apply the previous theorem, and yield that the outer measure of the fat cantor set is $1.$ This is remarkable!
+
+	\begin{theorem}
+		The property that $S$ is a zero set is not topological.
+	\end{theorem}
+	\begin{proof}
+		It suffices to show that for two sets $A,B$ which are homeomorphic, the zero set property does not hold. Clearly $F_\beta \cong C_\beta$ since they are both cantor spaces. Howerver Thoerem $2$ states that $F_\beta$ is not a zero set, whereas $C_\beta$ is. So by counter example, the zero set property is not topological.
+	\end{proof}
+
+\setcounter{enumi}{33}
+\item
+
+\end{menumerate}
+
+
+
+\end{document}
