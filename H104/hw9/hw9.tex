@@ -1,0 +1,87 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%                      Homework 9                            %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[letter]{article}
+
+\usepackage{lipsum}
+\usepackage[pdftex]{graphicx}
+\usepackage[margin=1.5in]{geometry}
+\usepackage[english]{babel}
+\usepackage{listings}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{framed} 
+\usepackage{amsmath}
+\usepackage{titling}
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{definition}{Definition}
+
+\newenvironment{menumerate}{%
+  \edef\backupindent{\the\parindent}%
+  \enumerate%
+  \setlength{\parindent}{\backupindent}%
+}{\endenumerate}
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%
+%% DOC INFO %%%
+%%%%%%%%%%%%%%%
+\newcommand{\bHWN}{9}
+\newcommand{\bCLASS}{MATH H104}
+
+\title{\bCLASS: Homework \bHWN}
+\author{William Guss\\26793499\\wguss@berkeley.edu}
+
+\fancyhead[L]{\bCLASS}
+\fancyhead[CO]{Homework \bHWN}
+\fancyhead[CE]{GUSS}
+\fancyhead[R]{\thepage}
+\fancyfoot[LR]{}
+\fancyfoot[C]{}
+\usepackage{csquotes}
+
+%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+%#59, 61-63, 67-70.
+	\begin{menumerate}
+		\setcounter{enumi}{58}
+		\item %59
+
+		\begin{theorem}
+			If $\sum a_n$ converges and $a_n \geq 0,$ then show $\sum \sqrt{a_n}/n$ converges.
+		\end{theorem}
+
+		\begin{proof}
+			Let $x = (\sqrt{a_n})_n$, $y = \left(\frac{1}{n}\right)_n$. Clearly $y \in \ell_1,$ and since $\sum a_n \to c,$ $a_n \to 0$ implies that $\sqrt{a_n} \to 0.$ Therefore, $x \in \ell_1.$ Since $\ell_1$ is an inner product space, the cauchy schwartz inequality gives, 
+			$$0 \leq \sum_{n=1}^\infty \frac{\sqrt{a_n}}{n} = \langle x,y \rangle \leq |x||y| = \sqrt{\sum_{n=1}^\infty a_n} \sqrt{\sum_{n=1}^\infty \frac{1}{n^2}} = \sqrt{\frac{c}{6}}\pi$$
+			and so the series is bounded and therefore converges.
+		\end{proof}
+
+		\setcounter{enumi}{60}
+		\item Consider the following $\{a_n\} \in \ell_1.$ We say that $a_n = 1/4^n$ if $n$ odd and $a_n = 1/2^n$ otherwise. Clearly $$0 < \sum_{n\in\mathbb{N}}a_n = \sum_{n\ \text{odd}} \frac{1}{4^n} + \sum_{n\ \text{even}} \frac{1}{2^n} < \sum \frac{1}{2^n} < \sum \frac{1}{n^2} = \frac{\pi^2}{6}.$$ So the series converges. Let $\rho_N = \sup_{n>N} |a_{n+1}|/|a_n| = \sup_{n>N} 2^n = \infty$. So clearly $\rho = \lim \rho_N = \infty,$ and yet the series converges. If we were to suppose that $\lambda = \ro$ then the test would be wrong since $\lambda > 1$ implies divergence. So it must be the case that the test is inconclusive when $\ro \geq 1.$
+		\item %62
+		\item %63
+
+		\setcounter{enumi}{66}
+		\item %67
+		\item %68
+		\item %69
+		\item %70
+	\end{menumerate}
+
+\end{document}
