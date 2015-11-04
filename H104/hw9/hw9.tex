@@ -73,12 +73,37 @@
 		\end{proof}
 
 		\setcounter{enumi}{60}
-		\item Consider the following $\{a_n\} \in \ell_1.$ We say that $a_n = 1/4^n$ if $n$ odd and $a_n = 1/2^n$ otherwise. Clearly $$0 < \sum_{n\in\mathbb{N}}a_n = \sum_{n\ \text{odd}} \frac{1}{4^n} + \sum_{n\ \text{even}} \frac{1}{2^n} < \sum \frac{1}{2^n} < \sum \frac{1}{n^2} = \frac{\pi^2}{6}.$$ So the series converges. Let $\rho_N = \sup_{n>N} |a_{n+1}|/|a_n| = \sup_{n>N} 2^n = \infty$. So clearly $\rho = \lim \rho_N = \infty,$ and yet the series converges. If we were to suppose that $\lambda = \ro$ then the test would be wrong since $\lambda > 1$ implies divergence. So it must be the case that the test is inconclusive when $\ro \geq 1.$
-		\item %62
-		\item %63
+		\item Consider the following $\{a_n\} \in \ell_1.$ We say that $a_n = 1/4^n$ if $n$ odd and $a_n = 1/2^n$ otherwise. Clearly $$0 < \sum_{n\in\mathbb{N}}a_n = \sum_{n\ \text{odd}} \frac{1}{4^n} + \sum_{n\ \text{even}} \frac{1}{2^n} < \sum \frac{1}{2^n} < \sum \frac{1}{n^2} = \frac{\pi^2}{6}.$$ So the series converges. Let $\rho_N = \sup_{n>N} |a_{n+1}|/|a_n| = \sup_{n>N} 2^n = \infty$. So clearly $\rho = \lim \rho_N = \infty,$ and yet the series converges. If we were to suppose that $\lambda = \rho$ then the test would be wrong since $\lambda > 1$ implies divergence. So it must be the case that the test is inconclusive when $\rho \geq 1.$
+		\item 
+		\begin{theorem}
+			Let $\{a_n\} \in \ell_1$ be a monotonically non-increasing sequence. Then, the series $\sum a_n$ converges if and only if the associated dyadic series 
+			$$a_1 + 2a_2 +4a_4 + 8a_8 + \cdots = \sum 2^k a_{2^k}$$
+			converges.
+		\end{theorem}
+
+		\begin{proof}
+		Suppose that $\sum 2^na_{2^n}$ converges. Since the sequence is monotone decreasing, we have that $a_1 \geq a_1$, $2a_2 > a_2 + a_3, \dots, 2^ka_{2^k} > a_{2^k} + \dots + a_{2^{k+1}}.$ In other words the series is dominated by the dyagic series. Therefore by the comparison test, the series must converge.
+
+		CIBERSKEVET.  
+		\end{proof}
+
+		\item \begin{theorem}
+			The series $\sum 1/(k(\log k)^p)$ diverges for $p \leq 1$ and converges for $p > 1.$
+		\end{theorem}
+		\begin{proof}
+		 We will show the theorem using the integral test. In particular, we need only show that the function $$f(x) = \frac{1}{x\log^px}$$ has convergent/divergent improper integrals for the corresponding $p$-cases. In the special case of $p = 1$ simple $\upsilon$-substituion yields that, $\int_2^\infty f(x)\ dx =  \log(\log(x))|_2^n \to \infty.$ When $p \neq 1$, we have that the indefinite integral is $$F(n) = \int_2^n \frac{1}{x\log^px}\ dx = \frac{\log^{1-p}(x)}{1-p}\Bigg|_2^n.$$ It is clear in the  case that $p>1,$ the log function is in the denominator and therefore $F(n) \to 0 + \log^p(2)/(1-p) \in \mathbb{R}.$ Otherwise, for $p < 1, F(n) \to \infty.$ Therefore, by the integral test we have that the series converges for $p >1$ and diverges otherwise.
+		\end{proof}
 
 		\setcounter{enumi}{66}
-		\item %67
+		\item
+		\begin{theorem}
+			Let $\{a_k\} \in \ell_1$ such that $a_k$ has the same sign for all $k.$
+			The series $\sum a_k$ converges if and only if $\prod (a_k +1)$ converges.
+		\end{theorem}
+		\begin{proof}
+			The infinite product $\prod (a_k +1)$ converges if and only if $$\log\left(\prod_{k =1}^\infty a_k +1\right) = \sum_{k=1}^\infty \log(a_k+1)$$ converges. If $\sum a_n $ converges then $a_n \to 0$, and if $\sum a_n$ does not converge then we do not grant this. By the comparison test $\lim ln(1+a_n)/a_n = 1$ if and only if $\sum a_n$ converges if and only if the infinite product converges. This completes the proof.  
+		\end{proof}
+
 		\item %68
 		\item %69
 		\item %70
