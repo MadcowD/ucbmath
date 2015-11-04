@@ -73,13 +73,22 @@
 		\end{proof}
 
 		\setcounter{enumi}{60}
-		\item Consider the following $\{a_n\} \in \ell_1.$ We say that $a_n = 1/4^n$ if $n$ odd and $a_n = 1/2^n$ otherwise. Clearly $$0 < \sum_{n\in\mathbb{N}}a_n = \sum_{n\ \text{odd}} \frac{1}{4^n} + \sum_{n\ \text{even}} \frac{1}{2^n} < \sum \frac{1}{2^n} < \sum \frac{1}{n^2} = \frac{\pi^2}{6}.$$ So the series converges. Let $\rho_N = \sup_{n>N} |a_{n+1}|/|a_n| = \sup_{n>N} 2^n = \infty$. So clearly $\rho = \lim \rho_N = \infty,$ and yet the series converges. If we were to suppose that $\lambda = \ro$ then the test would be wrong since $\lambda > 1$ implies divergence. So it must be the case that the test is inconclusive when $\ro \geq 1.$
+		\item Consider the following $\{a_n\} \in \ell_1.$ We say that $a_n = 1/4^n$ if $n$ odd and $a_n = 1/2^n$ otherwise. Clearly $$0 < \sum_{n\in\mathbb{N}}a_n = \sum_{n\ \text{odd}} \frac{1}{4^n} + \sum_{n\ \text{even}} \frac{1}{2^n} < \sum \frac{1}{2^n} < \sum \frac{1}{n^2} = \frac{\pi^2}{6}.$$ So the series converges. Let $\rho_N = \sup_{n>N} |a_{n+1}|/|a_n| = \sup_{n>N} 2^n = \infty$. So clearly $\rho = \lim \rho_N = \infty,$ and yet the series converges. If we were to suppose that $\lambda = \rho$ then the test would be wrong since $\lambda > 1$ implies divergence. So it must be the case that the test is inconclusive when $\rho \geq 1.$
 		\item %62
 		\item %63
 
 		\setcounter{enumi}{66}
 		\item %67
-		\item %68
+		\item Here is confirmation of the existence of an unrelation between the convergence of a series and the related infinite product,.
+		\begin{menumerate}
+			\item Suppose a series is defined as the infinite sum of a sequence $a_k = (-1)^k/\sqrt{k}$. We first show that such a series converges. Consider that $a_k \leq f(x) = (-1)^xx^{-0.5}$ for all $x = k.$ So we simply must show convergence of the improper integral of $f(x)$. Recall that $(-1)^x = e^{i\pi x},$ then
+			$$\int_1^\infty(-1)^xx^{-0.5}\ dx \sim \int_{\mathbb{R}^+} e^{i\pi x} x^{-0.5}\ dx = \mathcal{L}\{t^{-0.5}\} = \frac{\Gamma(1/2)}{(\pi)^{\frac{1}{2}}}$$
+			So at least the series converges. Consider the infinite product in terms of its partial products. Specifically we consider the partial products in pairs, $c_n*c_{n+1} = (1 +k^{-0.5} + (k+1)^{-0.5} + (k^2+k)^{-0.5})$ and so $$\prod_{k=1}^\infty (1 + a_k)=  \prod_{k=1}^\infty (1 +(2k)^{-0.5} + (2k+1)^{-0.5} + (2k(2k+1))^{-0.5})$$  
+			which converges if and only if $\sum_{k=1}^\infty b_k + c_k + \frac{1}{\sqrt k}$ converges, which it does not. Therefore the infinite product can't converge.
+
+			\item Let $b_k = e_k/k + (-1)^k/\sqrt{k}.$ Clearly $\sum b_k$ diverges since $\sum b_k = \sum e_k/k + \sum (-1)^k/\sqrt{k} \geq 0.5\sum 1/n + (1- \sqrt{2})\zeta(1/2) = \infty.$ However, by performing the same grouping of two test on the infinite product we get that the product converges if and only if $$\sum \frac{1}{n} + \frac{1}{\sqrt{n}} - \frac{1}{n\sqrt{n+1}} - \frac{1}{\sqrt{n}\sqrt{n+1}} - \frac{1}{\sqrt{n+1}}$$ converges. This is true if and only if $\sum n^{-3/2}$ converges (which it does by the integral test.) Thus, here is an example where the infinite product converges and the sum does not.
+		\end{menumerate}
+
 		\item %69
 		\item %70
 	\end{menumerate}
