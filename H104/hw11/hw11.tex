@@ -20,6 +20,7 @@
 
 
 \newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
 \newtheorem{definition}{Definition}
 
 \newenvironment{menumerate}{%
@@ -61,15 +62,95 @@
 %%%%%%% 8-10, 13, 18, 22, 24.
 \begin{menumerate}
 	\setcounter{enumi}{7}
-	\item %8
-	\item %9
-	\item %10
+	\item We show the following equicontinuity result.
+	\begin{theorem} Let the family of functions $F = (f_n)$ be defined as follows
+		$$f_n(x)=\cos(n+x)+\log\left(1+\frac{1}{\sqrt{n+2} }\sin^2(n^nx)\right).$$
+		The family $F$ is equicontinuous.
+	\end{theorem}
+	\begin{proof}
+		Observe that the sum of two families of equicontinuous functions indexed by an integer, at that integer, is equicontinuous. Then
+		we need prove that $\cos(n+x)$ is equicontinuous as is the other part of the sum. Since $\cos(x)$ is uniformly continuous, so is the
+		translative sum $\cos(n+x)$ uniformly equicontinuous.
+
+		Let $x\in \mathbb{R}$ and $\epsilon > 0$. If we take $n$ very large then $\log\left(1+\frac{1}{\sqrt{n+2} }\sin^2(n^nx)\right)$ tends towards $0.$
+		In fact by the continuity of log, we take $n$ large enough so that $\log(1) + \epsilon = \epsilon.$ Therefore we have that
+		for any $y \in \mathbb{R} ,$
+		$$\left|\log\left(1+\frac{1}{\sqrt{n+1}}\sin^2(n^nx)\right)-\log\left(1+\frac{1}{\sqrt{n+1}}\sin^2(n^ny)\right)\right|<2\epsilon$$.
+		Then examine all of the $n$ that were not large enough to yield the above result. There are finiteley many of them, so they are equicontinuous.
+		Hence both elements in the sum are equicontinuous and we are done.
+
+	\end{proof}
+	
+	\item Prove the following theorem.
+	\begin{theorem}
+	If $f:\mathbb{R} \to \mathbb{R}$ is continuous and $f(nx)$ forms an equicontinuous family, then
+	$f$ is uniformly continuous.
+	\end{theorem}
+	\begin{proof}
+		If $f(nx) = f_n$ defines an equicontinuous family, then for every $\epsilon > 0$ there exists
+		a $\delta(\epsilon)$ such that for every $n$ and for every $x,y$ such that $d(x,y) < \delta$
+		it is the case that $|f(nx) - f(ny)| < \epsilon.$ Therefore taking $n = 1$, we yield that for every
+		$\epsilon > 0$ there exists a $\delta$ such that for every $x$
+		$$\sup_{y\in{(x-\delta,x+\delta)}}|f(x)-f(y)| < \epsilon.$$
+		Thus $f$ is uniformly continuous.
+	\end{proof}
+	\item Consider the following example.
+	\begin{theorem}
+		Let $(f_n)$ be a family of functions which take $(0,1) \to \mathbb{R}$ defined as,
+		$$f_n(x) = \frac{1}{x+\frac{1}{n}}.$$
+		Then the family is uniformly continuous, pointwise equicontinuous, but not uniformly equicontinuous.
+	\end{theorem}
+	\begin{proof}
+		Consider the extension of $f_n$ to $[0,1]$ on its domain. Then since it is bounded on this new compact
+		extension, it is uniformly continuous by the Heine-Cantor theorem. It follows that if $f$ is uniformly continuous on some set
+		then for any subset, $f$ is also uniformly continuos, so take $(0,1).$ 
+
+		As for pointwise equicontinuity, for every $\epsilon > 0$ take any $x \in (0,1).$ Then we must show that there is a $\delta$ such that
+		if $|x -t| < \delta$ and $n \in \mathbb{N}$ then $\frac{1}{x+\frac{1}{n}} - \frac{1}{t+\frac{1}{n}} < \epsilon.$ Simply summing both fractions yields that
+		$$f(x)-f(y) = \frac{n^2(y-x)}{n^2xy+n(x+y)+1} < \frac{n^2(y-x)}{n^2xy} < \frac{y-x}{xy} < \epsilon,$$
+		under proper assertions for $\delta.$
+
+		Clearly this family is not uniformly equicontinuous since it converges uniformly to $1/x.$
+
+	\end{proof}
 
 	\setcounter{enumi}{12}
-	\item %13
+	\item The following argument holds.
+	\begin{lemma}
+ Let $\{f_n\}$ be an equicontinuous and pointwise bounded sequence of
+functions $\mathbb{R} \to \mathbb{R}$. If $S \subset \mathbb{R}$ is compact, then $f$ is uniformly equicontinuous
+on $S$.
+	\end{lemma}
+	\begin{proof}
+		Take any $\epsilon > 0.$ Then bu equicontinuity, for every $z$, there is a $\delta(z)$ such that,
+		$|z-y| < \delta(z)$ imples tahat $|f_n(z)-f_n(y)| < \epsilon/2.$ By the compactness of $S$, the unit disks
+		$D_{\delta(z)}(z)$ form an open cover for $S$. Using the number lemma take $\delta$ such that $E \subset S$
+		with $diam E < \delta$ is contained within an open set from the cover. Then if $|x-y| < \delta$ the set
+		$\{x,y\}$ has diameter less than $\delta$ and so $|f_n(x) - f_n(z) < \epsilon/2$. Using the triangle inequality
+		the lemma follows.
+	\end{proof}
+
+
+	\begin{theorem}
+		Suppose that $(f_n)$ is a sequence of function $\mathbb{R} \to \mathbb{R}$ and for each compact subset $K\subset \mathbb{R}$
+		the restricted sequence $(f_n|K)$ is pointwise bounded and pointwise equicontinuous. Then $(f_n)$ converges uniformly.
+	\end{theorem}
+	\begin{proof}
+		By the previous lemma, the restriction of $(f_n)$ to $K$ compact implies that $(f_n|K)$ uniformly equicontinous over $K.$
+		Thus by the AA theorem we have that $(f_n|K)$ has a uniformly convergent subsequence which converges to $g|K.$ Well then 
+		it is easy to see that if $K$ are increasingly large extended compact close intervals in $\mathbb{R}$ then $g|K_j \to g|\mathbb{R}$
+		is the uniform limit of some subsequence of $(f_n).$
+	\end{proof}
 
 	\setcounter{enumi}{17}
 	\item %18
+
+	The correct generalization is as follows.
+	\begin{theorem}
+		Let $\{f_n\}$ be a pointwise equicontinuous sequence of functions $\Omega \to \mathbb{R}$ with
+		$\Omega$ an open subset of $\mathbb{R}$. Then if $\{f_n\}$ is pointwise bounded over a dense subset of $\Omega$
+		then there is a subsequence which converges uniformly on compact subsets of $\Omega$ to a continuous function $f.$
+	\end{theorem}
 
 	\setcounter{enumi}{21}
 	\item %22
