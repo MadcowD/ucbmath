@@ -18,6 +18,7 @@
 \usepackage{algorithm,algorithmic}
 \usepackage{pgfplots}
 \usepackage{tikz}
+\usepackage{mathabx}
 
 \pagestyle{fancy}
 
@@ -25,7 +26,7 @@
 \newtheorem{theorem}{Theorem}
 \newtheorem{definition}{Definition}
 \newtheorem{example}{Example}
-
+\newtheorem{lemma}{Lemma}
 \newenvironment{menumerate}{%
   \edef\backupindent{\the\parindent}%
   \enumerate%
@@ -148,24 +149,120 @@
 
 \item We conjecture generally about separable ODE; that is differential equations of the following form.
     \begin{equation}
-        x' = f(x) \in \mathbb{R}
+        D_s(x) = \mathcal{F}(x)
     \end{equation}
-
+        where $x: \mathbb{R} \to \mathbb{R}^m$ is differentiable.
     \begin{theorem}
-        If $f(x)$ is bounded then no solution of the ODE escape to infinity in finite time.
+        Suppose $$\mathcal{F}: C^0(\mathbb{R}, \mathbb{R}^m) \to C^0(\mathbb{R}, \mathbb{R}^m).$$ is bounded;
+        that is, there exists an $M$ such that for all $\omega_2, \hat 0 \in C^0(\mathbb{R}, \mathbb{R}^m),$
+        \begin{equation}
+            d_{C^0}\left(\hat0,\mathcal{F}[\omega_2]\right) \leq M
+        \end{equation}
+        Then if $x \in C^0(\mathbb{R}, \mathbb{R}^m)$ is a solution to (2), it does not escape to
+        infinity in finite time.
     \end{theorem}
     \begin{proof}
-        If the ODE is bounded then there exists an $M$ such that for all $x,$ $|f(x)| \leq M.$ 
-        Furthermore, we have that since the ODE is separable,
-        \begin{equation*}
+        Let $Q_t = [t_0, t]$ be the finite time in which the differential form is evaluated.
+        Then since the fundamental theorem of calculus yields
+        \begin{equation}
+                \int_{Q_t} D_s[x](s)\ ds = x(t) - x(t_0) = \int_{Q_t} \mathcal{F}[x](s)\ ds\\
+        \end{equation}
+        and so we need only show that the right hand side does not escape to infinity in finite time.
+        It follows that since $\mathcal{F}$ is a bounded mapping, 
+        \begin{equation}
             \begin{aligned}
-                x'(s)\frac{1}{f(x(s))} &= 1 \\
-                \int_{t_0}^{t} x'(s)\frac{1}{f(x(s))}\ ds &= \int_{t_0}^{t}ds 
+                \left |\int_{Q_t} \mathcal{F}[x](s)\  ds \right|_2
+                     &\leq \sup_{C^0} \left| \int_{Q_t} \mathcal{F}[\omega](s)\  ds \right|_2\\
+                &\leq \sup_{\omega \in C^0} \sup_{z \in Q_t} |\mathcal{F}[\omega](z)|_2 m(Q_t) \\
+                &\leq \sup_{\omega\in C^0} \sup_{z \in \mathbb{R}} |\mathcal{F}[\omega](z)|_2 m(Q_t)\\
+                &\leq Mm(Q_t) 
             \end{aligned}
-        \end{equation*}
+        \end{equation}
     \end{proof}
 
+    \begin{theorem}
+        Suppose that $\mathcal{F}$ from above satisfies the lipschitz condition. Then any solutions
+        do not explode in finite time.
+    \end{theorem}
+    \begin{proof}
+        Recall that Picard's theorem asserts that $\mathcal{F}$ lipschitz implies that there is a locally
+        unique solution to (2). Such a solution is a continuous mapping from $(a,b) \to \mathbb{R}^m$
+        which can be made to map the whole domain $\mathbb{R}.$ Since this mapping is defined for the whole path connected
+        set $\mathbb{R},$ it does not blow up in finite time.
+    \end{proof}
+
+    \begin{lemma}
+        Suppose that $f: X \to Y$ is a mapping between two metric spaces satisfying the Lipschitz condition.
+        Then it is uniformly continuous.
+    \end{lemma}
+    \begin{proof}
+        Let $\epsilon > 0$, and $x,y \in X.$
+        Take $K$ to be the lipschitz constant for $f$.
+        If $\delta = \epsilon/K$ and $d_X(x,y) < \delta$,
+        then clearly $Kd_X(x,y) < \epsilon.$
+        Using lipschitz, we know that $$d_Y(fx,fy) \leq K d_X(x,y) < \epsilon,$$
+        so $f$ is uniformly continuous.
+    \end{proof}
+
+    \begin{theorem}
+        If $\mathcal{F}$ is a uniformly continuous mapping then the solution
+        to (2) does not explode in finite time.
+    \end{theorem}
+    \begin{proof}
+        By the preceding lemma $\mathcal{F}$ satisfies the lipschitz condition
+        and therefore by a previous theorem does not explode in finite time.
+    \end{proof}
+
+\setcounter{enumi}{38}
+\item We give an alternative proof for completion.
+    \begin{theorem}
+    Every metric space can be completed.
+    \end{theorem}
+    \begin{proof}
+        Let $M$ be a metric space with distance $d.$ Fix a point $p\in M$
+        and for each $q \in M$ define a function $f_q(x) = d(p,x) - d(p,x).$
+        Clearly $d(q,x) - d(p,x)$ is bounded since it is never more than $d(q,p).$
+        It is continuous since arithmetic in $\mathbb{R}$ is continuous.
+
+        Now consider the banach space $F = C_b^0(M, \mathbb{R})$. We have that
+        $\phi: x \to f_x$ is an isometry from $M$ into $F$ since,
+        \begin{equation}
+            d(f_a,f_b) = \sup_{x\in M}|d(a,x) - d(p,x) - d(b,x) + d(p,x)| = d(a,b).
+        \end{equation}
+
+        Since the $M$ is dense in its closure and $\phi$ is an isometry,
+        it follows that $\phi(M)$ is dense in the closure of $M$ in $F$.
+        Since $cl_F(M)$ is a closed subset of the complete metric space $C_b(M)$
+        it follows that $cl_F(M)$ is complete and therefore is the completion
+        of the metric space $M.$
+    \end{proof}
+
+
+\setcounter{enumi}{40}
+\item For the purpose of this example, consider the 
+following theorem of Keshner.
+    \begin{theorem}
+        For any set $D \subset \mathbb{R}^n$ there is a separately continuous
+        function $f: \mathbb{R}^n \mathbb{R}$ with $D(f) = D$ if and only if
+        $D$ is an $F_\sigma$ set and every orthogonal projection of $D$ onto
+        a coordinate hyperplane has first category image.
+    \end{theorem}
+    By Keshner's theorem it would seem that there are limits
+    to just how discontinuous a function which is separately continuous can be.
+    Therefore I will describe a function which is only discontinuous at a point
+    (ie. not continuous as per the questions exact wording.)
+    \begin{example}
+        Let $f:[0,1] \to [0,1]$ be defined such that 
+        \begin{equation}
+            (x,y) \mapsto \frac{(x-0.5)(y-0.5)}{(x-0.5)^2 + (y-0.5)^2}
+        \end{equation}
+        when $(x,y) \neq 0$ and $(x,y) \mapsto 0$ at $(x,y) = 0.$
+    \end{example}
+    The partial derivatives of $f$ exist at $(0.5,0.5)$ but the function
+        is clearly discontinuous as per \emph{K-Ciesielski et al}. 
+
+\setcounter{enumi}{42}
+    \item The joke is that there ODE on a greecian urn. Nice one!
+
 \end{menumerate}
-
-
 \end{document}
