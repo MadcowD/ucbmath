@@ -76,17 +76,53 @@
 			\end{aligned}
 		\end{equation}
 	\end{theorem}
+	\begin{proof}
+		Let the following defenitions stand,
+		\begin{equation}
+			\begin{aligned}
+				A &= \sup \{|Tv|\;:\;|v| < 1 \} \\
+				B &= \sup \{|Tv|\;:\;|v| \leq 1 \} \\
+				C &= \sup \{|Tv|\;:\;|v| = 1 \} \\
+				D &= \inf \{M\;:\;v \in V \implies |Tv| \leq M|v| \}
+			\end{aligned}
+		\end{equation}
+		Observe that $A \leq B$ and $C \leq B$ since the family considting of the underlying sets
+		is respectiverley ordered by size.
+		By definition we have that, 
+		$$\|T\| = \sup\left\{|Tv|/|v|\right\},$$ and nameley $|Tv|/|v| = |T(v/|v|)|$. Therefore
+		$\|T\| \leq C.$
+		If $|v| \leq 1$ then $|Tv| \leq |Tv|/|v|$ and so $B \leq \|T\|.$
+		We yield that $\|T\| = B= C.$ 
+
+		By the same logic $A \leq \|T\|$ and therefore is equivalent. 
+		Lastly $|Tv| \leq \|T\||v|$ and so by the epsilon property $D= A$.
+	\end{proof}
 
 	\setcounter{enumi}{3}
 	\item %4
 
 	\setcounter{enumi}{5}
 	\item %6
+	x
 
 	\setcounter{enumi}{11}
-	\item %12
+	\item Prove the following.
+	\begin{theorem}
+		If $V$ is a normed finite dimensional vector space, then the unit ball, $B = \{v:|v| =1\}$ is compact.
+	\end{theorem}
+	\begin{proof}
+	$\dim V = n \in \mathbb{N} \implies V \cong \mathbb{R}^n \implies B \cong S^{n-1 } \implies B$ compact.	 
+	\end{proof} 
 
-	\item %13
+	\item Prove the following.
+	\begin{theorem}
+		The set of invertible $n\times n$ matrices is not dense in $\mathcal{M}.$
+	\end{theorem}
+	\begin{proof}
+		Consider the set of matrix all of whose entries are the same. They create a linear subspace
+		which is a disjoint open subset of $\mathcal{M}.$ Therefore the set of invertible matrices could
+		not possibly be dense in $\mathcal{M}.$	 
+	\end{proof}
 \end{menumerate}
 
 \end{document}

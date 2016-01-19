@@ -1,0 +1,118 @@
+%!TEX root = flashcards.tex
+\begin{flashcard}[Definition]{Differentiable at $x$}
+
+    \vspace*{\stretch{1}}
+    The function $f: (a,b) \to \mathbb{R}$ is differentiable at $x$ iff
+    $$\lim_{t\to x} \frac{f(t) - f(x)}{t -x} = L$$
+    exists.
+    \vspace*{\stretch{1}}
+
+\end{flashcard}
+
+\begin{flashcard}[Theorem]{Mean Value Theorem}
+
+    \vspace*{\stretch{1}}
+    A continuous function $f:[a,b] \to \mathbb{R}$ which is differentiable on $(a,b)$ has the mean value property:
+    there exists a $\theta \in (a,b)$ such that $$f(b) -f(a) = f'(\theta)(b-a).$$
+    \vspace*{\stretch{1}}
+
+\end{flashcard}
+
+
+\begin{flashcard}[Proof]{Mean Value Theorem}
+
+    \vspace*{\stretch{1}}
+    Take $f(x) - \frac{f(b) - f(a)}{b-a}(x-a) = g(x).$ Then $g(x)$ attains a maximum or a minimum on $[a,b]$ by its continuity. 
+    At either the min or max, $\theta \in (a,b).$ Then $g'(\theta) = 0.$ Therefore $f'(\theta) = S$. \\
+    \emph{Draw the secant line!}
+    \vspace*{\stretch{1}}
+
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Lipschitz Condition}
+
+    \vspace*{\stretch{1}}
+    $f : M \to N$ satisfies the lipschitz condition if and only if there exists a $K$ such that
+    $$d(fx,fy) \leq Kd(x,y)$$
+    \vspace*{\stretch{1}}
+
+\end{flashcard}
+
+\begin{flashcard}[Theorem]{Ratio Mean Value Theorem}
+
+    \vspace*{\stretch{1}}
+    Let $f,g : [a,b] \to \mathbb{R}$ be continuous functions. Then there exists a $\theta \in (a,b)$ such that 
+    $$\frac{f'(\theta)}{g'(\theta)} = \frac{\Delta f}{\Delta g}$$
+    \vspace*{\stretch{1}}
+
+\end{flashcard}
+
+
+\begin{flashcard}[Example]{A function satisfying the lipschitz condition}
+
+    \vspace*{\stretch{1}}
+    $$f(x)  = Kx.$$
+    $$|f(x)'| \leq K$$
+    \vspace*{\stretch{1}}
+
+\end{flashcard}
+
+
+\begin{flashcard}[Example]{Discontinuity of the second kind}
+
+    \vspace*{\stretch{1}}
+    $$f(x) = x^2\sin\left(\frac{1}{x}\right), f(0) = 0 $$
+    \vspace*{\stretch{1}}
+
+\end{flashcard}
+
+\begin{flashcard}[Definition]{$r$-th order differenitable at $x.$}
+
+    \vspace*{\stretch{1}}
+    The function $f$ is $r$-th order differentiable at $x$ if and only if it is differentiable up to $r$ and $f^{(r-1)}$ is continuous.
+    \vspace*{\stretch{1}}
+
+\end{flashcard}
+
+
+\begin{flashcard}[Definition]{Darboux continuous}
+
+    \vspace*{\stretch{1}}
+    A function which posesses the intermediate value property.
+    \vspace*{\stretch{1}}
+
+\end{flashcard}
+
+\begin{flashcard}[Theorem]{Continuity of the derivative of a differentiable function}
+
+    \vspace*{\stretch{1}}
+    If $f$ is differentiable on $(a,b)$ then its derivative is Darboux continuous.
+    \vspace*{\stretch{1}}
+
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Smooth function}
+
+    \vspace*{\stretch{1}}
+    A function $f: (a,b) \to \mathbb{R}$ is smooth if and only if it is infiniteley differentiable.
+    \vspace*{\stretch{1}}
+
+\end{flashcard}
+
+\begin{flashcard}[Definition]{Analytic function}
+
+    \vspace*{\stretch{1}}
+    $f:(a,b) \to \mathbb{R}$ is analytic if for each $x \in (a,b)$ there is a power series $$\sum a_r h^r$$ and a $\delta > 0$
+    such that if $|h| < \delta$ then $$f(x+h) = \sum_{r=0}^\infty a_r h^r$$
+    \vspace*{\stretch{1}}
+
+\end{flashcard}
+
+\begin{flashcard}[Example]{Nonanalytic Smooth Function}
+
+    \vspace*{\stretch{1}}
+    $$e(x) = e^{-1/x}, x > 0, e(x) = 0, x \leq 0$$
+    could 
+    \vspace*{\stretch{1}}
+
+\end{flashcard}
