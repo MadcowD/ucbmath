@@ -99,11 +99,120 @@
 	\end{proof}
 
 	\setcounter{enumi}{3}
-	\item %4
+	\item 
+
+	Consider the following theorem.
+	\begin{theorem}
+		If $T:V\to V$ is a linear transformation on the normed vector space $V$. Let $A = \sup\{r : B_r(0) \supset TU\}$
+		and $B = \inf \{r : B_r(0) \subset TU\}.$ Then, $A = \|T\|$ and $B = m(T).$
+	\end{theorem}
+	\begin{proof}
+		Observe $U \subset V$ is the unit ball induced by $| . |$ and therefore $U$ is compact.
+		$T$ is linear so by its continuity we have that $TU$ is compact and
+		thereby contains all its limit points.
+
+		Then there is a sequence in $TU$ so that $v_n \to v \in \partial TU \cap B_r(0).$
+		In particular $|v| = A.$ Likewise there is a sequence $w_n \to w$ in $TU$ so that $|w| = B.$
+
+		Suppose that $\|T\| < A.$ Then $\|T\| < |v|.$ There exists a $u$
+		so that $Tu = v$ and $v \in \partial TU$ implies that $u \in \partial U$ by continuity and linearity.
+		Thus $\|T\| < |Tu|/|u|$ which is a contradiction. 
+
+		Suppose that $\|T\| > A$ or equivalently $\|T\| -A = \epsilon > 0.$ By the linearity of $T$
+		we have that for all $z \in V$  $\|T\| - |z| \leq \epsilon$ since $ z = \alpha q$ for $\alpha \in \mathbb{R}$
+		and $q \in TU.$ So $\|T\| = \sup\{|Tu|/|u| : u \in U\} + \epsilon$ which is a contradiction.
+
+		So $\|T\| = A.$ 
+
+
+		Suppose that $m(T)  < B.$ Then $m(T) < |w|.$ There exists a $u$
+		so that $Tu = w$ and $w \in \partial TU$ implies that $u \in \partial U$ by continuity and linearity.
+		Thus $m(T) > |Tu|/|u|$ which is a contradiction. 
+
+		Suppose that $m(T) > B$ or equivalently $m(T) -B = \epsilon > 0.$ By the linearity of $T$
+		we hawe that for all $z \in V$  $m(T) - |z| \leq \epsilon$ since $ z = \alpha q$ for $\alpha \in \mathbb{R}$
+		and $q \in TU.$ So $m(T) = \inf\{|Tu|/|u| : u \in U\} + \epsilon$ which is a contradiction.
+
+		So $m(T) = B.$ 
+	\end{proof}
+
+	\begin{theorem}
+		If $T:V\to V$ is a linear isomorphism then, $m(T) > 0.$
+	\end{theorem}
+	\begin{proof}
+		In the contrapositive, $m(T) = 0$ implies that the largest ball which is contained
+		in $TU$ is the $0$ ball and so the kernel of $T$ is non-triial. Therefore $T$ is note an isomorphism.
+
+	\end{proof}
+
+	\begin{theorem}
+		If $T: V \to V$ has positive conorm and is linear, then it is an isomorphism.
+	\end{theorem}
+	\begin{proof}
+		Positive conorm impliesn that $T$ has a trivial kernel and so by the invertible matrix theorem,
+		$T \equiv A$ where $A$ is invertible and so $T$ is invertible.
+	\end{proof}
+
+	\begin{theorem}
+	If $T:V \to V$ and $T$ is linear, then $T$ is the identity.
+	\end{theorem}
+	\begin{proof}
+		The conorm is equal to the norm if and only if $U \mapsto U.$ Then by linearity $v/|v| \mapsto v/|v|$ implies 
+		$v \mapsto v.$
+	\end{proof}
 
 	\setcounter{enumi}{5}
 	\item %6
-	x
+	Consider the following theorem.
+	\begin{theorem}
+		$\mathcal{L}_n$ and $\mathcal{M}_n$ are rings where the abelian operator is
+		pointwise and componentwise respectveley, and where the monoid
+		law of composition is multiplication and functional composition 
+		respectiveley.
+	\end{theorem}
+	\begin{proof}
+		The set of linear transformations $\mathcal{L}_n$  is Abelian with respect to
+		addition since it occurs over the field $\mathbb{R}$; that is,
+		 $$+_\mathcal{L} : \mathcal{L}_n\times \mathcal{L}_n \to \mathbb{R} \times \mathbb{R} \to \mathbb{R} \to \mathcal{L}_n.$$
+
+
+		As for monoid laws of composition, we show the distributive properties. First,
+		$f, id \in \mathcal{L}_n$ imples that $f \circ id : V \to W$ with the mapping
+		$x \mapsto x \mapsto f(x) \equiv x \mapsto f(x)$. So, $f \circ id \equiv f.$
+		Now consider $g,h \in \mathcal{L}_n.$ The composition $f \circ (g +_\mathcal{L} h): V \to W$
+		has the mapping
+		$$x \mapsto h(x) + g(x) \mapsto f(h(x) + g(x)).$$
+		By linearity, we equivelently have $x \mapsto f(h(x)) + f(g(x)).$ So in total
+		$f \circ(g +_\mathcal{L} h) \equiv f \circ g +_\mathcal{L} f \circ h.$ Lastly,
+		$(f \circ  g) \circ h \equiv f \circ (g \circ h)$ by the same logic. Therefore, $\mathcal{L}_n$ is a ring.
+		
+		Matrices have the following result. Take $M,N,L \in \mathcal{M}_n$.
+		gain the addition operator is Abelian since it maps to $\mathbb{R}^n$; that is
+		$$+_M: \mathcal{M}_n \times \mathcal{M}_n \to \mathbb{R}^{n\times n} \times \mathbb{R}^{n\times n} \to \mathbb{R}^{n\times n} \to \mathcal{M}_n.$$ 
+		Then it follows that, $MI = M$ by the rules matrix multiplication. 
+		Furthermore matrix multiplication is associative and distributive. Therefore 
+		$\mathcal{M}_n$ is a ring.
+
+	\end{proof}
+
+	\begin{theorem}
+	There exists a ring isomorphism between $\mathcal{M}_n$ and $\mathcal{L}_n.$
+	\end{theorem}
+	\begin{proof}
+	Let $\tau : \mathcal{M}_n \to \mathcal{L}_n$ be defined by the mapping $A \mapsto (x \mapsto Ax).$ 
+	Clearly this mapping is a surjection since given any $f \in \mathcal{L}_n$ there is at least a corresponding matrix
+	in $\mathcal{M}_n$ by the following construction. Take the standard basis of $V$ and produce $$A = [f(e_1) \dots f(e_n)].$$
+	Then $f(v) = f(e_1)v_1 + \dots + f(e_n)v_n = Av.$ Suppose there were another matrix $B$ such that 
+	$\tau(B) = f = \tau(A)$. Then $\tau(B - A) = \tau(B) - \tau(A) = f - f = 0$ but this contradicts the fact
+	that $B \neq A$. Therefore $\tau$ is bijective.
+
+	Finally let $C \in \mathcal{M}_n.$ Then $\tau(A(B+C)) = (x \mapsto A(B+C)x).$ By linearity this is
+	 equivalent to $(x \mapsto ABx + ACx) = \tau(A) \circ \tau(B) + \tau(A) \circ(C) = \tau(A) \circ (\tau(B) + \tau(C)).$ So,
+	 $\tau$ is a homomorphism.
+
+	 Hence $\tau$ is an isomorphism.  
+	\end{proof}
+
 
 	\setcounter{enumi}{11}
 	\item Prove the following.
@@ -119,8 +228,8 @@
 		The set of invertible $n\times n$ matrices is not dense in $\mathcal{M}.$
 	\end{theorem}
 	\begin{proof}
-		Consider the set of matrix all of whose entries are the same. They create a linear subspace
-		which is a disjoint open subset of $\mathcal{M}.$ Therefore the set of invertible matrices could
+		Consider the set of matrix all of whose entries are the same ($(a_{ij} = r \forall i \forall j$). They create a linear subspace
+		which is a connected open subset of $\mathcal{M}$ disjoint from the set of invertible matrices. Therefore the set of invertible matrices could
 		not possibly be dense in $\mathcal{M}.$	 
 	\end{proof}
 \end{menumerate}
