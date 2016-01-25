@@ -160,7 +160,71 @@ commutative, and distributive laws.}
                      |P|^2 + |S|^2 -2\langle P, S \rangle &= k^2(|Q|^2 + |S|^2 - 2\langle Q,S\rangle ) \\
                      0&= |P|^2 + |S|^2 -2\langle P, S \rangle - k^2(|Q|^2 + |S|^2 - 2\langle Q,S\rangle ) \\
                      &= (1-k^2)|S|^2 + |P|^2 -k^2|Q|^2 -2\langle P - Q, k^2S \rangle
+                     &= |S|^2 + \frac{|P|^2}{1-k^2} - \frac{}k^2|Q|
                 \end{aligned}
+            \end{equation}
+        \end{proof}
+        TODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODO
+
+        \item Gamelin Exercise I.2.5
+
+        \begin{theorem}
+            For $n\geq 1$ and $z \in \mathbb{C}$ such that $z \neq 1,$ we have that
+            \begin{equation}
+                1 +z + z^2 + \dots + z^n = (1-z^{n+1})/(1-z).
+            \end{equation}
+        \end{theorem}
+        \begin{proof}
+            Observe that for $z \in \mathbb{C}$ we have that, $z = e^{i\theta}.$ Therefore,
+            \begin{equation}
+                \begin{aligned}
+                    e^{i0} + e^{i\theta} + e^{i2\theta} + \dots + e^{in\theta} &= 1 +z + z^2 + \dots + z^n
+                \end{aligned}
+            \end{equation}
+            Multiplication by $(1 -z)$ gives, 
+            \begin{equation}
+                \begin{aligned}
+                    (1-e^{i\theta})e^{i0} + e^{i\theta} + e^{i2\theta} + \dots + e^{in\theta} &= e^{i0} + e^{i\theta} + e^{i2\theta} + \dots + e^{in\theta}\\
+                    &\;\;\; - e^{i(0 + \theta)} + e^{i(\theta + \theta)} + e^{i(2\theta+\theta)} + \dots + e^{i(n\theta + \theta)} \\
+                    &= e^{i0} - e^{i(n\theta + \theta)} \\
+                    &= 1 - z^{n+1}.
+                \end{aligned}
+            \end{equation}
+
+            Reducing using eulers identity it follows that,
+            \begin{equation}
+                \begin{aligned}
+                    (1-z)(1 +z + z^2 + \dots + z^n) &= (1-z^{n+1})\\
+                    1 +z + z^2 + \dots + z^n &= (1-z^{n+1})/(1-z),
+                \end{aligned}
+            \end{equation}
+            when $z \neq 1.$ This completes the proof.
+        \end{proof}
+
+        \begin{theorem}
+            For $n\geq 1$ and $z \in \mathbb{C}$ such that $z \neq 1,$ we have that
+            \begin{equation}
+                1 +\cos \theta + \cos 2 \theta + \dots + \cos n \theta = \frac12 + \frac{\sin(n + \frac12)}{2 \sin \theta/2}
+            \end{equation}
+        \end{theorem}
+        \begin{proof}
+            Recall  that $z = r
+             \theta.$ Take in particular all such $z$ whose absolute magnitude is unity. Then $z^2 = cis 2\theta.$ 
+            Then Theorem $4$ implies that 
+            \begin{equation}
+                1 + cis \theta + cis 2 \theta + \dots + cis n \theta = (1-z^{n+1})/(1-z).
+            \end{equation}
+            A little algebra gives us 
+            \begin{equation}
+                \begin{aligned}
+                    \frac{1 - cis (n+1)\theta}{1 - cis \theta} &= (1 - cis (n+1) \theta)\overline{(1 - cis \theta)} \\
+                    &= (1 - \cos(n+1)\theta - i\sin(n+1)\theta)(1 - \cos\theta + i\sin\theta) \\
+                    &= ((1 - \cos(n+1)\theta)(1 - \cos\theta) +  \sin(n+1)\theta\sin \theta) + O(if(\theta)).
+                \end{aligned}
+            \end{equation}
+            We then only need to deal with the real part of this equation. Distribution yields, 
+            \begin{equation}
+            ((1 - \cos(n+1)\theta)(1 - \cos\theta) +  \sin(n+1)\theta\sin \theta) = 1-\cos(\theta)+\cos(n\theta)-\cos(\theta+n\theta)
             \end{equation}
         \end{proof}
 \end{menumerate}
