@@ -208,8 +208,7 @@ commutative, and distributive laws.}
             \end{equation}
         \end{theorem}
         \begin{proof}
-            Recall  that $z = r
-             \theta.$ Take in particular all such $z$ whose absolute magnitude is unity. Then $z^2 = cis 2\theta.$ 
+            Recall  that $z = r cis\theta.$ Take in particular all such $z$ whose absolute magnitude is unity. 
             Then Theorem $4$ implies that 
             \begin{equation}
                 1 + cis \theta + cis 2 \theta + \dots + cis n \theta = (1-z^{n+1})/(1-z).
@@ -217,15 +216,14 @@ commutative, and distributive laws.}
             A little algebra gives us 
             \begin{equation}
                 \begin{aligned}
-                    \frac{1 - cis (n+1)\theta}{1 - cis \theta} &= (1 - cis (n+1) \theta)\overline{(1 - cis \theta)} \\
-                    &= (1 - \cos(n+1)\theta - i\sin(n+1)\theta)(1 - \cos\theta + i\sin\theta) \\
-                    &= ((1 - \cos(n+1)\theta)(1 - \cos\theta) +  \sin(n+1)\theta\sin \theta) + O(if(\theta)).
+                    \frac{Re(1 - cis (n+1)\theta}{Re(1 - cis \theta)} &= \frac{Re(1 - e^{(n+1)\theta})Re(1-e^{-i\theta})}{Re(1 - e^{i\theta})Re(1-e^{-\theta i})} \\
+                    &= \frac{Re(1 - e^{i\theta} - e^{i(n+1)\theta} + e^{in\theta})}{Re(2 - 2cos\theta)} \\
+                    &= \frac{1 - \cos\theta - \cos (n+1)\theta + \cos n \theta}{4 \sin^2(\theta/2)} \\
+                    &= \frac{2\sin^2{\theta/2}- \sin(n  + 1/2)\sin(\theta/2)}{4 \sin^2(\theta/2)} \\
+                    &= \frac12 -\frac{ \sin(n  + 1/2)}{2\sin(\theta/2)} 
                 \end{aligned}
             \end{equation}
-            We then only need to deal with the real part of this equation. Distribution yields, 
-            \begin{equation}
-            ((1 - \cos(n+1)\theta)(1 - \cos\theta) +  \sin(n+1)\theta\sin \theta) = 1-\cos(\theta)+\cos(n\theta)-\cos(\theta+n\theta)
-            \end{equation}
+            Since the above was the real part of $1 +z + z^2 + \dots + z^n,$ the theorem holds.
         \end{proof}
 \end{menumerate}
 
