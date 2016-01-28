@@ -387,7 +387,26 @@ commutative, and distributive laws.}
         So it follows that complex conjugation distributes through exponentiation. This completes the proof.
     \end{proof}
     \item Gamelin Exercise I.6.3
-    
+    \begin{definition}
+        We say that $f_m$ is a branch of the new half slit log function if and only if it is given for $m\in\mathbb{N}$
+        such that
+        \begin{equation}
+            f_m(z) = \log |z| + i(Arg(ze^{-i\tau/4}) + \tau/4 + \tau m)
+        \end{equation}
+    \end{definition}
+    This definition is apt since it gives a simple rotation to the discontinuity of $Arg$ and then corrects the pertubution thereby induced on the angle.
+
+    \item Gamelin Exercise I.6.4
+    \begin{definition}
+        Let $z_0 \in \mathbb{C}$ We say that $f_m$ is a branch of the  half slit log function cenetered at $z_0$ if and only if it is given for $m\in\mathbb{N}$
+        such that
+        \begin{equation}
+            f_m(z) = \log |z-z_0| + i(Arg(z - z_0) + \tau m).
+        \end{equation}
+    \end{definition}
+
+        Visually the slit starts at $z_0$ and heads in the negative direction directly.
+
 \end{menumerate}
 
 
