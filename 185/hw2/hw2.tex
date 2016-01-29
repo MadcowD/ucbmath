@@ -1,0 +1,100 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%                      Homework _                            %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[letter]{article}
+
+\usepackage{lipsum}
+\usepackage[pdftex]{graphicx}
+\usepackage[margin=1.5in]{geometry}
+\usepackage[english]{babel}
+\usepackage{listings}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{framed} 
+\usepackage{amsmath}
+\usepackage{titling}
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{definition}{Definition}
+
+\newenvironment{menumerate}{%
+  \edef\backupindent{\the\parindent}%
+  \enumerate%
+  \setlength{\parindent}{\backupindent}%
+}{\endenumerate}
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%
+%% DOC INFO %%%
+%%%%%%%%%%%%%%%
+\newcommand{\bHWN}{2}
+\newcommand{\bCLASS}{MATH 185}
+
+\title{\bCLASS: Homework \bHWN}
+\author{William Guss\\26793499\\wguss@berkeley.edu}
+
+\fancyhead[L]{\bCLASS}
+\fancyhead[CO]{Homework \bHWN}
+\fancyhead[CE]{GUSS}
+\fancyhead[R]{\thepage}
+\fancyfoot[LR]{}
+\fancyfoot[C]{}
+\usepackage{csquotes}
+
+%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+
+%%%%%%% Be sure to set the counter and use menumerate
+\begin{menumerate}
+	\item
+	\begin{definition}
+		A set $S \subset \mathbb{C}$ is bounded if and only if there exists $ z \in \mathbb{C}$ such that for every $s \in S,$ $|s| \leq |z|$
+	\end{definition}
+	\begin{definition}
+		Alternativeley, a set $S \subset \mathbb{C}$ is bounded if and only if there is an $r$  such that $S \subset B_r(0),$ where $B_s(z)$ is the ball of radius $s$ with center $z.$
+	\end{definition}
+	\begin{theorem}
+		If $(z_n)^\infty_{n=1}$ is a convergent sequence of compex numbers,
+		then the sequence is bounded.
+	\end{theorem}
+	\begin{proof}
+		Take the value set $S = \{z_n\}.$ Then suppose there were no $r$ such that $S \subset B_r(0)$. If this is the case, the countability of $S$ implies that for every $n$, $S \cap B_n(0)$ is finite.
+		Since $z_n \to z,$ take $N \in \mathbb{N}$ such that $N > |z|.$ Such an $n$ exists by the archimedian principle of $\mathbb{R}.$ Then $S \cap N$ must be finite. 
+
+		Take $\epsilon = N - |z|,$ then there is an $M$ such that for all $m > M,$ $d(z_n,z) < \epsilon.$ That is there are infinite elements within $\epsilon$ of $z,$ and thereby there are infinite elements in $S \cap B_N(0).$ This is a conradiction to its finiteness.
+
+		Therefore it must be that the value set is contained within the $N$ ball, and therefore,  $(z_n)$ is bounded. 
+	\end{proof} 
+
+	\item Exercise II.1.11
+	\begin{theorem}
+	The function $Arg : \mathbb{C} \to \mathbb{R}$ is continuous except for along the line $L = \{z : z = 0, Re(z) < 0\}.$
+	\end{theorem}
+	\begin{proof}
+		A function is continuous if and only if it preserves limits. Specifically, if $\lim_{h \to x} f(h) = f(x) $ implies that $f$ is continuous at $h$. Consider the restricted $Arg$ function, say $A:\mathbb{C} \setminus L \to \mathbb{R}.$ Then it is clear that $\lim_{\mathbb{C}\setminus L} A(h) = (-\pi,\pi),$ since if a point is
+		within an $\epsilon$ neighborhood of another point, its gradial distance is proportionate to $\sin^{-1}$ of its $\epsilon$ distance, (a continuous function).
+
+		However consider any $z \in L$ Such that $h \to z$ approaches from the upper half plane and $g \to z$ from the lower. Clearly $Arg(h) \to \pi$ and $Arg(g) \to -\pi,$ so no limit exists and the function is not continuous at $z.$ This completes the proof.
+	\end{proof}
+
+	\item Exercise II.1.16
+	\begin{theorem}
+	
+	\end{theorem}
+\end{menumerate}
+
+\end{document}
