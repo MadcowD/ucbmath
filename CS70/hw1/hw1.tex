@@ -235,29 +235,154 @@
           Take the sequence $a_n = n.$ Then if there existed $y$ such that $ny \geq n^2$, then $y \geq n$ for all $n,$
           a contradiction to the archimedian property of $\mathbb{R}.$ QED
         \end{proof}
-
-        \item DUCK PROBLEMS DUDE.
-        \begin{menumerate}
-          \item
-            \begin{menumerate}
-             \item $\forall x D(x) \implies  I(x).$
-             \item $\forall x V(x) \implies H_{issues}(x)$
-             \item $\forall x C(x) \implies \neg W(x)$
-             \item $\forall x H_{issues}(x) \implies W(x)$
-             \item $\forall x  I(x) \implies C(x)$
-             \item $\forall x P(x) \implies V(x) $
-            \end{menumerate}
-          \item 
-            \begin{menumerate}
-             \item $\forall x  \neg I(x) \implies \neg D(x)$
-             \item $\forall x \neg H_{issues}(x) \implies \neg V(x)$
-             \item $\forall x  W(x) \implies \neg C(x)$
-             \item $\forall x \neg W(x) \implies \neg H_{issues}(x) $
-             \item $\forall x \neg C(x) \implies \neg I(x)$
-             \item $\forall x \neg V(x) \implies \neg P(x) $
-            \end{menumerate}
-        \end{menumerate}
     \end{menumerate}
+
+      \item Problems concerning ducks.
+      \begin{menumerate}
+        \item
+          \begin{menumerate}
+           \item $\forall x D(x) \implies  I(x).$
+           \item $\forall x V(x) \implies H_{issues}(x)$
+           \item $\forall x C(x) \implies \neg W(x)$
+           \item $\forall x H_{issues}(x) \implies W(x)$
+           \item $\forall x  I(x) \implies C(x)$
+           \item $\forall x P(x) \implies V(x) $
+          \end{menumerate}
+        \item 
+          \begin{menumerate}
+           \item $\forall x  \neg I(x) \implies \neg D(x)$
+           \item $\forall x \neg H_{issues}(x) \implies \neg V(x)$
+           \item $\forall x  W(x) \implies \neg C(x)$
+           \item $\forall x \neg W(x) \implies \neg H_{issues}(x) $
+           \item $\forall x \neg C(x) \implies \neg I(x)$
+           \item $\forall x \neg V(x) \implies \neg P(x) $
+          \end{menumerate}
+        \item We use the following argument
+        \begin{equation*}
+          \begin{aligned}
+            P(x) &\implies V(x) \\
+            &\implies H_{issues}(x) \\
+            &\implies W(x) \\
+            &\implies \neg C(x) \\
+            &\implies \neg I(x) \\
+            &\implies \neg D(x).
+          \end{aligned}
+        \end{equation*}
+        to conclude that those who wear party hats vote; and so
+        they have done their homework on the issues; and so
+        they are well informed; and so they are not confused;
+        and so they have read the candidates positions; and so
+        they are not a Duck dynasty viewer.
+      \end{menumerate}
+    \item 
+    \begin{menumerate}
+      \item The following truth table is produced
+      \begin{equation}
+      \begin{array}{cccc|c@{}ccccccccccc@{}ccc@{}cccccccccc@{}ccc@{}cccccccccc@{}ccc@{}ccccccccc@{}c}
+        a&b&c&d&O(a,b,c,d)\\\hline
+        1&1&1&1&\mathbf{0}\\
+        1&1&1&0&\mathbf{0}\\
+        1&1&0&1&\mathbf{0}\\
+        1&1&0&0&\mathbf{0}\\
+        1&0&1&1&\mathbf{0}\\
+        1&0&1&0&\mathbf{1}\\
+        1&0&0&1&\mathbf{0}\\
+        1&0&0&0&\mathbf{1}\\
+        0&1&1&1&\mathbf{0}\\
+        0&1&1&0&\mathbf{0}\\
+        0&1&0&1&\mathbf{0}\\
+        0&1&0&0&\mathbf{0}\\
+        0&0&1&1&\mathbf{0}\\
+        0&0&1&0&\mathbf{1}\\
+        0&0&0&1&\mathbf{0}\\
+        0&0&0&0&\mathbf{1}\\
+        \end{array}
+      \end{equation}
+      \item Thereby giving the following Karneugh table:
+      \begin{equation}
+        \begin{array}{c|c|c|c|c|}
+              &00&01&11&10 \\\hline
+            00&1&0&0&1\\\hline
+            01&0&0&0&0\\\hline
+            11&0&0&0&0\\\hline
+            10&1&0&0&1\\\hline
+        \end{array}
+      \end{equation}
+      \item It is equivalent to $\neg B \wedge \neg D.$
+      This follows since we have $(\neg B \wedge \neg D) \vee \neg ( A \vee C) \vee \neg (A \vee \neg C) \vee \neg (\neg A \vee C) \vee \neg (\neg A \vee \neg C).$
+      And so we have cancellation.
+    \end{menumerate}
+    \item Proof by contrapositive
+    \begin{enumerate}
+        \item \begin{theorem}
+            If $x,y, a \in \mathbb{Z}$ if $a$ does not divide $xy$, then 
+            $a$ does not divide $x$ and $x$ does not divide $y.$
+        \end{theorem}   
+        \begin{proof}
+          Suppose that $a | x$ or $a | y$. Then there exists a $k$ so that
+          $ka = x$ or $ma = y.$ Then $xy = kay$ or $xy = max$. In either case 
+          $a | xy.$ Take the contraposition and the theorem holds.
+        \end{proof}
+        \item See the proof of (a).
+        \item Consider the case when $a =9,$ $b = 12$, $c = 30,$ clearly $9$ doesnt divide 12 and 30, but it does divide $360.$
+        So the converse is not true. 
+    \end{enumerate}
+    \item Proof time.
+    \begin{menumerate}
+        \item Direct
+        \begin{theorem}
+            For all natural numbers n, if n is odd then $n^2 + 3n$ is even.
+        \end{theorem}
+        \begin{proof}
+            if $n$ is odd, then $n = 2k+1,$ it follows that $n^2 = 4k^2+ 4k + 1$ and $3n = 6k + 3$,
+            so $n^2 + 3n = 4k^2 + 10k + 4$ which is divisible by $2.$
+        \end{proof}
+
+        \item Direct
+        \begin{theorem}
+            For all natural numbers $n$, $n^2 + 7n$ is even. 
+        \end{theorem}
+        \begin{proof}
+            If $n$ is even $n^2 + 7n= 4k^2 + 14k$, and the theorem is complete.
+            If $n$ is odd then $n^2 + 7n = n^2 + 3n +4n$ which is $2m + 4n$ by the previous theorem
+            and so $n^2 + 7n$ is divisible by 2.
+            This completes the proof.
+        \end{proof}
+
+        \item Contraposition
+        \begin{theorem}
+            If $a,b \in \mathbb{R}$ and $a + b \geq 10$ then $a \geq 7$ or $b\geq 3.$
+        \end{theorem}
+        \begin{proof}
+            Consider the contrapositive. If $a < 7$ and $b < 3$ then $a + b < 7 +3 = 10.$
+            There fore $a +b \geq 10$ implies $a \geq 7$ or $b \geq 3.$
+        \end{proof}
+
+        \item Contraposition
+        \begin{theorem}
+        If $r \in \mathbb{Q}^c$ the $r+1 \in \mathbb{Q}^c.$
+        \end{theorem}
+        \begin{proof}
+        Consider the contrapositive. If $r + 1 \in \mathbb{Q}$ then
+        $r + 1 = \frac{a}{b}$ and $r = \frac{a}{b} -\frac{b}{b} = \frac{a-b}{b}$.
+        So $r \in \mathbb{Q}.$ Therefore the contrapositive holds and the proof is complete.
+        \end{proof}
+
+        \item Counterexample
+        \begin{proof}
+            Take $n = 100,$ then clearly $1000 < 100*10*9 < 100!.$
+        \end{proof}
+
+        \item Contrapositive,
+        \begin{theorem}
+            For all natural numbers $a$ where $a^5$ is odd.
+        \end{theorem}
+        \begin{proof}
+            Consider the contrapositive. If $a$ is even the $a = 2k,$ and $a^5 = 2^5k$ which is
+            divisible by $2.$ So the contrapositive holds. This completes the proof.
+        \end{proof}
+    \end{menumerate}
+
 \end{menumerate}
 
 
