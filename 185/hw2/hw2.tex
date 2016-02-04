@@ -82,7 +82,7 @@
 
 	\item Exercise II.1.11
 	\begin{theorem}
-	The function $Arg : \mathbb{C} \to \mathbb{R}$ is continuous except for along the line $L = \{z : z = 0, Re(z) < 0\}.$
+	The function $Arg : \mathbb{C} \to \mathbb{R}$ is continuous except for along the line $L = \{z : Im(z) = 0 \wedge Re(z) < 0\}.$
 	\end{theorem}
 	\begin{proof}
 		A function is continuous if and only if it preserves limits. Specifically, if $\lim_{h \to x} f(h) = f(x) $ implies that $f$ is continuous at $h$. Consider the restricted $Arg$ function, say $A:\mathbb{C} \setminus L \to \mathbb{R}.$ Then it is clear that $\lim_{\mathbb{C}\setminus L} A(h) = (-\pi,\pi),$ since if a point is
@@ -93,8 +93,50 @@
 
 	\item Exercise II.1.16
 	\begin{theorem}
-	
+		The punctured plane $\mathbb{C} \setminus L = \mathbb{C}_P$ is star shaped but not convex.
 	\end{theorem}
+	\begin{proof}
+		Take any $z \in \mathbb{C}_P.$ Then for any $r \geq 1,$ $z/r$ is
+		clearly in $\mathbb{C}_P$ since $r$ is always positive and the imaginary part of $z$ is always non-zero or its real 
+		part is non-negative. In the first case $z/r$ is never in $L$ for all finite $r,$ and when $r \to \infty,$ then $r = 0 \in \mathbb{C}_P.$  In the second case, its real part is always positive or $0$ until it reaches $0$ by the same logic. In the case that both are true, we consider again the same logic. If $z = 0$, we are done.
+
+		Clearly, $\mathbb{C}_P$ is not convex when considering the line, $B = \{x + iy : x = -1\}$ which contains $-1 \in L.$
+ 	\end{proof}
+ 	\begin{definition}
+ 		A space $X$ is contractible if the identity map is homotopic to some constant map.
+ 	\end{definition}
+ 	\begin{definition}
+ 		A homotopy between two continuous functions $f,g$ from a topological space $X$ to a topological space $Y$ is a continuous function $H: X \times [0,1] \to Y$, such that if $x \in X$ then,
+ 		$H(x,0) = f(x), H(x,1) = g(x).$ [Wikipedia]
+ 	\end{definition}
+ 	\begin{theorem}
+ 		Every homeomorphism is a homotopy equivalence.
+ 	\end{theorem}
+ 	\begin{theorem}
+ 		A star-shaped space $X$ is homotopic to a point.
+ 	\end{theorem}
+ 	\begin{proof}
+ 		Let $H(x,t) = x(1-t)+z_0t$, then $H(x,0) = id_X,$ and $H(x,1)$ is the constant identity. $H$ is continuous by the definition of $H$ as a star shaped space. Therefore, the star-shaped space is homotopic to a point.
+ 	\end{proof}
+ 	\begin{theorem}
+ 		The space $\gamma = \mathbb{C}\setminus[-1,1]$ is not star shaped.
+ 	\end{theorem}
+ 	\begin{proof}
+ 		The set $\gamma$ is not homeomorphic to the unit ball $B^2$ and since any homemorphism would contain a radial unit submap around the unit interval
+ 		which is disconnected. Therefore, $\gamma$ is not homotopic to
+ 		$B^2$ which is homotopic to a point since $B^2$ is star shaped.
+ 		The space $\gamma$ could not be star shaped since if it were it would be homotopic to a point which it is not. Therefore, $\gamma$
+ 		is not star shaped. 
+ 	\end{proof}
+ 	\begin{theorem}
+ 		The punctured disk is not star shaped.
+ 	\end{theorem}
+ 	\begin{proof}
+ 		The punctured disk is not homeomorphic to $B^2$ since the diameter
+ 		is disconnected and any submap there would violate the homeomorphism. Therefore it is not homeotopic, and by the logic of
+ 		the above proof, it is not homeotopic to a point, and so it could not possibly be star shaped as that would lead to a contradiction. This completes the proof.
+ 	\end{proof}
+ 	\item 
 \end{menumerate}
 
 \end{document}
