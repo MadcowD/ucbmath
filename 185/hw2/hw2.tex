@@ -122,8 +122,7 @@
  		The space $\gamma = \mathbb{C}\setminus[-1,1]$ is not star shaped.
  	\end{theorem}
  	\begin{proof}
- 		The set $\gamma$ is not homeomorphic to the unit ball $B^2$ and since any homemorphism would contain a radial unit submap around the unit interval
- 		which is disconnected. Therefore, $\gamma$ is not homotopic to
+ 		The set $\gamma$ is not homeomorphic to the unit ball $B^2$ since it is homeomorphic to the annalus. Therefore, $\gamma$ is not homotopic to
  		$B^2$ which is homotopic to a point since $B^2$ is star shaped.
  		The space $\gamma$ could not be star shaped since if it were it would be homotopic to a point which it is not. Therefore, $\gamma$
  		is not star shaped. 
@@ -132,11 +131,45 @@
  		The punctured disk is not star shaped.
  	\end{theorem}
  	\begin{proof}
- 		The punctured disk is not homeomorphic to $B^2$ since the diameter
- 		is disconnected and any submap there would violate the homeomorphism. Therefore it is not homeotopic, and by the logic of
+ 		The punctured disk is not homeomorphic to $B^2$ for the same reason as the previous proof. Therefore it is not homeotopic, and by the logic of
  		the above proof, it is not homeotopic to a point, and so it could not possibly be star shaped as that would lead to a contradiction. This completes the proof.
  	\end{proof}
  	\item 
+ 	\begin{theorem}
+ 		The functions $x= Re z$ and $y = Im z$ are not complex differentiable
+ 		at any point.
+ 	\end{theorem}
+ 	\begin{proof}
+ 		Suppose those functions were differentiable. Then it follows that
+ 		there partials as functions of $\mathbb{R}^2$ should be 
+ 		\begin{equation}
+ 			Dx(p) = \begin{bmatrix}
+ 				1 & 0 \\
+ 				0 & 0
+ 			\end{bmatrix},
+ 			Dy(p) = \begin{bmatrix}
+ 				0 & 1 \\
+ 				0 & 0
+ 			\end{bmatrix}.
+ 		\end{equation}
+ 		This is a contradiction to the Cauchy-Rieman equations.
+ 	\end{proof}
+ 	\item We take the derivative as follows
+ 	\begin{equation}
+ 		\begin{aligned}
+ 			f' &= \lim_{\Delta z 0} \frac{a(z + \Delta z)^2 + b|z+ \Delta z|^2 + c \overline{(z + \Delta z)}^2}{\Delta z} \\
+ 			&= \lim_{\Delta z 0} \frac{a(z + \Delta z)^2 + b|z+ \Delta z|^2 + c \overline{(z + \Delta z)}^2}{\Delta z} \\
+ 		\end{aligned}
+ 	\end{equation}
+ 	\item Validation:
+ 	\begin{equation}
+ 		Df(p) = \begin{bmatrix}
+ 			\cos x \sinh y & \sin x \cosh y \\
+ 			-\sin x \cosh y & \cos x \sinh y
+ 		\end{bmatrix}
+ 	\end{equation}
+ 	The complex function is $f = \ = sin x \sinh y, v = \cos x \cosh y$. It follows that, $f = ie^z +e^{-z};$ So I estimate this fucntion is a rotated cosine.
+ 	
 \end{menumerate}
 
 \end{document}

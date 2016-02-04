@@ -86,7 +86,8 @@
          However, if $f$ is differentiable, then it is continuous at
          $(0,0).$ But the limik along $y = x$, does not exist unabiguously
          $$\lim_{x\to 0} \frac{x^2}{x^2 + x^2} = \frac12 \neq 0 .$$
-         Therefore it could not possibly differentiable at $(0,0).$
+         Since $(Df)_0(0,1) = 0, (Df)_0(1,0) = 0, $ and the derivative must be linear, it follows that $Df_0(1,1) = 0 \neq \frac12.$ So $f$
+         couldn't be differentiable. 
     \end{proof}
     \item Yass!!!!!!!!!!!!!!!!!!!!!!!!
         
@@ -127,8 +128,119 @@
         The statement of multivariable chain rule for functions $g: \mathbb{R} \to \mathbb{R}^m, f:\mathbb{R}^m \to \mathbb{R}$ is that
         $d/dt f \circ g = \sum \partial f/\partial g_i \partial g_i /\partial t$ which is the row vector
         matrix $Df$ with the column vector $Dg.$
-    \item
-    \item
+    \item Multidimensional Mean Value Theorem
+    \begin{menumerate}
+        \item Vector valued functions!
+         \begin{theorem}
+            Let $n =1, m = 2.$ Then if 
+            \begin{equation}
+                f(t) = (\cos t, \sin t)
+            \end{equation}
+            for $\pi \leq 2\pi$ and $p = \pi, q = 2\pi,$ then there is
+            no $\theta  \in [p,q]$ which satisfies
+            \begin{equation}
+                f(p) - f(q) = (Df)_\theta(q-p)= 
+                \begin{bmatrix}
+                    -\sin \theta \\
+                    \cos \theta
+                \end{bmatrix}
+                (q-p)
+            \end{equation}
+        \end{theorem}
+        \begin{proof}
+            Take $f(p) - f(q).$  This value is 
+            \begin{equation}
+                f(p) - f(q) = 
+                \begin{bmatrix}
+                    \cos 2\pi\\
+                    \sin 2\pi
+                \end{bmatrix}
+                -
+                \begin{bmatrix}
+                    \cos \pi \\
+                    \sin \pi
+                \end{bmatrix}
+                = \begin{bmatrix}
+                    2 \\
+                    0
+                \end{bmatrix}.
+            \end{equation} 
+        \end{proof}
+        It could not be that there is a $\theta$ such that $-\sin \theta,$ the first component of the derivative, is $2$. So the theorem holds.
+        \item Convex derivative set.
+        \begin{theorem}
+            If the set of derivatives of $f: U \subset \mathbb{R}^n \to \mathbb{R}^m$,
+            \begin{equation}
+                S = \{(Df)_x \in \mathcal{L}(\mathbb{R}^n, \mathbb{R}^m) : rx \in [p,q]\}
+            \end{equation}
+            is convex, then there is a $\theta \in [p,q]$ satisfying 
+            \begin{equation}
+                f(p) - f(q) = (Df)_\theta(q-p).        
+            \end{equation}.
+        \end{theorem}
+        \begin{proof}
+            Since the set of derivatives is convex, given any two points in $S$ every point on the line segment between them is also in $S.$
+
+        \end{proof}
+
+    \end{menumerate}
+    \item Directional derivative:
+        \begin{menumerate}
+            \item By Theorem 5 we know that if $f$ is differentiable, then its derivative is given by 
+            \begin{equation}
+            (Df)_p = \lim_{t\to 0}\frac{f(p+tu)-f(p)}{t},
+            \end{equation}
+            and since partial derivatives are given by letting $u$ be the basis to which the partial is tied, it follows that a 'directional' derivative would be given by a projection of each partial contribution of a component of $f$ onto a direction $u$. 
+
+            See the proof of theorem 5, and corollary 7.
+
+            However if $f$ is not differentiable, one must intuit from the formula. The limit observes the 'slope' in the component $f$ directions as $u \to p$ in th $u$ direction. That is if the hyrpersurface, $f(U)$ was sliced along the $u$ direction at $p$,
+            the following formula follows
+            \begin{equation}
+                g(t) = f(p+tu),g(0) = f(p).
+            \end{equation}
+            So, $g'(t) = \nabla_pf(u)$ since $g' = \lim (g(t)-g(0))/t.$
+
+            \item \begin{theorem}
+                Let $f:\mathbb{R}^2 \to\mathbb{R}$ so that,
+                \begin{equation}
+                    x \mapsto \frac{x^3y}{x^2 + y^2}.
+                \end{equation}
+                The $f$ has directional derivatives, but is not differentiable.
+            \end{theorem}
+            \begin{proof}
+                Take any $u = \begin{bmatrix}
+                    a \\
+                    b \\
+                \end{bmatrix}$. Then the limit 
+                \begin{equation}
+                    \lim_{t\to 0} \frac{\frac{(ta)^3(tb)^2}{(ta)^4 +(tb)^2}}{t} = \frac{t^5a^3b^2}{t^3(t^2a^4+b^2)} = 0
+                \end{equation}
+                when $b \neq 0.$
+                In the case that $b = 0,$ we have
+                \begin{equation}
+                    \lim_{t\to 0} \frac{0}{t^5a^4} = 0.
+                \end{equation}
+
+                To show that $f$ is not differentiable, we must show
+                that for all suitable $T$
+                \begin{equation}
+                    f(p+v) = f(p) + T(v) + R(v) \wedge \lim_{|v| \to 0} \frac{R(v)}{|v|} \neq 0.
+                \end{equation}
+                Suppose that $f$ was differentiable. The only derivative could be the $0$ transformation since it unambiguously determines $\nabla_0 f.$
+
+                So it follows that
+                \begin{equation}
+                    f(p+v) = f(p) + R(v) \implies \lim_{|v| \to 0} \frac{R(v)}{|v|} =    0 \implies \lim_{|v| \to 0} \frac{f(p+v)}{|v|} = \lim_{|v| \to 0} \frac{f(v) + R(v)}{|v|} = 0.
+                \end{equation}
+                and $f$ is sublinear! Now consider any approach, say $y=x^2.$ The limit had better be sublinear.
+                \begin{equation}
+                    \lim_{x\to 0} \frac{\frac{x^5}{2x^4}}{x}= 1,
+                \end{equation}
+                so $f$ is not sublinear along that curve. A contradiction to$f$ differentiable!
+
+             \end{proof}
+        \end{menumerate}
     \item
     \item
     \item
