@@ -1,0 +1,91 @@
+98%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%                      Homework _                            %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[letter]{article}
+
+\usepackage{lipsum}
+\usepackage[pdftex]{graphicx}
+\usepackage[margin=1.5in]{geometry}
+\usepackage[english]{babel}
+\usepackage{listings}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{framed} 
+\usepackage{amsmath}
+\usepackage{titling}
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{definition}{Definition}
+
+\newenvironment{menumerate}{%
+  \edef\backupindent{\the\parindent}%
+  \enumerate%
+  \setlength{\parindent}{\backupindent}%
+}{\endenumerate}
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%
+%% DOC INFO %%%
+%%%%%%%%%%%%%%%
+\newcommand{\bHWN}{1}
+\newcommand{\bCLASS}{MATH H105}
+
+\title{\bCLASS: Homework \bHWN}
+\author{William Guss\\26793499\\wguss@berkeley.edu}
+
+\fancyhead[L]{\bCLASS}
+\fancyhead[CO]{Homework \bHWN}
+\fancyhead[CE]{GUSS}
+\fancyhead[R]{\thepage}
+\fancyfoot[LR]{}
+\fancyfoot[C]{}
+\usepackage{csquotes}
+
+%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+
+\begin{menumerate}
+    \setcounter{enumi}{54}
+    \item Take the following $dx_{321}$, $dx_{546}$. See their wedge product, 
+    \begin{equation}
+    \begin{aligned}
+        dx_{321} &\wedge dx_{546} \\
+        &= dx_{3} \wedge dx_{2} \wedge dx_{1} \wedge dx_{5} \wedge dx_{4} \wedge dx_{6} \\
+        &= - dx_{2} \wedge dx_{3} \wedge dx_{1} \wedge dx_{5} \wedge dx_{4} \wedge dx_{6} \\
+        &=  dx_{1} \wedge dx_{2} \wedge dx_{3} \wedge dx_{5} \wedge dx_{4} \wedge dx_{6} \\
+        &= dx_{1} \wedge dx_{2} \wedge dx_{3} \wedge dx_{4} \wedge dx_{5} \wedge dx_{6} \\
+        &=  dx_{12} \wedge dx_{3} \wedge dx_{4} \wedge dx_{5} \wedge dx_{6} \\
+        &=  dx_{12} \wedge dx_{34} \wedge dx_{5} \wedge dx_{6} \\
+        &=  dx_{12} \wedge dx_{34} \wedge dx_{56} \\
+        &= dx_{12} \wedge dx_{3456} \\
+        &= dx_{123456}.
+    \end{aligned}
+    \end{equation}
+    \item False. Observe that $a = 0$ if and only if $a = -a.$ Take $\omega$ to be a $k$-form. Then observe that
+    $\omega \wedge \omega = (-1)^{k^2} \omega \wedge \omega $ if we rearrange the wedge product. So for $k$ odd the square is odd 
+    so $\omega \wedge \omega = 0$ except for when $k = 2n,$ $\omega \wedge \omega \neq 0.$
+    \item Consider the forms $\alpha + \beta.$ Then, $d(\alpha + \beta) = d(fdx_I + g dx_I) = d((f + g)\wedge dx_I) = d(f+g) \wedge dx_I = (df + dg) \wedge dx_I
+    = df\wedge dx_I + dg \wedge dx_I = d(\alpha) + d(\beta).$
+    \item
+    \item
+    \item
+    \item See 56.
+\end{menumerate}
+
+%%%%%%% Be sure to set the counter and use menumerate
+
+\end{document}

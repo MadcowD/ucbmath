@@ -73,9 +73,9 @@
 	\end{theorem}
 	\begin{proof}
 		Take the value set $S = \{z_n\}.$ Then suppose there were no $r$ such that $S \subset B_r(0)$. If this is the case, the countability of $S$ implies that for every $n$, $S \cap B_n(0)$ is finite.
-		Since $z_n \to z,$ take $N \in \mathbb{N}$ such that $N > |z|.$ Such an $n$ exists by the archimedian principle of $\mathbb{R}.$ Then $S \cap N$ must be finite. 
+		Since $z_n \to z,$ take $N \in \mathbb{N}$ such that $N > |z|.$ Such an $n$ exists by the archimedian principle of $\mathbb{R}.$ Then $S \cap B_N(0)$ must be finite. 
 
-		Take $\epsilon = N - |z|,$ then there is an $M$ such that for all $m > M,$ $d(z_n,z) < \epsilon.$ That is there are infinite elements within $\epsilon$ of $z,$ and thereby there are infinite elements in $S \cap B_N(0).$ This is a conradiction to its finiteness.
+		Take $\epsilon = N - |z|,$ then there is an $M$ such that for all $m > M,$ $d(z_n,z) < \epsilon.$ That is there are infinite elements within $\epsilon$ of $z,$ and thereby there are infinite elements in $S \cap B_N(0).$ This is a contradiction to its finiteness.
 
 		Therefore it must be that the value set is contained within the $N$ ball, and therefore,  $(z_n)$ is bounded. 
 	\end{proof} 
@@ -122,7 +122,7 @@
  		The space $\gamma = \mathbb{C}\setminus[-1,1]$ is not star shaped.
  	\end{theorem}
  	\begin{proof}
- 		The set $\gamma$ is not homeomorphic to the unit ball $B^2$ since it is homeomorphic to the annalus. Therefore, $\gamma$ is not homotopic to
+ 		The set $\gamma$ is not homeomorphic to the open unit ball $B^2$ since it is homeomorphic to the open annalus. Therefore, $\gamma$ is not homotopic to
  		$B^2$ which is homotopic to a point since $B^2$ is star shaped.
  		The space $\gamma$ could not be star shaped since if it were it would be homotopic to a point which it is not. Therefore, $\gamma$
  		is not star shaped. 
@@ -157,10 +157,56 @@
  	\item We take the derivative as follows
  	\begin{equation}
  		\begin{aligned}
- 			f' &= \lim_{\Delta z 0} \frac{a(z + \Delta z)^2 + b|z+ \Delta z|^2 + c \overline{(z + \Delta z)}^2}{\Delta z} \\
- 			&= \lim_{\Delta z 0} \frac{a(z + \Delta z)^2 + b|z+ \Delta z|^2 + c \overline{(z + \Delta z)}^2}{\Delta z} \\
+ 			f' &= a2z + b\bar z + bz(\bar z)' + 2c\bar z (\bar z)'.
  		\end{aligned}
  	\end{equation}
+ 	This only makes sense where the terms containing $\bar z ' $ are not a part of
+ 	the equation, since the complex conjugate is not complex differentiable.
+ 	This occurs when $\bar z'(bz + 2c\bar z) = 0.$ So it must be that
+ 	$bx +2cx = 0, by - 2cy = 0$ which implies that the differentiability of
+ 	$f$ does not depend on $z$ but on $b,c.$
+
+ 	Setting up a linear system, we get 
+ 	\begin{equation}
+ 	Aa = 0 = 
+ 		\begin{bmatrix}
+ 			1 & 2 \\
+ 			1 & -1
+ 		\end{bmatrix}
+ 		\begin{bmatrix}
+ 			a \\
+ 			b
+ 		\end{bmatrix} =
+ 		\begin{bmatrix}
+ 			0 \\ 0
+ 		\end{bmatrix} \implies
+ 		\begin{bmatrix}
+ 			a \\ b
+ 		\end{bmatrix} \in Nul(A).
+ 	\end{equation}
+ 	And $f$ is analytic every where in this case!
+ 	\item Exercise II.2.5
+ 	\begin{theorem}
+ 		Suppose that $f:\mathbb{C} \to \mathbb{C}$ is analytic on $D.$ Then
+ 		let $g = \overline{f}$ is analytic on $D^* = \{\bar z : z \in \mathbb{D}\}.$ 
+ 		It follows that, $g'(w) = \overline{f(\bar w)}.$
+ 	\end{theorem}
+ 	\begin{proof}
+ 		Take $w \in D^*,$ so that there exists a $z \in D$ so that $\bar z = w, \bar w = z.$
+ 		 Consider the standard limit definition of the derivative.
+ 		\begin{equation}
+ 			\begin{aligned}
+ 					\lim_{\Delta w \to w} \frac{g(w + \Delta w) - g(w)}{\Delta w} &= 
+					\lim_{\Delta w \to w} \frac{\overline{f(\overline{w + \Delta w})} - \overline{f(\bar w)}}{\Delta \bar w} \\
+					&= \lim_{\Delta z \to z} \frac{\overline{f({z + \Delta z})} - \overline{f(z)}}{\Delta z} \\
+					&= \lim_{\Delta z \to z} \frac{\overline{f({z + \Delta z}) - f(z)}}{\Delta z} \\
+					&= \overline{\lim_{\Delta z \to z} \frac{{f({z + \Delta z}) - f(z)}}{\Delta z}} \\
+					&= \overline{f'(z)}
+					&= \overline{f'(\bar w)},
+ 			\end{aligned}
+ 		\end{equation}
+ 		which is the statement of the theorem.
+ 	\end{proof}
  	\item Validation:
  	\begin{equation}
  		Df(p) = \begin{bmatrix}
@@ -169,7 +215,77 @@
  		\end{bmatrix}
  	\end{equation}
  	The complex function is $f = \ = sin x \sinh y, v = \cos x \cosh y$. It follows that, $f = ie^z +e^{-z};$ So I estimate this fucntion is a rotated cosine.
- 	
+ 	\item Exercise II.3.3
+ 	\begin{theorem}
+ 		If $f$ and $\bar f$ are analytic on $D,$ then $f$ is constant.
+ 	\end{theorem}
+ 	\begin{proof}
+ 		If $f$ and $\bar f$ are analytic for all $z \in D \subset \mathbb{C},$
+ 		\begin{equation}
+ 			Df(z) = \begin{bmatrix}
+ 				u_x(z) & u_y(z) \\
+ 				-u_y(z) & u_x(z)
+ 			\end{bmatrix},
+ 			 D\bar f(z)= \begin{bmatrix}
+ 			 	u_x(z) & -v_y(z) \\
+ 			 	u_y(z) &  -v_y(z)
+ 			 \end{bmatrix}
+ 		\end{equation}
+ 		So by the cauchy riemann equations we have that,
+ 		$\bar f$ and $f$ analytic implies 
+ 		\begin{align}
+ 			-v_y = u_y, -v_y = u_x \\
+ 			v_x = u_y, v_y = u_x
+ 		\end{align}
+ 		So, $-v_y = v_y$ and $-v_x = v_x$ gives
+ 		\begin{equation}
+ 			Df(z) = \begin{bmatrix}
+ 				0 & 0\\
+ 				0 & 0.
+ 			\end{bmatrix} 
+ 		\end{equation}
+ 		Which from multivariable calculus, we know is true if and only if
+ 		$f$ is a constant map!
+ 	\end{proof}
+ 	\item Exercise II.3.8
+ 	\begin{theorem}
+ 		Let $f: \mathbb{C} \to \mathbb{C}$ be an analytic function. Then if
+ 		$z = re^{i\theta}$ $f$ satisfies
+ 		\begin{equation}
+ 		u_r = \frac{1}{r} v_\vartheta, u_\vartheta = -rv_r.
+ 		\end{equation}
+ 	\end{theorem}
+ 	\begin{proof}
+ 		By the chain rule of partial derivatives,
+ 		\begin{equation}
+ 			\begin{aligned}
+ 				u_r =u_xx_r + u_yy_r = u_x\cos \vartheta + u_y \sin \vartheta	
+ 			\end{aligned}	
+ 		\end{equation}	
+ 		and identically by the Cauchy-Riemann  equations,
+ 				\begin{equation}
+ 			\begin{aligned}
+ 				v_\vartheta = v_xx_\vartheta + v_yy_\vartheta &= -v_xr\sin\vartheta + v_yr\cos\vartheta \\
+ 				&= r(-v_x\sin \vartheta + v_y \cos \vartheta) \\
+ 				&= r(u_x\cos \vartheta + u_y \sin \vartheta	) \\
+ 				&= r u_r.
+ 			\end{aligned}	
+ 		\end{equation}	
+ 		So it follows that $u_r = \frac{1}{r} v_\vartheta.$
+ 		Likewise, 
+ 		\begin{equation}
+ 			\begin{aligned}
+ 				u_\vartheta =r(u_xx_\vartheta + u_yy_\vartheta) = r(-u_x\sin\vartheta + u_y\cos \vartheta))
+ 			\end{aligned}	
+ 		\end{equation}	
+		and identically by the Cauchy-Riemann equations,
+ 		\begin{equation}
+ 			\begin{aligned}
+ 				v_r = v_xx_r +v_yy_r = v_x\cos\vartheta + v_y\sin\vartheta &= -u_y\cos\vartheta + u_x \sin\vartheta 			\end{aligned}	
+ 		\end{equation}	
+ 		So it follows that $-r v_r = u_\vartheta.$ This completes the proof.
+ 	\end{proof}
+
 \end{menumerate}
 
 \end{document}

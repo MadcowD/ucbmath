@@ -1,0 +1,192 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%                      Homework _                            %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[letter]{article}
+
+\usepackage{lipsum}
+\usepackage[pdftex]{graphicx}
+\usepackage[margin=1.5in]{geometry}
+\usepackage[english]{babel}
+\usepackage{listings}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{framed} 
+\usepackage{amsmath}
+\usepackage{titling}
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{definition}{Definition}
+
+\newenvironment{menumerate}{%
+  \edef\backupindent{\the\parindent}%
+  \enumerate%
+  \setlength{\parindent}{\backupindent}%
+}{\endenumerate}
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%
+%% DOC INFO %%%
+%%%%%%%%%%%%%%%
+\newcommand{\bHWN}{1}
+\newcommand{\bCLASS}{MATH H105}
+
+\title{\bCLASS: Homework \bHWN}
+\author{William Guss\\26793499\\wguss@berkeley.edu}
+
+\fancyhead[L]{\bCLASS}
+\fancyhead[CO]{Homework \bHWN}
+\fancyhead[CE]{GUSS}
+\fancyhead[R]{\thepage}
+\fancyfoot[LR]{}
+\fancyfoot[C]{}
+\usepackage{csquotes}
+
+%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+
+\begin{menumerate}
+    \setcounter{enumi}{54}
+    \item Take a map $f$ which is sufficiently close, that is 
+    the max norm of the euclidean distance between.
+    Take the line which takes $f(p)$ to infinity and take a tangent $Tp$ from the point $p$
+    to a point on the line from $f(p).$ Consider this to be our tangent vector field. 
+    If the hairy ball theorem is true then this field must be zero at some $p$. If this is the case
+    then $f(p) = p$ since the line from the origin to $f(p)$ to infinity need be the line from 
+    the origin to $p$ to infinity, otherwise we contradict that the length of this tangent vector is $0.$
+
+    Therefore the map $f$ has a fixed point.
+
+    Consider the converse. Suppose all maps which are sufficiently close to the identity with a fixed point. 
+    Consider a vector field built in a similar fashion using the vectors $f(p) - p$ and homotopically moving them along the line
+    from $f(p)$ to infinity untill you find a tangent vector to the sphere at $p$ clearly this exists, and since this construction is smooth
+    and $p-f(p)$ is a smooth function, we get that this vector field is continuous and so there is a point where the vector
+    field is $0$ since at one point the line from the origin to $f(p)$ is the same as the line from the origin
+    to $p.$
+
+
+    \item Part b use line integral with differential ewquaiton
+    $w = F_1dx_1 + F_2dx_2 + F_3dx_3.$ Then we know that the form applied to a closed loop
+    must be $0$ since it is the weighted change of $dx$ from start to finish. Observe that 
+    the form evaluates the dot product of $F$ and the tangent of the $1-cell$ parameterization,
+    so we get that the net change in $\cos\theta$ where $\theta$ is the angular difference between the curve
+    and the vector field, is zero and so the total net change in angle is proportional to $2\pi.$
+    The proportion is furthermore only dependent on orientation of the curve.
+
+
+
+
+
+
+    \item 71**. Hairy Ball Theorem Proof
+    \begin{theorem}
+        Any continuous vector field $X: S \to \mathbb{R}^3$ that is every where tangent to $S$
+        must be zero at some point.
+    \end{theorem}
+    Before we give the proof. We first show some lemmas.
+
+    \begin{lemma}
+        If $X$ is a continuous vector field on a closed simply connected
+        domain so that $X \neq 0,$ then the winding number of a
+        closed simple curve in the vector field must be zero.
+    \end{lemma}
+    \begin{proof}
+        The winding number for a curve in $X$ referrs to the number 
+        of times the vector field turns around itself on the curve
+        as $t \to 1$ from $0.$ It is clear that the winding number of a curve must be an
+        integer since it would violate the continuity of $X$ if 
+        at a point infintesmally close the the start of the loop (near the end), the vector
+        in $X$ at that point were a real number different than that of the start point.
+        Therefore, at least the vector field must wind upon itself a whole number of times.
+
+        Consider a sufficiently small homotopy of the smooth 1-cell curve we previously 
+        referred to. It could not be that $H$ applied to the curve has 
+        a winding number much larger than that of the cotarget. Since the winding 
+        number itself is a continuous function of the vector field (which is continuous and whose
+        vectors would not change angle much under small homotopy,) it follows that
+        the winding number is invariant to homotopy.
+
+        Finally, the winding number of a point is $0$ and
+        so by the simple connectedness of the domain, recall that any
+         simple closed curve is homotopic to the point. Therefore, the winding number of 
+         any closed curve is $0.$
+    \end{proof}
+
+    \begin{lemma}
+        The net winding of a closed curve in a simple closed domain over a continuous vector
+        field $X$, which is nowhere $0,$ is invariant to the field. Furthermore
+        if the closed curve is a loop, then it has winding number $\pm 1$ corresponding to
+        its orientation in space. 
+    \end{lemma}
+    \begin{proof}
+        The net winding of a closed simple $1$-cell, $C$ in the domain is exactly 
+        the net angle between the tangent $C$ and the the vectors $X$ at every point along
+        $C.$ So the net winding of $C$ is the sum of the winding number of
+        $C$ in $X$ and the winding number of $C$ in general. So the net winding of $C$
+        is $\pm 1$ contingent upon the orientation of $C.$
+    \end{proof}
+
+    It is important to be carefult when considering the winding number of a closed curve when it is homotoped to a
+    point. At that instant it does not make sense to discuss the net winding, but only the winding number of $C$ in $X;$
+    \emph{net winding is not winding in a field.}
+
+    \begin{lemma}
+        Homotopy does not change the net winding of a curve in a continuous vector field $X$ with no $0$ points, 
+    \end{lemma}
+    \begin{proof}
+           
+    \end{proof}
+
+
+
+    \begin{lemma}
+        If $X$ is a continuous vector field with no zeroes and $C$ is a simple closed curve. Then if 
+        $\omega = X_1 dx_1 + X_2 dx_2,$ 
+        \begin{equation}
+            \oint_C \omega =0 \implies d\theta(C,X) = z2\pi, z \in \mathbb{Z}
+        \end{equation}
+        \begin{proof}
+            By the definition of the form evaluation of a 1-cell,
+            we have that $fdx_i$ is the $f$-weighted net change in $x$ 
+            from the beginning of the parameterization of the 1-cell
+            to its end. In paricular, $\omega = \langle X, dx_I\rangle$ for 
+            $I = \{1,2\}.$ Geometrically we have the following interpretation
+            for
+             \begin{equation}
+                \oint_C \omega = 0.
+            \end{equation}
+            Essentially, $\omega = \cos \theta |X||dx_I| (C).$ This gives the intuition
+            that if the contour is closed, then the net angle between the tangents of $C$
+            and the vector field $X$ is $0.$ 
+
+            Suppose we break the $C$ 1-cell into the sum of two  (possibly infinite) 
+            families of cells, $\{\gamma^+_t)_{t\in J^+}, \{\gamma^-_s\}_{t\in J^-}$ so that
+            \begin{equation}
+                \sum_{t\in J^+}  \int_{\gamma^+_t} \omega = -\sum_{s \in J^-} \int_{\gamma^-_s} \omega. 
+            \end{equation}
+            There exists some sequence $\Gamma = \{\gamma^*_t\}$ such that
+            \begin{equation}
+                \oint_C \omega = \sum_{t\in J^- \cup J^+} \int_{\gamma_t^*} \omega = 0.
+            \end{equation}
+            The continuity of $X$ implies that
+        \end{proof}
+    \end{lemma}
+\end{menumerate}
+
+%%%%%%% Be sure to set the counter and use menumerate
+
+\end{document}
