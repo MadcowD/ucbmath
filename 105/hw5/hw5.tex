@@ -1,0 +1,116 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%                      Homework _                            %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[letter]{article}
+
+\usepackage{lipsum}
+\usepackage[pdftex]{graphicx}
+\usepackage[margin=1.5in]{geometry}
+\usepackage[english]{babel}
+\usepackage{listings}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{framed} 
+\usepackage{amsmath}
+\usepackage{titling}
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{definition}{Definition}
+
+\newenvironment{menumerate}{%
+  \edef\backupindent{\the\parindent}%
+  \enumerate%
+  \setlength{\parindent}{\backupindent}%
+}{\endenumerate}
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%
+%% DOC INFO %%%
+%%%%%%%%%%%%%%%
+\newcommand{\bHWN}{5}
+\newcommand{\bCLASS}{MATH 105}
+
+\title{\bCLASS: Homework \bHWN}
+\author{William Guss\\26793499\\wguss@berkeley.edu}
+
+\fancyhead[L]{\bCLASS}
+\fancyhead[CO]{Homework \bHWN}
+\fancyhead[CE]{GUSS}
+\fancyhead[R]{\thepage}
+\fancyfoot[LR]{}
+\fancyfoot[C]{}
+\usepackage{csquotes}
+
+%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+
+%%%%%%% Be sure to set the counter and use menumerate
+\begin{menumerate}
+\setcounter{enumi}{64}
+\item The winding (w)one form.
+\begin{definition}
+	We denote the winding one form, $d\theta$, such that
+	\begin{equation}
+		d\theta = \frac{-y}{r^2}dx + \frac{x}{r^2}dy.
+	\end{equation}
+\end{definition}
+\begin{theorem}
+	The winding one form is closed but not exact.
+\end{theorem}
+\begin{proof}
+	We take the exterior derivative of $d\theta$. Using $d(fdx) = df \wedge dx$ we have the following:
+	\begin{equation}
+	\begin{aligned}
+		d(d\theta) &= d\left(\frac{-y}{r^2}dx + \frac{x}{r^2}dy\right)\\
+			&= d\left(\frac{-y}{r^2}dx\right) + d\left(\frac{x}{r^2}dy\right)\\
+			&= d\left(\frac{-y}{r^2}\right) \wedge dx + d\left(\frac{x}{r^2}\right)
+			\wedge dy \\
+			&= \left(\frac{\partial}{\partial x}\frac{-y}{x^2+y^2}dx \frac{\partial}{\partial y}\frac{-y}{x^2+y^2}dy + \right) \wedge dx + d\left(\frac{x}{r^2}\right)
+			\wedge dy \\
+			&= \frac{y^2 -x^2}{r^4}dy \wedge dx + d\left(\frac{x}{r^2}\right) \wedge dy \\
+			&= \frac{y^2 -x^2}{r^4}dy \wedge dx + \left(\frac{\partial}{\partial x}\frac{x}{r^2}dx + \frac{\partial}{\partial y} \frac{x}{r^2} dy\right) \wedge dy \\
+			&= \frac{y^2 -x^2}{r^4}dy \wedge dx + \frac{\partial}{\partial x}\frac{x}{r^2}dx \wedge dy \\
+			&= \frac{y^2 -x^2}{r^4}dy \wedge dx + \frac{y^2 - x^2}{r^4}dx \wedge dy = 0
+	\end{aligned}	
+	\end{equation}
+	Substitution of $r\cos\theta$ for $x$ and similar for $y$ yields that the form is infact $d\theta$,  ($dx = \cos \theta dr - r\sin \theta d \theta).$ If the form were exact then its anti-exterior derivative should be $\theta,$ therefore its evaluation along a $1$ cell should be its net change along its end points.
+	
+	Consider the curve which takes the unit circle counter clockwise around the origin. 
+	\begin{equation}
+	 d\theta(c)= \int_0^\tau -\sin t dx + \cos t dy = \int_0^\tau dt = \tau.
+	\end{equation}
+	And $\tau = 2\pi \neq 0,$ but the net change in $\theta = 0$ So it could not be that this form is exact. 
+\end{proof}
+	The name $d\theta$ is totally misleading, it implies that $d\theta = d(\theta)$ which is false. 
+	\setcounter{enumi}{67}
+	\item Closedness of scalar multiplication.
+	 \begin{theorem}
+		If $\omega$ is closed then $f\omega$ is not necisarrily closed.	
+	\end{theorem}
+	\begin{proof}
+		Take the exterior derivative of the expression and get
+		\begin{equation}
+		d(f\omega) = df \wedge \omega + f \wedge d\omega = df \wedge \omega.
+		\end{equation}
+		So if the differential of $f$ is $0$ then $f\omega$ is closed. Otherwise, no.
+	\end{proof}
+	\begin{theorem}
+		
+	\end{theorem}
+\end{menumerate}
+
+\end{document}
