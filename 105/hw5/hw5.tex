@@ -20,7 +20,7 @@
 
 
 \newtheorem{theorem}{Theorem}
-\newtheorem{hairy}{Hairy Ball theorem}
+\newtheorem{hairy}{Hairy Ball Theorem}
 \newtheorem{definition}{Definition}
 \newtheorem{corollary}{Corollary}
 
@@ -98,6 +98,85 @@
 	And $\tau = 2\pi \neq 0,$ but the net change in $\theta = 0$ So it could not be that this form is exact. 
 \end{proof}
 	The name $d\theta$ is totally misleading, it implies that $d\theta = d(\theta)$ which is false. 
+
+	
+\setcounter{enumi}{66}
+\item Another form!
+\begin{theorem} If
+		\begin{equation}
+		\omega = \frac{x}{r^3}dy \wedge dz + \frac{y}{r^3}dz \wedge dx + \frac{z}{r^3}dx \wedge dy
+		\end{equation}
+		then $\omega$ is closed but not exact.
+	\end{theorem}	
+	\begin{proof}
+		To show that $\omega$ is closed, we take its exterior derivative.
+		\begin{equation}
+			\begin{aligned}
+				d(\omega) &= d\left(\frac{x}{r^3}dy\right)    \wedge dz + d\left(\frac{y}{r^3}dz\right)    \wedge dx   + d\left(\frac{z}{r^3}\right)  dx \wedge dy \\
+				d\left(\frac{f(x,y,z)}{r^3}\right) &= \frac{\partial}{\partial x} \frac{f}{r^3} dx+  \frac{\partial}{\partial y} \frac{f}{r^3} dy+  \frac{\partial}{\partial y} \frac{f}{r^3} dy
+			\end{aligned}	
+		\end{equation}
+		We then use the qyuotient rule to derive the general formula
+		\begin{equation}
+		\begin{aligned}
+			\gamma_i \frac{\partial}{\partial x_i} \frac{f}{r^3} &= \frac{r^3 \frac{\partial}{\partial x_i} f +  f\frac{\partial}{\partial x_i} r^3}{r^6} = \frac{r^3 \frac{\partial f }{\partial x_i} + 3 f r x_i }{r^6} \\
+			\implies d(\omega) &= \gamma_1 dx \wedge dy \wedge dz + \gamma_2 dy \wedge dz \wedge dx + \gamma_3 dz \wedge dx \wedge dy 
+		\end{aligned}	
+		\end{equation}
+		We then use the antisymmetry of $1$forms to get that
+		\begin{equation}
+			d(\omega) = \left(\frac{3}{r^3} - \frac{3r^2}{r^5}\right) dx \wedge dy \wedge dz = 0.
+		\end{equation}
+
+		Suppose for the sake of contradiction that $\omega$ is exact. Then there is a $\beta$ so that $d\beta = \omega.$
+		Then take a smooth $2$-cell which maps to $\mathbb{R}^3 \setminus \{(0,0,0)\}.$ Stokes theorem gives us
+		\begin{equation}
+			\int_C \omega = \int_{\partial C} \beta.	
+		\end{equation}
+
+		Take the following manifold
+		\begin{equation}
+			C(s,t) = \begin{pmatrix}
+					\sin(\pi s)\cos(\pi 2t) \\
+					\sin(\pi t)\cos(\pi 2s) \\
+					\cos(\pi t)
+				\end{pmatrix}	
+		\end{equation}.
+		The integral of the form over this manifold is
+		\begin{equation}
+			\begin{aligned}
+				\int_C \omega &= \int_C \frac{x}{r^3}dy \wedge dz + \frac{y}{r^3}dz \wedge dx + \frac{z}{r^3}dx \wedge dy \\
+				&= \int_C \frac{x}{r^3}dy \wedge dz + \int_C \frac{y}{r^3}dz \wedge dx + \int_C \frac{z}{r^3}dx \wedge dy \\
+				&=        \iint_{I^2} \frac{\sin(\pi s)\cos(\pi 2t)}{r^3}  \left|\frac{\partial(C_{2,3})}{\partial(y,z)}\right| dsdt   \\
+				&\ \ \  + \iint_{I^2} \frac{\sin(\pi t)\cos(\pi 2s)}{r^3}  \left|\frac{\partial(C_{3,1})}{\partial(z,x)}\right| dsdt \\
+				&\ \ \  + \iint_{I^2} \frac{\cos(\pi t)}{r^3}  \left|\frac{\partial(C_{1,2})}{\partial(x,y)}\right| dsdt. \\
+			\end{aligned}
+		\end{equation}
+		We need to in general calculate the determinant of $\frac{\partial(g_{i,j})}{\partial(x_i,x_j)}.$ To do so,
+		consider the following calculations, but at first this does not seem tractable.
+		Call $C^*$ the pullback.
+		Then
+		\begin{equation}
+			\begin{aligned}
+				C^* dx &= \pi \cos (\pi s) \cos(2\pi t)dt - 2\pi \sin (\pi s)\sin(2\pi t) dt \\
+				C^* dy &=  \pi \cos (\pi s) \sin(2\pi t)dt - 2\pi \sin (\pi s)\cos(2\pi t) dt \\ 
+				C^* dz &=  - \pi \sin (\pi s) ds \\
+				\implies C^*(dy \wedge dz) &= 2\pi^2 \sin^2(\pi s)\cos(2\pi t) ds \wedge dt \\
+				\implies C^*(dz \wedge dx) &=  2\pi^2 \sin^2(\pi s)\sin (2\pi t) ds \wedge dt \\
+				\implies C^*(dx \wedge dy) &= 2\pi^2 \sin(\pi s) \cos(\pi s) ds \wedge dt  \\
+				\therefore C^*(\omega r^3) &= 2\pi^2 \sin (\pi s) ds \wedge dt = C^*\omega
+			\end{aligned}
+		\end{equation}
+		since $r^3 = 1.$ This gives us the total evaluation of the form using the pullback
+		as $C(\omega) = 4\pi \neq 0.$
+
+		Recall that the boarder of the form is parameterized as follows:
+		\begin{equation}
+			\partial C(s,t) = \partial C(t) = C(1,t) + C(t,1) - C(0,t) - C(t,0) \sim 0,	
+		\end{equation}
+		since the actual boundry is degenerate. So we have that the integral aroundt he boundry
+		is $0$ for any $1$-form, $\beta$ and this contradicts Stokes theorem, so the form could not be exact.                
+ 	\end{proof}
 	\setcounter{enumi}{67}
 	\item Closedness of scalar multiplication.
 	 \begin{theorem}
@@ -111,8 +190,18 @@
 		So if the differential of $f$ is $0$ then $f\omega$ is closed. Otherwise, no.
 	\end{proof}
 	\begin{theorem}
-		
+		If $\omega \in \Omega^k(\mathbb{R}^n)$ is exact, then it may not be the case that
+		$f\omega$ is exact.
 	\end{theorem}
+	\begin{proof}
+		We show a counter example to the negative. Take $\omega = dx_1$ , $f = \sum_i^n x_i.$ Then
+		\begin{equation}
+		d\omega = df \wedge dx_1 = \sum_{i\neq 1}^n dx_i \wedge d_1 \neq 0.
+		\end{equation}
+		On $\mathbb{R}^n$ a form is closed if and only if it is exact (Poincare). Although 
+		$dx_1$ is exact, the exterior derivative of $fdx$ is not $0$ and so $fdx$ is not closed if and only if
+		it is not exact. This compoletes the proof.
+	\end{proof}
 
 	\setcounter{enumi}{70}
 	\item Hairy ball theorem! I'll do part (a) seperately, but follow my logic for the remaining parts all in part(b).
@@ -123,13 +212,27 @@
  			is tangent to $S,$ then there exists a $q$ so that $X(q) = 0.$
  		\end{hairy}
  		\begin{hairy}
- 			Other ball theorem.		
+ 				Every continuous map on $S^2$ to itself which is sufficiently close to the identity map $S^2\to S^2$ has a fixed point.	
  		\end{hairy}
  		\begin{theorem}
  			Hairy ball Theorem 1 and Hairy Ball Theorem 2 are logically equivalent.
  		\end{theorem}
  		\begin{proof}
- 			Lol.
+ 			Take a map $f$ which is sufficiently close, that is 
+    the max norm of the euclidean distance between the identity and $f$ is small.
+    Take the line which takes $f(p)$ to infinity and take a tangent $Tp$ from the point $p$
+    to a point on the line from $f(p).$ Consider this to be our tangent vector field. 
+    If the hairy ball theorem is true then this field must be zero at some $p$. If this is the case
+    then $f(p) = p$ since the line from the origin to $f(p)$ to infinity need be the line from 
+    the origin to $p$ to infinity, otherwise we contradict that the length of this tangent vector is $0.$
+	Therefore the map $f$ has a fixed point.
+
+    Consider the converse. Suppose all maps which are sufficiently close to the identity with a fixed point. 
+    Consider a vector field built in a similar fashion using the vectors $f(p) - p$ and homotopically moving them along the line
+    from $f(p)$ to infinity untill you find a tangent vector to the sphere at $p$ clearly this exists, and since this construction is smooth
+    and $p-f(p)$ is a smooth function, we get that this vector field is continuous and so there is a point where the vector
+    field is $0$ since at one point the line from the origin to $f(p)$ is the same as the line from the origin
+    to $p.$
  		\end{proof}
 		\item We shall build a set of logical tools to prove the first hairy ball theorem.
 		\begin{definition}
