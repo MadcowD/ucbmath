@@ -190,5 +190,24 @@
 		Every closed set in $\mathbb{R}^n$ is a $G_\delta$ set, furthermore
 		every open set is a $F_\sigma$ set.
 	\end{theorem}
+	\begin{proof}
+		Take $S \subset N$ to be some closed set. Then for every $n\in \mathbb{N}$
+		let 
+		\begin{equation}
+			O_n = \bigcup_{x \in S} B\left(x, \frac{1}{n}\right),	
+		\end{equation}
+		where $B(p,r),$ is the open ball of radius $r$ at $p.$
+		Then clearly \begin{equation}
+			\bigcap_{n=1}^\infty O_n = S,
+		\end{equation}
+		and $S$ is a $G_\delta$ set. Let $Y$ be some open set in $N.$ Then
+		$Y^c$ is closed and therefore is an $G_\delta$ set. That is, there exist
+		some open family $\{O_n\}$ so
+		that 
+		\begin{equation}
+				Y^c = \bigcap_{n=1}^\infty O_n \implies {Y^c}^c = \bigcup_{n=1}^\infty O_n^c
+		\end{equation}
+		and $Y$ is an $F_\sigma$ set.
+	\end{proof}
 \end{menumerate} 
 \end{document}
