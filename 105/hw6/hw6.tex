@@ -1,0 +1,194 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%                      Homework _                            %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[letter]{article}
+
+\usepackage{lipsum}
+\usepackage[pdftex]{graphicx}
+\usepackage[margin=1.5in]{geometry}
+\usepackage[english]{babel}
+\usepackage{listings}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{framed} 
+\usepackage{amsmath}
+\usepackage{titling}
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{hairy}{Hairy Ball Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{definition}{Definition}
+\newtheorem{corollary}{Corollary}
+
+\newenvironment{menumerate}{%
+  \edef\backupindent{\the\parindent}%
+  \enumerate%
+  \setlength{\parindent}{\backupindent}%
+}{\endenumerate}
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%
+%% DOC INFO %%%
+%%%%%%%%%%%%%%%
+\newcommand{\bHWN}{6}
+\newcommand{\bCLASS}{MATH 105}
+
+\title{\bCLASS: Homework \bHWN}
+\author{William Guss\\26793499\\wguss@berkeley.edu}
+
+\fancyhead[L]{\bCLASS}
+\fancyhead[CO]{Homework \bHWN}
+\fancyhead[CE]{GUSS}
+\fancyhead[R]{\thepage}
+\fancyfoot[LR]{}
+\fancyfoot[C]{}
+\usepackage{csquotes}
+
+%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+
+%%%%%%% Be sure to set the counter and use menumerate
+\begin{menumerate}
+\item Show some things.
+	\begin{menumerate}
+		\item \emph{Show that the definition of linear outer measure is unaeffected if we demand that the intervals $I_k$ in the coverings be closed instead of open.}
+		\begin{definition}
+			The linear outer measure of a set $A \subset \mathbb{R}$ is given by
+			\begin{equation}
+				m^*A = \inf \left\{\sum_k |I_k| : \{I_k\}\text{ is a covering of A by open intervals}\right\}.
+			\end{equation}
+		\end{definition}
+		\begin{definition}
+			The closed linear outer measure of a set $ \subset \mathbb{R}$ is given by
+			\begin{equation}
+				\bar m^*A = \inf \left\{\sum_k |\bar I_k| : \{\bar I_k\}\text{ is a covering of A by \textbf{closed} intervals}\right\}.
+			\end{equation}
+		\end{definition}
+		\begin{theorem}
+			Definition $1$ and definition $2$ give equivalent measures.
+		\end{theorem}
+		\begin{proof}
+			Take some set $A$ and obtain its linear outer measure $m^*A$. By the definition of infimum,
+			$m^* A$ is the limit of outer measures of finer and finer countable 
+			coverings of $A.$ The same argument can be made for $\bar m^* A$, except for $\bar I_k$ closed.
+
+			Let the two respective sequences of coverings be given by $\mathcal{C}_i$ and $\bar{\mathcal{C}_i}$. Clearly 
+			\begin{equation}
+				m^*A \leftarrow m_i^* A  = \sum_{C \in \mathcal{C}_i} |C| = \bar m_i^* A  =
+				 \sum_{\bar C \in  \bar{\mathcal{C}_i}} |\bar C|\to \bar m^*A
+			\end{equation}
+			And so $m^*A = \bar m^*A.$ This follows subtly from $m(I) = m(\bar I) = b-a$. The proof is complete.
+		\end{proof}
+		\item The middle thirds cantor set has a covering by closed intervals 
+		$C_i$ whose constituent area is $1/3^i$ and so the infimum has area $0.$
+		\item How open should I really be? \begin{theorem}
+			The outer measure of an interval can be taken without without conditions onc closedness/openess.
+		\end{theorem}
+		\begin{proof}
+			Consider that any other covering of $A$ besides that depicted in definition 1 and definition 2, has area in between those two coverings by monotonicity of outer measure. Therefore $m^*A \leq \nu A \leq \bar m^* A \implies \nu A = m^* A.$
+		\end{proof}
+
+		\item The same thing holds for planar outer measure, since effectiveley 
+		$S$ as a rectangle is the product of $n$ intervals. Furthermore, we can approximate any recatngle (open, closed, clopen, or neither) $\pm \epsilon$ by a bunch of squares. 
+	\end{menumerate}
+	\setcounter{enumi}{2}
+	\item
+	\begin{theorem}
+		All lines are zero sets.
+	\end{theorem}
+	\begin{proof}
+		Recall that (from the book) all rigid transformations $T: \mathbb{R}^n \to \mathbb{R}^n$ are meseometries. Take any rotation and translation $\phi.$ By the exercise $m(\mathbb{R} \times \{a\}) = 0$ implies that
+		$m(\phi(\mathbb{R} \times  \{a\})) = m(\mathbb{R} \times \{a\}) = 0.$ 
+	\end{proof}
+	\begin{theorem}
+		All $n-1$ hyperplanes are zero sets in $\mathbb{R}^n.$
+	\end{theorem}
+	\begin{proof}
+		Recall proposition $2$ (from the book) then without loss of generality apply the meaeomorphism in the previous proof.
+	\end{proof}
+	\item Higher dimensional Lemmas!
+	\begin{lemma}
+		The boundary of an $n$-dimensional ball is an $n$-dimensional zero set.
+	\end{lemma}
+	\begin{proof}
+		If $\Delta$ is the closed unit ball in $\mathbb{R}^n$, then $0 < m\Delta < \infty$ since $[-1/\sqrt{2},1/\sqrt{2}]^n \subset [-1,1]^0n.$ The
+		unit sphere $S^{n-1}$ is the boundry of $\Delta.$ It is sandwhiched
+		between balls $\Delta_-$ of radius $1 - \epsilon$ and $\Delta_+$ of radius $1+\epsilon.$ Corollary $8$ implies
+		\begin{equation}
+			m(\Delta_-) = (1- \epsilon)^n m\Delta < m \Delta < (1+ \epsilon)^n m \Delta = m(\Delta_+).	
+		\end{equation}
+		Measurability implies that $m(\Delta_+ \setminus \Delta_-) = m(\Delta_+) - m(\Delta_-) = ((1 + \epsilon)^n - (1 - \epsilon)^n)m \Delta.$
+		This gives us 
+		\begin{equation}
+			m\left(S^{n-1}\right) \leq ((1 + \epsilon)^n - (1 - \epsilon)^n) m\Delta =2\left(\sum_{i=0}^n \begin{pmatrix}
+				n \\
+				i
+			\end{pmatrix} \epsilon^{n-i} \right) m\Delta.
+		\end{equation}
+		Since $\epsilon > 0$ is arbitrary, we get $m(S^{n-1}) = 0.$
+	\end{proof}
+	\begin{lemma}
+		Every open cube is a countable disjoint union of open balls plus a zero set.
+	\end{lemma}
+	\begin{proof}
+		Let $S \subset \mathbb{R}^n$ be an open cube. It contains a compact ball $\Delta$ whose volume is greater than $1/2^n$ of the volume of the cube. This follows from 
+		\begin{equation}
+			\frac{m(\Delta)}{m(S)} = \frac{\pi^{n/2}}{\Gamma(\frac{n}{2} + 1)} > \frac{1}{2^{n}}. 	
+		\end{equation}
+		The difference $U_1 = S \setminus \Delta$ is an open subset of $S$ with $m(U_1) < m(S)((2^n - 1)/2^n).$ It is therefore the disjoint countable union of small open cubes $S_i$ plus a zero set. Each cube contains a ball is volume is greater than $1/2^n$ of the volume of each cube, and so the total volume of the small balls are more than $1/2^n$ the volume of the small cubes.  So we get that the difference is $U_2$ whose total volume is less than $m(U_1)(((2^n - 1)/2^n)) = ((2^n - 1)^2/2^{2n}).$
+
+		Repeating this process we get \begin{equation*}
+			m(U_k) = \frac{(2^n -1)^k}{2^{kn}} \implies \ln(m(U_k)) =
+			\ln((2^n - 1)^k) - \ln(2^{kn}) = k(\ln(2^n - 1)) - n\ln(2)) \to 0  
+		\end{equation*}
+		since $\ln(2^n - 1) \to n \ln (2).$ In other words, repition gives
+		smaller and smaller compact balls with total measure equal to $m(S)$.
+		Lemma $10$ implies that the measure of a closed ball is the same as the measure of its interor, which completes the proof that $S$ consists of countably many disjoint open cubes plus a zero set.
+	\end{proof}
+	\begin{theorem}
+		An affine motion $T: \mathbb{R}^n \to \mathbb{R}^n$ is a meseomorphism. It multiplies measure by $|\det T|.$
+	\end{theorem}
+	\begin{proof}
+		Assume that $Tv = Mv$ where $M$ is an invertible matrix. 
+		We first claim that if $Z$ is  a zero set then so is $TZ$. Given any $\epsilon > 0$ there is a countable covering of $Z$ by boxes  $R_k$ with total volume $< \epsilon.$ Each $R_k$ can be covered by cubes with total volume $m(R_k) + \epsilon/2^k.$ Hence $Z$ can be covered by countably many cubes $S_i$ with volume $2\epsilon.$ The $T$ image of each $S_i$ is contained in a cube with edge length $\|T\| diam S_i.$ This finally gives, $TZ$ contained by cubes whose total volume is
+		\begin{equation}
+			\sum(\|T\| diam S_i)^n = \sum n^{n/2} \|T\|^n |S_i| \leq 2n^{n/2} \|T\|^2\epsilon.
+		\end{equation}
+		Since $\epsilon > 0$ is as  small as we like, we have $m(TZ) = 0.$
+
+		Next we claim that orthogonal transformations are meseometries. Let $O:\mathbb{R}^n \to \mathbb{R}^n$ be orthogonal. It carries the ball $B(r,p),$ to the ball $B(r, Op),$ which is a translate of $B(r,p).$ Let $S$ be a cube. The previous lemma implies that $S = \bigsqcup B_i \cup Z$ where $B_i$ are n-balls and $Z$ is a zero set. The O-image of $B_i$ is
+		a ball of equal measure, and the $O$-image of $Z$ is a zeroset. Hence,
+		$m(OS) = mS.$ Given $\epsilon > 0,$ there is a countable covering of $A$ by cubes $S_i$ with $\sum |S_i| < m^*A + \epsilon$. Thus $\{O(S_i)\}$ covers $OA$ and has total area $< m^*A + \epsilon.$ We therefore get
+		\begin{equation}
+		  	m^*(OA) \leq m^*A.
+		  \end{equation}  
+
+		Since $O^{-1}$ is also orthogonal, it too does not increase outer measure. Theorem $7$ implies that $O$ is a meseometry.
+
+		Finally, we use Polar Form to write
+		\begin{equation}
+			M = O_1 D O_2
+		\end{equation}
+		where $O_1, O_2$ are orthogonal and $D$ is diagonal. Since $O_1$ and $O_2$ are meseometries and by Corrolary $8$ D is a meseomorphism which multiplies measire bt $|det D| =|det T|,$ the proof is complete. 
+	\end{proof}
+	\item Interesting general stuff for $\mathbb{R}!$
+	\begin{theorem}
+		Every closed set in $\mathbb{R}^n$ is a $G_\delta$ set, furthermore
+		every open set is a $F_\sigma$ set.
+	\end{theorem}
+\end{menumerate} 
+\end{document}
