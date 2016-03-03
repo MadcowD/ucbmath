@@ -209,5 +209,79 @@
 		\end{equation}
 		and $Y$ is an $F_\sigma$ set.
 	\end{proof}
+	\setcounter{enumi}{6}
+	\item \emph{Prove that inner measure is translation invariant.}
+	Observe that trnaslation, $T: \mathbb{R}^n \to \mathbb{R}^n$ is an affine motion
+	with $|det T| = 1.$ This can be seen from linear algebra class using an augmented matrix!
+	Furthermore all dialations are affine motions so we propose the following theorems
+	warranting that
+	\begin{theorem}
+		A set $E$ is measurable if and only if $m^*E = m_*E.$
+	\end{theorem}
+	which will be shown in Question 9.
+	\begin{lemma}
+		The boundary of an $n$-dimensional ball is an $n$-dimensional zero inner measure set.
+	\end{lemma}
+	\begin{proof}
+		If the outer measure of a set is $0,$ then the inner measure must be $0.$
+	\end{proof}
+	\begin{lemma}
+		Every open cube is a countable disjoint union of open balls plus a zero inner measure set.
+	\end{lemma}
+	\begin{proof}
+		If it is true for a zero outer measure set, then it must be that the inner measure of such 
+		a set is a zero set. Furthermore, a ball is measurable so inner measure is outer measure.
+	\end{proof}
+	\begin{theorem}
+		An affine motion $T: \mathbb{R}^n \to \mathbb{R}^n$ is a inner meseomorphism. It multiplies inner measure by $|\det T|.$
+	\end{theorem}
+	\begin{proof}
+		Assume that $Tv = Mv$ where $M$ is an invertible matrix. 
+		We first claim that if $Z$ is  a zero inner measure set then so is $TZ$. Given any $\epsilon > 0$ there is a countable covering of $Z$ by boxes  $R_k$ with total inner volume $< \epsilon.$ Each $R_k$ can be covered by cubes with total volume $m_*(R_k) + \epsilon/2^k.$ Hence $Z$ can be covered by countably many cubes $S_i$ with innern volume $2\epsilon.$ The $T$ image of each $S_i$ is contained in a cube with inner edge length $\|T\| diam S_i.$ This finally gives, $TZ$ contained by cubes whose total inner volume is
+		\begin{equation}
+			\sum(\|T\| diam S_i)^n = \sum n^{n/2} \|T\|^n |S_i| \leq 2n^{n/2} \|T\|^2\epsilon.
+		\end{equation}
+		Since $\epsilon > 0$ is as  small as we like, we have $m_*(TZ) = 0.$
+
+		Next we claim that orthogonal transformations are inner meseometries. Let $O:\mathbb{R}^n \to \mathbb{R}^n$ be orthogonal. It carries the ball $B(r,p),$ to the ball $B(r, Op),$ which is a translate of $B(r,p).$ Let $S$ be a cube. The previous lemma implies that $S = \bigsqcup B_i \cup Z$ where $B_i$ are n-balls and $Z$ is an inner measure zero set. The O-image of $B_i$ is
+		a ball of equal inner measure, and the $O$-image of $Z$ is an inner measure zero set. Hence,
+		$m_*(OS) = m_*S.$ Given $\epsilon > 0,$ there is a countable covering of $A$ by cubes $S_i$ with $\sum |S_i| < m_*A + \epsilon$. Thus $\{O(S_i)\}$ covers $OA$ and has total inner volume $< m_*A + \epsilon.$ We therefore get
+		\begin{equation}
+		  	m_*(OA) \leq m_*A.
+		  \end{equation}  
+
+		Since $O^{-1}$ is also orthogonal, it too does not increase inner measure. Theorem $7$ implies that $O$ is an inner meseometry.
+
+		Finally, we use Polar Form to write
+		\begin{equation}
+			M = O_1 D O_2
+		\end{equation}
+		where $O_1, O_2$ are orthogonal and $D$ is diagonal. Since $O_1$ and $O_2$ are inner meseometries and by Corrolary $8$ D is an inner meseomorphism which multiplies inner measure by $|det D| =|det T|,$ the proof is complete. 
+	\end{proof}
+	Therefore translations are mesometries.
+
+	\setcounter{enumi}{8}
+	\item The if and only if of measure theory.
+	\begin{theorem}
+		For some measure space $(M, \mathfrak{M}, \mu),$ we have that $A \subset X$ gives $\mu^*(A) = \mu_*(A),$ then $A \in \mathfrak{M}.$
+	\end{theorem}
+	\begin{proof}
+		Let $\mu$ be some measure on $\mathfrak{M}.$ For any $X \subset M,$ we define
+		the outer measure of $X$ induced by $\mu$
+		\begin{equation}
+			\mu^*X = \inf\left\{\mu(S): S \in \mathfrak{M} \wedge S \supset X\right\}.
+		\end{equation}
+		Dually we define the inner measure induced by $\mu$ as
+		\begin{equation}
+				\mu_*X = \sup\left\{\mu(S): S \in \mathfrak{M} \wedge S \subset X\right\}.
+		\end{equation}
+		Now suppose that $\mu_*X = \mu^*X.$ We claim that $X \in \mathfrak{M}.$ 
+		The set $X$ is measurable if and only if for every test set $A \subset M$,
+		we get
+		\begin{equation}
+			\mu^*(X) = \mu^*(X \cap A) + \mu^*(X \cap A^c).
+		\end{equation}
+		We know that 
+	\end{proof}
 \end{menumerate} 
 \end{document}
