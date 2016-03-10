@@ -20,6 +20,7 @@
 
 
 \newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
 \newtheorem{definition}{Definition}
 
 \newenvironment{menumerate}{%
@@ -37,8 +38,8 @@
 %%%%%%%%%%%%%%%
 %% DOC INFO %%%
 %%%%%%%%%%%%%%%
-\newcommand{\bHWN}{_}
-\newcommand{\bCLASS}{[DEPT] [CLASSN]}
+\newcommand{\bHWN}{7}
+\newcommand{\bCLASS}{MATH 105}
 
 \title{\bCLASS: Homework \bHWN}
 \author{William Guss\\26793499\\wguss@berkeley.edu}
@@ -56,8 +57,130 @@
 \begin{document}
 \maketitle
 \thispagestyle{empty}
-March 10 Chapter 6 #16, 17, 19.
 
+\begin{menumerate}
+    \setcounter{enumi}{15}
+    \item  \emph{Write out the proofs of Lemma 23,24,25 in $n$-dimensions.}
+    \begin{lemma}
+        If $A,B \subset \mathbb{R}^k$ are boxes then $A \times B$ is measurable and $m(A \times B) - mA \cdot mB$
+    \end{lemma}
+    \begin{proof}
+        $A \times B$ is a higher dimensional box and the product formula follows from Corollary 15.
+    \end{proof}
+    \begin{lemma}
+        If $A$ or $B$ is a zero set thern $A \times B$ is measurable and $m(A \times B) = mA \cdot mB = 0$. 
+    \end{lemma}
+    \begin{proof}
+        Without loss of generality let $mA = 0$. For every $\epsilon > 0,$ there exists a countable covering of $A$ by open boxes whose volume is
+        $\epsilon.$ Crossing those boxes by $(0,1)$ gives the outer measure $m^*(V_i) = \epsilon.$ Then since $\mathbb{R}$ is the countable union of 
+        open intervals, take $A_1 = A \times \mathbb{R}$ to be a zero set. Then induct using the above logic recalling that we did not use the dimensionality
+        of $V_i.$ Eventually $0 mA_n =m(A \times \mathbb{R}^n) > m(A \times B) = 0$ by $B \subset \mathbb{R}^n$
+    \end{proof}
+    \begin{lemma}
+        Every open set in $n$-space is a countable union of disjoint cubes plus a zeroset. 
+    \end{lemma}
+    \begin{proof}
+        Accept all dyadic cubes that lie in $U$ and reject the rest. $n$-sect every rejected cube into $2^n$ subcubes. Accept 
+        the interiors of these subcubes which lie in $U$ and reject the rest. Proceed to do this to every single instance of a rejected square infiniteley
+        many times via geometric induction. Eventually every single $x \in U$ will be covered by a cube in this $n-section$ class.
+    \end{proof}
+    \begin{lemma}
+        If $U$ and $V$ are open then $U \times V$ is measurable and $m(U \times V) = mU\cdot mV.$   
+    \end{lemma}
+    \begin{proof}
+        Since $U \times V$ is open it is measurable. Lemma $24$ implies that $U$ is the disjoint union of
+        a bunch of disjoint cubes and a zeroset and $V$ is also the disjoint union of a bunch of cubes
+        and a zeroset. Let $J_j, I_i$ be these two cube sets.
+        Then
+        \begin{equation}
+            U \times V = \sqcup_{i,j} I \times J \cup Z       
+        \end{equation}
+        where $Z = (Z_U \times V) \cup (U \times Z_V)$ is a zeroset by Lemma 23. Since
+        \begin{equation}
+            \left(\sum_i m(I_i)\right) \left(\sum_j m(J_j)\right) = \sum_{i,j}m(I_i)m(J_j) = \sum_{i,j} m(I_i \times J_j)
+        \end{equation}
+        we conclude that $m(U\times V) = mU \cdot mV.$
+    \end{proof}
+    \item \emph{Write out the proofs of the measurable product theorem and the zero slice theorem in $n$ dimensional case unbounded.}
+    \begin{theorem}
+    Measurable Product Theorem.
+    \end{theorem}
+    \begin{proof}
+        Consider $A$ or $B$ unbounded, then $m^*(A) = \infty$ and it could not possibly be that $m^*(A\times B) \neq \infty$
+        unless $B$ were a zeroset.
+
+        Without loss of generality assume that the sets are subsets of the unit interval. We claim that the hull of a product is 
+        the inner product of the hulls and the kernel of a product is the product of the kernels. Since hulls are $G_\delta$ 
+        sets their product is a $G_\delta$ set and is therefore measurable. Similarly the product of kernels is measurable. Clearly,
+        \begin{equation}
+            K_A \times K_B \subset A \times B \subset H_A \times H_B
+           \end{equation}   
+           and $(H_A \times H_B) \setminus (K_A \times K_B) = (H_A \setminus H_B) \times (H_A \setminus H_B).$
+           Measurability of $A$ and $B$ implies that $m(H_A \setminus H_B) = m(H_B \setminus K_B) = 0$, so Lemma 23
+           gives us
+           \begin{equation}
+                m(K_A \times K_B) = m(H_A \times H_B).          
+           \end{equation}
+
+           Let $U_n$ and $V_n$ be sequences of open cubes in the unit cube converging down to $H_A$ and $H_B.$
+           Then $U_n \times V_n$ is a sequence of open sets in $I^2$ converging down to $H_A \times H_B$. Downward 
+           measure continuity implies $m(U_n \times V_n) \to m(H_A \times H_B).$ Lemma $25$ imples that
+           $m(U_n \times V_n) = m(U_n)m(V_n).$ Since $m(U_n) \to A$ and the same for $V_n$ to $mB$ we have that
+           $m(A \times B) = mAmB.$
+    \end{proof}
+    \begin{theorem}
+        If $E \subset \mathbb{R}^n \times \mathbb{R}^k$ is measurable then $E$ is a zero set if and only if almost every slice of $E$ is
+        a zero set.
+    \end{theorem}
+    \begin{proof}
+        Without loss of generality assume that $E$ is contained within the unit cube. Suppose that $E$ is measurable
+        and that $m(E)$ is zero.
+
+        Let $Z = \{x : E_x not a zeroset \}.$ Z is a zeroset. The slices $E_x$ for which $E_X$ is not zeroset are contained
+        in $Z \times \mathbb{R}$ which as proved above is a zero set in $\mathbb{R}^n$. Then $E \setminus (Z \times \mathbb{R}^m)$
+        is measurable and has the same measure as $E$, and so it is no loss of generality to assume that every slice $E_x$
+        is a zeroset.
+
+        It is sufficient to show that the inner measure of $E$ is zero. Let $K$ be any compact subset of $E$ and let $\epsilon >0$
+        be given. The slice $K_x$ is comapct and it has slice measure $0.$ Therefore it has an open neighboorhood $V(x)$
+        so that $m(V(x)) < \epsilon$. Compactness of $K$ implies that for all $x'$ near $x$ we have $y \notin K_x.$ Closedness
+        of $K$ implies that $(x,y) \in K$ so $y \in K_x$ a contradiction. Hence if $U(x)$ is small then for all $x' \in U(x)$
+        we have $x' \times K_{x'}\subset W(x) = U(x) \times V(X).$ It makes sense!
+
+        We can choose these small open sets $U(x)$ from a countable base of the topology of $\mathbb{R}^n$, for instance the open 
+        cubes with rational vertices. This gives a countable covering of $K$ by thin product set $W_i = U_i \times V_i$ such that
+        $m(V_i) < \epsilon$ for every single $i.$ We disjointify the covering by setting
+        \begin{equation}
+            U_i' = U_i \setminus (U_1 \cup \dots \cup U_{i-1}).
+        \end{equation}
+        The sets $U_i'$ are measurable, disjoint, and since $E$ is contained in the unit $m+1$ cube they all line in the unit $k$cube.
+        Hence their total $n$ dimensional meausre is less than 1. The sets $W_i' = U_i' \times V_i$ are dsjoin, are measurable, and coverm $K.$
+        Theorem $21$ implies that $m(W'_i) = m(U_i')m(V_i)$ so their total $m+1$ dimewsional meaure is $< \sum m(U'_i)\cdot \epsilon \leq \epsilon.$
+
+        Converseley, suppose that $E$ is a zero set. Regularity implies there is a $G_\delta$ set $G \subset E$ with $mG = 0$
+        and it suffices to show that almost every slice of $G$ is a zero set.
+        The slices of a $G_\delta$ set are $G_\delta$ sets and in particular each slice $G_x$ is measurable.
+        Let $X(\alpha) = \{x : m(G_x > \alpha\}. $ We claim that $m^*(X(\alpha)) = 0.$ Each $G_x$ contains a cpokmpact set
+        $K(x)$ with $m(K(x)) = m(G_x).$
+
+        Let $U$ be any open subset of $I^n$ that contains $G$. If $x \in X(\alpha)$ then $x \times K(x)$ is a compac
+        subset of $U$ and there is a product neighboorhood $W(x) = U(x) \times V(x)$ of $x\times K(x)$ with $W(x) \subset U.$
+        Since $K(x) \subset V(x)$ we have that $m(V(x)) > \alpha.$ Again we can assume neighboorhoods $U(x)$ belong
+        to some countable base for the topology of $\mathbb{R}^n.$ This gives a countable family $U_i$ which covers
+        $X(\alpha).$ Ads above, set $Ui' = U_i \setminus (U_1 \cup dots \cup U_{i-1}).$ Disjointness and theorem $21$
+        imply that
+        \begin{equation}
+            \begin{aligned}
+                mU \geq \sum m(U_i'\times V_i') = \sum m(U_i') m(V_i) \\
+                &\geq \sum m(U_i')\alpha \geq \alpha m^*(X(\alpha))
+            \end{aligned}
+         \end{equation} 
+
+         Since $mG = 0$ there are open sets $U \supset G \supset E$ with arbitrarily small measure. Thus $X(\alpha)$
+         is a zero set and so is $\bigcup_{\ell \in \mathbb{N}} X(1/\ell)$. That is, $m(E_x) = 0$ for almost every $x.$
+    \end{proof}
+\end{menumerate}
+>>>>>>> 6c8423ce836636b98784b5888c854fd9080d637d
 %%%%%%% Be sure to set the counter and use menumerate
 
 \end{document}
