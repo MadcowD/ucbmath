@@ -261,7 +261,28 @@
 	Therefore translations are mesometries.
 
 	\setcounter{enumi}{8}
-	\item The if and only if of measure theory.
+	\item The if and only if of measure theory. We take the approach of Folland's book.
+		Let $X$ be an open bounded subset of some measure space for which a measure $\nu$ is defined
+		which induces the outer and inner measure on the space. For example, in Labesgue measure theory
+		take $X$ to be a massive rectangle. For some algebra in the power 
+		set of $X$ denote $F_\sigma$ to be the collection of countable unions of set in that algebra.
+		Then denote $F_\sigma\delta$ to be the collection of countable intersections of sets in $F_\sigma.$
+	\begin{theorem}
+		For every $E \subset X$ nonempty and for any $\epsilon > 0,$ there exists $E\subeset A \in F_\sigma$ so
+		that $m^*(A) \leq m^*(E) + \epsilon.$
+	\end{theorem}
+	\begin{proof}
+		The covering which induces the outer measure of $E$ is an $G_\delta$ set induced by sets
+		for which $\nu$ is defined and contain $E.$ Therefore by our previous theorem, its complement
+		is an $F_\sigma$ set, say $A' \subset E$ not proper. Since $A'$ is an $F_\sigma$, set it is 
+		the countable union of closed sets in $X$. Using the axiom of choice, repeat the following process:
+		Remove sets from the collection defining $A'$ in an enumerable fashion until the resulting
+		$F_\sigma$ union of that collection has outer measure less than $A'.$ This resulting set, 
+		$A$ is $F_\sigma$ and has the following property:
+		\begin{equation}
+			m^*(A) \leq E + \epsilon.	
+		\end{equation}
+	\end{proof}
 	\begin{theorem}
 		For some measure space $(M, \mathfrak{M}, \mu),$ we have that $A \subset X$ gives $\mu^*(A) = \mu_*(A),$ then $A \in \mathfrak{M}.$
 	\end{theorem}
@@ -275,6 +296,7 @@
 		\begin{equation}
 				\mu_*X = \sup\left\{\mu(S): S \in \mathfrak{M} \wedge S \subset X\right\}.
 		\end{equation}
+<<<<<<< HEAD
 		Now suppose that $\mu_*X = \mu^*X.$ We claim that $A \in \mathfrak{M}.$ 
 		The set $A$ is measurable if and only if for every test set $X \subset M$,
 		we get
@@ -282,6 +304,31 @@
 			\mu^*(A) = \mu^*(X \cap A) + \mu^*(X^c \cap A).
 		\end{equation}
 		Observe that for any $F$
+=======
+		Now suppose that $\mu_*X = \mu^*X.$ We claim that $X \in \mathfrak{M}.$ 
+		The set $A$ is measurable if and only if for every test set $X \subset M$,
+		we get
+		\begin{equation}
+			\mu^*(A) = \mu^*(A \cap X) + \mu^*(A^c \cap X).
+		\end{equation}
+		
+		Take some open subset of $M$, say $H$ which contains $A$ with finite measure $\nu$ which induces $m^*.$
+		Then clearly,
+		$m^*(A) = m_*(A) = \nu(H) - m^*(A).$ Since $\nu(H)$ is finite we are allowed to use the following 
+		\begin{equation}
+			m^*(H) = \nu(H) = m^*(A) + m^*(A^c).
+		\end{equation}
+		By the previous theorem for every $\epsilon,$ in particular every $n$ such that $1/n = \epsilon$,
+		there is a $B_n \in M_\sigma$ so that $B_n \subset A,$ and $\mu^*(B_n) = \mu^*(A) + 1/n.$ 
+		We get that the infinite intersection of the family $\{B_n\}$ has the property that
+		\begin{equation}
+			m^*(A) \leq m^*(\bigcap B_n) \leq m^*(B_n) \leq m^*(A) + 1/n.
+		\end{equation}
+		We know that this infinite intersection forms an algebra on the sigma algebra of $H$
+		so it is measurable. Letting $n$ be as large as we like,
+		$m^*(A) + m^(A^c) = m^*(A) + m^*(B\cap A^c) + m^*(A^c),$
+		we therefore get that $A$ is measurable by the previous theorem and the first logic of the proof.
+>>>>>>> 9f28e18ffaeda32d447b123d164d7fe9dee00ff0
 	\end{proof}
 \end{menumerate} 
 \end{document}
