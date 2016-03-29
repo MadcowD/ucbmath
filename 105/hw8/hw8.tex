@@ -89,7 +89,7 @@
         We then know for every $\epsilon >0$ there exists a $\delta $
         so that 
         \begin{equation}
-            \sup \{f(y) \ :\ y \in M \cap M_\delta (x) \setminuis \{x\} \} < f(x) + \epsilon.
+            \sup \{f(y) \ :\ y \in M \cap M_\delta (x) \setminus \{x\} \} < f(x) + \epsilon.
         \end{equation}
         This is true if and only if 
         \begin{equation}
@@ -121,9 +121,57 @@
 
          In the opposite direction suppose that $U_a$ is open.
          Then, for every $x \in U_a$ there exists a $\delta$ so that
-         $d(y,x) < \delta \implies $
+         $d(y,x) < \delta \implies y \in U_a. $ Therefore $f(y) < a.$
+         Since we can do this for any arbitrary $a,$ take any $\gamma \in M,$ then consider $U_{f(\gamma)}.$ It follows for every $\epsilon > 0$ there is a $\delta$ so that
+         \begin{equation}
+            0 < d(y, \gamma) < \delta, y \in U_{f(\gamma)} \implies f(y) < f(\gamma) + \epsilon
+         \end{equation}
+         What can be said about $y \notin U_{f(\gamma)}.$ Take the arg max of
+         those $y$ subject to $f(y) \leq f(\gamma)  + \epsilon, y \neq \gamma$ (this is possible since $U_{f(\gamma)}^C$ is closed and there is an $a > \gamma$ so that every $x \in U_a \supset U_{f(\gamma)}$ is a point of upper semicontinuity) and we get $y'$ Then take a new 
+         \begin{equation}
+            \delta' = \min\{\delta, d(y',\gamma)\}
+         \end{equation}
+         and get $f$ upper semicontinuous.
+    \end{proof}
+    \item Negative semicontinuity.
+    \begin{definition}
+        We say that a function $f: M \to \mathbb{R}$ is negative semicontinuous if and only if $-f$ is upper semicontinuous.   
+    \end{definition}
+    \begin{theorem}
+        A function is negative semicontinuous if and only if 
+        \begin{equation}
+            \lim_{y \to x} f(y) \geq f(x).    
+        \end{equation}   
+    \end{theorem}
+    \begin{proof}
+        Suppose that $-f$ is upper semicontinuous, then
+        \begin{equation}
+            \limsup_{y \to x} -f(y) \leq -f(x) \iff
+            -\liminf_{y \to x} f(y) \leq -f(x),   
+        \end{equation}   
+        by the definition of $\liminf.$ Then we negate the inequality and get 
+        \begin{equation}
+            \liminf_{y\to x} f(y) \geq f(x).
+        \end{equation}
+        This completes the proof.
     \end{proof}
      \end{menumerate} 
+     \item
+     \item 
+
+     \setcounter{enumi}{32}
+     \item
+     \item Prove the following
+
+     \begin{theorem}
+         Suppose that $f_n : \mathbb{R} \to [0, \infty)$ is a
+         sequence of integrable functions, $f_n \downarrow f$ a.e. as $n \to \infty$ and $\int f_n \downarrow 0$, then $f = 0$ almost everywhere.
+     \end{theorem}
+     \begin{proof}
+        Suppose that that $f \neq 0$ almost everywhere. Then the undergraph of $f$ would have nonzero measure. If this is the case 
+        then it is not true that $\int f_n \downarrow 0$ since if it were the case then not $f_n \downarrow f$ since the undergraph of $f$ is not a zeroset. Therefore $f = 0.$ This completes the proof.
+     \end{proof}
+     \item 
 \end{menumerate}
 %%%%%%% Be sure to set the counter and use menumerate
 
