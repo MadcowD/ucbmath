@@ -38,7 +38,7 @@
 %%%%%%%%%%%%%%%
 %% DOC INFO %%%
 %%%%%%%%%%%%%%%
-\newcommand{\bHWN}{11}
+\newcommand{\bHWN}{12}
 \newcommand{\bCLASS}{MATH 105}
 
 \title{\bCLASS: Homework \bHWN}
@@ -213,15 +213,38 @@
 		\end{equation}
 		This map is $C^\infty$ since it is the finite sum of $C^\infty$functions. Furthermore $\beta_Q$ is only $0$ if $x \notin R^0$ or equivelently $x \in L$. 
 
-		Finally we can extend $\beta_Q$ to the whole space smoothly using $\textbf{e}$ from chapter $3$. That is if $x \in Q$ then define $\beta: x \mapsto \beta_Q(x).$ Otherwise we let
+		Finally we can extend $\beta_Q$ to the whole space smoothly using $\textbf{e}$ from Chapter $3$. That is if $x \in Q$ then define $\beta: x \mapsto \beta_Q(x).$ Otherwise we let
 		\begin{equation}
 			\beta: x \mapsto \textbf{e}\left(\left\|x - \frac{\text{diam}(Q)}{\|x - o(Q)\|}(x - o(Q))  \right\|\right).
 		\end{equation}
 		This map essentially takes $x$ from the boundary of $Q$ and brings it towards infinity smoothly so that no value outside of $Q$ is acutally $0$.
 
-		Therefore $\beta \in C^\infty(\mathbb{R}, [0, \infty))$ with zero locus only at $L$ this completes the proof.
+		Therefore $\beta \in C^\infty(\mathbb{R}^n, [0, \infty))$ with zero locus only at $L$ this completes the proof.
 	\end{proof}
-	\item 
+	\item \textbf{Smooth cantor shrinkification.}
+	\begin{theorem}
+		Suppose that $F \subset [0,2]$ is a fat cantor set of measure $1$. There exists a $C^\infty$ homeomorphism of $h: \mathbb{R} \to \mathbb{R}$ which carries $[0,2]$  to $[0,1]$ and $F$ to a cantor set $hF$ with measure $0$.
+	\end{theorem}
+	\begin{proof}
+		Take the mapping $\beta \in C^\infty$ with zero locus $F$ using Theorem 7. Then let $h: \mathbb{R} \to \mathbb{R}$ such that
+		\begin{equation}
+			h(x) = c\int_0^x \beta(t)\ dt,\;\; c = \frac{1}{\int_0^2 \beta(t)\ dt}.
+		 \end{equation} 
+		 It follows that $h'(x) = c\beta(x) = 0$ if $x \in F$. Therefore by Theorem 2 we have that $hF$ is the set of critical values for $h$ and therefore a zeroset. Since $h$ is homeomorphic we have that $hF$ is a cantor set with measure zero. Finally $c$ is such that $h : [0,2] \mapsto [0,1].$ This completes the proof.
+	\end{proof}
+	\item \textbf{Compositional measurability.}
+	\begin{theorem}
+		Suppose $f: \mathbb{R} \to [0, \infty)$ is Lebesgue measureable and $g: [0, \infty) \to [0, \infty)$ is monotone or continuous. The composition $g \circ f$ is Lebesgue measurable.
+	\end{theorem}
+	\begin{proof}
+		We wish to show that for every open set $E$  $F_\sigma$, $(g \circ f)^{pre}(E)$ measurable.
+
+		For any open $E$ take $F = f^{pre}(E).$ This set is measurable by the measurabiltiy of $f.$ It is enough to show that $g^{pre}(F)$ is measurable. If $g$ is continuous this is immediate if we take Borel $\sigma$-algebra (Lebesgue is not so kind). If $g$ is montone its set of discontinuities is a zeroset. In this case take the continuous restriction of $g$ to be $g_C$ and the discontinuous to be $g_D$.
+		Then
+		 $g^{pre}(F) = g_C^{pre}(F) \cup g_D{pre}(F)$ which is a measurable union and a zeroset. Therefore in any case $g^{pre}$ is measurable!
+
+		 In the Lebesgue case I'm not convinced this theorem is true! Actually you can take $g$ to be the identity map between $(\mathbb{R}, \mathcal{B}) \to (\mathbb{R}, \mathcal{L})$ and it is certain that there are sets in $\mathcal{L}$ which are not in $\mathcal{B}$. So let's stick to Borel measurable sets.
+	\end{proof}
 
 \end{menumerate}
 \end{document}
