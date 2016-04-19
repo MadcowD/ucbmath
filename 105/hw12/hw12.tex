@@ -1,0 +1,227 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%                      Homework _                            %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[letter]{article}
+
+\usepackage{lipsum}
+\usepackage[pdftex]{graphicx}
+\usepackage[margin=1.5in]{geometry}
+\usepackage[english]{babel}
+\usepackage{listings}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{framed} 
+\usepackage{amsmath}
+\usepackage{titling}
+\usepackage{fancyhdr}
+\usepackage[mathcal]{euscript}
+\pagestyle{fancy}
+
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{definition}{Definition}
+
+\newenvironment{menumerate}{%
+  \edef\backupindent{\the\parindent}%
+  \enumerate%
+  \setlength{\parindent}{\backupindent}%
+}{\endenumerate}
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%
+%% DOC INFO %%%
+%%%%%%%%%%%%%%%
+\newcommand{\bHWN}{11}
+\newcommand{\bCLASS}{MATH 105}
+
+\title{\bCLASS: Homework \bHWN}
+\author{William Guss\\26793499\\wguss@berkeley.edu}
+
+\fancyhead[L]{\bCLASS}
+\fancyhead[CO]{Homework \bHWN}
+\fancyhead[CE]{GUSS}
+\fancyhead[R]{\thepage}
+\fancyfoot[LR]{}
+\fancyfoot[C]{}
+\usepackage{csquotes}
+
+%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+
+%%%%%%% Be sure to set the counter and use menumerate
+\begin{menumerate}
+	\setcounter{enumi}{64}
+	\item \textbf{Critical Values!}
+	Critical values of sin are $\{-1,1\}$. Critical points are the multiples of $\pi$.
+	\begin{theorem}
+		If $f:[a,b] \to \mathbb{R}, f \in C^1$ then $cp(f), cv(f)$ are compact.
+	\end{theorem}
+	\begin{proof}We need to show that $cp(f) = \{x : f'(x) = 0\}$ is closed. 
+		Since $f'$ is continuous, we consider the $f'$ 0-locus. It is true
+		that $cp(f) = {f'}^{pre}(0)$ is closed since $\{0\}$ is closed. Therefore
+		$cp(f)$ is compact. Finally by the continuity of $f$, $f(cp(f)) = cv(f)$ is compact.
+	\end{proof}
+	\begin{theorem}
+		If $f \in C^1(\mathbb{R})$ then $cv(f)$ is a zeroset.
+	\end{theorem}
+	\begin{proof}
+		It must be shown that $cv(f)$ can be covered with intervals of small length. Take any $\epsilon >0$. Then for every $\theta \in cp(f)$
+		take $|a - \theta| < \sqrt{\epsilon}/2$ and $a$ close enough that $f'(a) - f'(\theta) < \sqrt{\epsilon}.$ It follows that $m((f(\theta), f(a)) = 1/2m((\theta -a, \theta + a)).$ Furthermore by the mean value theorem there is a $\gamma$ such that
+		\begin{equation}
+			f(\theta) - f(a) = f'(\gamma)\frac{\sqrt{\epsilon}}{2} \leq \frac{\epsilon}{2}.
+		\end{equation}
+		Therefore it follows that $m((f(a), 2(f(\theta) - f(a)) +f(a))) = \epsilon$ where $I_\theta = (f(a), 2(f(\theta) - f(a)) +f(a)),$
+
+		For every $\vartheta \in cp(v)$ if $f(\theta) = f(\vartheta)$ then we have an equivalence realtion $\vartheta \sim \theta$. There fore we consider the disjoint union 
+		\begin{equation}
+			S = \bigsqcup_{\theta \in [cp(f)]_\sim} I_\theta 
+		\end{equation}
+		as a covering of $cv(f).$ Since in each interval there is a $q_\theta \in \mathbb{Q}$ the union is countable. Then as $\epsilon \to 0$, $m(I_\theta) \to 0$ implies that for all $\delta > 0$ and for all $\theta$ there are intervals $I_\theta$ such that 
+		\begin{equation}
+			\bigsqcup_{\theta \in [cp(f)]_\sim} I_\theta < \delta \implies cv(f)\ \text{a zeroset.}
+		\end{equation}
+
+		We can then generalize to all of $\mathbb{R}$ by restricting $f$ to $(z, z+1)$ for every $z \in \mathbb{Z}$, call that $f_z$. The total set of critical values is
+		\begin{equation}
+		cv(f) = \bigcup_{z \in \mathbb{Z}}cv(f_z)
+		\end{equation}
+		which is the countable union of zerosets, ie, a zeroset.
+	\end{proof}
+	\item \textbf{An interesting function!}
+	\begin{theorem}
+		There exists a monotone function $f:[0,1] \to \mathbb{R}$ whose discotninuity set is exactly the set $\mathbb{Q} \cap [0,1]$.
+	\end{theorem}
+	\begin{proof}
+		Take any enumeration of $\mathbb{Q} \cap [0,1]$, say $\{a_k\} \subset \mathbb{Q}.$  Then let $f_0: x\mapsto x$. We define $f_n$ as follows.
+		If $x < a_n$ then we simply have $f_n: x \mapsto f_{n-1}(x)$. 
+		For $x = a_n$,
+		\begin{equation}
+		 	f_n: x \mapsto \sup_{y \leq a_n} f_{n-1}(y) + \frac{1}{2n^2}.
+		 \end{equation} 
+		 At $x > a_n,$ then
+		 \begin{equation}
+			f_n: x \mapsto f_{n-1}(x) + \frac{1}{n^2}.
+		 \end{equation}
+		 We know that $\limsup f_n \leq \sum_{n=1}^\infty 1/n^2 \in \mathbb{R}.$ So we can bound the function.
+
+		  We show that $f_n$ is uniformly cauchy; that is, for every $\epsilon >0$ we claim that there exists an $N$ such that for all $n,m >  N$ $\|f_n - f_m\| < \epsilon.$
+		 To see this consider that the main difference of these functions is
+		 exacerbated at the end of the intervals, at $f_n(1)$ and $f_m(1).$
+
+		 The difference $f_n(1) - f_m(1) = \sum_k^n 1/k^2 - \sum_k^m 1/k^2$ gives without loss of generality 
+		 \begin{equation}
+		 	\|f_n - f_m\| \leq \sum_{k=m}^n \frac{1}{k^2}.
+		 \end{equation}
+		 Since there series $\sum 1/k^2$ converges take $N$ so large that
+		 the partial sums of that series differ by no more than $\epsilon$. Therefore $f_n $ converges uniformly to some $f.$
+
+		 Now, every $f_n$ is riemann integrable since its set of discontinuities is a zeroset. Therefore $f$ is riemann integrable and therefore its set of discontinuities is a zeroset. This completes the proof.
+	\end{proof}
+	\setcounter{enumi}{69}
+	\item \textbf{Kernel's Hull's and other pretty cool stuff!}
+	\begin{menumerate}
+		\item Uniqueness.
+		\begin{theorem}
+			Let $A \subset \mathbb{R}^n$ be a bounded set. Then $K_A$ and $H_A$ are unique up to a zeroset.
+		\end{theorem}
+		\begin{proof}
+			Take two kernels of $A$ say $K, K'$. These sets are $F_\sigma$ and there measure is the supremum of 
+			all of the closeds, $\kappa \subset A$. We claim that these two sets have a mutual set of nonzero measure assuming
+			that $K, K'$ are not zerosets (if they were then they would be uniqueley empty up to zerosets!)
+
+			Suppose they did not. This would mean that there are two families of closeds within $A$ say $\mathcal{K}_1$ and $\mathcal{K}_2$ such every element in the first is disjoint $\mathcal{K}_1$ and $\mathcal{K}_2$from every element of the second. To see this, imagine that $K$ and like wise $K'$ are the unions of $\mathcal{K}_1$ and $\mathcal{K}_2$ respectiveley and kernels are $F_\sigma$ sets. If all of this were true, then the kernel $K'' = \bigcup \mathcal{K}_1 \cup \bigcup \mathcal{K}_2$ mus have more measure than both kernels and thus a larger measure, which contradicts the kernels being maximal with respect to the supremum of closeds within $A$. Therefore they have a common set, call it $B.$
+
+			Now $K_1 = B \cup Z_1$ and $K_2 = B \cup Z_2$. Since they differ by more than a zeroset, it must be that $Z_1$ or $Z_2$ is not a zero set. In fact one or both of these sets has positive measure. Since sets of positive measure contain a closed with some measure, it follows that the measure of either $K$ or $K'$ is greater than the other. This again contradicts the fact that $K$ and $K'$ are maximal. Therefore $Z_1$ and $Z_2$ must be zero sets. This is a contradition to our hypothesis that $K$ and $K'$ differ by more than a zeroset.
+
+			Take two hulls of $A$, say $H$ and $H'$. These sets are $G_\delta$ and their measures are the infimum of opens containing $A$. Supose that $H$ and $H'$ differed by more than a zeroset. 
+			Bound this  $A$ by a box of at least twice the diameter of $A$. Then let this box be our universe, such that compliments are taken in $\mathbb{R}^n$ and then intersected with the box.
+
+			If $H = O_1 \cup Z_1, H' = O_2 \cup Z_2$are the minimal sets then $H^c, {H'}^c$ are $F_\sigma$ sets which are maximal with respect to the kernel on $A^c$.  If $H$ and $H'$ differ by more than a zero set then $H^c, {H'}^c$ certainly differ by more than a zero set and yet they are hulls of $A^c$, which is a contradiction. Therefore $H$ and $H'$ must not differ by more than a zero set.
+		\end{proof}
+		\item Jam on bread.
+		\begin{theorem}
+			For every $A  \subset \mathbb{R}^n$ and every $E$ measurable,
+			\begin{equation}
+			 	m^*(A \cap E) = m(H_A \cap E).
+			 \end{equation} 
+		\end{theorem}
+		\begin{proof}
+			This result is natural! Recall that $m(H_A) = m^*(A).$ We then need to show that $H_A \cap E$ is a hull for $A \cap E.$
+			Take the hull of $E$, this set is a closed and a zeroset. 
+			Therefore the intersction, $H_A \cap E$ is a closed an a zeroset and an $G_\delta.$ We need to show that this set is minimal with respect to $A \cap E.$ This easy since $x\in H_A \cap H_E$ implies that $x$ is in the minimal most covering of $A$ and the minimal most covering of $E$, measure theoretically. The measurabiliy of $E$ gives the same result of $x \in H_A \cap E$;
+			that is $H_A \cap E$ is the hull for $A \cap E$. Therefore
+			$m^*(A \cap E) = m(H_A \cap E).$
+		\end{proof}
+		\item Density in hulls.
+		\begin{theorem}
+			For almost every $p \in H_A$ we have
+			\begin{equation}
+				\lim_{Q \downarrow p} \frac{m^*(A \cap Q)}{mQ} = 1.		
+			\end{equation}	
+		\end{theorem}
+		\begin{proof}
+			Since $H_A$ is a closed and a zeroset, ie. $G_\delta$, we take every point within the closed, ie. almost every point. Call the closed set $\mathfrak{H}$.
+			Since $\mathfrak{H}$ is closed the Labesgue Density Theorem along with (b) gives
+			\begin{equation}
+				1= \lim_{Q \downarrow p} \frac{m(\mathfrak{H} \cap Q)}{mQ} =
+				\lim_{Q \downarrow p} \frac{m(H_A\cap Q)}{mQ} =
+				\lim_{Q \downarrow p} \frac{m^*(A \cap Q)}{mQ}.
+			\end{equation}
+			This completes the proof.
+		\end{proof}
+	\end{menumerate}
+	\item It is true that $H_A \setminus A$ is a zeroset, this follows from $H_A$ a $G_\delta$.
+	
+	\setcounter{enumi}{75}
+	\item \textbf{Closed locus diffeomorphisms.}
+	\begin{theorem}
+		Given a closed set $L \subset \mathbb{R}$ there exists a $C^\infty$
+		function $\beta: \mathbb{R} \to [0, \infty)$ whose zero locus $\{x\ :\ \beta(x) = 0\} = L.$	
+	\end{theorem}	
+	\begin{proof}
+		$L$ is closed and therefore its compliment $L^c$ is open. By the compactness of $L$ we have that there exist a large ball $Q \supset L$ which is finite. Take $R = L^c \cap Q.$ Furthermore there exists a countable disjoint efficient  Vitali covering of $Q$ by a family of supper effective balls $\mathcal{B} = \{B_i\}.$
+		
+		Define the interior of $R$ to be $R^{0}$ and the interior of $\bigcup \mathcal{B}$ to be $B^0$. Then, $B^0 \cup Z = R^0$ where $Z$ is a zero set. We wish to complete $B^0$ in a finite way that gives us all of $R^0.$ In other words we'd like to cover $Z$ with finitely many balls. 
+
+		Since $Z \subset R^0$ we have that for every $z \in Z$ there is an $r_z >0$ so that $\mathbb{B}^0_{r_z}(z) \subset R^0$, where $\mathbb{B}^0_\rho$ denotes the open ball centered at $z$ with radius $\rho.$ We also denote the center of the ball $o(\mathbb{B}^0_r(z)) = z.$
+
+		Let $\mathcal{E} = \{B_{r_z}(z)\}_{z \in Z}$ be the family of all such balls. This family covers $cl(Z) \subset R$ almost everywhere and reduces to a finite subcovering of $Z$, $\mathcal{E}_F$. 
+
+		Recall the bump function $\phi$ such that $\int \phi = 1$ and $\phi \in C^{\infty}.$ We define $\gamma : Q \to [0, \infty)$ as the disjoint
+		vitali map such that if $x \in B_o \in \mathcal{B}$,
+		\begin{equation}
+			\gamma: x \mapsto \phi\left(\frac{x - o(B_i)}{\text{diam}(B_i)}\right).
+		\end{equation}
+		Otherwise $\gamma : x \mapsto 0$. Clearly $\gamma$ is $C^\infty$ since
+		$B_i \cap B_j = \emptyset$ for all $i \neq j.$
+		
+
+		Then we let $\beta_Q: Q \to [0,\infty)$ be defined as the full covering map
+		\begin{equation}
+			\beta_Q : x \mapsto \gamma(x) + \sum_{E \in \mathcal{E}_F} \phi\left(\frac{x - o(E)}{\text{diam}(E)}\right).
+		\end{equation}
+		This map is $C^\infty$ since it is the finite sum of $C^\infty$functions. Furthermore $\beta_Q$ is only $0$ if $x \notin R^0$ or equivelently $x \in L$. 
+
+		Finally we can extend $\beta_Q$ to the whole space smoothly using $\textbf{e}$ from chapter $3$. That is if $x \in Q$ then define $\beta: x \mapsto \beta_Q(x).$ Otherwise we let
+		\begin{equation}
+			\beta: x \mapsto \textbf{e}\left(\left\|x - \frac{\text{diam}(Q)}{\|x - o(Q)\|}(x - o(Q))  \right\|\right).
+		\end{equation}
+		This map essentially takes $x$ from the boundary of $Q$ and brings it towards infinity smoothly so that no value outside of $Q$ is acutally $0$.
+
+		Therefore $\beta \in C^\infty(\mathbb{R}, [0, \infty))$ with zero locus only at $L$ this completes the proof.
+	\end{proof}
+	\item 
+
+\end{menumerate}
+\end{document}
