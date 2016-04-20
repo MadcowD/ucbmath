@@ -242,9 +242,59 @@
 		For any open $E$ take $F = f^{pre}(E).$ This set is measurable by the measurabiltiy of $f.$ It is enough to show that $g^{pre}(F)$ is measurable. If $g$ is continuous this is immediate if we take Borel $\sigma$-algebra (Lebesgue is not so kind). If $g$ is montone its set of discontinuities is a zeroset. In this case take the continuous restriction of $g$ to be $g_C$ and the discontinuous to be $g_D$.
 		Then
 		 $g^{pre}(F) = g_C^{pre}(F) \cup g_D{pre}(F)$ which is a measurable union and a zeroset. Therefore in any case $g^{pre}$ is measurable!
-
-		 In the Lebesgue case I'm not convinced this theorem is true! Actually you can take $g$ to be the identity map between $(\mathbb{R}, \mathcal{B}) \to (\mathbb{R}, \mathcal{L})$ and it is certain that there are sets in $\mathcal{L}$ which are not in $\mathcal{B}$. So let's stick to Borel measurable sets.
 	\end{proof}
 
+	 In the Lebesgue case I'm not convinced this theorem is true! Actually you can take $g$ to be the identity map between $(\mathbb{R}, \mathcal{B}) \to (\mathbb{R}, \mathcal{L})$ and it is certain that there are sets in $\mathcal{L}$ which are not in $\mathcal{B}$. So let's stick to Borel measurable sets.
+	
+	\item \textbf{Indicator Homeos.}
+	\begin{menumerate}
+		\item Bijective indicators.
+		\begin{theorem}
+			If $h: X \to Y$ bijectiveley then $\chi_{A \subset X} = \chi_{hA} \circ h$.
+		\end{theorem}
+		\begin{proof}
+			If $x \in A$ then $\chi_A$ is $1$ if and only if $x \in A$ and zero otherwise.	
+			If $x\in A$ then $hx \in hA$ uniqueley for every $x \in A$ that is to say if $x\in X \setminus A$ the $hx \notin hA$. So if $x \in A$ then $\chi_{hA}(h(x))$ is $1$, 
+			otherwise it is $0$ since $hx$ would not be in $hA$.
+		\end{proof}
+		\item $F$ contains a nonmeasurable since it is itself measurable with positive measure. 
+		This is essentially from the dopple ganger theorem. since we habe $h$ from the previous question $hP \subset hF$ is still
+		a zeroset, where $P$ is that doppleganger.
+		\item For the same reasons that (a) holds.
+		\item Exercise 78 and above $\chi_{hP}$ clearly measurable but not $\chi_P = \chi_{hP} \circ h$.
+	\end{menumerate}
+	\item \textbf{Pointwise $f_n = 0$ Convergence!}
+	\begin{menumerate}
+		\item It is true since $\chi_{hP}$ is zero everywhere except for a zeroset.
+		\item Yes it is Lebesgue measurable indicators of zerosets are lebesgue measurable.
+		\item Nope.
+		\item Since $f_n(x) \to \chi_{hP}$ and $f_n$ is Borel measurable and $\chi_{hP}$ is not the statement is true
+	\end{menumerate}
+	\item \textbf{Stronger Average Value Theorem.}
+	\begin{theorem}
+		If $f$ is a measurable function then for all most every $p$ in its domain we have that 
+		\begin{equation}
+			\lim_{Q\downarrow p} \frac{1}{mQ} \int_Q |f- fp|\ d\mu(x) = 0
+		\end{equation}
+		\begin{proof}
+			Get an enumeration of $\mathbb{Q},$ say $\{a_n\}$ there is a sequence $a^{fp}_n \to fp.$ Finally
+			consider that for every $n$ the function $|f -a_n|$ is measurable. So we let $f_n^{fp}(x) = |f(x) - a^{fp}_n|.$
+			The limit is measurable. By the average value theorem
+			\begin{equation}
+				\lim_{Q\downarrow p} \frac{1}{mQ} \int_Q |f_n-  a^{fp}_n|\ d\mu(x) = |f_p - a^{fp}_n|.
+			\end{equation}
+			As $ a^{fp}_n\to fp$ the right hand side  tends towards to $0$ and therefore
+			 \begin{equation}
+			 	\begin{aligned}
+					0 &= \lim_{ n\to \infty}\lim_{Q\downarrow p} \frac{1}{mQ} \int_Q |f- a^{fp}_n|\ d\mu(x)  \\
+					&=  \lim_{Q\downarrow p}  \frac{1}{mQ} \int_Q \lim_{ n\to \infty} |f- a^{fp}_n|\ d\mu(x)  \\
+					&= \lim_{Q\downarrow p} \frac{1}{mQ} \int_Q |f- fp|\ d\mu(x) .
+			 	\end{aligned}
+			 \end{equation}
+			 We can bring the limit inside by the measurability and uniform convergence of the functions.
+			 This completes the proof.
+
+		\end{proof}
+	\end{theorem}
 \end{menumerate}
 \end{document}
