@@ -1,0 +1,142 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%                      Homework _                            %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[letter]{article}
+
+\usepackage{lipsum}
+\usepackage[pdftex]{graphicx}
+\usepackage[margin=1.5in]{geometry}
+\usepackage[english]{babel}
+\usepackage{listings}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{framed} 
+\usepackage{amsmath}
+\usepackage{titling}
+\usepackage{fancyhdr}
+\usepackage[mathcal]{euscript}
+\pagestyle{fancy}
+
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{definition}{Definition}
+
+\newenvironment{menumerate}{%
+  \edef\backupindent{\the\parindent}%
+  \enumerate%
+  \setlength{\parindent}{\backupindent}%
+}{\endenumerate}
+
+
+\usepackage{accents}
+\newcommand{\ubar}[1]{\underaccent{\bar}{#1}}
+
+
+
+
+%%%%%%%%%%%%%%%
+%% DOC INFO %%%
+%%%%%%%%%%%%%%%
+\newcommand{\bHWN}{13}
+\newcommand{\bCLASS}{MATH 105}
+
+\title{\bCLASS: Homework \bHWN}
+\author{William Guss\\26793499\\wguss@berkeley.edu}
+
+\fancyhead[L]{\bCLASS}
+\fancyhead[CO]{Homework \bHWN}
+\fancyhead[CE]{GUSS}
+\fancyhead[R]{\thepage}
+\fancyfoot[LR]{}
+\fancyfoot[C]{}
+\usepackage{csquotes}
+
+%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+
+%%%%%%% Be sure to set the counter and use menumerate
+\begin{menumerate}
+	\setcounter{enumi}{80}
+	\item \textbf{Stronger Average Value Theorem.}
+	\begin{theorem}
+		If $f$ is a measurable function then for all most every $p$ in its domain we have that 
+		\begin{equation}
+			\lim_{Q\downarrow p} \frac{1}{mQ} \int_Q |f- fp|\ d\mu(x) = 0
+		\end{equation}
+		\begin{proof}
+			Get an enumeration of $\mathbb{Q},$ say $\{a_n\}$ there is a sequence $a^{fp}_n \to fp.$ Finally
+			consider that for every $n$ the function $|f -a_n|$ is measurable. So we let $f_n^{fp}(x) = |f(x) - a^{fp}_n|.$
+			The limit is measurable. By the average value theorem
+			\begin{equation}
+				\lim_{Q\downarrow p} \frac{1}{mQ} \int_Q |f_n-  a^{fp}_n|\ d\mu(x) = |f_p - a^{fp}_n|.
+			\end{equation}
+			As $ a^{fp}_n\to fp$ the right hand side  tends towards to $0$ and therefore
+			 \begin{equation}
+			 	\begin{aligned}
+					0 &= \lim_{ n\to \infty}\lim_{Q\downarrow p} \frac{1}{mQ} \int_Q |f- a^{fp}_n|\ d\mu(x)  \\
+					&=  \lim_{Q\downarrow p}  \frac{1}{mQ} \int_Q \lim_{ n\to \infty} |f- a^{fp}_n|\ d\mu(x)  \\
+					&= \lim_{Q\downarrow p} \frac{1}{mQ} \int_Q |f- fp|\ d\mu(x) .
+			 	\end{aligned}
+			 \end{equation}
+			 We can bring the limit inside by the measurability and uniform convergence of the functions.
+			 This completes the proof.
+
+		\end{proof}
+	\end{theorem}
+
+
+	\setcounter{enumi}{83}
+	\item \textbf{Almost Absolutely Continuous Functions.}
+
+	Lusin's Lemma extends to absolute continuity for the falling reasons. Take an $f$ satisfying the conditions in Lusin's Lemma. Then $f:[a,b] \to \mathbb{R}$ restricted to $E \subset [a,b]$ is continuous and $E$ is a bounded compact set. Since $f_{|E}$ is continuous on a bounded compact subset, then it is absolutely continuous on that subset. So $f$ satisfying Luzin's lemma is almost absolutely contionuous.
+	The lemma used in this reasoning does not require that $f$ be bounded! `'
+
+	\setcounter{enumi}{86}
+	\item \textbf{Density Theoretic Boundries}
+	\begin{menumerate}
+		\item Measure theoretic boarder.
+		\begin{theorem}
+			If $E$ is a subset of $\mathbb{R}^n$ and $\partial E$ is its boarder then
+		    $$\partial_m E \subset \partial E. $$
+		\end{theorem}
+		\begin{proof}
+			If $p \in Ext_m(E)$ then clearly $d(p, E^c) =1$ and therefore $p \in E^c.$
+			Conversely $\partial_m E \cup Int_m(E) = E.$ Suppose for the sake of contradiction
+			that there exists a $p \in \partial_m E$ such that $p \in E^{o} = Int(E).$
+			Then there exists an $r > 0$ such that all $x \in B(p,r)$ are in $E.$ Therefore
+			$d(p,E) = 1.$ This a contradiction to $p \in \partial_m E$, so $p \in \partial E.$
+			This completes the proof.
+		\end{proof}
+
+		\item Consider the following construction. Let $f: [-1,1] \to [0,2]$ such that $x \mapsto x^{2/3} + 1.$
+		This function has a cusp at $x = 0$ whose walls get sharper and sharper. Imagine the point on the border of the completed undergraph
+		at $x = 0.$ As you shrink the ball it encompasses more of the area on the graph. Untill eventually the limit is one.
+		See the picture: \\[3in]
+	\end{menumerate}
+	\item \textbf{Topological Riemann Integrability}
+	\begin{theorem}
+		Let $X$ be a compact hypercube in $\mathbb{R}^n$. A function $f: X \to [0, M]$ is Riemann integrable if and only if
+		$m(\partial \mathcal{U} f) = 0.$
+	\end{theorem}
+	\begin{proof}
+		Recall that Lemma 69 holds for any arbitrary metric space. Therefore,
+		\begin{equation}
+			\mathcal{U} \ubar{f} = int(\mathcal{U}f)\;\wedge\;\hat{\mathcal{U}} \bar{f}  = \overline{\mathcal{U} f}
+		\end{equation}
+		Since open sets and closed set are measurable in $\mathbb{R}^n$, then $\ubar{f}$ and $\overline{f}$ are measurable functions.
+		Thus
+		\begin{equation}
+			m(\partial(\mathcal{U} f)) = m(\overline{\mathcal{U} f} \setminus int(\mathcal{U} f)) 
+			= m(\hat{\mathcal{U}} \bar{f}) - m(\mathcal{U} \ubar{f}) = \int_X \bar{f} - \ubar{f}.
+		\end{equation}
+
+		Lebesgue theory tells us that the integral is zero if and only if $\bar{f} = \ubar{f}$ almost everywhere, i.e. $f$ is continuous if and only if $f$ is continuous everywhere ($lim_{t\to x} f(t).$), i.e. by the Multivariate Riemann-Lebesgue Theorem if and only if $f$ is Riemann integrable.
+	\end{proof}
+\end{menumerate}
+\end{document}
