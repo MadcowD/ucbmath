@@ -1,0 +1,374 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%                      Homework _                            %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[letter]{article}
+
+\usepackage{lipsum}
+\usepackage[pdftex]{graphicx}
+\usepackage[margin=1.5in]{geometry}
+\usepackage[english]{babel}
+\usepackage{listings}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{framed} 
+\usepackage{amsmath}
+\usepackage{titling}
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{definition}{Definition}
+
+\newenvironment{menumerate}{%
+  \edef\backupindent{\the\parindent}%
+  \enumerate%
+  \setlength{\parindent}{\backupindent}%
+}{\endenumerate}
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%
+%% DOC INFO %%%
+%%%%%%%%%%%%%%%
+\newcommand{\bHWN}{1}
+\newcommand{\bCLASS}{MATH 185}
+
+\title{\bCLASS: Homework \bHWN}
+\author{William Guss\\26793499\\wguss@berkeley.edu}
+
+\fancyhead[L]{\bCLASS}
+\fancyhead[CO]{Homework \bHWN}
+\fancyhead[CE]{GUSS}
+\fancyhead[R]{\thepage}
+\fancyfoot[LR]{}
+\fancyfoot[C]{}
+\usepackage{csquotes}
+
+%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+
+%%%%%%% Be sure to set the counter and use menumerate
+\setcounter{section}{1}
+\section{Algebraic Properties}
+\begin{menumerate}
+	\setcounter{enumi}{1}
+	\item \begin{theorem}
+		If $z \in \mathbb{C}$ then $Re(iz) = -Im(z)$ and $Im(iz) = Re(z)$.
+	\end{theorem}
+	\begin{proof}
+		Since $z \in \mathbb{C}$, $z = x+ iy$ and $iz = ix - y$ and so $Re(iz) = -y = -Im(z)$. Furthermore $Im(iz) = x = Re(z)$.
+	\end{proof}
+	\setcounter{enumi}{3}
+	\item \emph{Verify that each of the two numbers $z = 1 \pm i$ satisfies the equation $z^2 − 2z + 2 = 0.$} \\
+	\begin{equation}
+		\begin{aligned}
+			(1 + i)^2 - 2 - 2i + 2 &= 1 + 2i -1  -2 -2i + 2 = 0\\
+			(1-i)^2 - 2 + 2i + 2 &= 1 -2i -1 -2 + 2i + 2 = 0.
+		\end{aligned}
+	\end{equation}
+	\setcounter{enumi}{10}
+	\item \emph{Solve the equation $z^2 +z +1 = 0$.} \\
+	Using $z \in \mathbb{C}$ we have
+	\begin{equation}
+		-\frac{4}{3}(z + 1/2)^2 = 1.
+	\end{equation}
+	So we need solve $w^2 = 3/4e^{i\pi}$. Using eulers formula we get $r^2e^{i2\theta}=3/4e^{i\pi}$ and so it must be that $r^2 = 3/4,$ so $r = \pm \sqrt{3}/2$ and $\theta = \pi/2$. Therefore $w = \pm \sqrt{3}/2i.$ Furthermore, $z = w - 1/2$ so $z =  -1/2(1 \mp \sqrt{3}i)$.
+\end{menumerate}
+
+\section{Further Properties}
+\begin{menumerate}
+	\item \emph{Reduce the following equations.}
+	\begin{menumerate}
+		\item \begin{equation}
+			\begin{aligned}
+				\frac{1 + 2i}{3 - 4i} + \frac{2-i}{5i} &= \frac{(1+2i)(3+4i)}{25} + \frac{-5i(2-i)}{25} \\
+				&= \frac{-5 + 10i -5 - 10i}{25}\\
+				 &= \frac{-10}{25} = -\frac{2}{5}\\
+			\end{aligned}
+		\end{equation}
+
+		\item \begin{equation}
+			\frac{5i}{(1-i)(2-i)(3-i)} = \frac{5i}{-10i} = -\frac{1}{2}
+		\end{equation}
+
+		\item \begin{equation}
+			\begin{aligned}
+				(1-i)^4 &= 1^4 + 4(-i)^1 + 6(-i)^2 + 4(-i)^3 + (-i)^4 \\	
+				&= 1 -4i -6 +4i +1 = -4.	
+			\end{aligned}
+		\end{equation}
+	\end{menumerate}
+	\item \begin{theorem} 
+			If $z \in \mathbb{C}$ and $z \neq 0$ then
+			\begin{equation}
+				\frac{1}{1/z} = z.
+			\end{equation}
+		\end{theorem}
+		\begin{proof}
+			Recall that $w:= 1/z = \overline{z}/|z|^2$.
+			Furthermore $1/w = \overline{w}/|w|^2 = \overline{w}/(1/|z|)^2$ by $\overline{z}/|z|^2 = re^{i-\theta}/r^2 = e^{i-\theta}/r$. Then $\overline{w} = \overline{\overline{z}/|z|^2} = z/|z|^2$ and $\overline{w}/(1/|z|)^2 = z = 1/(1/z).$ This completes the proof.	
+		\end{proof}
+\end{menumerate}
+
+\setcounter{section}{4}
+\section{Vectors and Moduli}
+\begin{menumerate}
+	\setcounter{enumi}{3}
+	\item \begin{theorem}
+		If $z \in \mathbb{C}$ then 
+		\begin{equation}
+			\sqrt{2}|z| \geq |Re(z)| + |Im(z)|.
+		\end{equation}
+	\end{theorem}
+	\begin{proof}
+		Let $z = x +iy$ then $|Re(z)| + |Im(z)| = |x| + |y|$ and 
+		\begin{equation}
+			(|x| + |y|)^2 =|x|^2 + 2|x||y| + |y|^2.
+		\end{equation}
+		Then it remains to prove that $2|x||y| \leq |x|^2 + |y|^2.$ Now $0 \leq (|x| -|y|)^2$ implies that $0 \leq |x|^2 - 2|x||y| + |y^2|$ which clearly implies that \begin{equation}
+			2|x||y| \leq |x|^2 + |y|^2.
+		\end{equation}Because $(|x| + |y|)^2 \leq \sqrt{2}|z|^2$, then it follows that $\sqrt{2}|z| \geq |Re(z)| + |Im(z)|.$
+	\end{proof}
+
+	\item \emph{Sketch the points determed by the given condition.}
+	\begin{menumerate}
+		\item $|z-1 + i| = 1.$ \\[3cm]
+		\item $|z+1| \leq 3.$ \\[3cm]
+		\item $|z -4i| \geq 4.$ \\[3cm]
+	\end{menumerate}
+	\item \emph{Use geometric arguments!}
+	\begin{menumerate}
+		\item \begin{theorem}
+			The set of points $z \in S \subset \mathbb{C}$ such that $|z - 4i| + |z+4i| = 10$ is an elipse
+		\end{theorem}
+		\begin{proof}
+			Let $z = x + iy.$ Then for every point $z \in S$ the points $w = -4i$ and $w = 4i$ are always a summed distance of $10$ from $z$. By definition these points are foci of the set $S$.  Furthermore 
+			\begin{equation}
+				\begin{aligned}
+					10 &= \sqrt{x^2 + (y-4)^2} + \sqrt{x^2 + (y + 4)^2} \\
+					100 &= (f(x,y) + g(x,y))^2
+					&= f(x,y)^2 + f(x,y)g(x,y) + g(x,y)^2
+				\end{aligned}
+			\end{equation}
+			and $f(x,y)^2$ is a quadratic, $f(x,y)g(x,y)$ is a quadratic. and $g(x,y)^2$ is a quadratic where no coefficients on the quadratic mononomial projection are $0$. Therefore the levelset must be an elipse. 
+		\end{proof}
+	\end{menumerate}
+
+	\setcounter{enumi}{8}
+	\item \emph{Prove the following.}
+	\begin{theorem}
+		Let $z \in \mathbb{C}$ and $n$ a positive integer. Then
+		$|z^n| = |z|^n.$
+	\end{theorem}
+	\begin{proof}
+		We induct on $n$. Let $n=1.$ Then $|z^1| = |z| = |z|^1.$
+		Suppose that $|z^k| = |z|^k.$ Then $|z^{k+1}| = |z^k\cdot z| =|z^k||z|$ by (8). Then by our assumption $|z^k||z| = |z|^k|z| = |z|^{k+1}$ and so the theorem holds fo $k+1.s$ By induction the proof is complete.
+	\end{proof}
+\end{menumerate}
+\section{Complex Conjugates}
+ 
+\begin{menumerate}
+	\setcounter{enumi}{3} 
+	\item \emph{Prove the following.}
+	\begin{theorem}
+		If $z, z_1, z_2, z_3$ are complex numbers then
+		\begin{equation}
+			\begin{aligned}
+				\overline{z_1z_2z_3} &= \overline{z_1}\overline{z_2}\overline{z_3};&\;\;\; &  \overline{z^4} = \overline{z}^4
+			\end{aligned}	
+		\end{equation}
+	\end{theorem}
+	\begin{proof}
+		By associativity of $\mathbb{C}$ and (4) it follows that without loss of generality $\overline{z_1z_2z_3} = \overline{z_1(z_2z_3)} = \overline{z_1}\overline{z_2z_3} = \overline{z_1}\overline{z_2}\overline{z_3}.$ Then $\overline{z^4} = \overline{z(zzz)} = \overline{z}^3\overline{z} = \overline{z}^4.$
+	\end{proof}
+	\item \emph{Verify the following.}
+	\begin{theorem}
+		If $z_1, z_2$ are complex numbers and $|\cdot|: \mathbb{C} \to \mathbb{R}$ is the complex moduli, then
+		\begin{equation}
+			\left|\frac{z_1}{z_2}\right| = \frac{|z_1|}{|z_2|}.
+		 \end{equation} 
+	\end{theorem}
+	\begin{proof}
+		Recall that $z_1/z_2 = z_1\overline{z_2}/|z_2|^2.$ Then
+		\begin{equation}
+			\left|\frac{z_1}{z_2}\right| = \frac{|z_1\overline{z_2}|}{|z_2|^2} = \frac{|z_1||\overline{z_2}|}{|z_2|^2} = \frac{|z_1|}{|z_2|}
+		\end{equation}
+		since $|z_1| = |\overline{z_2}|$ is trivially true, and $|ab| = \left|r_1r_2e^{i(\theta_a+\theta_b)}\right| = r_1r_2 = |a||b|.$
+	\end{proof}
+	\item \emph{Prove the following.}
+	\begin{theorem}
+		Let $z_1, z_2, z_3 \in \mathbb{C}$ with $z_2, z_3 \neq 0$. Then 
+		\begin{equation}
+			\overline{\left(\frac{z_1}{z_2z_3}\right)} = \frac{\overline{z_1}}{\overline{z_1}\overline{z_2}}.
+		\end{equation}
+	\end{theorem}
+	\begin{proof}
+		Observe the following
+		\begin{equation}
+			\overline{\left(\frac{z_1}{z_2z_3}\right)} = \overline{z_1}\overline{\frac{1}{z_2z_3}} =\overline{z_1}\overline{\frac{\overline{z_2z_3}}{|z_2z_3|^2}} = \frac{\overline{z_1}z_2z_3}{\overline{z_2z_3}z_2z_3} = \frac{\overline{z_1}}{\overline{z_1}\overline{z_2}}
+		\end{equation}
+		using the identities of the section.
+	\end{proof}
+	\begin{theorem}
+		Let $z_1, z_2, z_3 \in \mathbb{C}$ with $z_2, z_3 \neq 0$. Then 
+		\begin{equation}
+			\left|\frac{z_1}{z_2z_3}\right| = \frac{|z_1|}{|z_1||z_2|}.
+		\end{equation}
+	\end{theorem}
+	\begin{proof}
+		Let $a=z_1, b= z_2z_3$ then by the previous exercise
+		\begin{equation}
+			\left|\frac{a}{b}\right| = \frac{|a|}{|b|} = \frac{|z_1|}{|z_2z_3|} = \frac{|z_1|}{|z_2||z_3|}.	
+		\end{equation}
+		This completes the proof.
+	\end{proof}
+
+	\setcounter{enumi}{8}
+	\item \emph{Prove the following.}
+	\begin{theorem}
+		If $z$ lies on the circle $|z| = 2$ then
+		\begin{equation}
+			\frac{1}{|z^4 - 4z^2 + 3|} \leq \frac{1}{3}	
+		\end{equation}
+	\end{theorem}
+	\begin{proof}
+		Consider the factorization, $|z^4 - 4z^2 +3| = |z^2 -3||z^2 - 1|.$ It follows that $||z^2| -3|||z^2| - 1| = |4-3||4-1| = 3\leq |z^4 - 4z^2 +3|$ from (9) section 4. So the reciprocal inequality holds.
+	\end{proof}
+
+	\setcounter{enumi}{13}
+	\item \emph{Prove the following.}
+	\begin{theorem}
+		Let $z \in \mathbb{C}$. Show that the hyperbola $x^2 - y^2 = 1$ can be written
+		\begin{equation}
+			z^2 + \overline{z}^2 = 2.	
+		\end{equation}
+	\end{theorem}
+	\begin{proof}
+		Let $z = x + iy$, then algebra gives
+		\begin{equation}
+			z^2 + \overline{z}^2 = x^2 + 2ixy -y^2 + x^2 -2ixy -y^2 = 2x^2 -2y^2 = 2.
+		\end{equation}
+		Dividing by two gives that all $z$ satisfying the complex equation describe the hyperbola.
+	\end{proof}
+\end{menumerate}
+
+
+\setcounter{section}{8}
+\section{Arguments of Products and Quotients}
+\begin{menumerate}
+	\item \emph{Find the principle argument $Arg z$.}
+	\begin{menumerate}
+		\item Let $z = \frac{-2}{1 + \sqrt{3}i}.$ Then $Arg z = Arg(-2) - Arg(1 + \sqrt{3}i) = \pi -Arg(1 + \sqrt{3}i) = \pi - tan^{-1}(\sqrt{3}). = 2\pi/3$
+		\item Let $z = \left(\sqrt{3} - i\right)^6.$ Then $Arg z = 6Arg(\sqrt{3} - i) = -6\pi/6 = \pi$ in principle.
+	\end{menumerate}
+	\item\emph{Prove the following theorem.}
+	\begin{theorem}
+		If $\theta \in \mathbb{R}$ then $|e^{i\theta}|=1$ and $\overline{e^{i\theta}} = e^{-i\theta}.$
+	\end{theorem}
+	\begin{proof}
+		Observe that $e^{i\theta} = \cos \theta + i\sin \theta$, so $|e^{i\theta}| = \sqrt{\cos^2 \theta + \sin^2{\theta}}  = 1.$ Now $\overline{e^{i\theta}} = \cos \theta +i \sin \theta$. Then by $\cos$ even and $\sin$ odd $e^{-i \theta} = \cos(-\theta) + i\sin{-\theta} = \cos{\theta} - i\sin \theta = \overline{e^{-i\theta}}.$
+	\end{proof}
+
+	\setcounter{enumi}{8}
+	\item \emph{Establish the Lagrange's trigonometric identity.} \\
+	Using the following trick,
+	\begin{equation}
+		(1 + z + z^2 +\cdots + z^n)(1-z) = 1 + (z-z) + \cdots + (z^n - z^n) + z^{n+1},
+	\end{equation}
+	we get that
+	\begin{equation}
+		1 + z + z^2 +\cdots + z^n = \frac{1-z^{n+1}}{1-z}.
+	\end{equation}
+	Using $z = e^{i\theta}$ we get
+	\begin{equation}
+		\begin{aligned}
+			1 + \sum_k^n \cos(n\theta)+ i\sum_k^n \sin k\theta &= \frac{1 - e^{i({n+1})\theta}}{1 - e^{i\theta}} \\
+			&= \frac{(1 - e^{i({n+1})\theta})(1 - e^{-i\theta})}{(1 - e^{i\theta})(1 - e^{-i\theta})} \\
+			&= \frac{1 -e^{-i\theta} -  e^{i({n+1})\theta} + e^{in\theta}}{1 -e^{i\theta}-e^{-i\theta} + 1} \\
+			&= \frac{1 -i2\sin(\theta)+  e^{i({n+1})\theta}}{2 + 2\cos(\theta)}
+		\end{aligned}
+	\end{equation}
+
+	\item \emph{Use de Moivre's formula to derive the following.}
+ \begin{equation}
+			\begin{aligned}
+				\cos 3\theta = \cos^3 \theta -3\cos \theta \sin^2 \theta \\
+				\sin 3 \theta = 3 \cos^2 \theta \sin \theta - \sin^3 \theta.
+			\end{aligned}
+		\end{equation}
+		\begin{proof}
+			Let $\theta \in \mathbb{R}$, then
+			\begin{equation}
+				\cos 3\theta + i\sin\theta = (\cos \theta + i\sin \theta) ^3.
+			\end{equation}
+			By binomial expansion then
+			\begin{equation}
+				\cos 3\theta + i\sin3\theta = \cos^3\theta + i3\cos^2\theta \sin\theta -3\cos\theta \sin^2\theta -i\sin^3\theta
+				\cos^3.
+			\end{equation}
+			Separating the imaginary and real parts gives the formulas exactly.
+		\end{proof}
+\end{menumerate}
+\setcounter{section}{10}
+\section{Roots of Complex Numbers}
+\begin{menumerate}
+	\setcounter{enumi}{3}
+	\item \emph{Identify the Principle Root.} \\
+	We find the roots of $(-2	-1)^{1/3}$ by taking $z_0 = e^{i\pi}.$ Then $z_0^{1/3} = e^{i\pi/3 +i2k\pi/3}$. This gives a triangle and principle root $e^{i\pi/3}.$
+
+	We find the roots of $8^1/6.$ Let $z_0 = 8e^{i0 + i2k\pi}.$ Then we get $8^{1/6}= \sqrt{2}e^{i2k\pi/6}$ which forms a hexagon with principle root $\sqrt{2}.$
+
+	\setcounter{enumi}{5}
+	\item \emph{Find the four zeros of $z^4 + 4.$} \\
+	This problem is equivalent to finding the $4$th root of $-4 = 4e^{i\pi}.$ This gives
+	\begin{equation}
+		z = \sqrt{2}e^{i\pi/4 +ik\pi/2}.
+	\end{equation}
+	\item \emph{Prove the following.}
+	\begin{theorem}
+		If $c$ is an $n^{th}$ root of unity then \begin{equation}
+			1 + c + \cdots + c^{n-1} = 0.
+		\end{equation}
+	\end{theorem}
+	\begin{proof}
+		Recall the formula
+		\begin{equation}
+			1 + c + c^2 +\cdots + c^{n-1} = \frac{1-c^{n}}{1-c} = \frac{0}{1-c}.
+		\end{equation}
+		This completes the proof.
+	\end{proof}
+\end{menumerate} 
+\setcounter{section}{11}
+\section{Regions in the Complex Plane}
+\begin{menumerate}
+	\setcounter{enumi}{3}
+	\item .	\\[5in]
+	.	\\[5in]
+\end{menumerate}
+\setcounter{section}{13}
+\section{The mapping $w = z^2.$}
+\begin{menumerate}
+	\setcounter{enumi}{3}
+	\item\emph{ Write $f(z) = z + 1/z$ in parametric form.} Observe that
+	\begin{equation}
+		f(z) = z + \frac{1}{z} = re^{i\theta} + \frac{e^{-i\theta}}{r} = 
+		r(\cos(\theta) + i\sin(\theta)) + \frac{1}{r}(\cos(\theta) -i\sin(\theta))
+	\end{equation}
+	Clearly by separating the brackets and parameterizing the function we get
+	\begin{equation}
+		u(r, \theta) = (r + 1/r)\cos(\theta), v(r, \theta) = (r - 1/r)\sin(\theta).
+	\end{equation}
+\end{menumerate}
+
+\end{document}

@@ -1,0 +1,241 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%                      Homework _                            %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[letter]{article}
+
+\usepackage{lipsum}
+\usepackage[pdftex]{graphicx}
+\usepackage[margin=1.5in]{geometry}
+\usepackage[english]{babel}
+\usepackage{listings}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{framed} 
+\usepackage{amsmath}
+\usepackage{titling}
+\usepackage{fancyhdr}
+\usepackage{mathtools}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+\pagestyle{fancy}
+
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{definition}{Definition}
+
+\newenvironment{menumerate}{%
+  \edef\backupindent{\the\parindent}%
+  \enumerate%
+  \setlength{\parindent}{\backupindent}%
+}{\endenumerate}
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%
+%% DOC INFO %%%
+%%%%%%%%%%%%%%%
+\newcommand{\bHWN}{1}
+\newcommand{\bCLASS}{MATH 202A}
+
+\title{\bCLASS: Homework \bHWN}
+\author{William Guss\\26793499\\wguss@berkeley.edu}
+
+\fancyhead[L]{\bCLASS}
+\fancyhead[CO]{Homework \bHWN}
+\fancyhead[CE]{GUSS}
+\fancyhead[R]{\thepage}
+\fancyfoot[LR]{}
+\fancyfoot[C]{}
+\usepackage{csquotes}
+
+%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+ Alekos, Julia, Branden. 
+\begin{menumerate}
+	\item 
+	\begin{theorem}
+		Let $X$ be a nonempty set and let $f, g : X \to R$ be bounded functions. Show that 
+		$$ \sup(f(x) + g(x)) \leq \sup f(x) + \sup g(x)$$ 
+	\end{theorem}
+	\begin{proof}
+		Since $X$ is non empty and the functions $f,g $ are bounded then the function $(f + g)(x)$  is bounded. Let $u_f, u_g$ be the least upper bound of $f(X)$ and $G(X)$ respectively. These exist since $f, g$ are bounded. Furthermore let $u_{f+g}$ be the upperbound for $(f+g).$ 
+
+		Suppose $u_{f} + u_g < u_{f+g}$, let $x^f_n$ and $x^g_n$ be sequences in $X$ which acheive $f(x^f_n) \to u_f$ and $g(x^g_n) \to u_g$ respectively, finally let $y_n$ be the sequence which achieves $(f+g)(y_n) = u_{f+g}$. If $u_{f+g} > u_f + u_g$ then there is an $N$ such that for all $n > N$ 
+		$(f+g)(y_n) = f(y_n) + g(y_n) > u_f + u_g$ which is a contraction to $u_f$ and $u_g$ being an upperbound.
+	\end{proof}
+
+	\item Lim suppy goodness.
+	\begin{theorem}
+		Let $(a_n)$ and $(b_n)$ be sequences in $\mathbb{R}$  suppose neither $\lim \sup_{n\to\infty} a_n$ nor $\lim \sup_{n\to\infty} b_n$ equals $-\infty$. Show that 
+		$$ \lim \sup_{n\to\infty} a_n + b_n \leq \lim \sup_{n\to\infty} a_n + \lim \sup_{n\to\infty} b_n.$$
+	\end{theorem}
+	\begin{proof}
+		Observe that $a_n, b_n$ are isomorphically equivalent to $A: \mathbb{N} \to \mathbb{R}$ and $B: \mathbb{N} \to \mathbb{R}$. 
+
+		Then if $a_n$ and $b_n$ are bounded above, then by the previous problem 
+		\begin{equation}
+			\sup_{E \subset \mathbb{N}} A(n) + B(N) \leq \sup_{E \subset \mathbb{N}} A(n) + \sup_{E \subset \mathbb{N}} B(N).
+		\end{equation}
+		since $A, B$ bounded below and above by the assumption of the problem.
+		And for the the family of sets $E := E_n =\{n, n+1, ...\}$
+	 	the inequality holds so therefore
+
+	 	$$ \lim \sup_{n\to\infty} a_n + b_n \leq \lim \sup_{n\to\infty} a_n + \lim \sup_{n\to\infty} b_n.$$
+
+		Without loss of generality we check the other case by assuming that $a_n$ is unbounded above. Then $a_n \to \infty$ and coorespondingly $\lim \sup a_n = \infty.$ We then have that  $\lim \sup a_n + \lim \sup b_n = \infty$ and for every $x \in \overline{\mathbb{R}}$, $x \leq \infty$ and the inequality holds since $\lim \sup_{n\to\infty} a_n + b_n \in \overline{\mathbb{R}}.$
+	\end{proof}
+	 Consider the following example $a_n = (1,-1,1,-1,1,-1,...)$ and $b_n = (-1,1,-1,1,-1,1,-1, ...).$
+	\begin{proof}
+	 	By construction $\lim \sup b_n = 1$, $\lim \sup a_n = 1$.
+	 	However $a_n + b_n = 0$ for all $n$ by construction. 
+	 	Therefore $\lim \sup 0 = 0 \leq \lim \sup b_n + \lim \sup a_n$. 
+	 	
+	 \end{proof}  
+
+	 \item We show that the matching metric is a metric.
+	 \begin{proof}
+	  	First $d: X \times X \to [0, \infty)$ since it is not possible for there to be a negative number of indices for which $x_n \neq y_n$ (doesn't make sense). Furthermore $S^n$ is finite so there can be at most $n$ indices for which $x,y$ could disagree.
+
+	  	Second, $d$ is semetric since the number of elements for which $x_j \neq y_j$ is equivalent to the number of elements for which $y_j \neq x_j$ by the symmetry of the equality relation on $S$.
+
+	  	Third, $x = y$ if and only if for every $j \in \{1, ..., n\}$, $x_j = y_j$ if and only if the number of indices on which $x$ and $y$ agree is $0$ if and only if $d(x,y) = 0$ if and only if $x = y$.
+
+	  	Fourth and finally, if $x,y,z \in X$ then suppose that $d(x,z) + d(z,y) < d(x,y)$. Then there is a $j$ such that $x_j \neq y_j$ but that $x_j = z_j = y_j$. If there not were such a $j$ in this situation then $x_j$ disagrees with $z_j$ or $y_j$ disagrees with $z_j$ for every $j$ and so the LHS is $2n > n \geq d(x,y).$ So such a $j$ must exist and that is a contradition to $d(x,z) + d(z,y) < d(x,y).$ Therefore the triangle equality hodls for this metric.  
+	  \end{proof} 
+
+	  \item Consider $\mathbb{N} \subset \mathbb{R}$.
+	   \begin{proof}
+	   We claim that $\lim_\mathbb{R} \mathbb{N} = \mathbb{N}.$ Suppose there were $x \notin \mathbb{N}$ that was a limit point, then for every $r > 0$, there exists an $n \in B(r,x)$ with $n \in \mathbb{N}$. Take $r = \frac{\min\{x-\floor{x}, \ceil{x} - x\}}{2}$ Then $B(r,x)$ cannot contain any $n$
+	   since it is a strict subset of $(\floor{x}, \ceil{x})$. So $x$ is not a limit point of $\mathbb{N}$ and all of the limit points of $\mathbb{N}$ are in $\mathbb{N}$. 
+
+	   Every point and only every point of $\mathbb{N}$ is a limit point and $\mathbb{N}$ is countable.
+	   \end{proof}
+
+	   The set $[0,1]$ is a closed set and so every point is a limit point and $[0,1]$ is uncountable.
+
+		\item The set $E = \{x | x^2 < 2,\} \subset \mathbb{Q}$ is clopen.
+		\begin{proof}
+			If $E = [-\sqrt{2}, \sqrt{2}] \cap \mathbb{Q}$ then it is open since any rational $r \in E$ has the property that $\epsilon = \min\{d(r, -\sqrt{2}),d(r, \sqrt{2})\}$ gives a ball $B(\epsilon/2, r) \cap \mathbb{Q}$ which contains every element in $E$ since it could not possibly contain $l > \sqrt{2}$ or $l <\sqrt{2}$ by definition of $\epsilon.$ 
+
+			Now take a sequence of convergent rational numbers in $E$ (which may converge outside of $E$. Suppose that it does converge outside of $E$. It must be the case that there is a $r > \sqrt{2}$ or $r < \sqrt{2}$ to which the sequence converges. Without loss of generality assume that $r > \sqrt{2}.$ Then take $\epsilon = r/2 + \sqrt{2}/2.$ There must be an $N$ so that all elements of the sequence with index greater than $n$ are more than $\sqrt{2}$ since there exists rationals within $\epsilon$ of $r > \sqrt{2}$, but this contradicts the sequence being in $E.$ Therefore $E$ is closed.
+	   	\end{proof}
+
+	   	\item The set $E = \{(x,y) \in \mathbb{R}^2 \ :\ x>0, y>0, xy > 1\}$ is open.
+	   	\begin{proof}
+	   		We show that $f(x,y) = xy$ is continuous. It is obvious that the identity map $id(x) =x, id(y) = y$ is continuous (take $\delta = \epsilon$). Furthermore it is obvious that $f(x,y) = x,=y$ is continuous (take $\delta = \epsilon$) by effectivelty the same argument. 
+	   		Then the product of $f(x,y) =x, f(x,y) = y$ is continuous.
+
+	   		Then the set $f(E) = (1, \infty)$ is open in $\mathbb{R}$ and by continuity of $f$ the preimage is open. That is $E$ is open.
+	   	\end{proof}
+
+	   	\item Graph goodness.
+	   	\begin{theorem}
+			If $f:[0,1] \to \mathbb{R}$ and $f$ continuous then $G(f) = \{(x,y) \in [0,1] \times \mathbb{R} : y = f(x)\}$ is closed.   	
+	   	\end{theorem}
+	   	\begin{proof}
+	   		Since $f$ is continuous, for any sequence $(x_n)$ in $[0,1]$, $x_n \to x$ implies $f(x_n) \to f(x).$ Let $(x_n, y_n)$ be any convergent sequence from $G(f).$ We wish to show that $(x_n, y_n) \to (x,y) \in G(f).$
+
+	   		Since $(x_n, y_n)$ a convergent sequence in $\mathbb{R}^2$ then $x_n$ must be a convergent sequence in $\mathbb{R}$ (it is not hard to see this since $|x_n -x|^2 < |x_n -x|^2 + |y_n - y|^2 < \epsilon$). However since $x_n \in [0,1]$ and $[0,1]$ closed $x_n \to x \in [0,1]$ and by the continuity of $f,$ $y_n = f(x_n) \to f(x) = y$ such that $(x,y) \in G.$
+	   		
+	   		This completes the proof.
+	   	\end{proof}
+	   	\item 
+	   	\begin{theorem}
+	   	Let $(x_n)$ be a sequence of points in a metric space $(X, \rho$, and let $z \in X$. Suppose that any subsequence of $(x_n)$ has a sub-subsequence which converges to z. Then $x_n \to z$.
+	   	\end{theorem}
+	   	\begin{proof}
+	   	Suppose not, then there exists an $\epsilon > 0$ such that for all $N$, there exists an $n >N$ such that $\rho(x_n, z) > \epsilon.$ Take the subsequence $n_j$ such that $n_j$ is the first $n > j$ where $\rho(x_n, z) > \epsilon.$
+
+	   	This sequence has a convergent subsequence $j_p$ such that there exists an $N$ for which all $p>N$ gives $\rho(x_{n_{j_p}}, z) < \epsilon$. This is a contradiction, and therefore the theorem holds.
+	   	\end{proof}
+	   	\item 
+	   	\begin{theorem}
+	   	 Let $(x_n)$ be a Cauchy sequence in $(X,\rho)$. Show that if some subsequence $(x_{n_k})$ converges, then $(x_n)$ also converges.
+	   	\end{theorem}
+	   	\begin{proof}
+			If $(x_n)$ is cauchy then for all $\epsilon > 0$ there exists an $M$ such that fora all $p,q > M$ $\rho(x_p, x_q) < \epsilon/2.$ Take $M$ to be large enough that $\rho(x_{n_q}, x) < \epsilon/2$ by $x_{n_k} \to x.$ By the triangle inequality, $\rho(x_m, x) \leq \rho(x_m, x_{n_q}) + \rho(x_{n_q}, x) < \epsilon/2 + \epsilon/2 = \epsilon$. Therefore $x_n \to x$.	
+	   	\end{proof}
+		\item 
+		\begin{theorem}
+			Any cauchy sequence is bounded.   
+		\end{theorem}
+		\begin{proof}
+			Let $(x_n)$ be a cauchy sequence. Pick any $\epsilon,$ then take $N$ large enough such that for all $n,m > N$, $d(x_n, x_m) < \epsilon.$ Then fix $n.$ Let \begin{equation}
+				R = \max\{d(x_1, x_n), \dots d(x_{n-1},x_n), \epsilon\}.		
+			\end{equation}
+			It is obvious that $\{x_l\} \subset B(R, x_n)$. This completes the proof.
+		\end{proof}
+		\item 
+		\begin{theorem}
+			Let $(X, \rho)$ be a metric space and let $Y \subset X$. Let $\rho'$ be the metric on $Y$ defined by restricting $\rho$ to $Y$. Show that if $(Y, \rho')$  is complete then $Y$ is a closed subset of $X.$
+		\end{theorem}
+		\begin{proof}
+			Suppose that $Y$ does not contain all of its limit points. Then there is a sequence such that $y_n \to x \in X \setminus Y$. Then for every $\epsilon > 0$ there is an $N$ such that for all $n, m > N$ $\rho(y_n, x) < \epsilon/2$ and $\rho(y_m, x) <  \epsilon/2.$
+
+			It follows that $\rho'(y_m, y_n) < \rho(y_n,x) + \rho(x, y_m) < \epsilon$ so $y_n$ is cauchy in $Y$. Therefore by $y$ complete, $y \to y \in Y$ which is a contradiction to $y_n \to x \in X \setminus Y$.
+		\end{proof}
+		\item
+		\begin{theorem}
+			Let $f: X \to Y$. If $G$ is the graph of $f$ show that if $f$ continuous then $G$ is closed.
+		\end{theorem}
+		\begin{proof}
+			Define $F: X  \to G$ as the function which takes $x$ to $(x, f(x))$. Such a map is a bijection since every element of $x$ is uniqueley indexed in $G$ by $(x, .)$ and the definition of $G$ says that for every $(x, f(x)) \in G$ there is an $y$ in $X$ namely $x$ which maps to $(x, f(x))$ under $X$.
+
+			Then for any sequence in $G$ there exists a $x_n \in X$ which cooresponds through $F$ uniquely. So let $x_n$ which converges then $F(x_n)$ converges in $G$ since $F = id \times f$ is continuous. Therefore every sequence in $G$ converges.
+		\end{proof}
+		\item
+		\begin{theorem}
+			Let $d: (x,y) \mapsto |x -y|^{1/2}$. Then $d$ is a metric and other things in the assignment.
+		\end{theorem}
+		\begin{proof}
+			The function $d = \sqrt \circ \rho$ where $\rho$ is a metric. Therefore $d(a,b) = \sqrt \circ \rho(a,b) = \sqrt \circ \rho(b,a) = d(b,a).$ Furthermore $\sqrt: \mathbb{R}^+ \cup \{0\} \to \mathbb{R}^+ \cup \{0\}$ so $\sqrt \circ \rho$ is still positive definite. Finally we show the triangle inequality,
+			\begin{equation}
+				d(a,c) = \sqrt{\rho(a,b-b+c)} \leq \sqrt{\rho{a,b}+\rho(b,c)}
+			\end{equation}
+			and so we show 
+			$d(a,c)^2 = \rho(a,c) \leq \rho(a,b) + \rho(b,c)$ implies by monotonicity of $\rho$ that $d(a,c) \leq d(a,b) + d(b,c).$
+
+			Now we show that the metrics are not strongly equivalent. Suppose there were constants $\alpha, \beta$ such that for every $x,y \in X$ $\alpha d(x,y) \leq \rho(x,y) \leq \beta(x,y) $. THen $\alpha |\gamma| \leq |\gamma|^2 \leq \beta |\gamma|$ but clearly there exixts no $\beta$ such that $\gamma^2$ never exceeds the line $\gamma \beta$ so the metrics are not strongly equivalent (although they are topologically equivalent.)
+
+			Now we show that cauchy in $\rho$ if and only if cauchy in $d.$ Pick $\epsilon >0$ and $\delta = \epsilon^2 > 0$ then $d(x_m, x_n) < \delta$ if and only if $\rho(x_m, x_n) =d(x_m, x_n)^2 < \delta^2 = \epsilon$.
+
+			The set $\mathbb{R} \setminus A$ is closed under $d$ and contains all of its limit points if and only if it is cauchy under $d$ if and only if it is cauchy under $\rho$ if and only if it contains it limits under $\rho$ if and only if it is closed under $\rho$. Therefore $A$ is open under $\rho$ if and only if it is open under $d$.
+		\end{proof}
+
+		\item
+		\begin{theorem}
+			If $f: X \to Y$ continuous and $K \subset X$ compact then $f(K)$ compact.
+		\end{theorem}
+		\begin{proof}
+			If $K$ compact then every sequence has a convergent subsequence. Take any sequence $y_n \in f(K)$ then clearly there is a sequence in $K$ such that $f(x_n) = y_n.$ Then take the subsequence of $x_n$ which converges, say $n_j$. Then $f(x_{n_j}) \to f(x) \in f(K)$ (as $x \in X$) by continuity of $f$ and $f(x_{n_j})$ is a subsequence of $y_n$. This completes the proof.	
+		\end{proof}
+		\item
+		\begin{theorem}
+			Let $f: K \to Y$ be continuous and $K \subset X$ compact, then $f$ is uniformly continuous.
+		\end{theorem}
+		\begin{proof}
+			Since $f$ is continuous then for any $\epsilon >0$ for every $x$ there is a $\delta(x)$ such that $\rho(x,y) < \delta(x)$ implies that $\rho'(fx, fy) < \epsilon.$
+			Let $\mathcal{V}$ be the family defined as
+			\begin{equation}
+				\mathcal{V} = \left(B(\delta(x), x)\right)_{x \in K}.	
+			\end{equation}	
+			This is clearly an open cover of $K$ and by $K$ compact there is a finite subcover indexed by a finite $\mathcal{F} \subset K$. Let \begin{equation}
+				\delta = \min_{x \in \mathcal{F}} \delta(x).
+			\end{equation}
+			It follows that any for every $x, y \in K$ such that $\rho(x,y) < \delta$, $\rho(x,y) < \delta(x)$ and $\rho(x,y) < \delta(y)$ and so $\rho'(fx,fy) < \epsilon.$ Therefore$f$ is uniformly continuous.
+		\end{proof}
+
+\end{menumerate}
+
+%%%%%%% Be sure to set the counter and use menumerate
+
+\end{document}
