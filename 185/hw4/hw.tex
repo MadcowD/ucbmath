@@ -1,0 +1,367 @@
+\documentclass[11pt]{amsart}
+
+\usepackage{amsmath,amsthm}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{enumerate}
+\usepackage{fullpage}
+% \usepackage{euscript}
+% \makeatletter
+% \nopagenumbers
+\usepackage{verbatim}
+\usepackage{color}
+\usepackage{hyperref}
+%\usepackage{times} %, mathtime}
+
+\textheight=600pt %574pt
+\textwidth=480pt %432pt
+\oddsidemargin=15pt %18.88pt
+\evensidemargin=18.88pt
+\topmargin=10pt %14.21pt
+
+\parskip=1pt %2pt
+
+% define theorem environments
+\newtheorem{theorem}{Theorem}    %[section]
+%\def\thetheorem{\unskip}
+\newtheorem{proposition}[theorem]{Proposition}
+%\def\theproposition{\unskip}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\def\theconjecture{\unskip}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{sublemma}[theorem]{Sublemma}
+\newtheorem{fact}[theorem]{Fact}
+\newtheorem{observation}[theorem]{Observation}
+%\def\thelemma{\unskip}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+%\def\thedefinition{\unskip}
+\newtheorem{notation}[definition]{Notation}
+\newtheorem{remark}[definition]{Remark}
+% \def\theremark{\unskip}
+\newtheorem{question}[definition]{Question}
+\newtheorem{questions}[definition]{Questions}
+%\def\thequestion{\unskip}
+\newtheorem{example}[definition]{Example}
+%\def\theexample{\unskip}
+\newtheorem{problem}[definition]{Problem}
+\newtheorem{exercise}[definition]{Exercise}
+
+\numberwithin{theorem}{section}
+\numberwithin{definition}{section}
+\numberwithin{equation}{section}
+
+\def\reals{{\mathbb R}}
+\def\torus{{\mathbb T}}
+\def\integers{{\mathbb Z}}
+\def\rationals{{\mathbb Q}}
+\def\naturals{{\mathbb N}}
+\def\complex{{\mathbb C}\/}
+\def\distance{\operatorname{distance}\,}
+\def\support{\operatorname{support}\,}
+\def\dist{\operatorname{dist}\,}
+\def\Span{\operatorname{span}\,}
+\def\degree{\operatorname{degree}\,}
+\def\kernel{\operatorname{kernel}\,}
+\def\dim{\operatorname{dim}\,}
+\def\codim{\operatorname{codim}}
+\def\trace{\operatorname{trace\,}}
+\def\dimension{\operatorname{dimension}\,}
+\def\codimension{\operatorname{codimension}\,}
+\def\nullspace{\scriptk}
+\def\kernel{\operatorname{Ker}}
+\def\p{\partial}
+\def\Re{\operatorname{Re\,} }
+\def\Im{\operatorname{Im\,} }
+\def\ov{\overline}
+\def\eps{\varepsilon}
+\def\lt{L^2}
+\def\curl{\operatorname{curl}}
+\def\divergence{\operatorname{div}}
+\newcommand{\norm}[1]{ \|  #1 \|}
+\def\expect{\mathbb E}
+\def\bull{$\bullet$\ }
+\def\det{\operatorname{det}}
+\def\Det{\operatorname{Det}}
+\def\rank{\mathbf r}
+\def\diameter{\operatorname{diameter}}
+
+\def\t2{\tfrac12}
+
+\newcommand{\abr}[1]{ \langle  #1 \rangle}
+
+\def\newbull{\medskip\noindent $\bullet$\ }
+\def\field{{\mathbb F}}
+\def\cc{C_c}
+
+\newenvironment{solution}
+  {\begin{proof}[Solution]}
+  {\end{proof}}
+
+
+
+% \renewcommand\forall{\ \forall\,}
+
+% \newcommand{\Norm}[1]{ \left\|  #1 \right\| }
+\newcommand{\Norm}[1]{ \Big\|  #1 \Big\| }
+\newcommand{\set}[1]{ \left\{ #1 \right\} }
+%\newcommand{\ifof}{\Leftrightarrow}
+\def\one{{\mathbf 1}}
+\newcommand{\modulo}[2]{[#1]_{#2}}
+
+\def\bd{\operatorname{bd}\,}
+\def\cl{\text{cl}}
+\def\nobull{\noindent$\bullet$\ }
+
+\def\scriptf{{\mathcal F}}
+\def\scriptq{{\mathcal Q}}
+\def\scriptg{{\mathcal G}}
+\def\scriptm{{\mathcal M}}
+\def\scriptb{{\mathcal B}}
+\def\scriptc{{\mathcal C}}
+\def\scriptt{{\mathcal T}}
+\def\scripti{{\mathcal I}}
+\def\scripte{{\mathcal E}}
+\def\scriptv{{\mathcal V}}
+\def\scriptw{{\mathcal W}}
+\def\scriptu{{\mathcal U}}
+\def\scriptS{{\mathcal S}}
+\def\scripta{{\mathcal A}}
+\def\scriptr{{\mathcal R}}
+\def\scripto{{\mathcal O}}
+\def\scripth{{\mathcal H}}
+\def\scriptd{{\mathcal D}}
+\def\scriptl{{\mathcal L}}
+\def\scriptn{{\mathcal N}}
+\def\scriptp{{\mathcal P}}
+\def\scriptk{{\mathcal K}}
+\def\scriptP{{\mathcal P}}
+\def\scriptj{{\mathcal J}}
+\def\scriptz{{\mathcal Z}}
+\def\scripts{{\mathcal S}}
+\def\scriptx{{\mathcal X}}
+\def\scripty{{\mathcal Y}}
+\def\frakv{{\mathfrak V}}
+\def\frakG{{\mathfrak G}}
+\def\aff{\operatorname{Aff}}
+\def\frakB{{\mathfrak B}}
+\def\frakC{{\mathfrak C}}
+
+\def\suchthat{\mathrel{}:\mathrel{}}
+\def\symdif{\,\Delta\,}
+\def\mustar{\mu^*}
+\def\muplus{\mu^+}
+
+\def\soln{\noindent {\bf Solution.}\ }
+
+
+%\pagestyle{empty}
+%\setlength{\parindent}{0pt}
+
+\begin{document}
+
+\begin{center}{\bf Math 185 --- UCB, Fall 2016 --- William Guss}
+\\
+{\bf Problem Set 3, due October 4th}
+\end{center}
+
+\medskip \noindent {\bf (42.2)}\ Evaluate the following integrals:
+\newline \noindent (a) $$ \int_0^1 (1 + it)^2\ dt;$$ 
+	\begin{solution}
+	We evaluate the integral along each of its components by first seprating it into its real
+	and complex parts. Let $X = [0,1]$
+	\begin{equation*}
+		\int_X (1 + it)^2\ dt = \int_X 1^2 + 2it -t^2\ dt = \int_X 1 -t^2 + 2i\int_X t.
+	\end{equation*}
+	Thus evaluation on both parts yields
+	\begin{equation*}
+		\int_X (1 + it)^2\ dt = \left[t -\frac{1}{3}t^3\right]_X + 2i\left[\frac{1}{2}t^2\right]_X = \frac{2}{3} + i
+	\end{equation*}
+	\end{solution}
+ \noindent (b) $$\int_1^2 \left(\frac{1}{t} -i\right)^2\ dt$$
+	 \begin{solution}
+	 We evaluate the integral along each of its components by first seprating it into its real
+	and complex parts. Let $X = [1,2]$
+	\begin{equation*}
+		\int_X \left(\frac{1}{t}-i\right)^2\ dt = \int_X \frac{1}{t^2} -\frac{2i}{t} -1\ dt = \int_X \frac{1}{t^2} -1\ dt -2i \int_X \frac{1}{t}.
+	\end{equation*}
+	Thus evaluation on both parts yields
+	\begin{equation*}
+		\int_X \left(\frac{1}{t}-i\right)^2\ dt = \left[\frac{-1}{t} -t\right]_X - 2i\left[\ln(t)\right]_X = -\frac{1}{2} - 2i \ln(2).
+	\end{equation*}
+	 \end{solution}
+
+ \noindent (c) $$\int_0^{\pi/6} e^{i2t}\ dt$$
+	\begin{solution}
+	We evaluate the integral along each of its components by first seprating it into its real
+	and complex parts. Let $X = [0,\pi/6]$
+	\begin{equation*}
+		\int_X e^{i2t}\ dt = \left[-i\frac{e^{i2t}}{2}\right]_X = \left[-\frac{e^{i(2t+\pi/2)}}{2}\right]_X =
+		\frac{e^{i(\pi/2)}- e^{i 5\pi/6}}{2} = \frac{i - e^{i 5\pi/6}}	{2} = \frac{i  + \sqrt{3}}{4}
+	\end{equation*}
+	% \frac{e^{i\pi/3} - 1}{2i} = -\frac{1}{2}i\left(e^{i\pi/3} -1 \right) = \frac{i - e^{i5\pi/6}}{2}
+	\end{solution}
+
+ \noindent (d) $$\int_0^\infty e^{-zt}\ dt;\;\;\;\;\;\;\;(Re\  z > 0)$$
+ 	\begin{solution}
+	We evaluate the integral along each of its components by first seprating it into its real
+	and complex parts. Let $X_n = [0,n)$
+	\begin{equation*}
+		\lim_{n\to\infty } \int_{X_n} e^{-zt}\ dt = \lim_{n\to \infty}\left[-\frac{e^{-zt}}{z}\right]_{X_n} = 
+		\lim_{n\to\infty}  \left[-\frac{e^{-zn}}{z}\right] + \frac{1}{z}
+	\end{equation*}
+	The value of the limit is established so that if $Re(z) > 0$ we have
+	\begin{equation*}
+		-\frac{e^{-zn}}{z} = -\frac{e^{-nRe(z)}e^{i\cdot Im(-zn)}}{z} \to 0
+	\end{equation*}
+	since the radial magnitude of $|e^{-nz}| = e^{-nRe(z)} \to 0$. Thus
+	\begin{equation*}
+		\int_0^\infty e^{-zt}\ dt = \frac{1}{z}.
+	\end{equation*}
+ 	\end{solution}
+\medskip \noindent {\bf (42.3)}\ Show that if $m$ and $n$ are integers
+\begin{equation*}
+	\int_0^{2\pi} e^{im\theta}e^{-in\theta}\ d\theta = x
+\end{equation*}
+where $x = 0$ when $m \neq n$ and $2\pi$ when $m = n$.
+\begin{proof}
+	Consider the case first when $m =n$. Then 
+	\begin{equation*}
+		\int_0^{2\pi} e^{im\theta}e^{in\theta}\ d\theta = \int_0^{2\pi} e^{im\theta}e^{-im\theta}\ d\theta =\int_0^{2\pi} e^{im\theta-im\theta}\ d\theta = \int_0^{2\pi} 1\ d\theta = 2\pi.
+	\end{equation*}
+	In the case that $m \neq n$ then 
+	\begin{equation*}
+	\int_0^{2\pi} e^{im\theta}e^{-in\theta}\ d\theta = \int_0^{2\pi} e^{i(m -n)\theta} d\theta = -i\left[\frac{e^{i(m -n)\theta}}{(m-n)}\right]_0^{2\pi} = -i\frac{e^{ik2\pi} - 1}{m-n} =0
+	\end{equation*}
+	since $1 -1 = 0.$
+\end{proof}
+\medskip \noindent {\bf (42.4)}\ Show that \begin{equation*}
+	\int_0^\pi e^x \cos x\ dx = -\frac{1 + e^{\pi}}{2}\;\;\; \int_0^\pi e^x \sin x\ dx = \frac{1 + e^{\pi}}{2}
+\end{equation*}
+\begin{proof}
+	Recall that the above integrals are the real and imaginary parts of $\int_0^\pi e^{(1+i)x}\ dx$ respectiveley.  Let $X = [0, \pi]$ and then
+	\begin{equation*}
+		\int_X e^{(1+i)x}\ dx = \left[\frac{e^{(1+i)x}}{1+i}\right]_X = \frac{e^{\pi +i\pi} - 1}{1+i} = \frac{e^{\pi}(\cos \pi + i\sin \pi)}{1+i} 
+	\end{equation*}
+	Continuing the algebra
+	\begin{equation*}
+		\int_X e^{(1+i)x}\ dx = \frac{-e^{\pi} - 1}{1+i} = \frac{-(e^\pi + 1)(1 -i)}{2} = \frac{-(e^\pi + 1)}{2} + i \frac{(e^\pi + 1)}{2}.
+	\end{equation*}
+	Observing the statement of the proposition and the components of the complex number to which the integral evaluated completes the proof.
+\end{proof}
+\medskip \noindent {\bf (46.1)}\ Let $f = (z+2)/z$. Then for the following contours, $C$ evaluate \begin{equation*}
+\int_C f(z)\ dz.
+\end{equation*}
+\noindent (a) Let $C = \theta \mapsto 2e^{i\theta}$ such that $\theta \in X = [0, \pi].$
+\begin{solution}
+	Then we evaluate the contour integral parametrically using
+	\begin{equation*}
+		\int_C f(z)\ dz = \int_X \frac{2e^{i\theta} + 2}{2e^{i\theta}}\left(2ie^{i\theta}\right)\ d\theta
+		= 2i\int_X \left(e^{i\theta} + 1\right) d\theta
+	\end{equation*}
+	Computing the volumetric integral over the $1$-cell gives
+	\begin{equation*}
+		\int_C f(z)\ dz = 2i\left[-ie^{i\theta} + \theta\right]_X =2i\left[-ie^{i\theta} \right]_X + i2\pi
+		=2\left[-2 \right] + i2\pi = -4 + i2\pi
+	\end{equation*}
+\end{solution}
+
+\noindent (b) Let $C = \theta \mapsto 2e^{i\theta}$ such that $\theta \in X = [\pi, 2\pi].$
+\begin{solution}
+	Then we evaluate the contour integral parametrically using
+	\begin{equation*}
+		\int_C f(z)\ dz = \int_X \frac{2e^{i\theta} + 2}{2e^{i\theta}}\left(2ie^{i\theta}\right)\ d\theta
+		= 2i\int_X \left(e^{i\theta} + 1\right) d\theta
+	\end{equation*}
+	Computing the volumetric integral over the $1$-cell gives
+	\begin{equation*}
+		\int_C f(z)\ dz = 2i\left[-ie^{i\theta} + \theta\right]_X =2i\left[-ie^{i\theta} \right]_X + i2\pi
+		=2\left[e^{i\theta}\right] + i2\pi = (1 - (-1)) + i2\pi = 4 + 2\pi
+	\end{equation*}
+\end{solution}
+
+\noindent (c) Let $C = \theta \mapsto 2e^{i\theta}$ such that $\theta \in X = [0, 2\pi].$
+\begin{solution}
+	Then we evaluate the contour integral parametrically using
+	\begin{equation*}
+		\int_C f(z)\ dz = \int_X \frac{2e^{i\theta} + 2}{2e^{i\theta}}\left(2ie^{i\theta}\right)\ d\theta
+		= 2i\int_X \left(e^{i\theta} + 1\right) d\theta
+	\end{equation*}
+	Computing the volumetric integral over the $1$-cell gives
+	\begin{equation*}
+		\int_C f(z)\ dz = 2i\left[-ie^{i\theta} + \theta\right]_X =2i\left[-ie^{i\theta} \right]_X + i4\pi
+		=2\left[e^{i\theta}\right] + i4\pi = 2(1 - 1) + i4\pi = i4\pi.
+	\end{equation*}
+	One will observe that the $1$-form can be evaluated by summing the results of the two evaluations
+	on $C_a, C_b$ since differential forms are linear up to reparameterizations.
+\end{solution}
+\medskip \noindent {\bf (46.4)}\  Define $f: \complex \to \complex$ so that $z \mapsto 1$ when $Im(z) < 0$
+and $z \mapsto 4y$ when $Im(z) > 0.$ Then let $C: E \subset \mathbb{C}$ be a $1$-cell such that $C(0) = -z -i$
+and $C(1) = 1+i$ along the curve $y = x^3.$ Evaluate the $1$-form $$f\  dz(C) = \int_C f\ dz.$$
+\begin{solution}
+	If $x = -1$ then $y = x^3 = -1$, additionally if $x = 1$ then $y = x^3 = 1$. Therefore let $\xi: X= [-1,1] \to \mathbb{C}$ such that $t \mapsto t^3$ be a diffeomorphism, and therefore, a 1-cell which reparameterizes $C$. By the theory of differential forms $f\ dz(\xi) = f\ dz(C).$ Now we compute the form on $\xi.$
+	\begin{equation*}
+		f\ dz(\xi) = \int_\xi f\ dz = \int_X f(\xi(t))  det\left|\frac{\partial \xi(t)}{\partial t}\right|\ dt = \int_X f(\xi(t))\xi'(t)\ dt.
+	\end{equation*}
+	We then use the partwise decomposition property of integration and let $X_- = [-1,0)$ and $X_+ =(0,1]$ and
+	since $\{0\}$ is a zeroset w.r.t standard Labesgue measure on $\mathbb{R}$ without loss of generality the we redefine $f$ such that $z \mapsto 1$ when $y = 0$ and thus 
+	\begin{equation*}
+		f\ dz(\xi) = \int_{0}^1 4t^3\cdot(1 + i3t^2)\ dt + \int_{-1}^0 1\cdot(1 + i3t^2)\ dt.
+	\end{equation*}
+	Evaluation of the right-most quantity side gives $\int_0^1 3t^2i + 1\ dt = 1+ i.$ Evaluation of left leg
+	gives 
+	\begin{equation*}
+		\int_{1}^0 4t^3 + 12t^5i \ dt = \left[t^4 + 2t^6i\right]_{-1}^0  = ((1)^4 + 2i) - 0 - 0i = 1 + 2i
+	\end{equation*}
+	Therefore $f\ dz(\xi) = 2 + 3i$
+
+\end{solution}
+\medskip \noindent {\bf (46.9)}\ Let $C: [0, 2\pi) \to S^1 \subset\complex$ be a diffeomorphic 1-cell. 
+\newline \noindent (a) Show that if $f(z)$ is the principle branch
+\begin{equation*}
+	z^{-3/4} = exp\left(-\frac{3}{4} Log(z)\right)\;\;\;\; (|z| >0,\;\;-\pi < Arg(z) < \pi)
+\end{equation*}
+then $f\ dz(C)$ = $4\sqrt{2}i$.
+\begin{proof}
+	Seperating the evaluation of the differential for m$f\ dz$ on $C$ into two $1$-cells $C_1$ from $0 \to \pi$
+	and $C_2$ from $0 \to - \pi$. Then $C_1 : \theta \mapsto e^{i\theta}$ and the jacobian of $C_1$ is $C_1'$ w.r.t $\theta$ yielding $C_1' = ie^{i\theta}$. The same can be done for $C_2$ when letting $\theta_2 = -\theta$ parameterize the $1$-cell. We therefore reduce the calculation to
+	\begin{equation*}
+		f\ dz(C_1) =  i\int_0^\pi  exp\left(-\frac{3}{4} i\theta \right) e^{i\theta}\ d\theta =
+		 i\int_0^\pi  exp\left(-\frac{3}{4} i\theta  + i\theta\right)\ d\theta .
+	\end{equation*}
+	Then we perform normal integration giving
+	\begin{equation*}
+		f\ dz(C_1) = i\int_0^\pi exp\left(\frac{i\theta}{4}\right)\ d\theta  = 4i \left[exp\left(\frac{i\theta}{4}\right)\right]_0^\pi = -4i(\sqrt{2}/2 + \sqrt{2}/2i - 1)
+	\end{equation*}
+	A similar calculation for $C_2$ is performed yielding
+	\begin{equation*}
+		f\ dz(C_2) = i\int_0^\pi exp\left(\frac{(3-4)i\theta}{4} \right)\ d\theta  = 4i \left[exp\left(\frac{-i\theta}{4}\right)\right]_0^\pi =   4i(\sqrt{2}/2 - \sqrt{2}/2i - 1)
+	\end{equation*}
+	Finally $f\ dz(C) = f\ dz(-C_2 + C_1) = f\ dz(C_1) - f\ dz(C_2).$ Therefore
+	\begin{equation*}
+		f\ dz(C) = -4i((\sqrt{2}/2 + \sqrt{2}/2i + 1) + (-\sqrt{2}/2 + \sqrt{2}/2i - 1)) = 4i\sqrt{2}
+	\end{equation*}
+\end{proof}
+\noindent (b) Show that if $g(z)$ is the following branch
+\begin{equation*}
+	z^{-3/4} = exp\left(-\frac{3}{4} log(z)\right)\;\;\;\; (|z| >0,\;\;0 < arg(z) < 2\pi)
+\end{equation*}
+then $g\ dz(C)$ = $-4 + 4i$.
+\begin{proof}	
+	Recall that $C: [0, 2\pi) \to S^1 \subset \mathbb{C}$ is a diffeomorphic 1-cell. Therefore we evaluate $g\ dz(C)$ as follows
+	\begin{equation*}
+		g\ dz(C_1) =  i\int_0^{\pi}  exp\left(-\frac{3}{4} i\theta \right) e^{i\theta}\ d\theta =
+		 i\int_0^{\pi}  exp\left(-\frac{3}{4} i\theta  + i\theta\right)\ d\theta.
+	\end{equation*}
+	Then we perform normal integration giving
+	\begin{equation*}
+		g\ dz(C_1) = i\int_0^{\pi} exp\left(\frac{i\theta}{4}\right)\ d\theta  = 4 \left[exp\left(\frac{i\theta}{4}\right)\right]_0^{\pi} = 4(\sqrt[4]{-1} - 1)
+	\end{equation*}
+	A similar calculation for $C_2$ is performed yielding $g\ dz(C_2) = 4i(1 + (-1)^{3/4}).$ Therefore $g\ dz(C_1 + C_2) = g\ dz(C_1) + g\ dz(C_2) = -4 + 4i$.
+\end{proof}
+\medskip \noindent {\bf (46.13)}\ (Insert Question Here).
+\begin{proof}
+ 	When $n \in \mathbb{Z} \setminus \{0\}$ the contour integral is equal to $Z(-\pi) - Z(\pi) = 0$ because he function is analytic on a fully connected domain. When $n$ is not connected and there is a singularity at $z_0$ we can homotop the function $(z- z_0)^{-1}$ to $z^{-1}$ and perform the cooresponding pushforward on the differential form $C_0,$ giving the unit cirlce $C.$ We are then familiar with this integral, classically $\int_C 1/z\ dz = 2\pi i.$ This completes the proof.
+ \end{proof} 
+\end{document}\end
