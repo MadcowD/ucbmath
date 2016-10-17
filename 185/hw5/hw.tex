@@ -1,0 +1,417 @@
+\documentclass[11pt]{amsart}
+
+\usepackage{amsmath,amsthm}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{enumerate}
+\usepackage{fullpage}
+% \usepackage{euscript}
+% \makeatletter
+% \nopagenumbers
+\usepackage{verbatim}
+\usepackage{color}
+\usepackage{hyperref}
+%\usepackage{times} %, mathtime}
+
+\textheight=600pt %574pt
+\textwidth=480pt %432pt
+\oddsidemargin=15pt %18.88pt
+\evensidemargin=18.88pt
+\topmargin=10pt %14.21pt
+
+\parskip=1pt %2pt
+
+% define theorem environments
+\newtheorem{theorem}{Theorem}    %[section]
+%\def\thetheorem{\unskip}
+\newtheorem{proposition}[theorem]{Proposition}
+%\def\theproposition{\unskip}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\def\theconjecture{\unskip}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{sublemma}[theorem]{Sublemma}
+\newtheorem{fact}[theorem]{Fact}
+\newtheorem{observation}[theorem]{Observation}
+%\def\thelemma{\unskip}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+%\def\thedefinition{\unskip}
+\newtheorem{notation}[definition]{Notation}
+\newtheorem{remark}[definition]{Remark}
+% \def\theremark{\unskip}
+\newtheorem{question}[definition]{Question}
+\newtheorem{questions}[definition]{Questions}
+%\def\thequestion{\unskip}
+\newtheorem{example}[definition]{Example}
+%\def\theexample{\unskip}
+\newtheorem{problem}[definition]{Problem}
+\newtheorem{exercise}[definition]{Exercise}
+
+\numberwithin{theorem}{section}
+\numberwithin{definition}{section}
+\numberwithin{equation}{section}
+
+\def\reals{{\mathbb R}}
+\def\torus{{\mathbb T}}
+\def\integers{{\mathbb Z}}
+\def\rationals{{\mathbb Q}}
+\def\naturals{{\mathbb N}}
+\def\complex{{\mathbb C}\/}
+\def\distance{\operatorname{distance}\,}
+\def\support{\operatorname{support}\,}
+\def\dist{\operatorname{dist}\,}
+\def\Span{\operatorname{span}\,}
+\def\degree{\operatorname{degree}\,}
+\def\kernel{\operatorname{kernel}\,}
+\def\dim{\operatorname{dim}\,}
+\def\codim{\operatorname{codim}}
+\def\trace{\operatorname{trace\,}}
+\def\dimension{\operatorname{dimension}\,}
+\def\codimension{\operatorname{codimension}\,}
+\def\nullspace{\scriptk}
+\def\kernel{\operatorname{Ker}}
+\def\p{\partial}
+\def\Re{\operatorname{Re\,} }
+\def\Im{\operatorname{Im\,} }
+\def\ov{\overline}
+\def\eps{\varepsilon}
+\def\lt{L^2}
+\def\curl{\operatorname{curl}}
+\def\divergence{\operatorname{div}}
+\newcommand{\norm}[1]{ \|  #1 \|}
+\def\expect{\mathbb E}
+\def\bull{$\bullet$\ }
+\def\det{\operatorname{det}}
+\def\Det{\operatorname{Det}}
+\def\rank{\mathbf r}
+\def\diameter{\operatorname{diameter}}
+
+\def\t2{\tfrac12}
+
+\newcommand{\abr}[1]{ \langle  #1 \rangle}
+
+\def\newbull{\medskip\noindent $\bullet$\ }
+\def\field{{\mathbb F}}
+\def\cc{C_c}
+
+\newenvironment{solution}
+  {\begin{proof}[Solution]}
+  {\end{proof}}
+
+
+
+% \renewcommand\forall{\ \forall\,}
+
+% \newcommand{\Norm}[1]{ \left\|  #1 \right\| }
+\newcommand{\Norm}[1]{ \Big\|  #1 \Big\| }
+\newcommand{\set}[1]{ \left\{ #1 \right\} }
+%\newcommand{\ifof}{\Leftrightarrow}
+\def\one{{\mathbf 1}}
+\newcommand{\modulo}[2]{[#1]_{#2}}
+
+\def\bd{\operatorname{bd}\,}
+\def\cl{\text{cl}}
+\def\nobull{\noindent$\bullet$\ }
+
+\def\scriptf{{\mathcal F}}
+\def\scriptq{{\mathcal Q}}
+\def\scriptg{{\mathcal G}}
+\def\scriptm{{\mathcal M}}
+\def\scriptb{{\mathcal B}}
+\def\scriptc{{\mathcal C}}
+\def\scriptt{{\mathcal T}}
+\def\scripti{{\mathcal I}}
+\def\scripte{{\mathcal E}}
+\def\scriptv{{\mathcal V}}
+\def\scriptw{{\mathcal W}}
+\def\scriptu{{\mathcal U}}
+\def\scriptS{{\mathcal S}}
+\def\scripta{{\mathcal A}}
+\def\scriptr{{\mathcal R}}
+\def\scripto{{\mathcal O}}
+\def\scripth{{\mathcal H}}
+\def\scriptd{{\mathcal D}}
+\def\scriptl{{\mathcal L}}
+\def\scriptn{{\mathcal N}}
+\def\scriptp{{\mathcal P}}
+\def\scriptk{{\mathcal K}}
+\def\scriptP{{\mathcal P}}
+\def\scriptj{{\mathcal J}}
+\def\scriptz{{\mathcal Z}}
+\def\scripts{{\mathcal S}}
+\def\scriptx{{\mathcal X}}
+\def\scripty{{\mathcal Y}}
+\def\frakv{{\mathfrak V}}
+\def\frakG{{\mathfrak G}}
+\def\aff{\operatorname{Aff}}
+\def\frakB{{\mathfrak B}}
+\def\frakC{{\mathfrak C}}
+
+\def\suchthat{\mathrel{}:\mathrel{}}
+\def\symdif{\,\Delta\,}
+\def\mustar{\mu^*}
+\def\muplus{\mu^+}
+
+\def\soln{\noindent {\bf Solution.}\ }
+
+
+%\pagestyle{empty}
+%\setlength{\parindent}{0pt}
+
+\begin{document}
+
+\begin{center}{\bf Math 185 --- UCB, Fall 2016 --- William Guss}
+\\
+{\bf Problem Set 5, due October 18th}
+\end{center}
+
+\medskip \noindent {\bf (49.1)}\ Use an antiderivative to show that for every contour $C$ extending from a point
+$z_1$ to a point $z_2$,
+\begin{equation*}
+	\int_Cz^n\ dz = \frac{1}{n+1}(z^{n+1}_2 - z^{n+1})
+\end{equation*}
+\begin{proof}
+	From previous analysis we have that multiplication on the complex plane is a continuous mapping, so the map $f(z) = z^n$
+	is a continuous map. Therefore it is integrable. We claim that $F(z) = \frac{z^{n+1}}{n+1}$ is the antiderivative of $f$
+	and then apply Theorem 1 of section 48 to show that $\int_C f\ dz = F(z_2) - F(z_1).$ 
+	Take $z \in \mathbb{C}$. Then if $F(z)(n+1) = z^{n+1}$ we have that
+	\begin{equation*}
+		F'(z) = \frac{n+1}{n+1} z^n = f(z) 
+	\end{equation*}
+	using the differentiation rules established in earlier chapters. Therefore $f$ has an antiderivative, nameley $F$, and
+	for any $1$-cell such that $C(0) = z_1, C(1) = z_2$ we have that $f\ dz(C) = F(z_2) - F(z_1) = \frac{1}{n+1}\left[z^{n+1}_2 - z^{n+1}_1\right].$
+\end{proof}
+
+\medskip \noindent {\bf (49.5)}\ Show that 
+\begin{equation*}
+	\int_{-1}^1 z^i\ dz = \frac{1+e^{-\pi}}{2}(1-i)
+\end{equation*}
+where the integrand denotes the principle branch
+\begin{equation*}
+	z^i = \exp(i\ Log*(z))\;\;\;\;(|z|>0, -\pi < Arg(z) < \pi).
+\end{equation*}
+and the path $C$ lies above the real axis.
+\begin{proof}
+	As per the books suggestion we shift the domain of the branch cut on $log$ so that the particular chart of the manifold
+	over which we integrate has the fully connected property and the contour is properly defined. Now the antiderivative of $z^i$ on such a branch cut is
+	\begin{equation*}
+		F(z) = \frac{1}{i+1}e^{(i+1)\log(z)} \implies F'(z) = \frac{d}{dz}\frac{1}{i+1}e^{i \log(z)}z = \frac{1}{i+1}\left[e^{i \log(z)} + \frac{iz}{z} e^{i\log(z)}\right] = \frac{i+1}{i+1}e^{i \log(z)}
+	\end{equation*}
+	Therefore by Theorem 1 of section 48 we have that
+	\begin{equation*}
+		\int_C\ f\ dz = \frac{1}{1+i} \left[e^{(1+i)\log(1)} - e^{(1+i)\log(-1)}\right] = \frac{e^{(1+i)(0+0i)} -e^{(1+i)(0 + \pi i)}}{1+i} = \frac{1 - e^{\pi i - \pi}}{1 + i}
+	\end{equation*}
+	Thus the integral is always
+	\begin{equation*}
+		\int_C\ f\ dz = \frac{1+e^{-\pi}}{2}(1-i)
+	\end{equation*}
+\end{proof}
+
+\medskip \noindent {\bf (53.1)}\ Apply the Cauchy-Gorsat theorem to show that 
+\begin{equation*}
+	\int_C f(z)\ dz = 0
+\end{equation*}
+when the contour $C$ is the unit circle $|z| = 1$, in either direction, and when \\
+(a) $f(z) = \dfrac{z^2}{z+3}$
+\begin{proof}
+	Consider that $f$ is not analytic at $z = -3$ which lies outside of the unit circle and so the contour
+	is over a fully connected domain with no holes in its interior, and the $1$-form is $0$ on any $1$-cell which is a closed loop with countably many intersections
+	by the Cauchy-Goursat theorem.
+\end{proof}
+\noindent (b) $f(z) = ze^{-z}$
+\begin{proof}
+	Again, in the domain of $f$ within the unit ball in $\mathbb{C}$ there are no singularities and the multiplication
+	of two analytic functions is an analytic function on the interesection of their analytic domains. Thus,
+	for any $1$-cell which is closed the one form $f\ dz(C) = 0$ by the Cauchy-Goursat theorem.
+\end{proof}
+\noindent (c) $f(z) = \dfrac{1}{z^2 + 2z + 2}$
+\begin{proof}
+	Observe using the quadractic formula we have that \begin{equation*}
+		z = \frac{-2 \pm \sqrt{4 - 8}}{2} = -1 \pm i \implies z^2 + 2z +2 = 0. 
+	\end{equation*}
+	Thus 
+	\begin{equation*}
+		f(z) = \frac{1}{(z+1-i)(z+1+i)}
+	\end{equation*}
+	has singularities lying outside of the unit circle and so on $1$-cells which are closed in the unit ball the one form $f\ dz(C) = 0$ by the Cauchy-Goursat theorem.
+\end{proof}
+
+
+\medskip \noindent {\bf (53.2)}\ Let $C_1$ denote the postiveley oriented boundary of the square whose sides lie along the lines $x = \pm 1$, $y = \pm 1$ and $C_2$ be the  postiveley oriented cirlce $|z| = 4$. With the aid of the corollary in Sec 53. point out why
+\begin{equation*}
+	\int_{C_1} f(z)\ dz = \int_{C_2} f(z)\ dz
+\end{equation*}
+when \\
+(a) $f(z) = \dfrac{1}{3z^2 + 1}$
+\begin{solution}
+The function $f$ is analytic everywhere except for $z^2 = -1/3$, and all points there satisfying lie in the interior region of $C_1$. We can homotop $C_1$ to $C_2$ such that the interiors are endowed with the same topology and the image of the homotopy is a domain on which $f$ is analytic. Therefore the evaluations of the $1$-forms are equivalent.
+\end{solution}
+\noindent (b) $f(z) = \dfrac{z+2}{\sin{(z/2)}}$
+\begin{solution}
+	By a theorem of Section 38, the only zeroes of the complex trigonometric functions are on the real line, spaced in integral differences of multiples of $\pi$. In particular $\sin(z) = 0$ iff $z = n\pi$, and $n$ an integer. Therefore within the interior of $C_1$ $f$ is not analytic only at $0$. Since $\sin(z/2) = 0$ iff $z = 2n\pi$ and $|2n\pi| > |4|$ for all $n \neq 0$ in the integers, there are no zeroes besides that particular one aforementioend in the interior of $C_2$. Then by the previous homotopy principle the evaluations of the $1$-forms are equivalent.
+\end{solution}
+\noindent (c) $f(z) = \dfrac{1}{1-e^z}$.
+\begin{solution}
+ 	The only $z$ for which $e^z = 1$ is $z = 0$ by definition and therefore $f(z)$ is only not analytric on $z = 0$ so both $C_2$ and $C_1$ have only one (the same) singularity on their interior  and by the homotopy principle  the evaluations of the $1$-forms are equivalent.
+ \end{solution} 
+
+\medskip \noindent {\bf (53.3)}\ If $C_0$ denotes a positiveley oriented circle $|z - z_0| = R$, then
+\begin{equation*}
+	\int_{C_0}(z- z_0)^{n-1}\ dz = \begin{cases}
+		0, &\text{when } n = \pm1, \pm2, \dots, \\
+		2pi &\text{when } n = 0 
+	\end{cases}
+\end{equation*}
+accoridng to Exercise $13$ Section 46. Use that result and the homotopy principle to show that if $C$ is the boundary
+of the rectangle $0 \leq x \leq 3$, $0 \leq y \leq 2$ described in the positive sense
+\begin{equation*}
+	\int_C (z -2 -i)^{n-1}\ dz =  \begin{cases}
+		0, &\text{when } n = \pm1, \pm2, \dots, \\
+		2pi &\text{when } n = 0 
+		\end{cases}
+\end{equation*}
+\begin{proof}
+	First we show that the integrand is analytic except for $z_0 = 2 + i$. By the closure of $C^{\omega}(\mathbb{C}, \mathbb{C})$ under multiplication $(z - z_0)^{m}$ is analytic everywhere for all $m \geq 0$. It follows that the inverse of such a function is analytic everywhere except for at the zeroes, which are namely $\{z_0\}$. Lastly we can write any function of the form of the integrand as either  $(z - z_0)^{m}$ or its inverse, and so the integrand is analytic every where except at $\{z_0\}$.
+
+	Now since $z_0$ is in the interior of the $C$ ($0 \leq Re(z_0) = 2 \leq 3$ and $0 \leq Im(z_0) = 1 \leq 2$), and no other 
+	singularities exist, we may homotop $C$ to a ball of any positive radius around $z_0$ and apply the homotopy principle to yield the conclusion of the theorem; that is, since the evaluation of the any $1$-cell, $\phi,$ in the homotopy class of the circle with respect to the stated $1$-form gives 
+	\begin{equation*}
+		\int_\phi (z -2 -i)^{n-1}\ dz =  \begin{cases}
+		0, &\text{when } n = \pm1, \pm2, \dots, \\
+		2pi &\text{when } n = 0 
+		\end{cases}
+	\end{equation*}
+	the theorem holds as $\phi \simeq C$ via homotopy restricted to the analytical domain of the integrand.
+\end{proof}
+
+
+\medskip \noindent {\bf (53.4)}\ Show that
+\begin{equation*}
+	\int_0^\infty e^{-x^2}\cos 2bx\ dx = \frac{\sqrt{\pi}}{2}e^{-b^2}\;\;\;\;(b>0)
+\end{equation*}
+\begin{proof}
+	First consider the rectangular contour $C(a,b) := C$ which visits $-a, a, a+bi, -a+bi$ in a positive orientation. We
+	evaluate $C$ on the $1$-form $e^{-z^2}\ dz$, first computing the horizontal legs $C_H$
+	\begin{equation*}
+		\begin{aligned}
+		\int_{C_H} f\ dz&= \int_{0}^1 f(C_{H_1}(t)) C_{H_1}'(t) \ dt -  \int_{0}^1 f(C_{H_2}(t)) C_{H_2}'(t)\ dt,\\
+		&= 2\int_{0}^a e^{-t^2}\ dt  -  \int_{0}^1 f'(C_{H_2}(z)) C_{H_2}'(t)\ dt,\\
+		&= 2\int_{0}^a e^{-t^2}\ dt - \int_{-a}^a e^{-(t^2  +tbi -b^2)}\ dt,\\
+		&= 2\int_{0}^a e^{-t^2}\ dt - 2e^{b^2}\int_{0}^a e^{-t^2}\cos(2bt)\ dt.
+		\end{aligned}
+	\end{equation*}
+	Second computing the veritcal legs we get
+	\begin{equation*}
+		\begin{aligned}
+			\int_{C_V} f\ dz &= \int_{0}^1 f(C_{V_1}(t)) C_{V_1}'(t) \ dt -  \int_{0}^1 f(C_{V_2}(t)) C_{V_2}'(t)\ dt,\\
+			&= i\int_0^b e^{-(a+ti)^2}\ dt - i\int_0^b e^{-(ti-a)^2}\ dt, \\
+			&=  ie^{-a^2}\int_0^b e^{t^2}e^{-2ati}\ dt - ie^{-a^2}\int_0^b e^{t^2}e^{2ati}\ dt.
+		\end{aligned}
+	\end{equation*}
+	By the analycity of $f$ we have that the closed loop integral is $0$ thus
+	\begin{equation*}
+			0 = 2\int_{0}^a e^{-t^2}\ dt - 2e^{b^2}\int_{0}^a e^{-t^2}\cos(2bt)\ dt + ie^{-a^2}\int_0^b e^{t^2}e^{-2ati}\ dt - ie^{-a^2}\int_0^b e^{t^2}e^{2ati}\ dt.
+	\end{equation*}
+	and so \begin{equation*}
+		\int_{0}^a e^{-t^2}\cos(2bt)\ dt = e^{-b^2}\int_{0}^a e^{-t^2}\ dt + i e^{-a^2 -b^2} \left(\int_0^b e^{t^2}e^{-2ati}\ dt - \int_0^b e^{t^2}e^{2ati}\ dt \right).
+	\end{equation*}
+	Using that $-i\times i \sin(\gamma)$ gives $\sin(\gamma)$ for any $\gamma$ in $\mathbb{C}$, we get (upon rearrangement)
+	\begin{equation*}
+	\int_{0}^a e^{-t^2}\cos{2bt}\ dt = e^{-b^2}\int_{0}^a e^{-t^2}\ dt + e^{-(a^2 +b^2)} \left(\int_0^b e^{t^2}\sin{2at}\ dt \right).
+	\end{equation*}
+
+	Granting that
+	\begin{equation*}
+		\int_0^\infty e^{-x^2}\ dx = \frac{\sqrt{\pi}}{2}
+	\end{equation*}
+	and that 
+	\begin{equation*}
+	\left|\int_{0}^a e^{-t^2}\cos{2bt}\ dt\right| \leq \int_0^\infty e^{-t^2}\ dt 
+	\end{equation*}
+	we get that when $a \to \infty$ the right hand side of the third to last equation tends to $0$ (as it is absoluteley bounded) save for the term 
+	\begin{equation*}
+	\int_{0}^a e^{-t^2}\cos{2bt}\ dt = e^{-b^2}\int_{0}^\infty e^{-t^2}\ dt = \frac{\sqrt{\pi}}{2}e^{-b^2}.
+	\end{equation*}
+	This completes the proof.
+
+\end{proof}
+
+\medskip \noindent {\bf (53.5)}\ Let the contours be given from the book, $C_1$, $C_2,$ and $C_3$. Show that if $C = C_1 + C_2$
+and $f$ is entire then
+\begin{equation*}
+	\int_{C_1} f(z)\ dz = \int_{C_3} f(z)\ dz\;\;\text{and}\;\;\;\int_{C_2} f(z)\ dz = - \int_{C_3} f(z)\ dz.
+\end{equation*}
+and finally that $\int_C\ f(z)\ dz = 0$.
+\begin{proof}
+	First consider $C_1$ and $C_3$. If $f$ is entire, by the image of $C_2$ diffeomorphic to $[0,1]$ we know (theorem of previous of chapter) that $\int_{C_1} f\ dz = f(1) - f(0).$ Using the same argument on $C_3$ we get $ \int_{C_3} f\ dz = f(1) - f(0).$ so the evaulations are equal. The key step here is that the image of $C_1$ is diffeomorphic to $I$ since it is defined exactly by a function of $f$ and not a relation. If this were not the case, such an argument may not be possible since contours may just be smooth mappings, and not all smooth mappings are homotopically equivalent. 
+
+	Now we know that $0 = \int_{C_1+C_3} f\ dz = \int_{C_1} f\ dz + \int_{C_3} f\ dz = 0$ by the Cauchy-Gorsaut theorm. By the linearity of differential forms with respect to end points, it follows that
+	\begin{equation*}
+		\int_C f\ dz = \int_{C_1} f\ dz + \int_{C_2} f\ dz =\int_{C_3} f\ dz + \int_{C_2} f\ dz = 0
+	\end{equation*}
+	This completes the proof.
+\end{proof}
+
+
+\medskip \noindent {\bf (53.6)}\ Let $C$ denote the postiveley oriented boundary of the half disk $0 \leq r \leq 1$, $0 \leq \theta \leq \pi$
+and let $f(z)$ be a continuous function defined on that half disk by writing $f(0) = 0$ and
+using the branch
+\begin{equation*}
+	f(z) = \sqrt{r} e^{i\theta/2}\;\;\;\;\left(r > 0, -\frac{\pi}{2} < \theta < \frac{3\pi}{2}\right)
+\end{equation*}
+of the multiple-valued function $z^{1/2}.$ Show that $\int_C f(z)\ dz = 0$ by evaluating serparateley the integrals of $f(z)$ over the semicircle
+and the two radii which make up $C$.
+\begin{proof}
+	First at $\theta = 0, \pi$ we evaluate the $1$-form. We get $\omega(C_1), \omega(C_2)$ as follows
+	\begin{equation*}
+		\omega(C_1) = e^{i0/2}\int_0^1 \sqrt{r} C_1'(r)\ dr = \int_0^1 \sqrt{r}\ dr =\frac{2}{3}
+	\end{equation*}
+	\begin{equation*}
+		\omega(C_2) = e^{i\pi/2}\int_0^1 \sqrt{r} e^{i\pi}\ dr = e^{i3\pi/2}\int_0^1 \sqrt{r}\ dr =\frac{2}{3} e^{i3\pi/2}
+	\end{equation*}
+	For the third curve we parameterize in terms of $\theta$, that is we compute $\omega(C_3)$ as
+	\begin{equation*}
+		\omega(C_3) = \int_0^\pi e^{i\theta/2}e^{i\theta}\ d\theta = \int_0^\pi e^{i3\theta/2}\ d\theta = \frac{2}{3i}\left(e^{i3\pi/2}-1 \right)
+	\end{equation*}
+	and so \begin{equation*}
+		\omega(C) = \omega(C_1) + \omega(C_2) - \omega(C_3) = \frac{2}{3}\left(1 + i\left(1 - e^{i3\pi/2}\right) -  e^{i3\pi/2}\right) = \frac{2}{3}\left(1 - e^{i3\pi/2}\right)(1+i)
+	\end{equation*}
+	This completes the proof.
+\end{proof}
+
+ \noindent Why does the Cauchy-Goursat theorem not apply here? 
+ \begin{solution}
+ Since the function $f$ is certainly not analytic at $0$, one could not apply the Cauchy Goursat theorem whose conditions imply its conclusion only on an analytic domain of $f$.
+ \end{solution}
+
+\medskip \noindent {\bf (53.7)}\ Show that if $C$ is a postively oriented simple closed contour, then the area of the region enclosed by $C$ can be written
+\begin{equation*}
+	\frac{1}{2i}\int_{C}\overline{z}\ dz.
+\end{equation*}
+\begin{proof}
+	Consider the above integral in the language of differential forms on $\mathbb{R}^2$. The function $f = \overline{\cdot}: \mathbb{C} \to \mathbb{C}$ such that $f(x,y) = (x, -y) = x -iy$, and this mapping is smooth with respect to its pratial derivatives. Therefore $f dz = (f_1 + if_2) dz = (f_1 + if_2)(dx + idy) = (f_1+if_2)dx +(if_1  -f_2)dy = \omega$ is a differential $1$-form and we can apply Stokes Formula for a General $1$-cell as follows: if $C$ is as above and  there exists $M$ a $2$-cell such that $\partial M = C$
+	\begin{equation*}
+		\int_{\partial M} \omega = \int_M\ d\omega
+	\end{equation*}
+	where $d$ is the exterior derivitive. In this case 
+	\begin{equation*}
+		\begin{aligned}
+				d(\omega) = d(f_1 + if_2) \wedge dx + d(if_1  -f_2) \wedge dy &=
+				 \left[ \frac{\partial(f_1 + if_2)}{\partial x} dx + \frac{\partial (f_1+ if_2)}{\partial y} dy \right] \wedge dx +  \left[\cdots\right] \wedge dy \\
+				&= \frac{\partial f_1+if_2}{\partial y} dy \wedge dx +  i\frac{\partial (if_1-f_2)}{\partial x} dx \wedge dy \\
+				 &=\left[ \frac{\partial (if_1-f_2)}{\partial x} - \frac{\partial f_1+if_2}{\partial y} \right] dx \wedge dy  \\
+				 &= \left[\left(-\frac{\partial f_1}{\partial y}  -\frac{\partial f_2}{\partial x}\right) + i\left(\frac{\partial f_1}{\partial x}  -\frac{\partial f_2}{\partial y}\right)\right] dx \wedge dy \\
+				 &= \left[0 + i(1 -(-1))\right] dx \wedge dy\\
+				 &= 2i dx \wedge dy.
+		\end{aligned}
+	\end{equation*}
+	Therefore $\frac{1}{2i} \int_M d\omega = \int_M dx \wedge dy$, so 	it follows that
+	\begin{equation*}
+		\int_M dx \wedge dy = \frac{1}{2i} \int_{\partial M} \omega = \int_C \overline{z}\ dz.
+	\end{equation*}
+	Since $M$ is the interior (if it exists) of $C$ then the proof is complete.
+\end{proof}
+
+
+\end{document}\end
