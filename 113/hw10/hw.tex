@@ -1,0 +1,131 @@
+\documentclass[11pt]{amsart}
+
+\usepackage{amsmath,amsthm}
+\usepackage{amssymb}
+%\usepackage{graphicx}
+%\usepackage{enumerate}
+\usepackage{fullpage}
+% \usepackage{euscript}
+% \makeatletter
+% \nopagenumbers
+\usepackage{verbatim}
+\usepackage{color}
+\usepackage{hyperref}
+%\usepackage{times} %, mathtime}
+
+\textheight=600pt %574pt
+\textwidth=480pt %432pt
+\oddsidemargin=15pt %18.88pt
+\evensidemargin=18.88pt
+\topmargin=10pt %14.21pt
+
+\parskip=1pt %2pt
+
+\def\reals{{\mathbb R}}
+\def\torus{{\mathbb T}}
+\def\integers{{\mathbb Z}}
+\def\rationals{{\mathbb Q}}
+\def\naturals{{\mathbb N}}
+\def\complex{{\mathbb C}\/}
+\def\distance{\operatorname{distance}\,}
+\def\support{\operatorname{support}\,}
+\def\dist{\operatorname{dist}\,}
+\def\Span{\operatorname{span}\,}
+\def\degree{\operatorname{degree}\,}
+\def\kernel{\operatorname{kernel}\,}
+\def\dim{\operatorname{dim}\,}
+\def\codim{\operatorname{codim}}
+\def\trace{\operatorname{trace\,}}
+\def\dimension{\operatorname{dimension}\,}
+\def\codimension{\operatorname{codimension}\,}
+\def\kernel{\operatorname{Ker}}
+\def\Re{\operatorname{Re\,} }
+\def\Im{\operatorname{Im\,} }
+\def\eps{\varepsilon}
+\def\lt{L^2}
+\def\bull{$\bullet$\ }
+\def\det{\operatorname{det}}
+\def\Det{\operatorname{Det}}
+\def\diameter{\operatorname{diameter}}
+\def\symdif{\,\Delta\,}
+\newcommand{\norm}[1]{ \|  #1 \|}
+\newcommand{\set}[1]{ \left\{ #1 \right\} }
+\newcommand{\group}[2]{\left\langle #1, #2\right\rangle}
+\def\one{{\mathbf 1}}
+\def\cl{\text{cl}}
+
+\def\newbull{\medskip\noindent $\bullet$\ }
+\def\nobull{\noindent$\bullet$\ }
+
+
+
+\def\scriptf{{\mathcal F}}
+\def\scriptq{{\mathcal Q}}
+\def\scriptg{{\mathcal G}}
+\def\scriptm{{\mathcal M}}
+\def\scriptb{{\mathcal B}}
+\def\scriptc{{\mathcal C}}
+\def\scriptt{{\mathcal T}}
+\def\scripti{{\mathcal I}}
+\def\scripte{{\mathcal E}}
+\def\scriptv{{\mathcal V}}
+\def\scriptw{{\mathcal W}}
+\def\scriptu{{\mathcal U}}
+\def\scriptS{{\mathcal S}}
+\def\scripta{{\mathcal A}}
+\def\scriptr{{\mathcal R}}
+\def\scripto{{\mathcal O}}
+\def\scripth{{\mathcal H}}
+\def\scriptd{{\mathcal D}}
+\def\scriptl{{\mathcal L}}
+\def\scriptn{{\mathcal N}}
+\def\scriptp{{\mathcal P}}
+\def\scriptk{{\mathcal K}}
+\def\scriptP{{\mathcal P}}
+\def\scriptj{{\mathcal J}}
+\def\scriptz{{\mathcal Z}}
+\def\scripts{{\mathcal S}}
+\def\scriptx{{\mathcal X}}
+\def\scripty{{\mathcal Y}}
+\def\frakv{{\mathfrak V}}
+\def\frakG{{\mathfrak G}}
+\def\frakB{{\mathfrak B}}
+\def\frakC{{\mathfrak C}}
+
+\newtheorem{corollary}{Corollary}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{definition}{Definition}
+
+\def\soln{\noindent {\bf Solution.}\ }
+
+\begin{document}
+
+\begin{center}{\bf Math 113 --- Problem Set 10 --- William Guss} \end{center}
+
+
+\bigskip
+
+
+\medskip \noindent {\bf (P174. 6)}\
+\medskip \noindent {\bf (P175. 12)}\
+
+\medskip \noindent {\bf (P182. 2)}\ Solve the equation $3x =2$ in the field\\
+(a) $\mathbb{Z}_7$.
+\begin{proof}	
+	We must find $x$ so that $x \mod 7 = 2$ and $3 | x$.
+	First $3\times 1 = 3 \mod 7 = 3$, then $3 \times 3 = 9 \mod 7 = 2,$ thus $x = 2$ in $\mathbb{Z}_7.$
+\end{proof}
+(b) $\mathbb{Z}_23$
+\begin{proof}
+	We msut find $x$ so that $x \mod 23 = 2$ and $3 | x$.
+	Take $x = 16$, then $3x = 48.$ Finally $23\times 2 = 46$ so $48 \mod 46 = 2$ and $3x = 2.$ We could have found this by showing that $3y = 1 $ if $y = 3^{-1}$ and thus $3\times 8 = 24 \mod 23 = 1$ so $y = 8$.
+	Then $3x \equiv 2$ is solved by $x \equiv y3x  \equiv y \times 2 = 16.$ 
+\end{proof}
+\medskip \noindent {\bf (P182. 3)}\ Find all solutions of the equation $x^2 + 2x + 2= 0$ in $\mathbb{Z}_6.$
+\begin{proof}
+	First $\mathbb{Z}_6$ is not a field since $2 \times 3 = 6 \equiv 0$ so $\mathbb{Z}_6$ is not an integral domain. We factor the polynomial however and get
+	$(x+1)(x+1) = 1 \in \mathbb{Z}_6.$ Thus we find all $y$ so that $y^2 = 1.$
+\end{proof}
+\medskip \noindent {\bf (P182. 14)}\
+\end{document}\end
