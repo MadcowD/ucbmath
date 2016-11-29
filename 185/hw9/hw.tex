@@ -775,13 +775,124 @@ to show that
 
 \medskip \noindent {\bf (88.3)}\ Use residues to derive the integration formula
 \begin{equation*}
-
+\int_0^\infty \frac{\cos ax}{(x^2 + b^2)^2} = \frac{\pi}{4b^3}(1 + ab)e^{-ab}
 \end{equation*}
+\begin{proof}
+			Let $f: \mathbb{C} \to \mathbb{C}$ so that 
+	\begin{equation*}
+		f: z \mapsto  \frac{1}{(x+bi)^2(x-bi)^2}
+	\end{equation*}
+	Then on the real axis, the real part of the  function $fe^{iaz}$ assumes values $Re(e^{iz}f(x + 0i)) = Re(e^{ix}/((x+bi)^2(x-bi)^2)) = \cos(ax)/(x^2 + b^2)^2$. Therefore we adopt the methodology of the example in seciton 88 and thus calculate the principle value integral (and by eveness, this is equivalent to the sum of both indefnite integrals.) We do not presume the existence of the integral untill we have shown the formula is valid.
 
-\medskip \noindent {\bf (88.12)}\ 
-\medskip \noindent {\bf (92.1)}\ 
-\medskip \noindent {\bf (92.6)}\ 
-\medskip \noindent {\bf (95.1)}\ 
-\medskip \noindent {\bf (95.2)}\ 
+	By the Cauchy Residue theorem under the standard semi-circle contour of radius $R$ we have that
+	\begin{equation*}
+		\int_{-R}^R f(z)e^{iaz}\ dz + \int_{C_R} f(z) e^{iaz}\ dz = 2\pi i \sum_{c_k \in S(f) \cap C_R^o} Res_{z=c_k}\ e^{iaz} f(z)
+	\end{equation*}
+	where $S(f)$ is the set of singularities of $f$ in $\mathbb{C}.$
+
+	First to calculate the residues at $S \cap \mathbb{C}^H = \{bi\}$, we observe that $f$ has a pole of order 2 at the element in $S \cap \mathbb{C}^H$. Therefore we need only evaliuate $\phi'_1(bi)$ where $\phi_1(z) = e^{iaz}(z + bi)^{-2}$. We yield via differntiation that $\phi'(z) = iae^{iaz}(z + bi)^{-2} -2e^{iaz}(z + bi)^{-3}$. Therefore $\phi'(bi) = iae^{-ab}(2bi)^{-2} - 2e^{-ab}(2bi)^{-3}.$  This is just $\phi'(bi) = e^{-ab}i/(4b^3)\cdot(-ab - 1)$Returning to the derivation
+	\begin{equation*}
+		\int_{-R}^R f(z)e^{iz}\ dz + \int_{C_R} f(z) e^{iz}\ dz = 2\pi i \frac{e^{-ab}i}{4b^3}\cdot(-ab - 1) =  2 \frac{\pi}{4b^3}(ab + 1)e^{-ab}
+	\end{equation*}
+	Lastly we need show that the $C_R$ contour integral tends to $0$.  In particular we will  bound $f(z)$ on $C_R$
+	and then apply Jordan's lemma as $a > 0$.  We know that $|(z^2 + b^2)^2| = |z^2 + b^2||z^2 + b^2| \geq ||z|^2 - |b^2||||z|^2 - |b^2||.$ Then for $R$ large enough $||z|^2 - |b^2|| = R^2 - b^2.$
+	Therefore $|f(z)| \leq 1/(R^2 -b^2)^2$ and $1/(R^2 - b^2)^2 \leq C/R^4 \to 0$ as $R \to \infty$ for some $C.$
+	Therefore under Jordan's lemma the integral is bounded by
+	\begin{equation*}
+		\lim_{R \to \infty} \int_{C_R} f(z) e^{iz}\ dz = 0.
+	\end{equation*}
+	Finally we yield that through the evenness of the integrand in the original statement,
+	\begin{equation*}
+		\int_0^\infty \frac{\cos ax}{x^2 + 1}\ dx = \frac{1}{2}  \int_{-R}^R f(z)e^{iz}\ dz = \frac{\pi}{4b^3}(ab + 1)e^{-ab}
+	\end{equation*}
+	and this completes the derivation.
+\end{proof}
+
+\medskip \noindent {\bf (88.12)}\ Evaluate the Fresnel integrals
+\begin{equation*}
+	\int_0^\infty cos(x^2)\ dx = \int_0^\infty \sin(x^2)\ dx = \frac{1}{2} \sqrt{\frac{\pi}{2}}
+\end{equation*}
+\begin{proof}
+	First consider the contour from Figure 106. Then we will integrate $exp(iz^2)$ arround the positiveley oriented vboundary of the sector $0 \leq r \leq R. 0 \leq \theta \leq \pi/4$ and appeal to the Cauchy-Goursat theorem which states that since the interiror of this curve is a domain on which $exp(iz^2)$ is analyitic, the closed path integral on this domain of $exp(iz^2)$ is null. Therefore
+	\begin{equation*}
+		\begin{aligned}
+			0 &= \int_0^R exp(ix^2)e^{i0}\ dx + \int_0^R exp\parens{r^2e^{5\pi/2}}e^{5\pi/4}\ dr + \int_{C_R} e^{iz^2}\ dz \\
+			\int_0^R exp(ix^2)e^{i0}\ dx &= (1 + i)\int_0^R \frac{exp\parens{r^2e^{5\pi/2}}}{\sqrt{2}}\ dr - \int_{C_R} e^{iz^2}\ dz \\
+			\implies \int_0^R \cos(x^2)\ dx &= Re\parens{(1 + i)\int_0^R \frac{exp\parens{r^2e^{5\pi/2}}}{\sqrt{2}} - \int_0^R exp(ix^2)e^{i0}\ dx} \\
+			\implies \int_0^R \cos(x^2)\ dx &= Im\parens{(1 + i)\int_0^R \frac{exp\parens{r^2e^{5\pi/2}}}{\sqrt{2}}- \int_0^R exp(ix^2)e^{i0}\ dx} \\
+		\end{aligned}
+	\end{equation*}
+	Therefore we will show that the arc integral tends to $0$ as $R \to \infty$. In particular
+	\begin{equation*}
+		\int_{C_R} e^{iz^2}\ dz = \int_0^{\pi/4} iexp\parens{iR^2e^{i\theta}}Re^{i\theta}\ d\theta = \frac{R}{1}i\int_0^{\pi/4} exp\parens{R^2(i\cos(\theta))}exp( -R^2 \sin(\theta))e^{i\theta}\ d\theta
+	\end{equation*}
+	Taking absolute values we yield that
+	\begin{equation*}
+	\begin{aligned}
+		\left|\int_{C_R} e^{iz^2}\ dz \right| &= R\left| \int_0^{\pi/4} exp\parens{i(R^2\cos(\theta) + \theta)}exp( -R^2 \sin(\theta))\ d\theta \right| \\
+		&=R\left| \int_0^{\pi/4} cis\parens{i(R^2\cos(\theta) + \theta)}exp( -R^2 \sin(\theta))\ d\theta \right| \\
+		&\leq R \int_0^{\pi/4} \left|cis\parens{i(R^2\cos(\theta) + \theta)}||exp( -R^2 \sin(\theta))\right|\ d\theta \\
+		&\leq \frac{R}{2} \int_0^{\pi/2} e^{ -R^2 \sin(\theta)}\ d\theta \\
+	\end{aligned}
+	\end{equation*}
+	Then in Jordan's Lemma's proof, we observe by automorphism on $R$ 
+	\begin{equation*}
+		\left|\int_{C_R} e^{iz^2}\ dz \right| \leq \frac{R}{2} \frac{\pi}{2R^2} \leq \frac{\pi}{4R} \to 0
+	\end{equation*}
+	Then reclaling that
+	\begin{equation*}
+		\int_0^\infty e^{-r^2}\ dr = \frac{{\sqrt{\pi}}}{2}
+	\end{equation*}
+	we get finally that
+	\begin{equation*}
+			\int_0^\infty cos(x^2)\ dx = \int_0^\infty \sin(x^2)\ dx = \frac{1}{2} \sqrt{\frac{\pi}{2}}
+	\end{equation*}
+
+
+\end{proof}
+\medskip \noindent {\bf (92.1)}\ Show that $\int_0^{2\pi} \frac{d\theta}{5 + 4 \sin \theta} = 2\pi/3.$
+\begin{proof}
+	We let the integrand be denoted $f(\theta)$ and we make the substitutions from Chapter 92, thus yielding
+	\begin{equation*}
+		\int_0^{2\pi} \frac{d\theta}{5 + 4 \sin \theta} = \int_C \frac{-dz}{2z^2 -5zi- 2)}.
+	\end{equation*}
+	Then the divisor $2z^2 - 5zi - 2$ has roots $z = i/2, 2i$.
+	Therefore $z= i/2$ is the only root of the polynomial contained in $C_R$, so we
+	apply the theory of residues and recall that this is just a simple pole, so we evaluate $-1/(2z + i)$ at $z =  i/2$ yielding a residue of $-i/3$. Applying the logic from the exercise and omitting the full application of the residue we get
+	\begin{equation*}
+		\int_0^{2\pi} \frac{d\theta}{5 + 4 \sin \theta} = 2\pi i/3 (-1) = \pi2/3
+	\end{equation*}
+\end{proof}
+\medskip \noindent {\bf (92.6)}\ Show that $\int_0^\pi \sin^{2n}(\theta)\ d\theta = \frac{(2n)!}{2^{2n}(n!)^2} \pi$.
+\begin{proof}
+	We make a a first automorphic substitution, $\theta = \theta/2$  but also observe symmetry in the graph as in Example 2 thus
+	\begin{equation*}
+		\int_0^\pi \sin^{2n}(\theta)\ d\theta = \frac{1}{2}\int_0^{2\pi} \sin^{2n}(\theta/2)\ d\theta  =  \frac{1}{2}\int_0^{2\pi} \sin^{2n}(\theta)\ d\theta 
+	\end{equation*}
+	Next we substitute again and yield that
+	\begin{equation*}
+	\begin{aligned}
+		 \frac{1}{2}\int_0^{2\pi} \sin^{2n}(\theta)\ d\theta  &= \frac{1}{2}\int_{C_R} \parens{\frac{z + z^{-1}}{2i}}^{2n}\frac{dz}{iz} \\
+		 &= \frac{1}{(2i)^{2n+1}}\int_{C_R} \frac{(z + z^{-1})^{2n}}{z}\ dz\\
+		 &= \frac{1}{(2i)^{2n+1}}\int_{C_R} \frac{z^{2n}}{z^{2n}}\frac{(z + z^{-1})^{2n}}{z}\ dz \\
+		 &= \frac{-i}{(2)^{2n+1}}\int_{C_R} \frac{(z^2 + 1)^{2n}}{z^{2n+1}}\ dz
+	\end{aligned}
+	\end{equation*}
+	Therefore we need only calculate the reisdue of $\frac{(z^2 + 1)^{2n}}{z^{2n+1}}$ at its pole of order $2n+1$ at $z = 0.$ The bionial expansion of $\phi$ is $\sum_{k=0}^{2n} \frac{(2n)!}{(2n-k)!k!} z^{4n -2k}$
+	therefore the $(2n)^{th}$ derivative $\phi^{(2n)}$ is $\sum_{k=0}^{n} \frac{(4n-2k)!(2n)!}{(2n-2k)!(2n-k)!k!} z^{2n -2k}$ by applying the nth derivative power rule. Finally evaluation at $0$, implies that when $2n -2k > 0$ then the term is null; therefore $k = n$ and we get $\phi^{(2n)}(0) = \frac{(2n)!(2n)!}{(n)!n!}.$ Finally residue theorem has us divide this evclaution by the order of the pole subract one factorial, and thus we have
+	\begin{equation*}
+	\int_0^\pi \sin^{2n}(\theta)\ d\theta = 2 \pi i \cdot \frac{-i}{(2)^{2n+1}} \cdot \frac{(2n)!(2n)!}{n!n!(2n)!} = \frac{2n!}{2^{2n}{n!}^2} \pi.
+	\end{equation*}
+\end{proof}
+\medskip \noindent {\bf (95.1)}\ Find the inverse Laplace transfor of
+\begin{equation*}
+	F(s) = \frac{2s^3}{s^4 -4}.
+\end{equation*}
+In this case we deferr to the book which says that only a formal treatment is necissary. Observe $F(s)$ has
+singularities at $s^4 -4 = 0$ and so $s^4 = 4$ has fourth roots  with magnitue $4^{1/4} = 2^{1/2}$. Now we evaluate $\phi(s) = e^{st}/(z \pm \sqrt{2})(z \pm i\sqrt{2})$ whilst removing one of the factors. Then we get 
+as residues $\phi_1 = e^{\sqrt{2}t}/(2\sqrt{2})(i+1)2(1-i), \phi_2 = -e^{-\sqrt{2}t}/(2\sqrt{2})2(i+1)(1-i),
+\phi_3 = e^{i\sqrt{2}t}/(2i\sqrt{2})(i+1)(i-1), \phi_4 = -e^{-i\sqrt{2}t}/(2i\sqrt{2})(i+1)(i-1)$.
+ Multipling the summand by $2\pi i$ we get $\cosh \sqrt{2} + \cos \sqrt{2} t$.\\
+ 
 
 \end{document}\end
