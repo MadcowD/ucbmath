@@ -1,0 +1,343 @@
+\documentclass[11pt]{amsart}
+
+\usepackage{amsmath,amsthm}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{enumerate}
+\usepackage{fullpage}
+ \usepackage{euscript}
+ \usepackage{todonotes}
+% \makeatletter
+% \nopagenumbers
+\usepackage{verbatim}
+\usepackage{color}
+\usepackage{hyperref}
+
+\usepackage{fullpage,tikz,float}
+\usepackage{tikz-cd}
+%\usepackage{times} %, mathtime}
+
+\textheight=600pt %574pt
+\textwidth=480pt %432pt
+\oddsidemargin=15pt %18.88pt
+\evensidemargin=18.88pt
+\topmargin=10pt %14.21pt
+
+\parskip=1pt %2pt
+
+% define theorem environments
+\newtheorem{theorem}{Theorem}    %[section]
+%\def\thetheorem{\unskip}
+\newtheorem{proposition}[theorem]{Proposition}
+%\def\theproposition{\unskip}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\def\theconjecture{\unskip}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{sublemma}[theorem]{Sublemma}
+\newtheorem{fact}[theorem]{Fact}
+\newtheorem{observation}[theorem]{Observation}
+%\def\thelemma{\unskip}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+%\def\thedefinition{\unskip}
+\newtheorem{notation}[definition]{Notation}
+\newtheorem{remark}[definition]{Remark}
+% \def\theremark{\unskip}
+\newtheorem{question}[definition]{Question}
+\newtheorem{questions}[definition]{Questions}
+%\def\thequestion{\unskip}
+\newtheorem{example}[definition]{Example}
+%\def\theexample{\unskip}
+\newtheorem{problem}[definition]{Problem}
+\newtheorem{exercise}[definition]{Exercise}
+
+
+\def\reals{{\mathbb R}}
+\def\torus{{\mathbb T}}
+\def\integers{{\mathbb Z}}
+\def\rationals{{\mathbb Q}}
+\def\naturals{{\mathbb N}}
+\def\complex{{\mathbb C}\/}
+\def\sphere{{\pmb S}}
+\def\projspace{{ \mathbb{K}\mathbb{P} }}
+\def\distance{\operatorname{distance}\,}
+\def\support{\operatorname{support}\,}
+\def\dist{\operatorname{dist}\,}
+\def\Span{\operatorname{span}\,}
+\def\degree{\operatorname{degree}\,}
+\def\kernel{\operatorname{kernel}\,}
+\def\dim{\operatorname{dim}\,}
+\def\codim{\operatorname{codim}}
+\def\trace{\operatorname{trace\,}}
+\def\dimension{\operatorname{dimension}\,}
+\def\codimension{\operatorname{codimension}\,}
+\def\nullspace{\scriptk}
+\def\kernel{\operatorname{Ker}}
+\def\p{\partial}
+\def\Re{\operatorname{Re\,} }
+\def\Im{\operatorname{Im\,} }
+\def\ov{\overline}
+\def\eps{\varepsilon}
+\def\lt{L^2}
+\def\curl{\operatorname{curl}}
+\def\divergence{\operatorname{div}}
+\newcommand{\norm}[1]{ \|  #1 \|}
+\def\expect{\mathbb E}
+\def\bull{$\bullet$\ }
+\def\det{\operatorname{det}}
+\def\Det{\operatorname{Det}}
+\def\rank{\mathbf r}
+\def\diameter{\operatorname{diameter}}
+
+\def\t2{\tfrac12}
+
+\newcommand{\abr}[1]{ \langle  #1 \rangle}
+
+\def\newbull{\medskip\noindent $\bullet$\ }
+\def\field{{\mathbb F}}
+\def\cc{C_c}
+
+
+
+% \renewcommand\forall{\ \forall\,}
+
+% \newcommand{\Norm}[1]{ \left\|  #1 \right\| }
+\newcommand{\Norm}[1]{ \Big\|  #1 \Big\| }
+\newcommand{\set}[1]{ \left\{ #1 \right\} }
+%\newcommand{\ifof}{\Leftrightarrow}
+\def\one{{\mathbf 1}}
+\newcommand{\modulo}[2]{[#1]_{#2}}
+
+\def\bd{\operatorname{bd}\,}
+\def\cl{\text{cl}}
+\def\nobull{\noindent$\bullet$\ }
+
+\def\scriptf{{\mathcal F}}
+\def\scriptq{{\mathcal Q}}
+\def\scriptg{{\mathcal G}}
+\def\scriptm{{\mathcal M}}
+\def\scriptb{{\mathcal B}}
+\def\scriptc{{\mathcal C}}
+\def\scriptt{{\mathcal T}}
+\def\scripti{{\mathcal I}}
+\def\scripte{{\mathcal E}}
+\def\scriptv{{\mathcal V}}
+\def\scriptw{{\mathcal W}}
+\def\scriptu{{\mathcal U}}
+\def\scriptS{{\mathcal S}}
+\def\scripta{{\mathcal A}}
+\def\scriptr{{\mathcal R}}
+\def\scripto{{\mathcal O}}
+\def\scripth{{\mathcal H}}
+\def\scriptd{{\mathcal D}}
+\def\scriptl{{\mathcal L}}
+\def\scriptn{{\mathcal N}}
+\def\scriptp{{\mathcal P}}
+\def\scriptk{{\mathcal K}}
+\def\scriptP{{\mathcal P}}
+\def\scriptj{{\mathcal J}}
+\def\scriptz{{\mathcal Z}}
+\def\scripts{{\mathcal S}}
+\def\scriptx{{\mathcal X}}
+\def\scripty{{\mathcal Y}}
+\def\frakv{{\mathfrak V}}
+\def\frakG{{\mathfrak G}}
+\def\aff{\operatorname{Aff}}
+\def\frakB{{\mathfrak B}}
+\def\frakC{{\mathfrak C}}
+
+\def\symdif{\,\Delta\,}
+\def\mustar{\mu^*}
+\def\muplus{\mu^+}
+
+\def\soln{\noindent {\bf Solution.}\ }
+
+
+%\pagestyle{empty}
+%\setlength{\parindent}{0pt}
+
+\begin{document}
+
+\begin{center}{\bf Math 215A --- Smooth Manifolds --- William Guss}
+\\
+{\bf Lecture Notes}
+\end{center}
+
+Let's start by expressing some familair objects as topological manifolds.
+\begin{example}
+	The $n$-dimensional sphere $\sphere^n$ is a topological manifold.
+\end{example}
+\begin{proof}
+	First off let's deal with the topological assumptions. The space $\sphere^n$ can be embedded as a subset of $\mathbb{R}^n$ as a bounded compact, so clearly it is paracompact, inheritng the subspace topology we also get that $\sphere^n$ is second countable and Hausdorff. 
+
+	We now need to equip the sphere with differentiable structure, namely we need to give it a series of atlas's and charts. In the spirit of our
+	paper metaphore, we will construct the sphere by overlapping hemispheres in each coordinate direction. 
+
+	More formally let $U_i^+$ and $U^-_i$ be the positive and negative hemisphere of $\sphere^n$ in the $i$-th coordinate; that is,
+	\begin{equation*}
+	\begin{aligned}
+		U^+_i = \{(x_1, \cdots, x_{n+1})\in \sphere^n\mathrel{}\big|\mathrel{} x_i > 0\} \\
+		U^-_i = \{(x_1, \cdots, x_{n+1})\in \sphere^n\mathrel{}\big|\mathrel{} x_i < 0\} \\
+	\end{aligned}
+	\end{equation*}
+
+
+	Now we'll consider the projection of $U_i^\pm$ onto $\mathbb{R}^n$ without the $i$-th coordinate. In particular, let $\phi_i^{\pm}: U_i^{\pm} \to \mathbb{R}^n$ such that 
+	\begin{equation*}
+		\phi(x_1, \cdots, x_i, \cdots, x_{n+1}) = (x_1, \cdots, x_{i-1}, x_{i+1}, \cdots, x_{n+1n}).
+	\end{equation*}
+	To show that these maps are charts for our manifold $\mathbb{S}^n$, they must be homeomorphisms. Clearly they give a bijection as in each $x_i$ we can identify the $x_i$ coordinate directly using the cooridinates; that is, we can describe the inverse of $\phi$ as follows
+	\begin{equation*}
+		(\phi^{\pm})^{-1}(u_1, \cdots, u_n) = \left( u_1, \cdots, u_{i-1}, \pm \sqrt{1 - \|u\|^2}, u_i, \cdots, u_n\right).
+	\end{equation*}
+	Both $\phi_i^{\pm}$ and its inverse are compositions of elementary continuous functions on valid domains, and so $\phi_i^\pm$ is continuous.  Therefore $\phi_i^{\pm}$ is a homeomorphism.
+
+	Now for the fun part! Let's check that the change of coordinates between two overlappings charts is actually $C^\infty.$ We namely need to compose $\pi^{\pm}_i$ with $(\phi_j^{\mp})^{-1}$ for all $i,j$ such that $U_i^\pm \cap U_j^\mp$. This overlap happens when $i \neq j$ or $\mp = \pm$ and $i = j$.
+
+	Calculation yields that the change of coordinates is
+	\begin{equation*}
+	\begin{aligned}
+		\phi_i^{\pm}\circ \left(\phi_j^{\mp}\right)^{-1} &= \phi_i^{\pm}\circ  \left( u_1, \cdots, u_{i-1}, \pm \sqrt{1 - \|u\|^2}, u_i, \cdots, u_n\right),\\
+		&= \left( u_1, \cdots,u_{i-1},u_{i+1},\cdots  u_{j-1}, \pm \sqrt{1 - \|u\|^2}, u_j, \cdots, u_n\right)
+	\end{aligned}
+	\end{equation*}
+	The above change is clearly smooth recalling basic calculus.
+
+	Therefore we have shown that $\sphere^n$ satisifies the technical conditions of a topological manifold and is equipped with a differentiable structure.
+\end{proof}
+
+As aforementioned we can also construct interesting manifolds by using this definition and so one might naturally want to consider the product of manifolds. A motivating example is the torus $\mathbb{T} = \sphere^1 \times \sphere^1$
+
+\begin{proposition}
+	If $(\scriptx, A_\scriptx),(\scripty, A_\scripty)$ are smooth manifolds then $(\scriptx \times \scripty, A_\scriptx \otimes A_\scripty)$ is a smooth manifold.
+\end{proposition}
+\begin{proof}
+	First let us consider the product topology of $\scriptx \times \scripty.$ We know that the product of Hausdorff is hausdorff, the product of second countable is obviously second countable\footnote{This is true in the same sense that $ \mathbb{N} \sim \mathbb{N}^2 \sim \mathbb{Q}.$}, and finally the product of paracompact is paracompact.
+
+	Next we'll verify that the product atlas covers $\scriptx \times \scripty$ and maintains differentiable structure. First let us consider set of functions
+	\begin{equation*}
+		A_\scriptx \times A_\scripty = \left\{(x,y) \mapsto  (f(x), g(y))\mathrel{}\middle|\mathrel{} f \in A_\scriptx, g \in A_\scripty\right\}.
+	\end{equation*}
+	For any point $p \in \scriptx \times \scripty$ we have that $\pi_1(p) = x \in \scriptx$ and $\pi_2(p) = y \in \scripty$. Therefore there are neighborhoods $U_x^p, U_y^p$ containing $x$ in $\scriptx$ and $y$ in $\scripty$ respectively such that $A_\scriptx \ni f: U_x^p \to \mathbb{R}^{n}$ and $A_\scripty \ni g: U_y^p \to \mathbb{R}^m.$ As the product of finitely many opens is open in the product topology $U_x^p \times U_y^p := U^p \subset \scriptx \times \scripty$ is open and there is a map $H: U^p \to \mathbb{R}^n \times \mathbb{R}^m \in A_\scriptx \times A_\scripty$ with $\pi_1 \circ H = f, \pi_2 \circ H = g.$ All this is to say, we can cover the manifold $\scriptx \times \scripty$ with maps and neiughborhood merely composed from the original charts of both $\scriptx$ and $\scripty.$
+
+	Next we'll verify properties of $H.$ From real analysis we know that the cartesian product of two bijections is again a bijection. As for continuity we turn to the procut topology. Take an open set $V \in \mathbb{R}^n \times \mathbb{R}^m$ and then
+	\begin{equation*}
+		H^{-1}(V) = (f^{-1}(\pi_1(V)), g^{-1}(\pi_2(V))) = W \times Z;\;\;\;\;\;W \subset \scriptx, Z \subset \scripty.
+	\end{equation*}
+	Then the finite product of opens is open so $H$ is continuous. Continuity in the opposite direction is easily verified using the Hausdorff hypothesis on $\scriptx \times \scripty.$ 
+
+	Putting everything together we have that $\scriptx \times \scripty$ is locally homeomorphic to $\mathbb{R}^n \times \mathbb{R}^m.$ Next we need to verify that the change of coordinates between to charts is actually smooth. Suppose we have to charts $H_1, H_2$ that have overlapping domains. Without loss of generality consider $G = H_2 \circ H_1^{-1}.$ This is just
+	\begin{equation*}
+		G = H_2 \circ f_1^{-1}\times g_1^{-1} = f_2 \circ f_1^{-1}\times  g_2 \circ g_1^{-1},
+	\end{equation*}
+	which is the product of two $C^{\infty}$ maps by the smoothness of both $\scriptx$ and $\scripty.$ Since neither coordinate depends on the other, the Frechet derivatives of $G$ occupy only the diagonals of the tensors produced through differentiation and each minor (subcollection of partial-derivatives) is smooth and continuous. Therefore $G$ is smooth.
+
+	This verifies that $\scriptx \times \scripty$ is a smooth manifold.
+\end{proof}
+
+\begin{example}
+	The torus is a smooth manifold given by $\sphere^1 \times \sphere^1 = \mathbb{T}$.
+\end{example}
+We'll now turn to the space of lines in $n$-dimnensional vector spaces over a field (or division ring) $\mathbb{K}.$ Let $V = \mathbb{K}^n \setminus \{0\}.$ If $v,w \in V$ then we say that $v \sim w$ if there is a $\lambda \in \mathbb{K}$ so that $v = \lambda w$; that is $v$ and $w$ are \emph{co-linear}\footnote{For non commuitative fields, we prefer left multiplication by a scalar in producing the equivalence relation.}.
+
+\begin{example}[Projective Space]
+	If $V$ and $\sim$ are given as above, we say that $V/\sim~$ is the $\mathbb{K}$-projective space for $V$ denoted by $\mathbb{K} \mathbb{P}^n$ and if $\mathbb{K}$ admits a calculus, $\mathbb{K} \mathbb{P}^n$ is a smooth manifold.
+\end{example}
+
+
+Before we show in generality how $\projspace^n$ is a manifold, we will consider what the space is geometrically. Let us start with the real projective line $\mathbb{R}\mathbb{P}^1.$ We will identify every point in $\mathbb{R}^2$ with the line from the origin on which it lies. In particular $(x,y) \sim (s,t)$ if there is a $\lambda \in \mathbb{R}$ so that $(x,y) = (\lambda s, \lambda t).$ Some authors often use $[x : y] \in \projspace^2$ to denote points as the following exposition realizes that the ration between each component of a vector in $V$ colinear to $(x,y)$ maintains the same ratio. We will utilize these ratios to build an atlas for $\projspace^n$.
+
+
+
+Now that we've seen an example of what this real projective line looks like, we'll prove in generality  that $\projspace^n$ is a smooth manifold.
+
+\begin{proof}
+	Let's first start by verifying the technical conditions on the topology of $\projspace^n.$
+\end{proof}
+
+
+
+\textbf{Examples Lecture} \\
+
+
+\noindent \textbf{Smooth Manifold Requirements}:
+\begin{itemize}
+	\item Second countable
+	\item Hausdorff
+	\item Maximal atlas with $C^{\infty}$ compatible charts.
+\end{itemize}
+\begin{definition}
+	Let $\sphere^n = \{x \in \mathbb{R}^{n+1}\ |\ \|x\| = 1\}$ be the $n$-sphere.
+\end{definition}
+\textbf{Prop.} $\sphere^n$ is a smooth manifold.
+\begin{itemize}
+	\item Hausdorff + Second Countable: $\sphere^n \subset \mathbb{R}^{n+1}$
+
+	\item Open cover: 	
+	\begin{equation*}
+	\begin{aligned}
+		U^+_i = \{(x_1, \cdots, x_{n+1})\in \sphere^n\mathrel{}\big|\mathrel{} x_i > 0\} \\
+		U^-_i = \{ " \;\; "  \;\; " \;\;\; " \;\; x_i < 0\} \\
+	\end{aligned}
+	\end{equation*}
+	\item $C^{\infty}$ charts: $\phi_i^{\pm}: U_i^{\pm} \to \mathbb{R}^n$ and
+	\begin{equation*}
+		\phi(x_1, \cdots, x_i, \cdots, x_{n+1}) = (x_1, \cdots, x_{i-1}, x_{i+1}, \cdots, x_{n+1}).
+	\end{equation*}
+	\begin{itemize}
+		\item $\phi^{\pm}_i$  bijective considering $\sphere^n$ as $n$-surface.
+		\item $C^{\infty}$ coordinate change:
+		\begin{equation*}
+	\begin{aligned}
+		\phi_i^{\pm}\circ \left(\phi_j^{\mp}\right)^{-1} &= \phi_i^{\pm}\circ  \left( u_1, \cdots, u_{i-1}, \pm \sqrt{1 - \|u\|^2}, u_i, \cdots, u_n\right),\\
+		&= \left( u_1, \cdots,u_{i-1},u_{i+1},\cdots  u_{j-1}, \pm \sqrt{1 - \|u\|^2}, u_j, \cdots, u_n\right)
+	\end{aligned}
+	\end{equation*} 
+	\end{itemize}
+\end{itemize}
+
+	\begin{definition}
+		If $\mathbb{K}$ is a field. Let $x,y \in \mathbb{K}^{n+1} \setminus \{0\}$ and $x \sim y$ iff $x = ty$ for $\mathbb{K} \ni t \neq 0$. Then $\projspace^n = \mathbb{K}^{n+1}/\sim$ is called the projective space over $\mathbb{K}.$ 
+	\end{definition}
+
+	\ Consider $\mathbb{R}\mathbb{P}^n$. If $x \in \mathbb{R}\mathbb{P}^n$ then $x = [ x_1 : x_2 : \cdots : x_{n+1}]$ described by the ratio of the components of each line.
+
+	\noindent \textbf{Prop.} $\mathbb{R}{\mathbb{P}}^n$ is a manifold.
+	\begin{itemize}
+		\item  $X$ second countable $\implies X /\sim$ is s.c.; ($U \subset X / \sim $ open iff $\pi^{-1}(U)$ open. )
+		\item Chart Idea: $ [ x_1 : x_2 ] \sim  [ x_1/x_2 : 1]$ described by $n$ values.
+		\item Let $\phi_i: \mathbb{K}\mathbb{R}^{n} \to \mathbb{R}^n$  s.t. $x \mapsto  [ x_1/x_i : x_2/x_i : \cdots : x_{i-1}/{x_i} : x_{i+1}/{x_i} : \cdots : x_{n+1}/x_i]$.
+		\item Let $\phi_i^{-1}: \mathbb{R}^n \to \mathbb{K}\mathbb{R}^{n}$ s.t. $u \mapsto [u_1 : \cdots : u_{i-1} : 1 : u_i : \cdots : u_n] $
+		\item Check the rest.
+	\end{itemize}
+
+
+
+	\noindent\textbf{Remark.}
+	\begin{itemize}
+		\item $\mathbb{R}\mathbb{P}^1 \simeq S^1$
+		\item $\mathbb{C}\mathbb{P}^1 \simeq S^2$
+		\item $\mathbb{H}\mathbb{P}^1 \simeq S^4$
+	\end{itemize}
+
+
+	\noindent \textbf{Prop.} If $(\scriptx, A_\scriptx),(\scripty, A_\scripty)$ are smooth manifolds then $(\scriptx \times \scripty, A_\scriptx \otimes A_\scripty)$ is a smooth manifold.
+	\begin{proof}
+	Consider the following:
+		\begin{itemize}
+			\item Product of Hausdorff is Hausdorff.
+			\item Product of topological base $G(\scriptb_X \times \scriptb_Y) \sim  \mathbb{N} \times \mathbb{N} \sim \mathbb{N}$ is second countable.
+			\item Atlas $A_\scriptx \otimes A_\scripty$ ks product of $C^{\infty}$ diffeomorphisms so is a maximal smooth atlas.
+		\end{itemize}
+	\end{proof}
+
+
+	\noindent \textbf{Remark.} $\mathbb{T} = \sphere^1 \times \sphere^1$ is a smooth manifold!
+
+	\noindent \textbf{Remark.} Quotients aren't as easy: Quotient Manifold Theorem.
+
+
+
+
+\end{document}\end

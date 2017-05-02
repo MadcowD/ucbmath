@@ -1,0 +1,299 @@
+\documentclass[11pt]{amsart}
+
+\usepackage{amsmath,amsthm}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{enumerate}
+\usepackage{fullpage}
+ \usepackage{euscript}
+ \usepackage{todonotes}
+% \makeatletter
+% \nopagenumbers
+\usepackage{verbatim}
+\usepackage{color}
+\usepackage{hyperref}
+
+\usepackage{fullpage,tikz,float}
+\usepackage{tikz-cd}
+%\usepackage{times} %, mathtime}
+
+\textheight=600pt %574pt
+\textwidth=480pt %432pt
+\oddsidemargin=15pt %18.88pt
+\evensidemargin=18.88pt
+\topmargin=10pt %14.21pt
+
+\parskip=1pt %2pt
+
+% define theorem environments
+\newtheorem{theorem}{Theorem}    %[section]
+%\def\thetheorem{\unskip}
+\newtheorem{proposition}[theorem]{Proposition}
+%\def\theproposition{\unskip}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\def\theconjecture{\unskip}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{sublemma}[theorem]{Sublemma}
+\newtheorem{fact}[theorem]{Fact}
+\newtheorem{observation}[theorem]{Observation}
+%\def\thelemma{\unskip}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+%\def\thedefinition{\unskip}
+\newtheorem{notation}[definition]{Notation}
+\newtheorem{remark}[definition]{Remark}
+% \def\theremark{\unskip}
+\newtheorem{question}[definition]{Question}
+\newtheorem{questions}[definition]{Questions}
+%\def\thequestion{\unskip}
+\newtheorem{example}[definition]{Example}
+%\def\theexample{\unskip}
+\newtheorem{problem}[definition]{Problem}
+\newtheorem{exercise}[definition]{Exercise}
+
+
+\def\reals{{\mathbb R}}
+\def\torus{{\mathbb T}}
+\def\integers{{\mathbb Z}}
+\def\rationals{{\mathbb Q}}
+\def\naturals{{\mathbb N}}
+\def\complex{{\mathbb C}\/}
+\def\sphere{{\pmb S}}
+\def\projspace{{ \mathbb{K}\mathbb{P} }}
+\def\distance{\operatorname{distance}\,}
+\def\support{\operatorname{support}\,}
+\def\dist{\operatorname{dist}\,}
+\def\Span{\operatorname{span}\,}
+\def\degree{\operatorname{degree}\,}
+\def\kernel{\operatorname{kernel}\,}
+\def\dim{\operatorname{dim}\,}
+\def\codim{\operatorname{codim}}
+\def\trace{\operatorname{trace\,}}
+\def\dimension{\operatorname{dimension}\,}
+\def\codimension{\operatorname{codimension}\,}
+\def\nullspace{\scriptk}
+\def\kernel{\operatorname{Ker}}
+\def\p{\partial}
+\def\Re{\operatorname{Re\,} }
+\def\Im{\operatorname{Im\,} }
+\def\ov{\overline}
+\def\eps{\varepsilon}
+\def\lt{L^2}
+\def\curl{\operatorname{curl}}
+\def\divergence{\operatorname{div}}
+\newcommand{\norm}[1]{ \|  #1 \|}
+\def\expect{\mathbb E}
+\def\bull{$\bullet$\ }
+\def\det{\operatorname{det}}
+\def\Det{\operatorname{Det}}
+\def\rank{\mathbf r}
+\def\diameter{\operatorname{diameter}}
+
+\def\t2{\tfrac12}
+
+\newcommand{\abr}[1]{ \langle  #1 \rangle}
+
+\def\newbull{\medskip\noindent $\bullet$\ }
+\def\field{{\mathbb F}}
+\def\cc{C_c}
+
+
+
+% \renewcommand\forall{\ \forall\,}
+
+% \newcommand{\Norm}[1]{ \left\|  #1 \right\| }
+\newcommand{\Norm}[1]{ \Big\|  #1 \Big\| }
+\newcommand{\set}[1]{ \left\{ #1 \right\} }
+%\newcommand{\ifof}{\Leftrightarrow}
+\def\one{{\mathbf 1}}
+\newcommand{\modulo}[2]{[#1]_{#2}}
+
+\def\bd{\operatorname{bd}\,}
+\def\cl{\text{cl}}
+\def\nobull{\noindent$\bullet$\ }
+
+\def\scriptf{{\mathcal F}}
+\def\scriptq{{\mathcal Q}}
+\def\scriptg{{\mathcal G}}
+\def\scriptm{{\mathcal M}}
+\def\scriptb{{\mathcal B}}
+\def\scriptc{{\mathcal C}}
+\def\scriptt{{\mathcal T}}
+\def\scripti{{\mathcal I}}
+\def\scripte{{\mathcal E}}
+\def\scriptv{{\mathcal V}}
+\def\scriptw{{\mathcal W}}
+\def\scriptu{{\mathcal U}}
+\def\scriptS{{\mathcal S}}
+\def\scripta{{\mathcal A}}
+\def\scriptr{{\mathcal R}}
+\def\scripto{{\mathcal O}}
+\def\scripth{{\mathcal H}}
+\def\scriptd{{\mathcal D}}
+\def\scriptl{{\mathcal L}}
+\def\scriptn{{\mathcal N}}
+\def\scriptp{{\mathcal P}}
+\def\scriptk{{\mathcal K}}
+\def\scriptP{{\mathcal P}}
+\def\scriptj{{\mathcal J}}
+\def\scriptz{{\mathcal Z}}
+\def\scripts{{\mathcal S}}
+\def\scriptx{{\mathcal X}}
+\def\scripty{{\mathcal Y}}
+\def\frakv{{\mathfrak V}}
+\def\frakG{{\mathfrak G}}
+\def\aff{\operatorname{Aff}}
+\def\frakB{{\mathfrak B}}
+\def\frakC{{\mathfrak C}}
+
+\def\symdif{\,\Delta\,}
+\def\mustar{\mu^*}
+\def\muplus{\mu^+}
+
+\def\soln{\noindent {\bf Solution.}\ }
+
+
+%\pagestyle{empty}
+%\setlength{\parindent}{0pt}
+
+\begin{document}
+
+\begin{center}{\bf Math 215A --- Sards and Whitney and Tangent Bundles --- William Guss} \\ {\bf Lecture
+Notes} \end{center}
+
+\section{Lecture: Sards}
+
+\medskip \noindent Consider the following projection on to $\mathbb{R}$.
+\begin{equation*}
+	\begin{tikzcd}
+		\mathbb{R} \supset T^2 \arrow{r}{\pi} & \mathbb{R}^3 \arrow{d}{\phi(x) = (0,0,x)}\\
+		\mathbb{R}^2 \arrow{u}{\phi} \arrow{r} & \mathbb{R}
+	\end{tikzcd}
+\end{equation*}
+In general if $f: X \to Y$ is a smooth map on manifolds $X, Y$ then the preimage of certain  points in $Y$ enable us to yield submanifolds of $X$. These certain points are regular values.
+
+\begin{definition}
+	For $f: X \to Y$ a point $y \in Y$ is a regular value of $Y$ if for each $x \in f^{-1}(y)$, the differential
+	\begin{equation*}
+		df_x: T_x X \to T_y Y
+	\end{equation*}
+	is surjective. If $y$ is not regular then it is a critical value.
+\end{definition}
+
+\begin{theorem}
+Let $f: X \to Y$ be given as above. If $y$ is a regular value of $Y$ then $f^{-1}(y)$ is a submanifold of $X.$
+\end{theorem}
+
+\begin{theorem}[Sard's] If $f: X \to Y$ is smooth, the set of critical values has measure $0$ in $Y$.
+\end{theorem}
+
+\begin{definition}
+	For $f : X \to Y$ such that if $f$ is an immersion of/submersion at $x \in X$ if $df_x: T_x X \to T_{f(x)} Y$ is injective or surjective. 
+\end{definition}
+
+\begin{theorem}
+	If $f: X \to Y$ is an immersion then  for every $x \in X$ and $y \in Y$, there exists charts $\phi$ at $x$ and $\psi$ at $y$ such that 
+	\begin{equation*}
+		f(x_1, \cdots, x_k) = (x_1, \cdots, x_k, 0, \cdots 0)
+	\end{equation*}
+	that is the following diagram commutes,
+	\begin{equation*}
+		\begin{tikzcd}
+			X \arrow{r}{f} & Y\\
+			\mathbb{R}^k \supset U \arrow{u}{\phi} \arrow{r} & V \subset \mathbb{R}^n \arrow{u}{\psi}
+		\end{tikzcd}
+	\end{equation*}
+\end{theorem}
+\begin{theorem}
+	If $f: X^m \to Y^n$ is a submersion at $x \in X$ and the charts are given above, then
+	\begin{equation*}
+		f(x_1, \cdots, x_m) = (x_1, \cdots, x_k)
+	\end{equation*}
+\end{theorem}
+
+\noindent Transversality essentially describes when two manifolds cross eachother and have area in eachother when there is a crossing; that is there is no part of either manifold where the manifolds mearely touch. (\emph{This is weird.})
+
+\begin{definition}
+	If $X, Y$ are two submanifolds of  some manifold $M$. Then if we say that $X \pitchfork Y$ if at each $p \in X \cap Y,$ $T_pX + T_pY = T_p M.$
+\end{definition}
+
+\section{Lecture: Flows}
+
+
+\noindent Let us give our definition of the tangent space.
+\begin{equation*}
+	T_p M = \{ \text{curves through }p\} / \sim.
+\end{equation*}
+
+\begin{definition}
+	We say that $\xi$ is a vector field if 
+	\begin{equation*}
+		\xi : M \to \bigsqcup_{p \in M} T_{p} M = TM = \{(p, v)\ |\ p \in M, v \in T_p M\}.	
+	\end{equation*}
+	where $TM$ is called the tangent bundle.
+\end{definition}
+\begin{proposition}
+	The tangent bundle for a manifold $M$, $TM$ is a topological manifold.
+\end{proposition}
+
+\begin{lemma}[Lee 1.35]
+	Let $M$ be a set $(U_i)_{i \in I}$ be a cover of $M$ and $\phi: U \to \mathbb{R}^n$ with $U$ open such that
+	\begin{itemize}
+	\item For all $i, j \in I$ $\phi_i(U_i \cap U_j)$ open;
+	\item $\phi_i \circ \phi_j^{-1}$ such that $\phi_j(U_i \cap U_j) \to \phi_i(U_i \cap U_j)$ is a diffeomorphism;
+	\item For all $U_i$ can be reduced to a countable cover of $M$;
+	\item The space $M$ is hausdorff using $(U_i)_{i\in I}$ as a base.
+	\end{itemize}
+	{Then $\{\phi^{-1}(U)\ |\ i\in I, U \subset \mathbb{R}^n \text{ open} \}$ form a topology on $M$ and the charts $\{(\phi_i, U_i)\}_{i \in I}$ are a smooth atlas.}
+\end{lemma}
+
+Let $\phi: M \to U \subset \mathbb{R}^n$ be a diffeomorphism (chart). Then we claim $(TM, T\phi)$ is a chart. First off $T\phi(p,v) = T\phi(p, \sum_i v_i \frac{\partial}{\partial x_i}\big|_p) \mapsto (\phi p, (v_1, \cdots, v_n)).$ \ Let $M$ be any smooth manifold. $(U_i, \phi_i)$ be the associated charts to $M$. Then check that $\{(TU_i, T\phi_i)\}$ is an atlas. Furthermore $T(U_i) \cap T(U_j)  = T(U_i \cap U_j)$.
+
+
+
+\begin{definition}
+	Let $\theta: \mathbb{R} \times M \to M$ so that 
+	$\theta(0, p) = p$, $\theta(s, \theta(t, p)) = \theta(s +t, p).$ Then $\theta$ is a group action and if $\theta$ is a smooth map of manifolds, $\theta$ is called a flow.
+\end{definition}
+
+
+\section{Lecture: Whitney}
+
+
+\begin{definition}
+	An embedding $\theta: X \to Y$ is an embedding of topological space whose differential $d\theta$ is one-to-one; $\theta$ is an immaersion.
+\end{definition}
+
+
+\begin{theorem}[Whitney Embedding] Any smooth manifold $M^n$ can be embedded into $\mathbb{R}^{2nn}$ and immersed into $\mathbb{R}^{2n -1}$.
+\end{theorem}
+\begin{theorem}[Weak Whitney Embedding] Any smooth manifold $M^n$ can be embedded into $\mathbb{R}^N$ for sufficiently large $N$.
+\end{theorem}
+
+\noindent We'll be proving the following weaker version of the standar Whitney Embedding Theorem.
+
+\begin{theorem}[Whitney Embedding] Any smooth manifold $M^n$ can be embedded into $\mathbb{R}^{2n+1}$ and immersed into $\mathbb{R}^{2n}$.
+\end{theorem}
+
+\noindent This theorem uses much measure theory so we need ot define measure on a manifold.
+
+\begin{definition}
+	Let $(X, \Sigma_X, \mu)$ be a measurable sapce with a measure $\mu$ and let $(Y, \sigma_Y, \nu)$ be a measurable sapce. IF $f: X \to Y$ is a measurable map then the pushforward measure of $\mu$ by $f$ onto $y$ is a measure $\mu^*: \Sigma_Y \to [0, \infty]$ defined by $\mu^*(U) = \mu(f^{-1}(U))$ for all $U \in \Sigma_Y.$ 
+\end{definition}
+
+\begin{example}
+	Take $X = cl(B^n)$ where $Y = \mathbb{R}\mathbb{P}^n$ then we can define am easure easily on $Y$ using the push forward of lebesgue measure and the cannonical projection on to the quotient space of$B^n.$
+\end{example}
+
+\emph{Proof of Whitney Embedding in Compact.} Let $\theta$ be the embedding given by the weak whitney embedding theorem with $N > {2n+1}$. Let $u \in \mathbb{R}^N$ then $[{u}] \in \mathbb{R}\mathbb{P}^{N-1}$ be the cannonical projection of $u$, then let $u^\perp$ be the orthogonal compliment to $u.$ 
+
+Consider all elements $[{u}] \in \mathbb{R}\mathbb{P}^{N-1}$ such that $\theta_u = \pi_u \circ \theta$ is not an embedding, $\pi_u$ is the orthogonal projection of $\mathbb{R}^n \to u^\perp.$ Denote this set $A.$ We claim that $\mu^*(A) = 0$ using the pushforward measure in $\projspace^{N-1}.$
+
+\emph{Case 1.} Suppose that $\theta_u$ is not injective. There exist $x_1 \neq x_2$ suvh that $\theta_u(x_1) = \theta_u(x_2).$ Then $[\theta_u(x_1) - \theta_u(x_2)] .= [u]$. Observe that $[u]$ lies in the image of  $\tau : (M \times M) \setminus \Delta \to \mathbb{R}\mathbb{P}^{N-1}$ given by $(x,y) \mapsto [\theta(x) - \theta(y)]$. By sards theorem $2n < N-1$ implies that $|\lim \tau| = 0$.
+
+
+See more notes online.
+
+
+\end{document}\end
