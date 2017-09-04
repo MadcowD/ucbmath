@@ -1,0 +1,224 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%                      Homework _                            %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[letter]{article}
+
+\usepackage{lipsum}
+\usepackage[pdftex]{graphicx}
+\usepackage[margin=1.5in]{geometry}
+\usepackage[english]{babel}
+\usepackage{listings}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{framed} 
+\usepackage{amsmath}
+\usepackage{titling}
+
+
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{fact}{Fact}
+\newtheorem{example}{Example}
+\newtheorem{definition}{Definition}
+\newtheorem{proposition}{Proposition}
+
+\newenvironment{menumerate}{%
+  \edef\backupindent{\the\parindent}%
+  \enumerate%
+  \setlength{\parindent}{\backupindent}%
+}{\endenumerate}
+
+
+
+\textheight=600pt %574pt
+\textwidth=480pt %432pt
+\oddsidemargin=15pt %18.88pt
+\evensidemargin=15pt
+\topmargin=10pt %14.21pt
+
+\parskip=1pt %2pt
+
+\def\reals{{\mathbb R}}
+\def\torus{{\mathbb T}}
+\def\integers{{\mathbb Z}}
+\def\rationals{{\mathbb Q}}
+\def\naturals{{\mathbb N}}
+\def\complex{{\mathbb C}\/}
+\def\distance{\operatorname{distance}\,}
+\def\support{\operatorname{support}\,}
+\def\dist{\operatorname{dist}\,}
+\def\Span{\operatorname{span}\,}
+\def\degree{\operatorname{degree}\,}
+\def\kernel{\operatorname{kernel}\,}
+\def\dim{\operatorname{dim}\,}
+\def\codim{\operatorname{codim}}
+\def\trace{\operatorname{trace\,}}
+\def\dimension{\operatorname{dimension}\,}
+\def\codimension{\operatorname{codimension}\,}
+\def\kernel{\operatorname{Ker}}
+\def\Re{\operatorname{Re\,} }
+\def\Im{\operatorname{Im\,} }
+\def\eps{\varepsilon}
+\def\lt{L^2}
+\def\bull{$\bullet$\ }
+\def\det{\operatorname{det}}
+\def\Det{\operatorname{Det}}
+\def\diameter{\operatorname{diameter}}
+\def\symdif{\,\Delta\,}
+\newcommand{\norm}[1]{ \|  #1 \|}
+\newcommand{\set}[1]{ \left\{ #1 \right\} }
+\def\one{{\mathbf 1}}
+\def\cl{\text{cl}}
+
+\def\newbull{\medskip\noindent $\bullet$\ }
+\def\nobull{\noindent$\bullet$\ }
+
+
+
+\def\scriptf{{\mathcal F}}
+\def\scriptq{{\mathcal Q}}
+\def\scriptg{{\mathcal G}}
+\def\scriptm{{\mathcal M}}
+\def\scriptb{{\mathcal B}}
+\def\scriptc{{\mathcal C}}
+\def\scriptt{{\mathcal T}}
+\def\scripti{{\mathcal I}}
+\def\scripte{{\mathcal E}}
+\def\scriptv{{\mathcal V}}
+\def\scriptw{{\mathcal W}}
+\def\scriptu{{\mathcal U}}
+\def\scriptS{{\mathcal S}}
+\def\scripta{{\mathcal A}}
+\def\scriptr{{\mathcal R}}
+\def\scripto{{\mathcal O}}
+\def\scripth{{\mathcal H}}
+\def\scriptd{{\mathcal D}}
+\def\scriptl{{\mathcal L}}
+\def\scriptn{{\mathcal N}}
+\def\scriptp{{\mathcal P}}
+\def\scriptk{{\mathcal K}}
+\def\scriptP{{\mathcal P}}
+\def\scriptj{{\mathcal J}}
+\def\scriptz{{\mathcal Z}}
+\def\scripts{{\mathcal S}}
+\def\scriptx{{\mathcal X}}
+\def\scripty{{\mathcal Y}}
+\def\frakv{{\mathfrak V}}
+\def\frakG{{\mathfrak G}}
+\def\frakB{{\mathfrak B}}
+\def\frakC{{\mathfrak C}}
+
+
+
+
+%%%%%%%%%%%%%%%
+%% DOC INFO %%%
+%%%%%%%%%%%%%%%
+\newcommand{\bHWN}{ }
+\newcommand{\bCLASS}{MATH 202A}
+
+\title{\bCLASS: Notes }
+\author{Scribe: William Guss}
+\usepackage{csquotes}
+
+%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+\begin{definition}
+	A topology on $X$ is $\tau \subset P(X)$ that contains $\phi, X$ and
+	is closed with respect to arbitrary unions and finite intersection; 
+	that is closed under an intersection of finitely many sets in $\tau.$
+\end{definition}
+
+\begin{example}\label{good}
+	Take any metric space $(X ,\rho)$ and let $\tau$ be the collection of all $\rho$-open subsets of $X$, 
+	then $\rho$ is a topology. 
+\end{example}
+ Example \ref{good} is a very good example. We'll generalize this example by removing the notion of distance but keeping the notion of infintesmally close.
+
+ \begin{example}[Naive]\label{stupid}
+ Take any $X$ and let $\tau =\{\phi, X\}$, this is a topology. Take any $X$ and let $\tau = P(X).$
+ \end{example}
+Example \ref{stupid} is stupid.
+
+\begin{definition}
+	A set $E \subset X$ is closed if $X \setminus E$ is open.
+\end{definition}
+\begin{definition}
+	The interior of a set $E \subset X$ is the largest open set $O \in \tau$ contained in $E$;
+	that is $int(E) = \{x \in E\ :\ \exists V^{open}\ : x \in V \subset E\}$.
+\end{definition}
+\begin{definition}
+	The closure of $E$ is the smallest closed set containing $E$; that is,
+	$cl(E) = X \setminus \int(X \setminus E).$
+\end{definition}
+If $E_\alpha$ is closed then $\cap E_\alpha $ is closed by DeMorgans law.
+\begin{definition}
+	The boundary of $E$, $\partial E = \cl(E) \setminus \int(E).$
+\end{definition}
+\begin{example}
+	Let $X = \mathbb{R}^2$ with the usual metric. Let $E = \{x = (x_1, x_2): x_1 \geq 0 \text{ and } |x| \leq 1 \text{ or } x_1 < 0 \text{ and } |x| < 1 \}$. Then $\partial E = S^1, int(E) = B^{open}_1(0), cl(B) = B_1(0).$
+\end{example}
+\begin{definition}
+	A set $E \subset X$ is dense if the closure of $E = X.$
+\end{definition}
+\begin{definition}
+	A point $x \in X$ is an accumulation point of $E \subset X$ if any openset $V \ni x$
+	intersects $E \setminus \{x\}.$ We denote $acc(E)$ as the set of all accumulation points of $E$.
+\end{definition}
+\begin{example}
+ If $E = \mathbb{Z} \subset \mathbb{R}$, then there are no accumulation points at all; hence, $acc(\mathbb{Z}) = \emptyset.$
+\end{example}
+\begin{proposition}
+	For any $E \subset X$, $cl(E) = E \cup acc(E).$
+\end{proposition}
+\begin{proof}
+	We would like to show that $X \setminus (E \cup acc(E))$ is open.
+	Suppose that $y \notin E,$ and $y \notin acc(E)$. There is an openset which
+	contains why such that $V \cap E \setminus \{y\} = \emptyset.$ Therefore $V \cap E = \emptyset = \emptyset$.
+	The union of all such $V$ is the compliment of $E \cup acc(E).$ Thus is open. Therefore $E \cup acc(E)$ is closed.
+
+	Consider any closed set $A$ containig $E$. Claim $A \supset acc(E).$ If $y \in acc(E)$ and $y \notin A$,
+	then $y \in X \setminus A = V^{open}.$ Since $V^{open} \cap E = \emptyset$ because $V = X \setminus A \subset X \setminus E.$ Therefore $y \notin acc(E).$ And thats a contradiction. :)
+
+	On the one hand, $E \cup acc(E)$ is closed  and contains $E$ and is contained in any other closed
+	set which contains $E$ and thus it is the smallest closed set containg $E$ or equivalently it is the closure of $E.$
+\end{proof}
+
+The following are examples of topological spaces that are not metric spaces.
+\begin{example}[Simple]
+	Take $X = \{a \neq b\}.$ Take the topology to be $\tau = \{\emptyset, X, \{a\}\}.$ It is obviously closed under intersections and unions. We claim that this topology is not \emph{compatible} with any metric space structure.
+\end{example}
+\begin{proof}
+	If $X$ is a metric space, then $\rho(a,b) = r$. Then $B(a, r/2) \cap B(b, r/2) = \emptyset$. any open set in $\tau$ which contains $b$ is $X$ itself and must contain $A$ and so must intersect the openset containing $a$. BUT THIS CANNOT BE! 
+\end{proof}
+So toplogy is more general than metric spaces.
+\begin{example}[Zariski Toplogy]
+Let $X = \mathbb{C}^n$, then $V \subset \mathbb{C}^N$ is open if $V$ is the union of finite intersections of sets of form $\{z\ :\ P(z)\ \neq 0 \}$ where $P$ is any polynomial. For example when $n =1$, there are finiteley many $0s$ and so for any finite collection of points we can construct a polynomial.
+\end{example}
+\emph{Disatisfied.}
+\begin{example}
+	Set $X$ of all functions $f: \mathbb{R} \to \{0,1\}$. Consider all sets $V \subset X$ of this form:
+	Choose $S \subset \mathbb{R}$ to be a finite set. (Mark finiteley many points on the axis.) For each element of the set
+	choose $t_s$ to be a $0$ or a $1.$ Then $V =\{ f: \mathbb{R} \to \{0,1\}:f(s) = t_s \forall s \in S\}.$
+	The topology is the set of all sets that can be written as unions of sets $V$ of this type.
+\end{example}
+\begin{definition}
+	If $\scripte \subset P(X)$, the toplogy generated bu $\scripte$ is the smallest
+	topology which containes $\scripte$. That is if $E \in \scripte$ then $E \in \tau$. This is the same
+	as the collection of all unions of finite intersections of elements of $\scripte$.
+\end{definition}
+\begin{proposition}
+	Any intersection of two (induct for finite) ... is equal to a union of finite intersections of elements of $\scripte.$ Equivalently, for any index set $A$ and associated finite indexsets $A_\alpha$
+	\begin{equation*}
+	\left(\bigcup_{a\in A} \bigcap_{j \in A_\alpha} V_{\alpha, j} \in \scripte\right) \cap \left( \bigcup{\beta \in B}) \bigcap_{k \in B_\beta} W_{\beta, k} \in \scripte\right) = \bigcup_{(\alpha, \beta) \in A \times B} \left(\bigcap_{j\in A_\alpha, k \in B_\beta} V_{j,\alpha} \cap W_{k, \beta}\right).
+	\end{equation*}
+	DANK.
+\end{proposition}
+
+%%%%%%% Be sure to set the counter and use menumerate
+
+\end{document}	

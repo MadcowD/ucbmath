@@ -1,0 +1,212 @@
+\documentclass[11pt]{amsart}
+
+\usepackage{amsmath,amsthm}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{enumerate}
+\usepackage{fullpage}
+% \usepackage{euscript}
+% \makeatletter
+% \nopagenumbers
+\usepackage{verbatim}
+\usepackage{color}
+\usepackage{hyperref}
+%\usepackage{times} %, mathtime}
+
+\textheight=600pt %574pt
+\textwidth=480pt %432pt
+\oddsidemargin=15pt %18.88pt
+\evensidemargin=18.88pt
+\topmargin=10pt %14.21pt
+
+\parskip=1pt %2pt
+
+% define theorem environments
+\newtheorem{theorem}{Theorem}    %[section]
+%\def\thetheorem{\unskip}
+\newtheorem{proposition}[theorem]{Proposition}
+%\def\theproposition{\unskip}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\def\theconjecture{\unskip}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{sublemma}[theorem]{Sublemma}
+\newtheorem{fact}[theorem]{Fact}
+\newtheorem{observation}[theorem]{Observation}
+%\def\thelemma{\unskip}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+%\def\thedefinition{\unskip}
+\newtheorem{notation}[definition]{Notation}
+\newtheorem{remark}[definition]{Remark}
+% \def\theremark{\unskip}
+\newtheorem{question}[definition]{Question}
+\newtheorem{questions}[definition]{Questions}
+%\def\thequestion{\unskip}
+\newtheorem{example}[definition]{Example}
+%\def\theexample{\unskip}
+\newtheorem{problem}[definition]{Problem}
+\newtheorem{exercise}[definition]{Exercise}
+
+\numberwithin{theorem}{section}
+\numberwithin{definition}{section}
+\numberwithin{equation}{section}
+
+\def\reals{{\mathbb R}}
+\def\torus{{\mathbb T}}
+\def\integers{{\mathbb Z}}
+\def\rationals{{\mathbb Q}}
+\def\naturals{{\mathbb N}}
+\def\complex{{\mathbb C}\/}
+\def\distance{\operatorname{distance}\,}
+\def\support{\operatorname{support}\,}
+\def\dist{\operatorname{dist}\,}
+\def\Span{\operatorname{span}\,}
+\def\degree{\operatorname{degree}\,}
+\def\kernel{\operatorname{kernel}\,}
+\def\dim{\operatorname{dim}\,}
+\def\codim{\operatorname{codim}}
+\def\trace{\operatorname{trace\,}}
+\def\dimension{\operatorname{dimension}\,}
+\def\codimension{\operatorname{codimension}\,}
+\def\nullspace{\scriptk}
+\def\kernel{\operatorname{Ker}}
+\def\p{\partial}
+\def\Re{\operatorname{Re\,} }
+\def\Im{\operatorname{Im\,} }
+\def\ov{\overline}
+\def\eps{\varepsilon}
+\def\lt{L^2}
+\def\curl{\operatorname{curl}}
+\def\divergence{\operatorname{div}}
+\newcommand{\norm}[1]{ \|  #1 \|}
+\def\expect{\mathbb E}
+\def\bull{$\bullet$\ }
+\def\det{\operatorname{det}}
+\def\Det{\operatorname{Det}}
+\def\rank{\mathbf r}
+\def\diameter{\operatorname{diameter}}
+
+\def\t2{\tfrac12}
+
+\newcommand{\abr}[1]{ \langle  #1 \rangle}
+
+\def\newbull{\medskip\noindent $\bullet$\ }
+\def\field{{\mathbb F}}
+\def\cc{C_c}
+
+
+
+% \renewcommand\forall{\ \forall\,}
+
+% \newcommand{\Norm}[1]{ \left\|  #1 \right\| }
+\newcommand{\Norm}[1]{ \Big\|  #1 \Big\| }
+\newcommand{\set}[1]{ \left\{ #1 \right\} }
+%\newcommand{\ifof}{\Leftrightarrow}
+\def\one{{\mathbf 1}}
+\newcommand{\modulo}[2]{[#1]_{#2}}
+
+\def\bd{\operatorname{bd}\,}
+\def\cl{\text{cl}}
+\def\nobull{\noindent$\bullet$\ }
+
+\def\scriptf{{\mathcal F}}
+\def\scriptq{{\mathcal Q}}
+\def\scriptg{{\mathcal G}}
+\def\scriptm{{\mathcal M}}
+\def\scriptb{{\mathcal B}}
+\def\scriptc{{\mathcal C}}
+\def\scriptt{{\mathcal T}}
+\def\scripti{{\mathcal I}}
+\def\scripte{{\mathcal E}}
+\def\scriptv{{\mathcal V}}
+\def\scriptw{{\mathcal W}}
+\def\scriptu{{\mathcal U}}
+\def\scriptS{{\mathcal S}}
+\def\scripta{{\mathcal A}}
+\def\scriptr{{\mathcal R}}
+\def\scripto{{\mathcal O}}
+\def\scripth{{\mathcal H}}
+\def\scriptd{{\mathcal D}}
+\def\scriptl{{\mathcal L}}
+\def\scriptn{{\mathcal N}}
+\def\scriptp{{\mathcal P}}
+\def\scriptk{{\mathcal K}}
+\def\scriptP{{\mathcal P}}
+\def\scriptj{{\mathcal J}}
+\def\scriptz{{\mathcal Z}}
+\def\scripts{{\mathcal S}}
+\def\scriptx{{\mathcal X}}
+\def\scripty{{\mathcal Y}}
+\def\frakv{{\mathfrak V}}
+\def\frakG{{\mathfrak G}}
+\def\aff{\operatorname{Aff}}
+\def\frakB{{\mathfrak B}}
+\def\frakC{{\mathfrak C}}
+
+\def\suchthat{\mathrel{}:\mathrel{}}
+\def\symdif{\,\Delta\,}
+\def\mustar{\mu^*}
+\def\muplus{\mu^+}
+
+\def\soln{\noindent {\bf Solution.}\ }
+
+
+%\pagestyle{empty}
+%\setlength{\parindent}{0pt}
+
+\begin{document}
+
+\begin{center}{\bf Math 202A --- UCB, Fall 2016 --- William Guss}
+\\
+{\bf Problem Set 7, due Wednesday October 14}
+\end{center}
+
+\medskip
+Throughout, $(X,\scriptm,\mu)$ denotes a measure space. 
+$\int f$ is shorthand for $\int_X f\,d\mu$, where $\mu$ is a measure which
+may not be explicitly specified. $m$ denotes Lebesgue measure on either $\scriptb_\reals$
+or $\scriptl_\reals$. Unless otherwise indicated, ``$f$ is measurable'' means
+that $f:X\to\complex$ and $f$ is measurable with respect to $\scriptm$.
+$L^1$ refers to functions, rather than to equivalence classes of functions, unless
+otherwise indicated.
+proof
+
+\medskip \noindent {\bf (7.1)}\ (Folland problem 3.2)\ 
+	If $(X, \scriptm, \nu)$  measure space then if $\nu$ is a signed measure then $E \subset X$ is $\nu$-null if and only if
+	$|\nu|(E) = 0$ and $\nu \perp \mu$ if and only if $|\nu| \perp \mu$ if and only if $\nu^+ \perp \mu$ and $\nu^- \perp \mu$. 
+\begin{proof}
+	If $E$ is $\nu$-null then $A \subset E$ $\nu$-null for every $A$. Using the Hahn-decomposition $A = P \sqcup N$
+	such that $P, N$ are $\nu$-null positive and negative sets. By the Jordon decomposition $\nu^+(P) - \nu^-(N) = 0$. Recall that $|\nu|(E) = \nu^+(E) + \nu^-(E).$ Therefore $0 = \nu(N) = \nu^+(N) - \nu^-(N) = -\nu^-(N)$ by $\nu^- \perp \nu^+$. It then follows from the Jordon decomposition that $\nu^+(P) = 0$. Thus giving $(\nu^+ + \nu^-)(E) = 0$.
+
+	In the other direction, if $E \in \scriptm$ is $|\nu|$ null then $\nu^+ + \nu^-(E) = 0$. Since both measures are positive
+	$\mu^+(E) = 0 = \nu^-(E)$. Recall that every measurable subset of a zero set of a positive measure is a zero set. Therefoe $\mu^+(A \subset E) - \nu^-(A) = 0$ and $E$ is a $\nu$-null set. 
+
+	If $\nu \perp \mu$ then $|\nu|(E) = 0$ iff $E$ is $\nu$-null implies that $|\nu|(E) = 0$ iff $\mu(E) \geq 0.$ So this gives $\mu \perp |\nu|.$ Now suppose the conclusion, then if $E$ is $|\nu|$-null then since $\nu$ is the sum of two positive measures it must be that $E$ is $\nu^+$-null and $\nu^-$ null. Repeating the same conditions of mutualingularity, it must be that $\nu^-$ is mutually singular with $\mu$ and $\nu^+$ is mutually singular with $\mu$. Now if the conclusion holds then $\nu^+ - \nu^- = 0 - 0 = 0$ on $E$ and for every subset of $E$ which is measurable so $\nu \perp \mu$. This completes the proof.
+
+\end{proof}
+
+\medskip \noindent {\bf (7.2)}\ (Folland problem 3.6)\ Suppose that $\nu(E) = \int f d \mu$ where $\mu$ is a positive measure and $f$ is an extended $\mu$-integrable function. Describe the Hahn decompositions of $\nu$ and the positive, negative, and total variation of $\nu$ in terms of $f$ and $\mu.$
+\begin{proof}
+	If $(X, \scriptm, \nu)$ is the measure space in reference, the Hahn decomposition is of $X$ into $\nu$-positive and $\nu$-negative sets; that is, $X = P \sqcup N$. From integration theory, if $\mu$ is a positive measure then $\int_E f\ d\mu^+ = \int_E f^+ d\mu - \int_E f^-\ d \mu$ where $f^+ > 0 \iff f^- = 0$ and dually $f^- > 0 \iff f^+ = 0$ on $x \in X$. Consider the set $X = {f^+}^{(pre)}((0, \infty]) = X^+$ and dually $X^-$ w.r.t $\mu$ . These sets are measurable in $\mu$ by the measurability of $f$. Since integration on subsets ($\int_E f\ d\mu = \int_X \chi_E\ d\mu \iff E\in\scriptm$) is defined only on measurable sets, $\scriptm$ for $\nu$ must be equivalent to the $\sigma$-algebra of $\mu$. Lastly, $X^+$ is evidently a $\nu$-positive set and removing the points at which $X^- \ni x$ gives $f(x) = 0$ from $X^-$, we get $X^-$ is a $\nu$-negative set with $X^+ \cap X^- = \emptyset$ and $X^+ \cup X^- = X$. Additionally the measures $\nu^+ = \int_\cdot f^+\ d\mu$ and $\nu^- = \int_\cdot f^-\ d\mu$ are mutually singular by the above reasoning and give the Jordon decomposition of $\nu$.
+\end{proof}
+\medskip \noindent {\bf (7.3)}\ \ (Folland problem 3.7)\ Suppose that $|nu$ is a signed measure on $(X, \scriptm)$ and $E \in \scriptm$. Show that\\s
+
+\noindent (a) $\nu^+(E) = \sup\{\nu(F):F \subset E, F\in\scriptm\}$ and $\nu^-(E) = -\inf\{\nu(F):F \in \scriptm, F \subset E\}$. 
+\begin{proof}
+Recall the following logic from a proof othe Hahn Decomposition Theorem. If $X = P \sqcup N$, then it is defined that $m = \sup \nu(J)$ over all positive sets $J \in \scriptm$ which are subsets of $X$, it is of no loss of generality to apply this logic to our set $E$ itself, but we shall continue down this line of reasoning until we are satisfied that $\nu(P) = m$. In the proof,  it is claimed that since $m$ is a supremum of positive sets whose measure tends to $m$ in the limit, that their exists a sequence of positive sets with countable indices so that $P = \bigcup_1^\infty P_j$ and under the conditions of Lemma $3.2$ and Proposition $3.1$, $P$ is positive and attains  measure $m$ in the limit. We can apply the same logic to $N$ with the infimum $n$.
+
+Now in the logic of the previous exposition replace $X$ with $E \in \scriptm$. Then it follows that $E = P_E \sqcup N_E$ where those two sets attain the same extremum of postiive and negative measures respectiveley. Now under the definition of $\nu^+$ and $\nu^-$ given, we claim mutual singularity. If $\nu^+$ is postive on a set $K \subset X$, then $\nu^+$ only "gains" measure by the positive part of the Hahn decomposition of $K,$ say $P_K \subset P$. In fact for the whole space $\nu^+$ only has positive measure on $P$, and symmetrically $\nu^-$ only has measure on $N$ therefore by the disjointness of the Hahn decomposition these measures are mutually signular.
+\end{proof}
+\noindent (b) $|\nu|(E) = \sup\{\sum_1^n |\nu(E_j)| : n \in \mathbb{N}, E_1, \dots, E_n\ \text{are disjoint, and} \bigcup_1^n E_j = E\}.$
+\begin{proof}
+	Using $(a)$ we know that the unique $\nu$ Jordon decomposition gives $\nu^+$ and $\nu^-$ defined before. We can express $E$ as $E_1 = P_E$ and $E_2 = N_E$ uniqueley, thus $\nu^+(E_1) + \nu^-(E_2) = |\nu(E_1)| + |\nu(E_2)| = \nu^+(E) + \nu^-(E)$ by mutual singularity and the sets $E_1$ and $E_2$ achieve the supremum over absolute value sets with the disjointness property.  Thus the definition of $|\nu|(E)$ holds as the supremum over the sums, since we have found that supremum.
+\end{proof}
+
+
+\medskip \noindent {\bf (7.4)}\ (Folland problem 3.8)\ Show that $\nu << \mu$ if and only if $|\nu| << \mu$ if and only if $\nu^+ << \mu$ and $\nu^- << \mu.$ 
+\begin{proof}
+	If $\nu << \mu$ then every $E$ which is a $\mu$-null set is also a $\nu$-null set. From $(7.1)$ we have that $E$ is a $\nu$-null set if and only if it is a $|\nu|$-null set. Therefore $\nu << \mu$ if and only if $|\nu| << \mu$. Next if $|\nu| << \mu$ it follows that every $\mu$-null set is a $|\nu|$-null set, but then by exercise $(7.1)$, $|\nu|$-null if and only if $\nu^+$null and $\nu^-$-null. Thus $|\nu| << \mu$ if and only if $\nu^+ << \mu$ and $\nu^- << \mu.$ This completes the proof.
+\end{proof}
+
+\end{document}\end

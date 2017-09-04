@@ -1,0 +1,418 @@
+\documentclass[11pt]{amsart}
+
+\usepackage{amsmath,amsthm}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{enumerate}
+\usepackage{fullpage}
+ \usepackage{euscript}
+% \makeatletter
+% \nopagenumbers
+\usepackage{verbatim}
+\usepackage{color}
+\usepackage{hyperref}
+
+\usepackage{fullpage,tikz,float}
+\usepackage{tikz-cd}
+%\usepackage{times} %, mathtime}
+
+\textheight=600pt %574pt
+\textwidth=480pt %432pt
+\oddsidemargin=15pt %18.88pt
+\evensidemargin=18.88pt
+\topmargin=10pt %14.21pt
+
+\parskip=1pt %2pt
+
+% define theorem environments
+\newtheorem{theorem}{Theorem}    %[section]
+%\def\thetheorem{\unskip}
+\newtheorem{proposition}[theorem]{Proposition}
+%\def\theproposition{\unskip}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\def\theconjecture{\unskip}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{sublemma}[theorem]{Sublemma}
+\newtheorem{fact}[theorem]{Fact}
+\newtheorem{observation}[theorem]{Observation}
+%\def\thelemma{\unskip}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+%\def\thedefinition{\unskip}
+\newtheorem{notation}[definition]{Notation}
+\newtheorem{remark}[definition]{Remark}
+% \def\theremark{\unskip}
+\newtheorem{question}[definition]{Question}
+\newtheorem{questions}[definition]{Questions}
+%\def\thequestion{\unskip}
+\newtheorem{example}[definition]{Example}
+%\def\theexample{\unskip}
+\newtheorem{problem}[definition]{Problem}
+\newtheorem{exercise}[definition]{Exercise}
+
+\numberwithin{theorem}{section}
+\numberwithin{definition}{section}
+\numberwithin{equation}{section}
+
+\def\reals{{\mathbb R}}
+\def\torus{{\mathbb T}}
+\def\integers{{\mathbb Z}}
+\def\rationals{{\mathbb Q}}
+\def\naturals{{\mathbb N}}
+\def\complex{{\mathbb C}\/}
+\def\distance{\operatorname{distance}\,}
+\def\support{\operatorname{support}\,}
+\def\dist{\operatorname{dist}\,}
+\def\Span{\operatorname{span}\,}
+\def\degree{\operatorname{degree}\,}
+\def\kernel{\operatorname{kernel}\,}
+\def\dim{\operatorname{dim}\,}
+\def\codim{\operatorname{codim}}
+\def\trace{\operatorname{trace\,}}
+\def\dimension{\operatorname{dimension}\,}
+\def\codimension{\operatorname{codimension}\,}
+\def\nullspace{\scriptk}
+\def\kernel{\operatorname{Ker}}
+\def\p{\partial}
+\def\Re{\operatorname{Re\,} }
+\def\Im{\operatorname{Im\,} }
+\def\ov{\overline}
+\def\eps{\varepsilon}
+\def\lt{L^2}
+\def\curl{\operatorname{curl}}
+\def\divergence{\operatorname{div}}
+\newcommand{\norm}[1]{ \|  #1 \|}
+\def\expect{\mathbb E}
+\def\bull{$\bullet$\ }
+\def\det{\operatorname{det}}
+\def\Det{\operatorname{Det}}
+\def\rank{\mathbf r}
+\def\diameter{\operatorname{diameter}}
+
+\def\t2{\tfrac12}
+
+\newcommand{\abr}[1]{ \langle  #1 \rangle}
+
+\def\newbull{\medskip\noindent $\bullet$\ }
+\def\field{{\mathbb F}}
+\def\cc{C_c}
+
+
+
+% \renewcommand\forall{\ \forall\,}
+
+% \newcommand{\Norm}[1]{ \left\|  #1 \right\| }
+\newcommand{\Norm}[1]{ \Big\|  #1 \Big\| }
+\newcommand{\set}[1]{ \left\{ #1 \right\} }
+%\newcommand{\ifof}{\Leftrightarrow}
+\def\one{{\mathbf 1}}
+\newcommand{\modulo}[2]{[#1]_{#2}}
+
+\def\bd{\operatorname{bd}\,}
+\def\cl{\text{cl}}
+\def\nobull{\noindent$\bullet$\ }
+
+\def\scriptf{{\mathcal F}}
+\def\scriptq{{\mathcal Q}}
+\def\scriptg{{\mathcal G}}
+\def\scriptm{{\mathcal M}}
+\def\scriptb{{\mathcal B}}
+\def\scriptc{{\mathcal C}}
+\def\scriptt{{\mathcal T}}
+\def\scripti{{\mathcal I}}
+\def\scripte{{\mathcal E}}
+\def\scriptv{{\mathcal V}}
+\def\scriptw{{\mathcal W}}
+\def\scriptu{{\mathcal U}}
+\def\scriptS{{\mathcal S}}
+\def\scripta{{\mathcal A}}
+\def\scriptr{{\mathcal R}}
+\def\scripto{{\mathcal O}}
+\def\scripth{{\mathcal H}}
+\def\scriptd{{\mathcal D}}
+\def\scriptl{{\mathcal L}}
+\def\scriptn{{\mathcal N}}
+\def\scriptp{{\mathcal P}}
+\def\scriptk{{\mathcal K}}
+\def\scriptP{{\mathcal P}}
+\def\scriptj{{\mathcal J}}
+\def\scriptz{{\mathcal Z}}
+\def\scripts{{\mathcal S}}
+\def\scriptx{{\mathcal X}}
+\def\scripty{{\mathcal Y}}
+\def\frakv{{\mathfrak V}}
+\def\frakG{{\mathfrak G}}
+\def\aff{\operatorname{Aff}}
+\def\frakB{{\mathfrak B}}
+\def\frakC{{\mathfrak C}}
+
+\def\symdif{\,\Delta\,}
+\def\mustar{\mu^*}
+\def\muplus{\mu^+}
+
+\def\soln{\noindent {\bf Solution.}\ }
+
+
+%\pagestyle{empty}
+%\setlength{\parindent}{0pt}
+
+\begin{document}
+
+\begin{center}{\bf Math 202A --- UCB, Fall 2016 --- M.~Christ}
+\\
+{\bf Problem Set 12, due Wednesday November 16}
+\end{center}
+
+\medskip \noindent {\bf (12.1)}\ (Folland problem 4.16)\ 
+Let $X,Y$ be topological spaces. Suppose that $Y$ is Hausdorff,
+and that $f,g:X\to Y$ are continuous. \\
+\noindent{\bf (a)}\ 
+Show that $E=\{x\in X: f(x)=g(x)\}$ is closed. \\[0.5cm]
+\emph{Note.} This argument came out of a conversation with Professor Pugh.
+\begin{proof}
+	Let $g(E) = f(E)$. Now for every $x \in X \setminus E$, $f(x) \neq g(x).$ Now since $Y$ is hausdorf let $U_x,V_x$ be disjoint open neighborhoods in $Y$ containing $f(x),g(x)$ (resp.). Since $f,g$ continuous, $f^{-1}(U_x), g^{-1}(V_x)$ are open neighborhoods of $x$ in $X$. Let $W_x \subset f^{-1}(U_x)$ be an open neighborhood of $x$ and $Z_x \subset g^{-1}(V_x)$ be an open neighborhood of $x$ in $X$. Thus $W_x \cap Z_x \ni x$ and $f(W_x) \cap g(Z_x) = \emptyset$ as $f(W_x) \subset U_x$ and $g(Z_x) \subset V_x$ where $V_x \cap U_x = \emptyset.$ Thus for all $z \in W_x \cap Z_x$, $f(z) \neq g(z)$, so $(W_x \cap Z_x) \cap E = \emptyset.$ Now let
+	\begin{equation*}
+		F = \bigcup_{x \in X \setminus E} W_x \cap Z_x.
+	\end{equation*}
+	Then $F$ is an openset which contains every $x \in X \setminus E$ and $F \cap E = \bigcup_x (W_x \cap Z_x \cap E) = \emptyset$. Thus $X \setminus F = E$ is closed.
+\end{proof}
+\noindent {\bf (b)}\ 
+Show that if $E$ is dense in $X$ then $f=g$ on $X$.
+(That is, $f(x)=g(x)$ for all $x\in X$.) 
+\begin{proof}
+	If $E$ is dense in $X$, then the closure of $E$ is all of $X$. By (a), $E$ is closed
+	and thus it is the smallest closed set in $E$ which contains $E$. Therefore $E = X$
+	and so the set of $x \in X$ so that $f(x) = g(x)$ contains every $x$. Thus for every $x\in X$,
+	$f(x) = g(x),$ and $f =g$ on $X.$ This completes the proof.
+\end{proof}
+
+\medskip \noindent {\bf (12.2)}\ (Folland problem 4.17)\ 
+Let $X$ be a set, let $\scriptf$ be a collection of real-valued functions
+with domain $X$, and let $\scriptt$ be the weak topology 
+on $X$ generated by $\scriptf$.
+Show that $\scriptt$ is Hausdorff if and only if 
+for every pair of distinct points $x,y$ of $X$ there exists
+$f\in\scriptf$ such that $f(x)\ne f(y)$.
+\begin{proof}
+		Suppose that for every $x, y \in X$ with $x \neq y$ there is a function $f \in \scriptf$ with $f(x) \neq f(y).$ Then by $\mathbb{R}$ Hausdorff there are two disjoint open sets, $U,V$ so that $f(x) \in U$ and $f(y) \in V$. Furthermore, 
+		$U \cap V = \emptyset \implies f^{-1}(U) \cap f^{-1}(V) = \emptyset$ where $f^{-1}(U)$ and$ f^{-1}(V)$ are open neighborhoods containing $x $ and $ y$ respectively (by construction of $\scriptf)$. Thus for every $x, y \in X$ there are disjoint open neighborhood containg $x$ and $y$ respectively, and so $X$ is Hausdorf under the weak topolopgy generated by $\scriptf.$
+
+		Suppose there exist $x,y \in X$ with $x \neq y$ so that there are no functions $f \in \scriptf$ with $f(x) \neq f(y)$. That is for all $f \in \scriptf$
+		$f(x) = f(y).$ Now take any open $U$ containing $x$ and any open $V$ containing $y$. Since the weak topology is generated by $\scriptf$ we have that for some arbitrary index set $A_U$ and $A_V$ and finite index sets $B_U(\alpha)$ and  $B_V(\alpha)$,
+		\begin{equation*}
+			U = \bigcup_{\alpha\in A_U} \bigcap_{\beta\in B_U(\alpha)} f^{-1}_{\alpha\beta}(F_{\alpha\beta}), \;\;\; V = \bigcup_{\alpha\in A_V} \bigcap_{\beta\in B_V(\alpha)}f^{-1}_{\alpha\beta}(E_{\alpha\beta}) 
+		\end{equation*}
+		where $F_{\alpha\beta}$ and $E_{\alpha\beta}$ are open sets in $\mathbb{R}$. Since $U$ contains $x$ for instance there is at least one $\alpha \in A_U$ so that $x \in \bigcap_{\beta\in B_U(\alpha)} f^{-1}_{\alpha\beta}(F_{\alpha\beta}).$ Thus for every $\beta \in B_U(\alpha)$ $x \in f^{-1}_{\alpha\beta}(F_{\alpha\beta})$ and so $f_{\alpha\beta}(x) = f_{\alpha\beta}(y) \in F_{\alpha\beta}$ and thus $y \in f^{-1}_{\alpha\beta}(F_\alpha\beta)$ for every $\beta$ (by our assumption that $f(x) = f(y)$ for all $f$) and so $y \in U$. Therefore $U \cap V \neq \emptyset$ for every pair of emptysets $U,V$ containing $x,y$ respectectively. Therefore $X$ is not Hausdorff.
+a
+		Hence we have shown the logical equivalence. Thus completes the proof.
+\end{proof}
+
+\medskip \noindent {\bf (12.3)}\ (Folland problem 4.20)\ 
+Let $A$ be a countable index set.
+Let $X = \prod_{\alpha\in A} X_\alpha$,
+where each $X_\alpha$ is a topological space
+and $X$ is endowed with the product topology.
+{\bf (a)}\ 
+Show that if each $X_\alpha$ is first countable, then so is $X$.
+\begin{proof}
+	For every $x \in X$ denote the neighborhood base of $\pi_\alpha(x)$ in $X_\alpha$ as $\scriptn_\alpha(x)$ and its countable index set $I_\alpha(x)$. Additionally we will also abuse notation and say additionally that $\pi_\beta : \prod_{\alpha \in A} I_\alpha(x) \to I_\beta(x)$ is the cannonical projection of the index sets. We will also define a preordering on $I_\alpha(x)$ so that it becomes a directed set for every $\alpha.$ Let $\lesssim$ be the defined so that $n, m \in I_\alpha(x)$ and $n \lesssim m$ if and only if $N_{\alpha n} \supset N_{\alpha m}$ when $N_{\alpha n}, N_{\alpha m} \in \scriptn_\alpha(x)$. This relation  is valid when either sets are supersets or subsets, it is reflexive because the subset operation is reflexive, and it is treansitive because the subset operation is transitive. Additionally because $\scriptn_\alpha(x)$ for any $n,m \in I_\alpha(x)$ there is always a $N_{\alpha q} \in \scriptn_\alpha(x)$ which is a subset of their intersection (an open neighborhood containing $x$) so the relation has the property that for any $n,m \in I_\alpha(x)$ there is a $q$ so that $n \lesssim q$ and $m\lesssim q$. Thus $I_\alpha(x)$ is a directed set under this relation.
+
+	We will now develop a notion of monotonicity across the cartesian products of these directed sets. First for any directed set we will develop a monotonic sequence which exhausts the set in the following sense: we will find a subset of $I_\alpha(x)$ which is order isomorphic to the natural numbers and cofinal with respect to the preorder on $I_\alpha(x).$ Let $\lambda_i$ be an enumeration\footnote{By assumption $I_\alpha(x) \sim \mathbb{N}.$} of $I_\alpha$, then pick some $n_1 \in I_\alpha(x)$ so that $\lambda_1 \lesssim n_1$\footnote{This is possible by the third property of preorders.} Then in general pick $n_j \in I_\alpha$ so that $n_l \lesssim n_j$ for all $l \leq j \in \mathbb{N}$ and $\lambda_l \lesssim n_j$ for all $l \leq j \in \mathbb{N}$. This is possible since there are only finiyteley mant $l \leq j$ and the third property of directed sets gives that for any finite subcollection of $I_\alpha(x)$ we can find an element in $I_\alpha(x)$ which is larger than all of the elements in that subcollection with respect to the preorder. Let the sequence of $n_j$ indexed by $\mathbb{N}$ be our claimed monotonic sequence. We would like to show that the sequence is co-final. Now take any $\lambda \in I_\alpha(x)$, then there is a $k$ so that $\lambda_k = \lambda$ is in the enumeration of $I_\alpha(x)$, then $\lambda \lesssim n_{k+1}$ which is a member of the consructed sequence $n_j$ is cofinal. Let $(x^\alpha_n)$ be the new notation for the respective sequences $(n_j)$ for each $\alpha$. These sequences exhaust $I_\alpha.$
+
+	Next we would like to create some map $I:\mathbb{N} \to \prod_{\alpha\in A} I_\alpha(x)$ which exhausts all of the monotonic sequences $x^\alpha_n.$ This construction is simpler. In fact $I: n \mapsto (x^\alpha_n)_{\alpha \in A}$ has the property that for some $\alpha$ and for every $\gamma \in I_\alpha(x)$ there is an $m$ so that $\gamma \lesssim \pi_\alpha(I(m))$. Additionally, for a finite subset $B \subset A$, and some $\Gamma \in \prod_{\alpha \in B} I_\alpha(x)$, there is an $m \in \mathbb{N}$ so that for every $\alpha \in B$, $\pi_\alpha(\Gamma) \lesssim \pi_\alpha(I(m))$. To see this find an $n_\alpha \in \mathbb{N}$ which satisfies $\pi_\alpha(\Gamma) \lesssim \pi_\alpha(I(n_\alpha))$ and let $m$ be the max over finitely many such $n_\alpha$.
+
+	Now from Folland\footnote{See Folland's Real Analysis, Second Edition, page 120.} the base of the product topology, $\scriptb$, are sets of the form $\bigcap_1^k \pi_{\alpha_n}^{-1}(U_{\alpha_n})$, and so the neighborhood base of $x$ is of this form. Thus for any neighborhood $V$ of $x$, there are $\alpha_1,\dots,\alpha_k$ so that that for some open neighborhoods of $\pi_{\alpha_n}(x), U_{\alpha_n}$, $\bigcap_1^k \pi_{\alpha_n}(U_{\alpha_n}) \subset V$ is an open neighborhood of $x$. Then there are sets $N_{\alpha_n j_n}$ in the neighborhood base of $\pi_{\alpha_n}(x)$ so that $U_{\alpha_n} \supset N_{\alpha_n j_n}$ where $j_n \in I_{\alpha_n}(x)$. Thus $V \supset \bigcap_1^k 	 \pi_{\alpha_n}^{-1}(N_{\alpha_n j_n}) \ni \pi_{\alpha_n}(x)$, let $\scriptn(x)$ be the neighborhood base of $x$ which is the family of these finite intersections. We claim that there is a countable sub-collection which is still a neighborhood base of $x$. First we can form an equivalence relation $\sim$ on this family by identifying each set in the $\scriptn$ by $\alpha_n$ and $j_n$ and 
+	saying $A,A' \in \scriptn(x)$ are $\sim$-equivalent if the smallest integer $p$ so that the respective $(j_n)$ and $(j_n')$ of $A$ and $B$ have $\pi_{\alpha_n}((j_n)) \lesssim \pi_{\alpha_n}(I(p))$ and $\pi_{\alpha_n}((j_n')) \lesssim \pi_{\alpha_n}(I(p))$, where $\alpha_n$ range over the $\alpha$ for which either $A$ or $A'$ are the intersection of preimages of sets in the neighborhood base of $\alpha.$ This integer exists because $(j_n), (\alpha_n)$ are finite by the properties previously established\footnote{See previous paragraph.} for $I$.
+
+	Thus we establish that $$A, A' \supset \bigcap_{n=1}^k \pi^{-1}_{\alpha_n}\left(N_{\alpha_n \pi_{\alpha_{n}}(I(p))}\right) \cap \bigcap_{n=1}^{k'} \pi^{-1}_{\alpha_n'}\left(N_{\alpha_n' \pi_{\alpha'_{n}}(I(p))}\right)$$
+	so it remains to show that we can express $\scriptn(x)/\sim$ countably, and then we will have family so that for every open neighborhood of $x$ we can find an open set in $\scriptn(x)/\sim$ which is a subset and $\scriptn(x)/\sim$ is a countable neighborhood base.
+
+	Finally we can define the modulo space by taking all such $\alpha$ equivalences and noting that a sequence $\{\alpha_1, \cdots, \alpha_n\}$ is subsumed by $\{\alpha_1 ,\cdots, \alpha_\kappa\}$, whre $\kappa$ is the largest integer index of the sequence $(\alpha_j)_1^j$, and in particular intersecting sets indexed by the latter produces a smaller intersection than that of the former. Thus we can write the modulo space as
+	\begin{equation*}
+		{\scriptn}(x)/\sim\ \  =\left\{\bigcap_{j=1}^n \pi^{-1}_{\iota(j)}\left(N_{\iota(j) \pi_{\iota(j)}(I(p))}\right)\mathrel{}\middle|\mathrel{} p \in \mathbb{N}, n \in \mathbb{N} \right\} \in \scriptb
+	\end{equation*}
+	where $\iota: \mathbb{N} \to A$ is without loss of generality strictly increasing bijection which lets us subsume the previously mentioned sequences. This family is clearly countable and is a subset of the product topology. Furthermore, every member of the family contains $x$. Additionally if $V$ is any open set containing $x$ we can find an open set $B = \pi^{-1}_{\alpha_n}\left(N_{\alpha_n j_n}\right) $ which is in a $\sim$-equivalence class with smallest common argument for $I$, say $p$, so that $$V \supset B \supset  \bigcap_{j=1}^n \pi^{-1}_{\iota(j)}\left(N_{\iota(j) \pi_{\iota(j)}(I(p))}\right) \in \scriptn(x)/\sim$$
+	where $n$ is large enough that all $\alpha_n$ are subsumed by $\iota(\{1,\cdots,n).$ Thus $\scriptn/\sim$ is a neighborhood base for $x$ in $X$ with the product topology.
+	\end{proof}
+	{\bf (b)}\ 
+Show that if each $X_\alpha$ is second countable, then so is $X$.
+\begin{proof}
+	Suppose for every $\alpha \in A$, $X_\alpha$ is second countable. For every $\alpha$ let $\scriptb_\alpha$ be the
+	countable base of $X_\alpha$. Then let $\scriptb$ be a subfamily of the product topology defined as follows
+	\begin{equation*}
+		\scriptb = \left\{\bigcap_{n=1}^j \pi_{\alpha_n}^{-1}(B_{\alpha_n})\mathrel{}\middle|\mathrel{} j \in \mathbb{N}, (\alpha_n)_n \in \mathbb{N}^j, B_{\alpha_n} \in \scriptb_{\alpha_n}\right\}
+	\end{equation*}
+	If $G \in \scriptb$, $G$ is open because it is the finite intersection of open sets in the product topology. We claim that $\scriptb$ is a base for the product topology. By Folland\footnote{See Folland's Real Analysis, Second Edition, page 120.}, a base for the product toplogy is sets of the form $\bigcap_{n=1}^j \pi^{-1}_{\alpha_n}(U_{\alpha_n})$ where $U_{\alpha_n}$ are open sets in $X_{\alpha_n}.$ So let $x \in X$ be given and $V$ be any neighborhood of $x$, then
+	\begin{equation*}
+	  	V \supset \bigcap_{n=1}^j \pi^{-1}_{\alpha_n}(U_{\alpha_n}) \supset \bigcap_{n=1}^j \pi_{\alpha_n}^{-1}(B_{\alpha_n}) 
+	  \end{equation*}  
+	  where $B_{\alpha_n} \in \scriptb_{\alpha_n}$ are open sets in the base of $X_{\alpha_n}$ so that $U_{\alpha_n} \supset B_{\alpha_n}$ and $\pi_{\alpha_n}(x) \in B_{\alpha_n}.$ Since $V$ was arbitrary, $\scriptb$ contains a neighborhood base of $x$. Since $x$ was arbitrary $\scriptb$ is a base for the product topology. It now remains to show that $\scriptb$ is countable.
+
+	  First recall that $\scriptb_{\alpha} \sim \mathbb{N}$. Thus take $\sqcup$ to be the disjoint union\footnote{In the rest of the problem set we take the disjoint union to just mean $A \sqcup B = X \iff A \cup B = X, A \cap B = \emptyset$. \textbf{In this case}, we take the disjoint union to be an operation which takes each set in the union and projects it to it's own space. For example $\bigsqcup_{p \in P} D_p = \bigcup_{p\in P} (\{p\} \times D_p) $ where $\cdot \times \cdot$ is the Cartesian product.} and we have that
+	  \begin{equation*}
+	  	\scriptb \sim \bigsqcup_{j \in \mathbb{N}} \left(\prod_{n=1}^j A \times \mathbb{N}\right) \sim \bigsqcup_{j \in \mathbb{N}}  \mathbb{N}^j \times \mathbb{N}^j \sim  \bigsqcup_{j \in \mathbb{N}} \mathbb{N} \sim \mathbb{N}.
+	  \end{equation*}
+	  where the first cardinal bijection results from the fact that for every $j$ there is a coresponding sequence $(\alpha_n) \in A^j$ and for each $\alpha_n$ in that sequence there are sets in $\scriptb_{\alpha_n} \sim \mathbb{N}$ which thereby comprise $\scriptb.$ Thus $\scriptb$ is a countable base for the product topology and $X$ is second countable.
+\end{proof}
+
+\medskip \noindent {\bf (12.4)}\ (Folland problem 4.26)\ 
+See text for problem statement, which introduces the
+important concept of arcwise connectedness, and its connection with connectedness. \\
+\noindent {\bf (a)}\ Let $X$ and $Y$ be sets with topologies $\tau_X$ and $\tau_Y$ respectiveley.
+If $X$ is connected and $f \in C(X,Y)$ then $f(X)$ is connected with respect to the relative subspace topology
+induced by $f(X)$.
+\begin{proof}
+	Suppose that $X$ connected and $f(X)$ not connected, for the sake of contradiction. Then $f(X) = A \sqcup B$ where $A, B \in \tau_{f(X)}$ are disjoint non-empty clopen sets. Then $\emptyset = f^{-1}(\emptyset) = f^{-1}(A \cap B) = f^{-1}(A) \cap f^{-1}(B)$ and additionally $f^{-1}(A) \sqcup f^{-1}(B) = f^{-1}(A \sqcup B) = f^{-1}(f(X)) = X$. By $f$ continuous $f^{-1}(A)$ and $f^{-1}(B)$ are non-empty open sets, and since $f^{-1}(A) \cup f^{-1}(B) = X$ we have that $X \setminus f^{-1}(A) = f^{-1}(B)$ is closed and open, thus $f^{-1}(A), f^{-1}(B)$ are a non-trivial clopen disjoint parition of $X$  and thus $X$ is disconnected. This contradicts are assumption, so continuous maps must preserve connectedness.
+\end{proof}
+\noindent {\bf (b)}\ Every arcwise connected space $X$ is connected.
+\begin{proof} 
+ 	Let $X$ be an arcwise connected space, and suppose it is not connected for the sake of contradiction. 
+ 	Let there are disjoint non-empty clopen sets, $A, B$, which partition $X$. Since $X$ is arcwise connected take $x \in A, y\in B$, then there is a $f \in C([0,1], X)$ with $f(0) = x $ and $f(1) = y$. Since $[0,1]$ is connected, the set $Z = f([0,1])$ is connected. Additionally $A \cap Z$ and $B \cap Z$ are disjoint clopen sets in the subspace topology $\tau_Z$. Additionally since $A \cup B = X,$ $(A \cap Z)\cup (B \cap Z) = (A\cup B) \cap Z= Z$. Lastly $A \cap Z$ and $B \cap Z$ are not trivial since they contain $x, y$. Thus $Z$ is disconnected; a contradiction to $f$ continuous. 
+
+ 	Therefore every arcwise connected space is connected, and this completes the proof.
+ \end{proof} 
+\medskip\noindent {\bf (c)}\  Let $X$ be the graph of the topologist's sine curve, with the relative topology induced from $\mathbb{R}^2$. Then $X$ is connected but not arcwise connected.\\[0.5cm]
+\textbf{Lemma.}\ 
+	Let $X$ be some topological space. If $S$ is connected and $S \subset T \subset cl(S)$, then $T$ is connected.
+\begin{proof} 
+	It is equivalent to show that if $T$ is disconnected then $S$ is disconnected. If $T$ is disconnected then
+	there are disjoint non-empty clopen subsets $A, B$ which paritition $T$ with respect to its relative subspace topology.
+	Letting $K = A \cap S$ and $L = B \cap S$. Then $L \cap K = S \cap (A \cap B) = \emptyset$ and $L \cup K = (A \cup B) \cap S = S$. Additionally by the inheritence principle\footnote{For example, since $B$ is open $T$ there is a $B'$ in the global topology which is open and $B' \cap T = B$, thus $B' \cap S = B' \cap T \cap S = B \cap S$ is open in the subspace topology on $S$. This illustrates the inheritence principle.} $L$ and $K$ are clopen\footnote{Clopeness comes from the fact that $L$ and $K$ parition $S$, since $S, \emptyset$ is clopen w.r.t the subspace topology on $S$, take intersections and compliments in the partition and get clopeness... the usual. } subsets of $S$ with respect to the subspace topology. It remains to show that neither are empty.
+
+	Without loss of generality suppose that $L$ is empty for the sake of contradiction, then $B \subset cl(S) \setminus S$
+	and so $x \in B$ must be an accumulation point of $S$, as $cl(S) \setminus S = (acc(S) \cup S) \setminus S \subset acc(S).$ Then for every neighborhood (we can restrict to the subspace topology $\tau_T$) of $x$, say $V$, the intersection $T \cap V \setminus\{x\} \cap S \neq \emptyset$.  Then by $B$ clopen in $T$ (w.r.t the subspace topology $\tau_T$), it follows that every neighborhood of $x$, say $W$, contained in $B$ up to and including $B$ has the property that $W \setminus\{x\} \cap T \cap B \cap S \neq \emptyset$. But this contradicts $L = B \cap S = \emptyset$. Therefore $S$ is disconnected.
+	It follows then that if $S$ is connected $T$ is connected. This completes the proof.
+\end{proof}
+\noindent \emph{Proof of (c).} 
+The topologist's sine curve $X = \{(0,0)\} \cup \{(s,t) \in \mathbb{R}^2 : t = \sin(s^{-1})\}$ is the
+union of two connected sets in $\mathbb{R}^2$. That $\{(0,0)\}$ is connected is trivial since in $\mathbb{R}$ a singleton is closed is clopen in its own subspace topology and there are no other clopen subsets therein besides the empty set.
+Additionally the images of $(0,\infty)$ and $(-\infty, 0)$ via $s \mapsto \sin(s^{-1})$, say $L$ and $R$, are connected respectively, because the topologists sine curve is continuous on $L$ and $R$ (see (b)). We will apply the previous lemma by adjoining $\{(0,0)\}$ to $L$ and $R$ and showing that the result is a subset of the closure of $L$ and $R$ respectively.
+
+Without loss of generality, we need only show that $(0,0) \in acc(L)$ as $cl(L) = L \cup acc(L).$ Consider any open ball $B_r$ of positive radius $r$ centered at $0$, then it intersects $(0,\infty) \times \{0\}$ non-trivially. There exists an $0<s <r$ 
+so that $1/s = k2\pi$ for some $k \in \mathbb{R}$ and therefore $L \cap B_r \setminus \{(0,0)\} \neq \emptyset$. Since the set of balls with positive radius centered at $(0,0)$ are neighborhood base of $(0,0)$ in the standard ball topology on $\mathbb{R}^2$, $(0,0)$ is an accumulation point of $L$. Thus $L \cup \{(0,0)\}$ is connected. Furthermore applying this argument to $R$ give that $R \cup \{(0,0)\}$ is connected. Then by the previous problem set, $(L \cup \{(0,0)\} )\cap (R \cup \{(0,0)\})$ is non-empty so the union $X = L \cup \{(0,0)\} \cup R\cup \{(0,0)\}$ is connected.
+
+We now show that the curve is not path connected. Suppose it were, why not!? Well, take a continuous path from $(0, 1/\pi)$ to $(0,0).$ Call this path $f.$ So let's talk about coverage. This thing covers a lot of the image. In fact, it's gotta cover the following set, and I'll show you why. Let 
+\begin{equation*}
+	S = \{(x, \sin 1/x), 1/\pi > x > 0\}.
+\end{equation*}
+Suppose that there were a $z = (z_1, z_2) \in S$ so that $z \notin f((0,1)).$  Then we claim that $f((0,1))$ is disconnected. $f((0,1)) = \{(x,y) \in \mathbb{R}^2 : x < z_1\} \sqcup \{(x,y) \in \mathbb{R}^2 : z_1 < x < 1/\pi\} = H^+_{z_1} \cap f((0,1)) \cup  H^-_{z_1} \cap f((0,1))$, where $H^{\pm}_{z_1}$ is the open horizontal half plane whose $x$-coordinates are less (more) than $z_1$. Therefore $f((0,1))$ is the union of two open disjoint non-empty sets in its respective subspace topology. 
+
+Now, consider the sequence $((2/((4n+1)\pi), 1)_\mathbb{N}$. This sequence clearly tends to $(0,1) \notin f([0,1])$, and every subsequence converges to that limit, thus no subsequence convergbes in $f([0,1])$, thus  $f([0,1])$ is not compact, which is contradiction to $f$ continuous. Therefore $X$ is not path connected, since there is no continuous function which starts at $(1/\pi, 0)$ and goes to $(0,0).$
+
+\qed\\
+\medskip \noindent {\bf (12.5)}\ (Folland problem 4.27, parts (a) and (b))\ 
+Let $X$ be a topological space endowed with an equivalence relation.
+Let $\tilde X\subset\scriptp(X)$ be the collection of all equivalence classes in $X$
+under this relation.
+Let $\pi:X\to\tilde X$ be the associated projection mapping. ($\pi(x)$ is equal to the
+unique equivalence class that contains $X$.)
+Define $\scriptt\subset\scriptp(\tilde X)$ to be the collection of
+all $U\subset\tilde X$ such that $\pi^{-1}(U)\subset X$ is open.
+{\bf (a)}\ 
+Show that $\scriptt$ is a topology on $\tilde X$.
+\begin{proof}
+	To show that $\scriptt$ is a topology on $\tilde X$, we need show that that $\tilde X \in \scriptt, \emptyset \in \scriptt$ and that $\scriptt$ is closed under finite intersection and arbitrary union.
+
+	First because equivalence classes partition exactly and uniquely, for every $x \in X$ there is a cooresponding $\tilde x \in \tilde X$, and by definition it is assigned by $\pi$. Thus $\pi^{-1}(\tilde X) = \{x \in X\ :\ \pi(x) \in \tilde X\} = X$. Since $X$ is open in its topology, we have by definition that $\tilde X \in \scriptt.$ Since $\pi: X \to \tilde X$, we have $\pi^{-1}(\emptyset) = \emptyset \subset X$ using the properties of preimage, and since $X$ is again equipped with a topology, $\emptyset \subset X$ is open and so $\emptyset \subset \tilde X$ is in $\scriptt.$
+
+	Now take any two $A, B \in \scriptt$, we wish to show that $A \cap B \in \scriptt$. Applying the preimage map $\pi^{-1}(A \cap B) = \pi^{-1}(A) \cap \pi^{-1}(B)$ which is the intersection of two open sets in $X$ so $\pi^{-1}(A \cap B)$ is open and thus $A \cap B$ is open. In fact since the topology on $X$ is closed under finite intersection
+	\begin{equation*}
+		\pi^{-1}\left(\bigcap_{\substack{n=1 \\ A_n \in \scriptt}}^{J \in \mathbb{N}} A_n\right) = \bigcap_{\substack{n=1 \\ A_n \in \scriptt}}^{J \in \mathbb{N}} \pi^{-1}\left(A_n\right)
+	\end{equation*}
+	which is again in the topology of $X$ so finite intersections $\bigcap A_n \in \scriptt.$ Now take any arbitrary index $Z$, set, and then \begin{equation*}
+		\pi^{-1}\left(\bigcup_{\substack{z \in Z\\ A_z \in \scriptt}} A_z\right) = \bigcup_{\substack{z \in Z\\ A_z \in \scriptt}}  \pi^{-1}\left(A_z\right)
+	\end{equation*}
+	but since each set $\pi^{-1}(A_z)$ is open in $X$ and the topology of $X$ is closed under arbitrary union we have that the resultant preimage of arbitrary unions of $A_z \in \scriptt$ is open, and so $\scriptt$ is closed under arbitrary union. Therefore $\scriptt$ is a topology.
+\end{proof}
+{\bf (b)}\ 
+Show that for any topological space $Y$ and any $f:\tilde X\to Y$,
+$f$ is continuous if and only if $f\circ\pi:X\to Y$ is continuous.
+\begin{proof}
+	If $f: \tilde X \to Y$ is continuous then for any open set $U$ in the toplogy of $Y$, $f^{-1}(Y) \in \scriptt$, but then
+	by definition of $\scriptt$, the preimage $\pi^{-1}(f^{-1}(Y))$ is in the topology of $X$. Thus for any open set $U$ in $Y$, $(f \circ \pi)^{-1}(U)$ is open in $X$, thus $(f \circ \pi)$ is continuous.
+
+	In the other direction suppose that $(f \circ \pi)$ is continuous, then for any $U$ open in $Y$, $(f \circ \pi)^{-1}(U)$ is
+	open in $X$. Then $(f \circ \pi)^{-1}(U) = \pi^{-1}(f^{-1}(U))$ is open. In particular, let $V = f^{-1}(U)$ be a subset of $\tilde X$. The set $V$ must be in $\scriptt$ since it is defined to be the set of all $W \subset \tilde X$ so the $\pi^{-1}(W)$ is open in $X$, and since $\pi^{-1}(V)$ is open in $X$ we have $f^{-1}(U) = V \in \scriptt$. Thus for any $U$ open in $Y$, $f^{-1}(U)$ is open in $\tilde X$ with respect to $\scriptt$, thus $f$ is a continuous map.
+
+	This completes the proof.
+\end{proof}
+
+\medskip \noindent {\bf (12.6)}\ (Folland problem 4.19)\ 
+If $\{X_\alpha\}$ is a family of topological spaces, $X = \prod_\alpha X_\alpha$ (with the prodocut topology)
+is uniqueley determined up to homeomorphism by the following property: There exist continuous maps $\pi_\alpha : X \to X_\alpha$ such that if $Y$ is any topological space and $f_\alpha \in C(Y, X_\alpha)$, there is a unique $F\in C(Y,X)$ so that the following diagram commutes for every $\alpha.$
+\begin{equation*}
+	\begin{tikzcd}
+		Y \arrow{r}{F} \arrow{rd}{f_\alpha} & X\arrow{d}{\pi_\alpha}\\
+		& X_\alpha 
+	\end{tikzcd}
+\end{equation*}
+\noindent \textbf{Lemma}. If $X = \prod_{\alpha} X_\alpha$, then if $\pi_\alpha$ is the cannonical projection map from $X \to X_\alpha$,
+$x \in X$, is uniquely determined by $\prod_\alpha \pi_\alpha(x).$
+\begin{proof}
+	If $x \in X$ then $x = (x_{\alpha})_{\alpha \in A}$. Then if $x \neq y \in X$ then there is an $\alpha$ so that $x_\alpha \neq y_\alpha.$ Thus $\pi_\alpha(x) \neq \pi_\alpha(y)$ and $\left(\prod_\alpha \pi_\alpha\right)(y) \neq \left(\prod_\alpha \pi_\alpha\right)(x)$. Therefore $\prod_\alpha \pi_\alpha: X \to \prod_\alpha X_\alpha$ is an injection. Now take some $\tilde x \in \prod X_\alpha$, we claim that there exists a $x \in X$ so that $\left(\prod_\alpha \pi_\alpha\right)(x) = \tilde x$. If $\tilde x = (x_\alpha)_\alpha$ then since $\pi_\alpha$ is a surjection for every $\alpha$ and, $\pi_\beta(\pi_\alpha^{-1}(x_\alpha)) = X_\beta$ when $\beta \neq \alpha$; that is $\pi_\alpha^{-1}(x_\alpha) \cap \pi_\beta^{-1}(x_\beta) \neq \emptyset$, for all $\beta \neq \alpha$. Thus $\bigcap_{\alpha} \pi^{-1}(x_\alpha) \neq \emptyset$ so take $x \in \bigcap_{\alpha} \pi^{-1}(x_\alpha)$ and then $\left(\prod_\alpha \pi_\alpha\right)(x) = \tilde x$. Therefore the product map $\prod_\alpha \pi_\alpha$ is a surjection. Thus the product map is a bijection and $x \in X$ is uniquely determined by $\prod_\alpha \pi_\alpha(x).$
+ \end{proof} 
+
+\noindent \emph{Proof of (12.6).}
+	Define $\pi_\alpha$ as the cannonical projection maps which induce the product topology on $X$; that is $\pi_\alpha\left(\prod_\beta x_\beta \right) = x_\alpha;$ these are continuous by definition.  Let $f_\alpha$ be given and define for every $y$, $F(y) = \prod_\beta f_\beta(y)$. Then for every $y$ , $(\pi_\alpha \circ F)(y) = \pi_\alpha\left(\prod_\beta f_\beta(y)\right) = f_\alpha(y)$ if $\pi_\alpha$ are the cannonical projeciton maps, so the diagram commutes. It remains to show that $F$ is continuous and unique. 
+
+	First $F$ is continuous iff for every open $U$ in $X$ then $F^{-1}(U)$ is open. Without loss of generality we will first show that $F$ is continuous when restricted to the base of the the topology on $X$ and then make a generalizing arugment. If $U \in \scriptb$ where $\scriptb$ is the base of the product topology on $X$, then $$U = \bigcap_{n=1}^J \pi^{-1}_{\alpha_n}(V_{\alpha_n}) \implies F^{-1}(U) = \bigcap_{n=1}^J F^{-1}( \pi^{-1}_{\alpha_n}(V_{\alpha_n})) = \bigcap_{n=1}^J f_{\alpha_n}^{-1}(V_{\alpha_n})$$
+	for $V_{\alpha_n}$ open in the respective topologies of $X_\alpha$ for each $\alpha$. The above reasoning follows by the commutativity of the diagram. Next by $f_{\alpha_n}$ continuous for each $n \in \{1, \cdots, J\}$, $\bigcap_{n=1}^J f_{\alpha_n}^{-1}(V_{\alpha_n})$ is open in $Y,$ and thus $F$ is continuous on the base of $X$. Then for any open set in $X$, say $U = \bigcup_{z\in Z} B_z$ where $Z$ is an arbitrary index set and $B_z \in \scriptb,$ we have that 
+	\begin{equation*}
+		F^{-1}(U) = \bigcup_{z \in Z} F^{-1}(B_z)
+	\end{equation*}
+	which is the union of open sets in $Y$, which is again open. Thus $F$ is continuous.
+
+	To show uniqueness we will show that to an $G: Y \to X$  continuous there are exact cooresponding $(g_\alpha)$, 
+	and thus $G \neq F$ iff $(g_\alpha)_{\alpha} \neq (f_\alpha)_\alpha$. Take $G$ and define $g_\alpha$ so that $g_\alpha = \pi_\alpha \circ G$. By definition the diagram commutes, and the composition of continuous functions is continuous so $g_\alpha$ is continuous. If $G \neq F$ then there is an $y \in Y$ so that $G(y) \neq F(y)$ and thus, $g_\alpha(F(y)) \neq f_\alpha(G(y))$ for some $\alpha$ since $G(y) \neq F(y)$ is uniquely determined by the product map of all of its cannonical projections, so at least one projection should disagree. Furthermore if $G = F$ then for all $y \in Y$, $G(y) = F(y)$ so for all $\alpha,$ $(\pi_{\alpha} \circ G)(y) = \pi_\alpha(G(y)) = \pi_\alpha(F(y)) = (\pi_\alpha \circ F)(y)$. Therefore $F$ is unique.
+
+	Now suppopse there is another topological space $(Z, \kappa)$ with the above properties then we wish to show that $Z$ is homeomorphic to $(X, \tau)$ with the product topology $\tau.$ Let $p_\alpha: Z \to X_\alpha$ be continuous cannonical projection maps so that the diagram commutes for any set of functions $f_\alpha$ and cooresponding unique map $Y \to Z$.
+
+	In particular if we let $Y = X$, and $f_\alpha = \pi_\alpha$, then there is a unique continuous map $\psi: X \to Z$ so that $\pi_{\alpha} =p_\alpha\circ\psi$. Symmetrically using the property of $X$, there is a unique continuous map $\Gamma: Z \to X$ so that $p_\alpha = \pi_\alpha \circ \Gamma$. Using the Lemma, for every $x\in X$, $x \leftrightarrow \prod_\alpha \pi_{\alpha}(x) = \prod_\alpha \pi_{\alpha} \circ \Gamma \circ \psi(x)$ uniqueley determines $x.$ That is, $id_X = \Gamma \circ \psi.$  On the other hand we claim that $\psi \circ \Gamma = id_Z.$ First $p_\alpha \circ \psi \circ \Gamma = \pi_\alpha \circ \Gamma \circ \psi \circ \Gamma  = \pi_\alpha \circ id_X \circ \Gamma = \pi_\alpha \circ \Gamma = p_\alpha$. We show that $id_Z = \Gamma \circ \psi$ using the unqieuness of $\Gamma \circ \psi;$ that is consider for $\alpha$, $p_\alpha \circ id_Z = p_\alpha$, so the diagram commutes for $id_Z$. Since $Z$ has the universal property then there is a unique function $\Gamma \circ \psi$ for which the diagram commutes (with $f_\alpha = p_\alpha$), therefore it must be that $\Gamma \circ \psi = id_Z;$ that is the following diagram commutes:
+	\begin{equation*}
+	\begin{tikzcd}
+		Z \arrow{r}{p_\alpha}\arrow[swap]{d}{\Gamma} &X_\alpha& X\arrow[swap]{l}{\pi_\alpha} \arrow{d}{\psi}\\
+		X\arrow{ru}{\pi_\alpha}  \arrow[dashed, <->]{rr}{\psi \in C(X,Z)}[swap]{\Gamma \in C(Z,X)}&  & Z \arrow[swap]{lu}{p_\alpha}
+	\end{tikzcd}
+\end{equation*}
+	 Therefore $(X, \tau)$ is homeomorphic to $(Z, \tau),$ and so $X$ is uniquely determined by this property up to homeomorphism.\\
+\qed
+
+\medskip \noindent {\bf (12.7)}\ (Folland problem 4.32)\ 
+Show that a topological space $X$ is Hausdorff if and only
+if every net in $X$ converges to at most one point.
+(Hint in text.)
+\begin{proof}
+	First suppose that $X$ is not Hausdorff. Then there are points $x\neq y$ in $X$ so that there are no disjoint neighborhoods of $x, y$. Then consider the directed set $\scriptn_x \times \scriptn_y$, where $\scriptn_x$, $\scriptn_y$ are the families of neighborhoods of $x,y$, endowed with the preorder $E = (E_x, E_y),F = (F_x, F_y)$ in $\scriptn_x \times \scriptn_y$ and $(E_x \subset F_x \wedge E_y \subset F_y)$ if and only if $F \lesssim E$. To verify that this is a directed set, first see that if $(E_x, E_y) \in \scriptn_x \times \scriptn_y$, $E_x = E_x, E_y = E_y$ and so $E_x \subset E_x$ and $E_y \subset E_y$ where both are neighborhoods of $x$, $y$ respectively. Thus $(E_x, E_y) \lesssim (E_x, E_y),$ and so the $\lesssim$ is reflexive on $\scriptn_x \times \scriptn_y$. Now take $(E_x, E_y), (F_x, F_y), (Z_x, Z_y) \in \scriptn_x \times \scriptn_y$ so that $(E_x, E_y) \lesssim (F_x, F_y)$ and $(F_x, F_y) \lesssim (Z_x, Z_y)$. Then $Z_x \subset F_x$ and $F_x \subset E_x$ so
+	$Z_x \subset E_x$. Additionally $Z_y \subset F_y$ and $F_y \subset E_y$ so $Z_y \subset E_y$. Thus $(E_x, E_y) \lesssim (Z_x, Z_y)$ and the $\lesssim$ is transitive. Finally If $(F_x, F_y), (Z_x, Z_y) \in \scriptn_x \times \scriptn_y$ then
+	$F_x \cap Z_x$ is a neighborhood of $x$ and $Z_y \cap F_y$ is a neighborhood of $y$ thus $(F_x \cap Z_x,F_y \cap Z_y) \in \scriptn_x \times \scriptn_y$ and clearly $$F_x, Z_x \subset F_x \cap Z_x\;\;\wedge\;\; Z_y, F_y \subset F_y \cap Z_y.$$
+	Therefore 
+	$$(F_x, F_y), (Z_x, Z_y)\lesssim (F_x \cap Z_x,F_y \cap Z_y),$$
+	and thus $\scriptn_x\times\scriptn_y$ is a directed set under the relation $\lesssim.$
+
+	Now define the following net $\abr{x_\alpha : \alpha = (\alpha_x, \alpha_y) \in \scriptn_x \times \scriptn_y}$ so that $x_\alpha \in \alpha_x \cap \alpha_y$ where $\alpha_x \in \scriptn_x$ and $\alpha_y \in \scriptn_y$. For every $\alpha$ such an $x_\alpha$ exists because $X$ is not Hausdorff and so in particular for any two neighborhoods of these $x,y$ the intersection is non-empty. We claim that $\abr{x_\alpha}$ converges to $x$ and to $y$. Take any open neighborhood $U$ of $x$ and any open neighborhood $V$ of $y$. Since $\abr{x_\alpha}$ is defined over the directed set $\scriptn_x \times \scriptn_y$ take $\alpha_0 = (U, V)$. Then $x_{\alpha_0} \in U \cap V$ and for all $\alpha = (U', V')$ so that $\alpha_0 \lesssim \alpha $ then $x_\alpha \in U' \cap V' \subset U \cap V \subset U$ and $x_\alpha \in U \cap V \subset V$. Thus $\abr{x_\alpha}$ is eventually in every neighborhood of $x$ and is eventually in every neighborhood of $y$. Thus $\abr{x_\alpha}$ converges to $x$ and $y$. We now conclude that if $X$ is not Hausdorff then \textbf{not} every net in $X$ converges to at most one point.
+
+	If $X$ is Hausdorff then for every $x,y \in X$ there are open neighborhoods $U, V$ of $x,y$ (resp.) so that $U \cap V = \emptyset. $ Then suppose there were a net $\abr{x_\alpha}$ so that $\abr{x_\alpha}$ converged to at least two points $x,y$ in $X$. Then $\abr{x_\alpha}$ is eventually in every neighborhood of $x$ and eventually in every neighborhood of $y$. Since $X$ is hausdorff take $U,V$ open with $U \cap V = \emptyset$ and $x \in U$ and $y \in V$. Then $\abr{x_\alpha}$ is eventually in $U$ and eventually in $V$; that is there exists an $\alpha_U$ so that $x_{\alpha_U} \in U$ and there exists an $\alpha_V$ so that $x_{\alpha_V} \in V$ and additionally for all $\alpha$ so that $\alpha_U \lesssim \alpha$ $x_\alpha \in U$ and forall $\alpha$ so that $\alpha_V \lesssim \alpha$, $x_\alpha \in V$. Since $\abr{\alpha}$ is defined over a directed set there is a $\gamma$ so that $\alpha_V \lesssim \gamma$ and $\alpha_U \lesssim \gamma$. Therefore $x_\gamma \in U$ and $x_\gamma \in V$ so $x_\gamma \in V \cap U$ which is a contradiction to $U, V$ disjoint open neighborhoods of $x, y$. Therefore such a net could not exist and every net in $X$ converges to at most one point.
+\end{proof}
+
+\medskip \noindent {\bf (12.8)}\ (Folland problem 4.34)\ 
+Let a set $X$ have the weak topology generated by a family $\scriptf$
+of functions $f:X\to Y_f$, where each $Y_f$ is a topological space.
+Show that a net $\abr{x_\alpha: \alpha\in A}$ in $X$ converges to an element $x\in X$
+if and only if for each $f\in\scriptf$,
+the net $\abr{f(x_\alpha): \alpha\in A}$ converges to $f(x)$ in $Y_f$.
+\begin{proof}
+	First suppose that a net $\abr{x_\alpha}$ converges to an element in $X$ under the weak topology $\scriptt$.
+	Then $f \in \scriptf$ continuous if and only if $\abr{f(x_\alpha)}$ converges to $f(x)$ by proposition 4.19. Since
+	$\scriptt$ is the weakest topology so that every $f$ is continuous, it must be that for every $f$, $\abr{f(x_\alpha)}$
+	converges to $f(x).$
+
+	In the opposite light, if for every $f \in \scriptf$ suppose the net $\abr{f(x_\alpha)}$ converges to $f$, then $\abr{f(x_\alpha)}$ is eventually in every neighborhood $U$ of $f(x).$ Since $f$ is continuous, $f^{-1}(U)$ is a neighborhood of $x$, and $x_\alpha \in f^{-1}(U)$. Additionally if $\alpha \lesssim \gamma$ then $f(x_\gamma) \in U$, thus $x_\gamma \in f^{-1}(U),$ so $\abr{x_\alpha}$ is eventually in $f^{-1}(U)$ for every neighborhood $U$ of $f(x)$ for every $f \in \scriptf$. 
+
+	Now take any neighborhood $V$ of $x$ in the weak topology on $X$. The weak topology is generated by the collection of preimages of open sets of $f$ over all $f \in \scriptf$. Therefore the interior $V^o$ is the arbitrary union of sets of the form $\bigcap_{1}^j f_{\gamma_i}^{-1}(U_{\gamma_i})$ where $U_{\gamma_i}$ are open sets in $Y_{f_{\gamma_i}}$ and $\gamma_i \in \Gamma$ where $\Gamma$ is an index set for $\scriptf$. Since $x \in V^o$ there must be some $\gamma_1, \cdots, \gamma_j$, $j\in\mathbb{N}$, so that at least $x \in \bigcap_{1}^j  f_{\gamma_i}^{-1}(U_{\gamma_i}).$ In particuilar $f_{\gamma_i}(x) \in U_{\gamma_i}$ and $U_{\gamma_i}$ is an open neighborhood of $f_{\gamma_i}(x).$ By the previous logic (and the assumption), there is an $\alpha = \alpha_i$ so that $\abr{f_{\gamma_i}(x_\alpha)}$ is eventually in $U_{\gamma_i}.$ Then since $\{f_{\gamma_i}\}_1^j$ is finite, $\{\alpha_i\}_1^j$ is finite so there is a $\beta$ so that for every $i \in \{1, \cdots, j\}$, we have $\alpha_i \lesssim \beta.$\footnote{Using that $\alpha \in A$ where $A$ is some directed set.} Finally using the previous paragraph, for every $i\in \{1, \cdots, j\}$, $\abr{x_{\alpha}}$ is eventually\footnote{Take $\alpha_i$ for each $\gamma_i$ as shown for $\abr{f_{\gamma_i}(x_\alpha)}$.}  in $f_{\gamma_i}^{-1}(U_{\gamma_i})$ and moreover as $\alpha_i \lesssim \beta$ we have that when $\beta \lesssim \kappa$, $x_\kappa \in \bigcap_1^j f^{-1}_{\gamma_i}(U_{\gamma_i}) \subset V^o \subset V$. Therefore $\abr{x_\alpha}$ is eventually in $V$.
+
+	Since we showed that for every neighborhood $V$ of $x$, $\abr{x_\alpha}$ is eventually in $V$, it must be that $\abr{x_\alpha}$ converges to $x$ in the weak topology.
+\end{proof}
+
+\end{document}\end
+	

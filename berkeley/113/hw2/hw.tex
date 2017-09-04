@@ -1,0 +1,113 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%                      Homework _                            %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[letter]{article}
+
+\usepackage{lipsum}
+\usepackage[pdftex]{graphicx}
+\usepackage[margin=1.5in]{geometry}
+\usepackage[english]{babel}
+\usepackage{listings}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{framed} 
+\usepackage{amsmath}
+\usepackage{titling}
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{definition}{Definition}
+
+\newenvironment{menumerate}{%
+  \edef\backupindent{\the\parindent}%
+  \enumerate%
+  \setlength{\parindent}{\backupindent}%
+}{\endenumerate}
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%
+%% DOC INFO %%%
+%%%%%%%%%%%%%%%
+\newcommand{\bHWN}{2}
+\newcommand{\bCLASS}{MATH 113}
+
+\title{\bCLASS: Homework \bHWN}
+\author{William Guss\\26793499\\wguss@berkeley.edu}
+
+\fancyhead[L]{\bCLASS}
+\fancyhead[CO]{Homework \bHWN}
+\fancyhead[CE]{GUSS}
+\fancyhead[R]{\thepage}
+\fancyfoot[LR]{}
+\fancyfoot[C]{}
+\usepackage{csquotes}
+
+%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+\begin{menumerate}
+\setcounter{enumi}{31}
+	\item Let $\mathcal{R}$ be the following relation. We say that $x \mathcal{R} y \in \mathbb{R}$ if and only if $|x -y| \leq 3$. We claim that the relation is not an equivalence relation.
+
+	\begin{proof}
+		Let $x = 0$, $y = 3$, $z =6.$ It is obvious that $x\mathcal{R}y$ and $y\mathcal{R}z$, but since $|z-x| = 6 \not\leq 3$ so it is not the case that $x \mathcal{R} z$. Therefore the relation is not transitive by counter example, and thereby is not an equivalence relation.
+	\end{proof}
+
+	\setcounter{enumi}{3}
+	\item We compute the result of $(-i)^{35}.$ 
+	\begin{equation*}
+		(-i)^{35} = (-1)^{35}i^{35} = -i^3 = -i^2i = i.
+	\end{equation*}
+	\setcounter{enumi}{7}
+	\item We compute the result of $(i+1)^3$ by first establishing the coefficients of pascals triangle as follows.
+	\begin{equation*}
+		\begin{array}{ccccccc}
+			{(a+b)}^0&	&&1 \\
+			{(a+b)}^1&      & 1 & &1 &   &  \\
+			{(a+b)}^2&  & 1 & 2 & 1 &    \\
+			{(a+b)}^3& 1 & 3 & & 3 & 1 & \\
+			{(a+b)}^4&     1 & 4 & 6 & 4 & 1
+		\end{array}
+	\end{equation*}
+	Therefore we apply the rule to our equation and yield
+	\begin{equation*}
+		(i+1)^3 = 1 +3i + 3i^2 + i^3 = -2 + 3i - i = -2 +2i.
+	\end{equation*}
+
+	\setcounter{enumi}{18}
+	\item We find all solutions to $z^3 = -27i.$ First let $z = re^{i\theta}.$ Then $r^3e^{i3\theta} = 27e^{-i\pi/2}$. Therefore $r = 3$ and $\3\theta = -\pi/2$ gives the principle solution $\theta^* = -\pi/6.$ It also follows however that $\theta = -\pi/6 +2k\pi/3$ are all valid solutions since in the cube 
+	\begin{equation*}
+		{e^{i\theta}}^3 = {e^{-i\pi/6 +i2k\pi/3}}^3 = e^{-i\pi/2 + i2k\pi} = e^{-i\pi/2}.
+	\end{equation*}
+
+	Hence the following set satisfies $z^3 = -27i$
+	\begin{equation*}
+		S = \left\{3\exp\left({i\pi\left(\frac{2k}{3} - \frac{1}{6}\right)}\right)\ \Big|\ k \in \mathbb{Z}.\right\}.
+	\end{equation*}
+
+	\setcounter{enumi}{20}
+	\item We find all solutions to $z^6 = -64$ using the same logic as before. Observe that $2^6 = 64,$ and $e^{i\pi} +1 = 0$ (\emph{magic!!!}). Then
+	\begin{equation}
+		S = \left\{2\exp\left({i\pi\frac{1 + 2k}{6}}\right)\ \Big|\ k \in \mathbb{Z}.\right\}
+	\end{equation}
+	satisfies $z \in S \implies z^6 = -64.$
+
+
+\end{menumerate}
+
+%%%%%%% Be sure to set the counter and use menumerate
+
+\end{document}	

@@ -1,0 +1,445 @@
+\documentclass[11pt]{amsart}
+
+\usepackage{amsmath,amsthm}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{enumerate}
+\usepackage{fullpage}
+% \usepackage{euscript}
+% \makeatletter
+% \nopagenumbers
+\usepackage{verbatim}
+\usepackage{color}
+\usepackage{hyperref}
+
+\usepackage{fullpage,tikz,float}
+%\usepackage{times} %, mathtime}
+
+\textheight=600pt %574pt
+\textwidth=480pt %432pt
+\oddsidemargin=15pt %18.88pt
+\evensidemargin=18.88pt
+\topmargin=10pt %14.21pt
+
+\parskip=1pt %2pt
+
+% define theorem environments
+\newtheorem{theorem}{Theorem}    %[section]
+%\def\thetheorem{\unskip}
+\newtheorem{proposition}[theorem]{Proposition}
+%\def\theproposition{\unskip}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\def\theconjecture{\unskip}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{sublemma}[theorem]{Sublemma}
+\newtheorem{fact}[theorem]{Fact}
+\newtheorem{observation}[theorem]{Observation}
+%\def\thelemma{\unskip}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+%\def\thedefinition{\unskip}
+\newtheorem{notation}[definition]{Notation}
+\newtheorem{remark}[definition]{Remark}
+% \def\theremark{\unskip}
+\newtheorem{question}[definition]{Question}
+\newtheorem{questions}[definition]{Questions}
+%\def\thequestion{\unskip}
+\newtheorem{example}[definition]{Example}
+%\def\theexample{\unskip}
+\newtheorem{problem}[definition]{Problem}
+\newtheorem{exercise}[definition]{Exercise}
+
+\numberwithin{theorem}{section}
+\numberwithin{definition}{section}
+\numberwithin{equation}{section}
+
+\def\reals{{\mathbb R}}
+\def\torus{{\mathbb T}}
+\def\integers{{\mathbb Z}}
+\def\rationals{{\mathbb Q}}
+\def\naturals{{\mathbb N}}
+\def\complex{{\mathbb C}\/}
+\def\distance{\operatorname{distance}\,}
+\def\support{\operatorname{support}\,}
+\def\dist{\operatorname{dist}\,}
+\def\Span{\operatorname{span}\,}
+\def\degree{\operatorname{degree}\,}
+\def\kernel{\operatorname{kernel}\,}
+\def\dim{\operatorname{dim}\,}
+\def\codim{\operatorname{codim}}
+\def\trace{\operatorname{trace\,}}
+\def\dimension{\operatorname{dimension}\,}
+\def\codimension{\operatorname{codimension}\,}
+\def\nullspace{\scriptk}
+\def\kernel{\operatorname{Ker}}
+\def\p{\partial}
+\def\Re{\operatorname{Re\,} }
+\def\Im{\operatorname{Im\,} }
+\def\ov{\overline}
+\def\eps{\varepsilon}
+\def\lt{L^2}
+\def\curl{\operatorname{curl}}
+\def\divergence{\operatorname{div}}
+\newcommand{\norm}[1]{ \|  #1 \|}
+\def\expect{\mathbb E}
+\def\bull{$\bullet$\ }
+\def\det{\operatorname{det}}
+\def\Det{\operatorname{Det}}
+\def\rank{\mathbf r}
+\def\diameter{\operatorname{diameter}}
+
+\def\t2{\tfrac12}
+
+\newcommand{\abr}[1]{ \langle  #1 \rangle}
+
+\def\newbull{\medskip\noindent $\bullet$\ }
+\def\field{{\mathbb F}}
+\def\cc{C_c}
+
+
+
+% \renewcommand\forall{\ \forall\,}
+
+% \newcommand{\Norm}[1]{ \left\|  #1 \right\| }
+\newcommand{\Norm}[1]{ \Big\|  #1 \Big\| }
+\newcommand{\set}[1]{ \left\{ #1 \right\} }
+%\newcommand{\ifof}{\Leftrightarrow}
+\def\one{{\mathbf 1}}
+\newcommand{\modulo}[2]{[#1]_{#2}}
+
+\def\bd{\operatorname{bd}\,}
+\def\cl{\text{cl}}
+\def\nobull{\noindent$\bullet$\ }
+
+\def\scriptf{{\mathcal F}}
+\def\scriptq{{\mathcal Q}}
+\def\scriptg{{\mathcal G}}
+\def\scriptm{{\mathcal M}}
+\def\scriptb{{\mathcal B}}
+\def\scriptc{{\mathcal C}}
+\def\scriptt{{\mathcal T}}
+\def\scripti{{\mathcal I}}
+\def\scripte{{\mathcal E}}
+\def\scriptv{{\mathcal V}}
+\def\scriptw{{\mathcal W}}
+\def\scriptu{{\mathcal U}}
+\def\scriptS{{\mathcal S}}
+\def\scripta{{\mathcal A}}
+\def\scriptr{{\mathcal R}}
+\def\scripto{{\mathcal O}}
+\def\scripth{{\mathcal H}}
+\def\scriptd{{\mathcal D}}
+\def\scriptl{{\mathcal L}}
+\def\scriptn{{\mathcal N}}
+\def\scriptp{{\mathcal P}}
+\def\scriptk{{\mathcal K}}
+\def\scriptP{{\mathcal P}}
+\def\scriptj{{\mathcal J}}
+\def\scriptz{{\mathcal Z}}
+\def\scripts{{\mathcal S}}
+\def\scriptx{{\mathcal X}}
+\def\scripty{{\mathcal Y}}
+\def\frakv{{\mathfrak V}}
+\def\frakG{{\mathfrak G}}
+\def\aff{\operatorname{Aff}}
+\def\frakB{{\mathfrak B}}
+\def\frakC{{\mathfrak C}}
+
+\def\symdif{\,\Delta\,}
+\def\mustar{\mu^*}
+\def\muplus{\mu^+}
+
+\def\soln{\noindent {\bf Solution.}\ }
+
+
+%\pagestyle{empty}
+%\setlength{\parindent}{0pt}
+
+\begin{document}
+
+\begin{center}{\bf Math 202A --- UCB, Fall 2016 --- William Guss}
+\\
+{\bf Problem Set 11, due Wednesday November 9}
+\end{center}
+
+
+\medskip \noindent {\bf (11.1)}\ (Folland problem 4.3)\ Show that every metric space is normal.
+\begin{proof}
+ 	Let $(X, \rho, \tau)$ be a toplogical metric space with the standard open ball toplogy, and $\rho: X \to \mathbb{R}$ the metric. We wish to show that for any disjoint closed sets $A, B \in X$ there are disjoint open sets with $A \subset U$ and $B \subset V$. 
+
+ 	Define the following function
+ 	\begin{equation*}
+ 		dist: P(X) \times X \to \mathbb{R}
+ 	\end{equation*}
+ 	so that $dist(A,x) = \inf_{y \in A} \rho(x,y).$ First we claim that the metric is a continuous function. For any $\epsilon$ and any $x,y \in X$ such that if $\rho(x,y) < \epsilon$ then $\rho(x,y) < \epsilon;$ that is tautologically speaking, $\rho$ is continuous with respect to itself. Next we claim that $dist$ is a continuous function in its second component; that is $\dist_1 =dist \circ(A, \cdot)$ is continuous. Suppose that $\rho(x,y) < \epsilon$, then
+ 	\begin{equation*}
+ 	\begin{aligned}
+ 	|dist_1(x) - dist_2(y)| &= \left|\inf_{z \in A} \rho(x,z) - \inf_{z \in A} \rho(y,z)\right| \\
+ 	&\leq \sup_{z \in A} |\rho(x,z) - \rho(y,z)|\\
+ 	&\leq  \sup_{z \in A} |\rho(x,y) + \rho(y,z) - \rho(y,z)|\\
+ 	&= \sup_{z \in A} |\rho(x,y)|  < \epsilon.
+ 	\end{aligned}
+ 	\end{equation*}
+ 	Which follows by the traingle inequality and the properties of infimum. \footnote{Note: The property that for two PSD functions $\inf f - \inf g \leq \sup (f -g)$ follows from Proposition 2.18 of Foundations of Analysis.  (https://www.math.ucdavis.edu/~hunter/m125b/ch2.pdf)}
+ 	Thus $dist_1$ is continuous for any set $A$.
+
+ 	Now consider the set $U = \{x \in X\ |\ dist(A,x)< dist(B,x)\}$ and $V =  \{x \in X\ |\ dist(B,x)< dist(A,x)\}.$ We claim that these sets are open. First consider $g_1 = dist(B,x) - dist(A, x);$ this function is continuous as it is the difference of two continuous functions and the preimage of $(0, \infty)$ is exactly $U;$ that is if $dist(B,x) - dist(A,x) > 0$ then (iff) $dist(B,x) > dist(A,x)$. The pre image of open sets is open and thus $U$ is open. Next consider the function $g_2 = dist(A,x) - dist(B,x).$ The preimage of $(0, \infty)$ is exactly $V$ by the same argument and so $V$ is open.
+
+ 	If $x \in A$ then $dist(A,x) = 0.$Suppose that $dist(B,x) = 0,$ then there must be for every $\epsilon$ a $y \in B$ so that $dist(x,y) < \epsilon.$ Then the $\epsilon$ neighboorhood of $y$ without $x$ intersects with $B$. Since $\epsilon$ was arbirary, we have that for every neighboorhood of $x$, we can find an $\epsilon$ ball inside that neighboorhood so that its intersection with $B$ is non-empty, and thus $x \in A$ is an accumulation point of $B$. But since Proposition 4.1 says that $A = A \cup acc(A)$ and $B = B \cup acc(B)$ by their closedness, $acc(A) \cap acc(B) \neq \empty$ and so $A \cap B \neq \empty$; this is a contradiction. Therefore if $x \in A$ then $dist(B,x) > dist(A,x).$ The same argument holds for $x \in B$. Therefore $A \subset U$ and $B \subset V.$
+
+ 	Lastly we will show that $U \cap V = \emptyset.$ If $x \in U$ then $dist(A,x) < dist(B,x)$ so it could not be that $dist(B,x) < dist(A,x).$ In the other direction if $x \in V$ then $dist(B,x) < dist(A,x)$ so it could not be that $dist(A,x) < dist(B,x)$. Therefore $x \in U \iff x \notin V$ and $U \cap V = \emptyset.$
+
+ 	Therefore for every disjoint pair of closed sets $A,B \subset X$ there are open sets $U, V$ disjoint so that $A \subset U$ and $B \subset V$; hence $X$ is normal.
+ \end{proof}
+\medskip \noindent {\bf (11.2)}\ (Folland problem 4.5)\ Show that every separable metric space is second countable.
+\begin{proof}
+	Let $(X, \rho, \tau)$ be a separable metric space with the standard open ball toplogy. We would like to show that there is a $\scriptb \subset \tau$ so that $\scriptb \sim \mathbb{N}$ and for every $x \in X$ there is a $\scriptn_X \subset \scriptb$ which is a neighborhood base of $x$.
+
+	Since $X$ is separable let $A$ be a countable dense subset. Then take $\scriptb$ to be the set of balls centered at $\alpha \in A$ with $\rho$-radius in $\mathbb{Q}.$ Now we claim that for any $x \in X$ and any $U \in \tau$ with $x \in U$ there is a $V \in \scriptb$ so that $x \in V \subset U$. By $A$ dense, $\overline{A} = X = A \cup acc(A).$ We will first examine the accumulation points of $A$.
+
+	If $x \in acc(A)$ then for every neighboorhood of $x$, say $U$, we have $U^o \in \tau$ with
+	$x \in U^o$ and $ (U \setminus \{x\}) \cap A \neq \emptyset$. In particular for every $U$, $U^o$ is also a neighboorhood with $x \in V^o \subset V$, and so its intersection with $A$ (minus $\{x\}$) is non-empty by $x$ an accumulation point. Thus WLOG assume $U$ is open.
+
+	Now by $U$ open and $U \in \tau$ we have that there is an $r >0$ so that the ball of radius $r$, $B_r(x)$, centered at $x$ is contained in $U$, furthermoire there is a rational $q < r$ so that $B_q(x) \subset B_r(x)$ obviously. Now $B_{q/2}(x)$ is a neighboorhood of $x$ and its intersection with $A$ is non-empty (and not $x$). Thus there is an $\alpha \in A$ so that $\alpha \in B_{q/2}(x)$. Since $\rho(\alpha, x) < q/2$ and if $y \in X$ is such that $\rho(\alpha, y) < q/2$ then $$\rho(x, y) \leq \rho(x, \alpha) + \rho(\alpha, y) < q.$$
+	Therefore $B_{q/2}(\alpha) \subset B_{q}(x)$ and $x \in B_{q/2}(\alpha).$ Finally by $ B_{q}(x) \subset U$ we have that $B_{q/2}(\alpha) \subset U.$
+
+	Now take the following collection let $\scriptn_x \subset \scriptb$ be the collection of all such balls; that is, for every neighboorhood of $x$, $U$, there is a $B_{q/2}(\alpha) = V  \in \scriptn_x$ so that $V \subset U$. And for all $V \in \scriptn_x$, $x \in V$. This collection exists by the above constructive proof and is countable since $\scriptb$ is countable. 
+\end{proof}
+\medskip \noindent {\bf (11.3)}\ (Folland problem 4.6)\ Let $\scripte$ be the collection of all intervals $(a,b] \subset \mathbb{R}$ such that $a,b \in \reals$ and $a <b$. (Thus $\pm \infty$ are excluded.) \\
+ \textbf{(a)} Show that $\scripte$ is a base for a topology $\tau$ on $\mathbb{R}$ in which each element of $\scripte$ is both open and closed.
+ \begin{proof}
+ 	If $\scripte$ is a base for a toplogy $\tau$ on $\mathbb{R}$ then for every $U \in \tau$ which contains a point $x$ there is a $E \in \scripte$ so that $x \in E \subset U$. Additionally $\scripte \subset \tau,$ thus every $E$ is open. 
+
+ 	Now for any $E= (a, b]$, $\mathbb{R} \setminus E = (-\infty, a] \cup (b, \infty).$ Consider the families of opensets 
+ 	\begin{equation*}
+ 		\begin{aligned}
+ 			\scriptl_E = \{(a - n, a -n +1]\ :\ n= 1, 2, \dots\} \\
+ 			\scriptr_E = \{(b +n -1, b+n]\ : n = 1, 2, \dots\}	
+ 		\end{aligned}
+ 	\end{equation*}
+ 	Then it is immediate that
+ 	\begin{equation*}
+ 		\mathbb{R} \setminus E = \left(\bigcup_{F \in \scriptl_E} F\ \right) \cup \left(\bigcup_{G \in \scriptr_E} G\right)
+ 	\end{equation*}
+ 	and so $\mathbb{R}\setminus E$ is the aribrary union of open sets and so must it must be open. By definition the compliment of an open set is closed so $\mathbb{R} \setminus (\mathbb{R} \setminus E)) = E$ is closed. 
+
+ 	Therefore for any $E \in \scripte$, $E$ is clopen.
+ \end{proof}
+\noindent \textbf{(b)} Show that $\tau$ is first countable but not second countable.
+\begin{proof}
+	First for any $x \in \mathbb{R}$ take the subfamily $\scriptn_x \subset \scripte$ of shrinking rational intervals around $x$; that is,
+	\begin{equation*}
+		\scriptn_x = \{(x-p, x]\ :\ p \in \mathbb{Q} \setminus\{0\}\}.
+	\end{equation*}
+	Then for any $U \in \tau$ containg $x$, from $\scripte$ a base for $\tau$ we have that there is an $(a, b] \subset U$ so that $x \in (a, b]$. Then $a < x \leq b$, but by the construction of $\mathbb{R}$ there is a rational $q$ so that $a < x - q < x$ (equivalently there is a rational so that $a-x < -q < 0$) so there is a $V \in \scriptn_x$ so that $x \in V \subset (a,b] \subset U$, and so $\scriptn_x$ is a countable base. Since $x$ was arbitrary, $X$ is first countable.
+
+	Importantly, for every $x$  and $a < x$ the set $(a, x]$ is an open neighboorhood of $x$ so every neighboorhood base of $x$ must contain some $U_x \subset (a, x]$. That is any base of the topology must therefore contain all such $U_x$. Since there are uncountably many $U_x$ then a subset of any base of the topology is bijective to $\mathbb{R}$ and so any base must be uncountable. Therefore $(\mathbb{R}, \tau)$ is not second countable.
+\end{proof}
+\noindent \textbf{(c)} Show that $\mathbb{Q}$ is a dense subset of $\mathbb{R}$ with respect to $\tau.$
+\begin{proof}
+	We need show that the closure of $\mathbb{Q}$ is the wholse space $\mathbb{R}$. Nameley $\overline{Q} = Z = \mathbb{Q} \cup acc(\mathbb{Q}.$
+
+	If $x \in \mathbb{R}$ and $x \notin \mathbb{Q}$ we need show that $x \in acc(\mathbb{Q}).$ Take any open neighborhood of $x$, say $U$. Then by $\scripte$ a base, there is a unique\footnote{The subset must have a supremum, $x$ and because $\tau$ contains all of the open intervals on $\mathbb{R}$, $\tau$ is hausdorf and this supremum is unique.} $(a,b] \subset U$ so that $x \in (a,b].$ Then we claim that $((a, b] \setminus \{x\} )\cap \mathbb{Q} \neq \emptyset.$ Since $x \notin \mathbb{Q}$ and $a < x \leq b$ then $(a,b] \setminus \{x\} = (a,b) \neq \emptyset$. Then by the properties of $\mathbb{R}$ there is a rational between any two numbers \footnote{This is not a toplogical fact and can be proven using Dedekind cuts and the ordering of $\mathbb{R}$.}, thus $(a,b) \cap \mathbb{Q} \neq \emptyset.$ This holds for all neighborhoods and $x \in acc(\mathbb{Q}).$
+
+	Therefore $x \in \mathbb{R} \implies x \in \mathbb{Q} \cup x \in acc(\mathbb{Q})$ and $\overline{\mathbb{Q}} = \mathbb{R}.$ 
+\end{proof}
+\medskip \noindent {\bf (11.4)}\ (Folland problem 4.7)\ Let $X$ be a topological space. Let $S = (x_n : n \in \mathbb{N})$ be a sequence of elements of $X$. Show that if $X$ is first countable, then a point $x \in X$ is a cluster point of the sequence if and only if some subsequence of $S$ converges to $x.$
+\begin{proof}
+	If there is a subsequence $x_{n_j}$ so that $x_{n_j}$ converges to $x$ then for every open neighborhood of $X$ say $U$ there is a $J$ so that for all $j \geq J$, $x_{n_j} \in U.$ Since $\{x_{n_j}\ : j \geq J\}$ is infinite then for every neighborhood $U$ of $x$, $x_k \in U$ for infiniteley many $k$ (take $k = n_j$, $j \geq J$), and $x$ is a cluster point of the sequence.
+
+	In the other direction, suppose that $x$ is a cluster point of $X$. By the first countability of $X$ take the countable neighborhood base of $x$, $\scriptn_x$, with members $V_j$.  Without loss of generality we can let $V_j$ be a nested sequence by letting each $V_j$ be the finite intersection of the all of the previous $j$ in the sequence\footnote{See page 116 of Folland}. Then for every neighborhood of $X$, say $U$ there $x_k \in U$ for infiniteley many $k$. Additionally we have that there exists an $j$ so that $x \in V_j \subset U$. 
+
+	Pick $x_{n_1}$ to be an element of the sequence $S$ in  $V_1$. We can do this since there infintely many such $x_j$ in $V_1$. Pick $x_{n_2} \in V_2$ with the restriction that $n_2 > n_1.$ We can again do this because there are infiniteley many $j$ so that $j \geq n_1$ and $x_j \in V_2$.
+	In general pick $x_{n_p}$ so that $n_p > n_{p-1}$ and $x_{n_p} \in V_p$. This is possible because there are infintieley many $j$ so that $j \geq n_{p-1}$ and $x_j \in V_p$. Form a subsequence $x_{n_p}$ under this process.
+
+	Then for every neighborhood $U$ of $x$ there is a $V_p$ so that $x \in V_p \subset U$ and additionally for all $q \geq p $ $x_{n_q} \in V_q$ by our nested construction of $\scriptn_x$. Hence $x_{n_q} \in U$. Therefore the subsequence converges to $x$.
+\end{proof} 
+\medskip \noindent {\bf (11.5)}\ (Folland problem 4.9)\ 
+	(Partnered With Lucas) \ Let $X$ be a linearly ordered set, equipped with the ordered topology, $\tau$. \\
+\textbf{(a)} Show that if $a,b \in X$ and $a< b$ then there exist pairwise disjoint open sets containing $a,b$ respectiveley, such that $x < y$ wherenever $x \in U$ and $y \in V$.
+\begin{proof}
+	Let $a <b$. We will break this up into two cases. First suppose that there is no $c$ so that $a < c < b$.
+	Then take $V = \{x: x > a\}$ and $U =\{x : x < b\}$ open then $a < b$ so $a \in U$ and $b >a$ so $b \in V$.
+	since there are no $c$ with $a <c < b$ and thus $U \cap V = \emptyset$. Furthermore if $x \in U$ then $x < b$ and if $y \in V \setminus\{x\}$ we have that $b < y$. Thus $x < y$ for all $x \in U$ and for all $y \in V$ using transitivity.
+
+	  Suppose there is such a $c$. Then let $U = \{x: x < c\}$ and $V = \{x:x >c\}.$ We know that $U \cap V = \{x: x <c \text{ and } x > c \} = \emptyset.$ These sets are open and $a <c$ implies $a \in U$ and $b > c$ implies $b \in V$. Take any $x \in U$ and any $y \in V$ then $x < c$ and $ c < y$ and by transitivity $x < y$.
+
+	  Thus for any $a,b \in X$ with $a< b$ there are disjoint opensets containing $a,b$ respectively.
+	%Recall that by the definition of the ordered topology, every open set is generated by the sets $\{x\ :\ x > a\}$ and $\{x\ :\ x < a\}$ for all $a \in X$. We will use the notation $\{x < a\}$ and $\{x > a\}$ coorespondingly where it is implicit that $x$ is the free variable.
+
+	% Now if $a <b$, let
+	%$U = \{x < b\} \setminus \{x > a\}$ and $V = \{x >a \} \setminus \{x < b\}$. We first claim that these sets are in the toplogy of $X$ and then show disjointness and inclusion.
+
+	%First for any $z$ then $X \setminus \{x < z\} \ni y$ implies that $ y \not < z.$ Thus either $y = z$ or $ z < y$.
+	%Then $X \setminus \{x < z\} = \{x  >z\} \cup \{z\}$, and so it remains to show that $\{z\}$ is in the topology of $X$. F
+
+%	Thus if $a <b$ take $S_1 = \{x\ :\ x < b\}$ and $S_2 = \{x\ :\ x > a\}$. Then
+
+%	We claim that $U\cap V = \emptyset.$ Suppose there were a $y \in U \cap V$. Then $y < a$ and $ y > b$. Using the linear ordering of $X$, we know by transitivity that $y < a < b < y$. 	Thus $y < y$ and tautologically $y < y$. By the antisymmetry of a linearly ordered set $y < y$ and $y < y$ cannot both be true, so one must be false. Thuse $ y \not< y$ contradicting $y < y$, which contradicts $y < a < b <y$ which contradicts $y \in U \cap V$.
+\end{proof}
+\noindent \textbf{(a')} ..
+\begin{proof}
+	Suppose that $\tau'$ is another topology with the property listed adn $\tau' \subset \tau$. Then
+	we will show that $\scripte \in \tau'$ where $\scripte$ are the generating sets in the problem statement, but then
+	since $\tau$ is generated by $\scripte$, $\tau$ is the smallest topology containing $\scripte,$ which will contradict $\tau' \subset \tau.$
+
+	First let $b$ be given in $\mathbb{R}$. Then for every $c < b$ there are disjoint open sets (in $\tau'$) , $L(c)$, $R(c)$ containing $c$ and $b$ respectiveley so that $L(c) \cap R(c) = \emptyset$. Then for every $c$, and for every $x \in L(c)$ and for every $y \in R(c)$, $x <y$; in particular every element of every $L(c)$ is strictly less  than $b$. Thus
+	\begin{equation*}
+		\bigcup_{c < b} L(c) = \{ x : x <b\}
+	\end{equation*}
+	is an open set in $\tau'$. Applying the symmetric argument, for every $c > b$ there are disjoint open sets (in $\tau'$) , $L(c)$, $R(c)$ containing $b$ and $c$ respectiveley so that $L(c) \cap R(c) = \emptyset$. Then for every $c$, and for every $x \in R(c)$ and for every $y \in L(c)$, $y < x$; in particular every element of every $R(c)$ is strictly greater than $b$. Thus
+	\begin{equation*}
+		\bigcup_{ b < c} R(c) = \{ x : x > b\}
+	\end{equation*}
+	is an open set in $\tau'$. Since $b$ was arbitrary, we have that $\scripte \subset \tau'$ which contradicts $\tau' \subset \tau$. Thus $\tau \subset \tau'.$
+\end{proof}
+
+\noindent \textbf{(b)} ..
+\begin{proof}
+	If $Y \subset X$, then let $\scripte_Y$ be the family of sets $\{x \in Y\ | x > b, b \in Y\}$ and $\{x \in\ Y\ | x < b, b \in Y\}$. Then let $\tau^Y$ be the order topology generated by $\scripte_Y$, and$\tau^X$ be theorder topology generated on the whole space by the family $\scripte_X$.  Next let $\tau_Y = \{U \cap Y\ : U \in \tau^X\}$
+	be the relative topology on $Y$ with respect to $\tau_X.$
+
+	It is given that $\tau^Y$ is the smallest topology which contains $\scripte_Y$. Now take consider $\mathfrak{s} = \{U \cap Y\ : U \in \scripte_X\}.$ Then if $E \in \mathfrak{s}$, we have that for some $b \in Y$ either
+	$E = \{x \in X \cap Y = Y\ :\ x > b\}$ or $E = \{x \in X \cap Y\ :\ x < b\}$. Thus $\mathfrak{s} \subset \scripte_Y$. In the reverse direction, if $E \in \scripte_Y$, we have that for some $b \in Y$ either
+	$E = \{x \in Y\ :\ x > b\}$ or $E = \{x \in Y\ :\ x < b\}$. Thus $\mathfrak{s} \supset \scripte_Y$. Thus $\mathfrak{s} = \scripte_Y.$ But then $\scripte_Y \subset \tau_Y$ and so $\tau_Y \supset \tau^Y;$ this completes the proof.
+\end{proof}
+\noindent \textbf{(b')} ..
+\begin{proof}
+	Let $X =\reals^2$ be endowed with the following ordering. We say $a < b$, $a,b \in \reals^2$ iff
+	$\pi_1(a) < \pi_1(b)$ or $(\pi_1(a) =\pi_1(b) \wedge \pi_2(a) < \pi_2(b).)$ This ordering is a complete, transitive, and antisemetric so
+	we can generate the order topology $\tau_X$ on $X$. Then we let $Y$ be unit square in this space, and $\scripte_Y$ be the family of sets of the form $\{x \in Y:x >b, b \in Y\}$ and $\{x \in Y: x < b, b \in Y\}$ which generate the order topology $\tau^Y.$
+
+	Suppose $\gamma \in [0,1]$ is a constant and $U_Y = \{\gamma\} \times [0, 1/2).$ We can express $U_Y$ as $\{\gamma\} \times (-1/2, 1/2) \cap Y$ and $\{\gamma\} \times (-1/2, 1/2) \ = \{\gamma\} \times (-1/2, \infty) \cap \{\gamma\} \times (-\infty, 1/2)$ is the interesection of open sets in $\tau_X.$ Therefore $U_Y$ is in the relative topology $\tau_Y$. 
+
+	Suppose $U_Y$ were in the order topology
+	then there must be an open set in the base of $\tau^Y$, say $(\gamma, 0) \in O$, so that $O \subset U_Y$ by Proposition $4.3$. Furthermore
+	as Proposition 4.4 gives that $O$ is the union of finiteley many interesections of $\scripte_Y$,
+	but this could not because $U_Y$ can only be constructed using infiniteley many intersections.
+
+	Therefore the order topology os strictly weaker than the relative topology.
+
+\end{proof}
+
+\noindent \textbf{(c)} ..
+\begin{proof}
+	Let $a < b, a,b \in \mathbb{R}.$ Then we will show that the order topology $\tau$ contains the generating sets of the standard topology $\kappa$ and visa versa. Thus they are the smallest two sets which contain their complimentary generating sets so the must be equal.
+
+	First recall that $\scripte_\kappa = \{(a,b) : a,b \in {\mathbb{R}}\} \subset \kappa$ generates $\kappa,$ and $$\scripte_\tau = \{(a,b) : a \in \mathbb{R}\wedge b = \infty \vee a = -\infty \wedge b \in \mathbb{R}\}$$ Then we have for any $c \in \mathbb{R}$, $(-\infty,c) = \bigcup_{d < c} (d,c)$ and $(c, \infty) = \bigcup_{d >c} (c,d)$;
+	thus for any $E \in \scripte_\gamma$ we have that $E \in \kappa.$ Otherwise, if $E \in \scripte_\kappa$ we know that $E = (a,b) = (-\infty, b) \cap (a, \infty) \in \tau$. 
+
+	Therefore $\tau \subset \kappa \subset \tau$ and $\tau = \kappa.$
+\end{proof}
+
+\medskip \noindent {\bf (11.6)}\ (Folland problem 4.10) Let $(X, \tau)$ be a topological space. \\
+\textbf{(a)} Show that $X$ is connected if and only if $\emptyset$ and $X$ are the only clopen subsets of $X$.
+\begin{proof}
+	For the sake of contradiciton, suppose that $X$ is not connected. Then there are non-empty open sets so that $U \cap V = \emptyset$ and $U \cup V = X.$ Since $X$ is clopen, then $X \cap U$ is open. additionally $C \cap V$ is open. Next $X \setminus V = (V \sqcup U) \setminus V = (V \setminus V) \sqcup (U \setminus V) = 
+	U \setminus V = U$ by disjoitness; that is $U$ is $V$ compliment and so $U$ is closed. Finally $U$ is a clopen set which is non-empty and not the whole set $X$ which contradicts our hypothesis that $X, \emptyset$ are the only clopen sets; thus $X$ must be connected.
+\end{proof}
+\noindent \textbf{(b)} Suppose that $E_\alpha$ are connected subsets of $X$ indexed by some set $\scripta\ni \alpha$. If the intersection of them is not empty, then the union of all of them is connected.
+\begin{proof}
+	Given $\{E_\alpha\}$ as above we would like to show
+	\begin{equation*}
+		\bigcap_{\alpha \in \scripta} E_\alpha = F \neq \emptyset \implies \bigcup_{\alpha \in \scripta} E_\alpha = G \text{ connected}
+	\end{equation*}
+	Suppose for the sake of contradiction that $G$ is not connected. Then there exist $U, V \in \tau$ so that $A \sqcup B = G$ and $A,B \neq \emptyset,A \cap B = \emptyset.$
+
+	 We claim that there does not exist an $\alpha \in \scripta$ so that $E_\alpha$ intersects both  $A$ and $B$.  If this were true then $E_\alpha \cap A$ is a non-empty open set in the relative topology $\tau_{E_\alpha}$, since the relative topology inherits its open sets from the topology via intersection. Additionally $E_\alpha \cap B$ is a non-empty open set in $\tau_{E_\alpha}$ and thus its compliment is closed. Thus $E_\alpha \cap A$ is a non-empty clopen strict subset of $E_\alpha$, but this contradicts $E_\alpha$ connected by (a). Therefore $E_\alpha \subset A$ or $E_\alpha \subset B$ but both cannot be true.
+
+	 Let $\scripta_A = \{\alpha\ :\ E_\alpha \subset A, E_\alpha \cap B =\emptyset\}$ and $\scripta_B = \{\alpha\ :\ E_\alpha \subset B, E_\alpha \cap A = \emptyset\}$. By the above logic $\scripta = \scripta_A \sqcup \scripta_B$ and additionally
+	 \begin{equation*}
+	 	G = \left(\bigcup_{\alpha\in\scripta_A} E_\alpha\right) \sqcup \left(\bigcup_{\alpha \in \scripta_B} E_\alpha \right) = A \sqcup B.
+	 \end{equation*}
+	 Now if $E_\alpha \in \scripta_A$ and $E_\beta \in \scripta_B$ then $E_\alpha \subset A$ and $E_\beta \subset B$ implies that $E_\alpha \cap E_\beta \subset A \cap B = \emptyset.$ Thus \begin{equation*}
+	 	\bigcap_{\gamma \in \scripta} E_\gamma \subset E_\alpha \cap E_\beta = \emptyset
+	 \end{equation*}
+	 therefore $F = \emptyset$ which contradicts $F \neq \emptyset.$ Thus $G$ must be connected.
+\end{proof}
+\noindent \textbf{(c)} Show that the closure of any connected set is connected.
+\begin{proof}
+Let $(E, \tau_E)$ be a connected topological subspace with $\tau_E$ the subspace topology. Suppose that $(cl(E), \tau_{cl(E)})$ is not connected, for the sake of contradiction. 
+
+There are then clopen sets $A \sqcup B = cl(E)$ so that $A \cap B = \emptyset$. Then in the global topology $\tau$, there are $U, V$ open so that $U \cap cl(E) = A$ and $V \cap cl(E) = B$. Then
+$U \cap E \subset A$ and $V \cap E \subset B$. Furthermore $U \cap E \in \tau_E$ and $V \cap E \in \tau_E$ because $U,V$ open with respect to the global topology. We then use $A,B$ disjoint to yield $(V \cap E)  \cap (U \cap E) = \emptyset.$ Furthermore
+\begin{equation*}
+\begin{aligned}
+	(V \cap E)  \cup (U \cap E) &= ((V \cap E) \cup U) \cap  ((V \cap E) \cup E) ,\\
+	&= ((V \cup U) \cap (E \cup U)) \cap ((V \cup E) \cap (E \cup E)) ,\\
+	&= (V \cup U) \cap (E \cup U) \cap (V \cup E) \cap E ,\\
+	&= ((V \cup U)\cap E ) \cap (E \cup U) \cap (V \cup E) ,\\
+	&= (cl(E) \cap E ) \cap (E \cup U) \cap (V \cup E) ,\\
+	&=  E \cap (E \cup U) \cap (E \cup V) ,\\
+	&=  E \cap E \cap (U \cup  V) ,\\
+	&=  E  \cap (U \cup  V) ,\\
+	&=  E  \cap cl(E) ,\\
+	&=  E. 
+\end{aligned}
+\end{equation*}
+The above set algebra follows using the distributive law and that $U \cup V \supset (U \cap E) \cup (V \cap E) = A \cup B = cl(E).$  Finally since $(V \cap E), (U \cap E)$ form a partition of $E$ and are open sets, they are clopen (intersecting with $E$, taking complimets, ... the usual).
+\end{proof}
+
+\noindent \textbf{(d)} Show that each point $x \in X$ is contained ina unique maximal connected subset of $X,$ and that subset is closed with respect to $\tau$.
+\begin{proof}
+	We would like to show that for every $x$ there is a unique maximal connected subspace which contains it; that is, $x$ cannot be contained in two maximal connected components. Intuively this makes perfect sense since if $x \in E_1, E_2$ maximally connected then $E_1 \cap E_2 \neq \emptyset$ which would imply that $E_1 \cup E_2$ is maximally connected, contradictinct the maximality of $E_1$ and $E_2$.
+
+	More formally, we will adopt a methodology from Charles Pugh. First let $\sim$ be the realtion on $x$, so that $x, y \in X$ have the property that $x \sim y$ if and only if there is a connected subspace of $X$, say $E$ so that $x, y \in E.$ 
+
+	We will first show that this is an equivalence relation. First if $x \sim y$ then there is an $E$ so that $x ,y \in E$ so for the same $E$, $y, x \in E$, and thus $y \sim x$. Secondly let $E= \{x\}$ for some fixed $x$, then $\tau_E$ is a conntected topology; that is $E$ is clopen and $\emptyset$ is clopen, and by (a), $x\sim x$.  Finally if $x \sim y$ and $y \sim z$ then there are connected subspaces $E, F$ so that $x,y \in E$ and $y,z \in F$. By (b), $E \cap F \supset \{y\}$ implies that $E \cup F$ is connected. Thus $x,y, z \in E \cup F$ implies $x \sim z$.
+
+	Now we claim that every equivalence class is a unique maximal connected subspace of $X$. Suppose not, then take the offending equivalence class on $[x]_\sim$. Suppose there is another connected subspace, say $B \supset [x]_\sim$ which is strictly larger. Then there is a $y \in B$ so that $y \notin [x]_\sim$, but then for every $x \in [x]_\sim,$ $x \in B$, so then $x \sim y$ which implies $y \in [x]_\sim$; a contradiction to $y \in B$. Therefore such a $B$ does not exist and $[x]_\sim$ is maximal. Now for every $x \in X$, $[x]_\sim$
+	is unique because equivalence classes form a unique partition of the space by the  fundamental theorem of equivalence relations.
+
+	Finally we would like to show that $[x]_\sim$ is closed for every $x.$ By the previous (c) $cl([x]_\sim)$ is a connected, closed subspace containing $[x]_\sim$, but because $[x]_\sim$ is maximal and unique, $cl([x]_\sim) =[x]_\sim$ and so $acc([x]_\sim) \subset [x]_\sim$ which implies that $[x]_\sim$ is closed.
+
+\end{proof}
+\noindent \textbf{(e)} Show that any two connected components of $X$ are either identical or disjoint.
+\begin{proof}
+	Observe that $\{[x]_\sim\}_{x\in X} = X/\sim$ and by the fundamental theorem of equivalence relations $\sim$ forms a partition of $X$, having the properties of $(e).$ This completes the proof.
+\end{proof}
+\medskip \noindent {\bf (11.7)}\ (Folland problem 4.11) Show that the closure ($cl(\cdot) = \overline{\cdot}$)\footnote{I switched notation mid-assignment. Sorry--} of a union of finitely many subsets is equal to the union of their closures. \\
+\begin{proof}
+	Let $(X, \tau)$ be a topological space. We first show that for any two sets $A,B,\  cl(A) \cup cl(B) = cl(A \cup B)$. Then we will use induction to generalize the calim to finiteley many sets.
+
+	First we know that $A \subset A \cup B \subset cl(A \cup B)$ and $cl(A \cup B)$ is a closed set containing $A$. Since $cl(A)$ is the smallest such closed set, $cl(A) \subset cl(A \cup B).$  Symmetrically $B \subset A \cup B \subset cl(A \cup B)$ and $cl(A\cup B)$ is a closed set containing $B$. Since $cl(B)$ is the smallest such closed set, $cl(B) \subset cl(A \cup B).$
+
+	Secondly, $cl(A \cup B)$ is the smallest closed set containing $A \cup B$. Furthermore $cl(A) \cup cl(B) = A \cup B \cup acc(A) \cup acc(B) \supset A \cup B$. But then since $cl(A) \cup cl(B)$ closed, the minimality of $cl(A \cup B)$ gives that $cl(A) \cup cl(B) \supset cl(A \cup B)$;
+	thus $cl(A \cup B) = cl(A) \cup cl(B).$
+
+	Now let $\{K_j\}$ be a finite family of subsets of $X$. Then clearly $cl(K_1) = cl(K_1).$ Now suppose that 
+	\begin{equation*}
+		cl\left(\bigcup_{j=1}^k K_j\right) = \bigcup_{j=1}^k cl(K_j) = cl(\mathfrak{K}_k).
+	\end{equation*}
+	where $\mathfrak{K}_k$ is the union of the $K_j$ up to $k$.
+	Then $cl({\mathfrak{K}_k}) \cup cl(K_{k+1}) = cl({\mathfrak{K}_k} \cup K_{k+1})$ by the previous part of the proof. Finally 
+	\begin{equation*}
+		\bigcup_{j=1}^{k+1} cl(K_j) = cl({\mathfrak{K}_k} \cup K_{k+1}) = cl\left(\bigcup_{j=1}^k K_j  \cup K_{k+1}\right) = cl\left(\bigcup_{j=1}^{k+1} K_j \right).
+	\end{equation*}
+	Thus the proof is complete.
+\end{proof}
+\medskip \noindent {\bf (11.8)}\ (Folland problem 4.13)\ Let $(X, \tau)$ be a topological space. Let $U$ be open in $X$ and let $A$ be dense in $X$. Show that
+$cl_X(U) = cl_X(U \cap A).$
+\begin{proof}
+	We will show the statement using inclusions.
+
+
+	First we will show that for any 
+	non-empty open (w.r.t the subspace topology) subset of $U$, say $V$ , that $V \cap (U \cap A)$ is non-empty; that is $U \cap A$ is dense in $U$ equipped with the subspace topology. First because $U$ is open and $V$ is open in the subspace topology, $V$ is open with respect to the global topology. Therefore $V \cap A$ is non-empty by the density of $A.$ Finally since $V \subset U$, we have that $V \cap (U \cap A) \neq \emptyset$. Thus since $V$ was arbitrary, $U \cap A$ is a dense subset of $U$ equipped with the subspace topology. Next the closure of $A \cap U$ in the subspace topology $cl_U(U \cap A) = U$.
+
+	Now for any subset $T$ of $U$ we have
+	\begin{equation*}
+		cl_{X}(T) = \bigcap_{\substack{\ E\subset X\, \text{closed w.r.t } \tau\\ E\,\supseteq U}} E
+	\end{equation*}
+	and coorespondingly the closure in the subspace topology is
+	$$cl_U(T) = \bigcap_{\substack{\ E\subset X\, \text{closed w.r.t } \tau_U\\ E\,\supseteq U}} E =
+	\bigcap_{\substack{\ E\subset X\, \text{closed w.r.t } \tau\\ E\,\supseteq U}} E\cap U = U \cap cl_X(U)$$
+
+	Thus $U \cap cl_X(U \cap A) = cl_U(U \cap A) = U \subset cl_X(U).$ But then since $cl_X(U \cap A) = U \cap A \cup (acc(U \cap A)), $ we have that $U \cap cl_X(U \cap A) = cl_X(U\cap A)$, and thus $\cl_X(U \cap A) \subset cl_X(U).$ 
+
+	In the other direction observe that $cl_X(U) \cap U = cl_X(U) = U = cl_U(U \cap A)$ and so if $x \in U$ then $x \in cl_X(U\cap A).$ It remains to show that if $x \in acc(U)$ then $x \in cl_X(U \cap A).$
+	If $x \in acc(U)$ then for all neighborhoods of $x$, say $V$, the interesection of $V \setminus \{x\}$ with $U$ is not trivial. Therefore $V^o \cap U$ is an open set in $U$ and so $V \cap U \cap A$ is not trivial; and so $x \in acc(U \cap V)$ and $x \in cl_X(U \cap A).$
+	Therefore $cl_X(U) \subset cl_X(U \cap A).$
+
+	Thus $cl_X(U) = cl_X(A \cap U).$
+\end{proof}
+\end{document}\end

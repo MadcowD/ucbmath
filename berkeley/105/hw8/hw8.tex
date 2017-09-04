@@ -1,0 +1,263 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%                      Homework _                            %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[letter]{article}
+
+\usepackage{lipsum}
+\usepackage[pdftex]{graphicx}
+\usepackage[margin=1.5in]{geometry}
+\usepackage[english]{babel}
+\usepackage{listings}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{framed} 
+\usepackage{amsmath}
+\usepackage{titling}
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{definition}{Definition}
+
+\newenvironment{menumerate}{%
+  \edef\backupindent{\the\parindent}%
+  \enumerate%
+  \setlength{\parindent}{\backupindent}%
+}{\endenumerate}
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%
+%% DOC INFO %%%
+%%%%%%%%%%%%%%%
+\newcommand{\bHWN}{8}
+\newcommand{\bCLASS}{MATH 105}
+
+\title{\bCLASS: Homework \bHWN}
+\author{William Guss\\26793499\\wguss@berkeley.edu}
+
+\fancyhead[L]{\bCLASS}
+\fancyhead[CO]{Homework \bHWN}
+\fancyhead[CE]{GUSS}
+\fancyhead[R]{\thepage}
+\fancyfoot[LR]{}
+\fancyfoot[C]{}
+\usepackage{csquotes}
+
+%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+\begin{menumerate}
+    \setcounter{enumi}{28}
+    \item Upper semicontinuity.
+    \begin{menumerate}
+    \item A graph of an upper semicontinuous graph here:
+    \\[3cm]
+    \item Show the following.
+    \begin{definition}
+        We say that a function $f: M \to \mathbb{R}$ is
+        $(\epsilon , \delta)$-upper semicontinuous if and only if
+        for every $\epsilon > 0$ there is a $\delta > 0$ so that
+        \begin{equation}
+            0< d(x,y) < \delta \implies f(y) < f(x) + \epsilon
+        \end{equation}
+    \end{definition}
+    \begin{lemma}
+        Upper semicontinuity is equivalent to the $(\epsilon, \delta)$-upper semicontinuity.
+    \end{lemma}
+    \begin{proof}
+        Observe the following fact about $\limsup.$ 
+        \begin{equation}
+            \limsup_{y\to x} g(y) = \alpha = \lim_{\epsilon \to 0} \sup \{g(y)\ :\ y \in M \cap M_{\epsilon}(x) \setminus \{x\}\}.
+        \end{equation}
+        Therefore $f$ is upper semicontinuous if and only if 
+        \begin{equation}
+            \limsup_{y\to x} f(y) \leq f(x) \iff \lim_{\epsilon \to 0}
+            \sup\{f(y) : y \in M \cap M_{\epsilon}(x) \setminus \{x\} \} \leq f(x).       
+        \end{equation}
+        We then know for every $\epsilon >0$ there exists a $\delta $
+        so that 
+        \begin{equation}
+            \sup \{f(y) \ :\ y \in M \cap M_\delta (x) \setminus \{x\} \} < f(x) + \epsilon.
+        \end{equation}
+        This is true if and only if 
+        \begin{equation}
+            d(y,x) < \delta \implies f(y) < f(x) + \epsilon.       
+        \end{equation}
+        Therefore $f$ is  $(\epsilon, \delta)$-upper semicontinuous.
+    \end{proof}
+    \begin{theorem}
+        The function $f: M \to \mathbb{R}$ if upper semicontinuous 
+        if and only if for every $a \in \mathbb{R}$, 
+        \begin{equation}
+            U_a = \{ x \ :\ f(x) < a \}       
+        \end{equation}
+        is an open subset of $M$.
+    \end{theorem}
+    \begin{proof}
+        Take some $x \in U_a$. Then upper semicontinuity implies that
+        for every $\epsilon> 0$ there is a $\delta$ so that
+        \begin{equation}
+            0 < d(x,y) < \delta \implies f(y) < f(x) + \epsilon.       
+         \end{equation}
+         We know that $f(x) < a$, so take $\epsilon = f(x) - a.$
+         Then for every $y$ with $d(x,y) < \delta$, 
+         \begin{equation}
+         f(y) < f(x) + a - f(x) = a,
+         \end{equation}
+         and $y \in U_a$. Therefore for all $u \in U_a$ there exists a $\delta$ so that $d(u,v) < \delta \implies v \in U_a$, and
+         $U_a$ is open.
+
+         In the opposite direction suppose that $U_a$ is open.
+         Then, for every $x \in U_a$ there exists a $\delta$ so that
+         $d(y,x) < \delta \implies y \in U_a. $ Therefore $f(y) < a.$
+         Since we can do this for any arbitrary $a,$ take any $\gamma \in M,$ then consider $U_{f(\gamma)}.$ It follows for every $\epsilon > 0$ there is a $\delta$ so that
+         \begin{equation}
+            0 < d(y, \gamma) < \delta, y \in U_{f(\gamma)} \implies f(y) < f(\gamma) + \epsilon
+         \end{equation}
+         What can be said about $y \notin U_{f(\gamma)}.$ Take the arg max of
+         those $y$ subject to $f(y) \leq f(\gamma)  + \epsilon, y \neq \gamma$ (this is possible since $U_{f(\gamma)}^C$ is closed and there is an $a > \gamma$ so that every $x \in U_a \supset U_{f(\gamma)}$ is a point of upper semicontinuity) and we get $y'$ Then take a new 
+         \begin{equation}
+            \delta' = \min\{\delta, d(y',\gamma)\}
+         \end{equation}
+         and get $f$ upper semicontinuous.
+    \end{proof}
+    \item Negative semicontinuity.
+    \begin{definition}
+        We say that a function $f: M \to \mathbb{R}$ is negative semicontinuous if and only if $-f$ is upper semicontinuous.   
+    \end{definition}
+    \begin{theorem}
+        A function is negative semicontinuous if and only if 
+        \begin{equation}
+            \lim_{y \to x} f(y) \geq f(x).    
+        \end{equation}   
+    \end{theorem}
+    \begin{proof}
+        Suppose that $-f$ is upper semicontinuous, then
+        \begin{equation}
+            \limsup_{y \to x} -f(y) \leq -f(x) \iff
+            -\liminf_{y \to x} f(y) \leq -f(x),   
+        \end{equation}   
+        by the definition of $\liminf.$ Then we negate the inequality and get 
+        \begin{equation}
+            \liminf_{y\to x} f(y) \geq f(x).
+        \end{equation}
+        This completes the proof.
+    \end{proof}
+     \end{menumerate} 
+     \item Show the following.
+     \begin{theorem}
+        Given $K$ compact in the upper half plane. Then we take $g(x) =  \max\{y: (x,y) \in K\}$ when $K \cap x \times \mathbb{R} \neq \emptyset.$
+        Then $g$ is upper semicontinuous.
+     \end{theorem}
+     \begin{proof}
+        We would like to show that $\limsup g(x_n) \leq g(x)$ for every $x.$ Consider $x$ so that $x,g(x) \in K.$ Then take a sequence which converges
+        to $x$ and take the subseqyenxe for whixh $x_n,g(x_n)$ are in $K.$  
+
+        Suppose that $\limsup g(x_n) > g(x).$ In which case $g(x_n)$ has a convergent subsequence. Suppose that $g(x_{n_k}) \to a > g(x).$
+        Then $x_{n_k}, g(x_{n_k}) \to x, \alpha$ not in $K$ which contradicts $K$ closed since $x_{n_k}, g(x_{n_k}) \in K$.
+        Therefore $g$ is upper semicontinuous along $K$. Outside, it is $f(x) = 0$ which is upper semicontinuous.
+     \end{proof}
+     \item This problem has been made optional.
+
+
+
+     \setcounter{enumi}{32}
+     \item Show some interesting examples breaking things.
+     \begin{menumerate}
+        \item Consider the following counterexample (lol). The steeple function defined as
+        \begin{equation}
+            s_m(x) = \left\{ \begin{array}{l}
+                 2m(1 - m(1/2 - x))\  \text{if $x \in (1/2 - 1/m, 1/2],$} \\
+                 2m(1 + m(1/2 - x))\  \text{if $x \in (1/2, 1/2 + 1/m)$} \\
+                 0\ \text{otherwise.}
+            \end{array} \right.       
+        \end{equation}
+        Clearly this sequence of functions has limit $0$ almost everywhere, but the area of the undergraph is $1$ for all $m$.
+        So, the conclusion of the dominated convergence theorem is not true ion this context.
+        \item Consider the sequence of functions $f_m(x)$ so that 
+        if $m$ is odd, $f_m(x) = s_8(x-0.25)$ and if $m$ is even,
+        $f_m(x) = s_8(x + 0.25).$ Clearly $\liminf f_m = 0$
+        but the $\liminf$ of the integrals is always $1$.
+        Therefore
+        \begin{equation}
+            \int \liminf f_m < \liminf \int f_m.
+         \end{equation} 
+     \end{menumerate}
+     \item Prove the following
+     \begin{theorem}
+         Suppose that $f_n : \mathbb{R} \to [0, \infty)$ is a
+         sequence of integrable functions, $f_n \downarrow f$ a.e. as $n \to \infty$ and $\int f_n \downarrow 0$, then $f = 0$ almost everywhere.
+     \end{theorem}
+     \begin{proof}
+        Because $f_n \downarrow f$ and $\int f_n \downarrow f$, measure continuity implies $m_2(U(f)) = 0.$ By the slice theorem almost
+        every slice of a zeroset implies that slice measure zero must be zero. Since the undergraph of a function is not disconnected with respect to its slices, the only connected set in $\mathbb{R}$ with measure $0$ is a point. Therefore, the completed undergraph must be a point, must be $0$ almost everywhere.
+     \end{proof}
+     \item  Consider the sequence of intervals, 
+     \begin{equation}
+        R_{m,n} = [m/n, m+1/n]
+     \end{equation}.
+     Then let $f_k$ be a sequence of indicator functions defined so that
+     \begin{equation}
+        f_1 = \chi_{R_{0,1}}, f_2 = \chi_{R_{0,2}}, f_3 = \chi_{R_{1,2}}, \dots     
+     \end{equation}
+     It is clear that this sequence does not converge to $0$ pointwise since at every irrational point and for every $n$ there is an $N$ more than $n$ so that a smaller compact support $R_n$ covers the point. 
+
+     However, the undergraph of the sequence is always decreasing and has measure proportional to $1/\sqrt{n}$ which tends towards $0$. This completes the counter example.
+
+     To visualzie this example, imagine a scanner of compact supports moving across the real line smoothly but shrinking as $n \to \infty$, never stopping.
+     \item Show the converse to the dominated convergence theorem fails.
+     \begin{theorem}
+        There is a sequence of functions $f_k : [0,2] \to [0, \infty)$ such that $f_k \to 0$ almost everywhere $\int f_k \to 0$
+        but there is no dominator $g.$    
+     \end{theorem}  
+     \begin{proof}
+        Consider the following sequence of sets, $R_k = [1/k, 1/k+1/k^2] \times [0,k]$. Then let $f_k = \chi_{R_k}.$
+        The dominator must have an undergraph at least as large as the union of all $U(f_k).$ Since the undergraph of
+        each $f_k$ has volume $1/k,$ the total volume of the union by measure additivity is $\sum 1/k = \infty$ which implies
+        that $\int g = \infty.$ Therefore there cannot exist a dominating dude.
+     \end{proof}
+     \item Show the absolute value dominated convergence theorem kind of.
+     \begin{theorem}
+        Suppose $f_k \to f$ and $f_k$ takes on both positive and negative values. If there exists and integrable function $g$
+        such that for almost every $x$ we have $|f_k(x)| \leq g(x),$ then $\int f_k \to \int f.$    
+     \end{theorem}
+     \begin{proof}
+        We can write $f_k = f_{+,k} - f_{-,k}$ so that $f_{+,k} = \max \{0, f\}, f_{-,k} = \min \{0, f\}.$
+        For $f$ we can write $f_+ = \max\{0,f\}, f_- = \min \{0, f\}.$ 
+
+        It is obvious that $f_k \to f$ implies $f_{k,+} \to f_+$ and $f_{k,-} \to f_-$. Lastly,
+        $\int f = \int f_+ + \int -f_-.$ Furthermore $\int f_k = \int f_{k,+} + \int -f_{k,-}.$ 
+        By the dominated convergence theorem, $\int f_{k,+} \to \int f_+$ and $\int -f_{k,-} \to \int -f_-$.
+        Therefore $\int f_k \to \int f$.  
+     \end{proof}
+     \item Min max integrability.
+     \begin{theorem}
+        If $f,g$ are integrable, then $\max \{f,g\}$ and $\min \{f,g\}$ are integrable. 
+     \end{theorem}
+     \begin{proof}
+        We start with minimum and illustrate a point which can be generalized to the maximum case.
+        Observe that 
+        \begin{equation}
+            \hat U(f) \cap \hat U(g) =  \{(x,y) :y \leq f(x) \wedge y \leq g(x) \iff y \leq \min\{g(x), f(x)\}\}.
+            \end{equation}    
+        Therefore $\hat U(f) \cap \hat U(g) = \hat U(\min\{f,g\}).$ And the intersections of closeds is closed. Therefore $U( \min\{f,g\})$ measurable and $\min\{f,g\}$ integrable.
+
+        Applying the same methodology to the max function except using the undergraph and not the completed the completed undergraph, we get that $\max \{f,g\}$ is integrable (taking unions not intersections).
+     \end{proof}
+
+\end{menumerate}
+%%%%%%% Be sure to set the counter and use menumerate
+
+\end{document}

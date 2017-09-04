@@ -1,0 +1,347 @@
+\documentclass[11pt]{amsart}
+
+\usepackage{amsmath,amsthm}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{enumerate}
+\usepackage{fullpage}
+% \usepackage{euscript}
+% \makeatletter
+% \nopagenumbers
+\usepackage{verbatim}
+\usepackage{color}
+\usepackage{hyperref}
+%\usepackage{times} %, mathtime}
+
+\textheight=600pt %574pt
+\textwidth=480pt %432pt
+\oddsidemargin=15pt %18.88pt
+\evensidemargin=18.88pt
+\topmargin=10pt %14.21pt
+
+\parskip=1pt %2pt
+
+% define theorem environments
+\newtheorem{theorem}{Theorem}    %[section]
+%\def\thetheorem{\unskip}
+\newtheorem{proposition}[theorem]{Proposition}
+%\def\theproposition{\unskip}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\def\theconjecture{\unskip}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{sublemma}[theorem]{Sublemma}
+\newtheorem{fact}[theorem]{Fact}
+\newtheorem{observation}[theorem]{Observation}
+%\def\thelemma{\unskip}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+%\def\thedefinition{\unskip}
+\newtheorem{notation}[definition]{Notation}
+\newtheorem{remark}[definition]{Remark}
+% \def\theremark{\unskip}
+\newtheorem{question}[definition]{Question}
+\newtheorem{questions}[definition]{Questions}
+%\def\thequestion{\unskip}
+\newtheorem{example}[definition]{Example}
+%\def\theexample{\unskip}
+\newtheorem{problem}[definition]{Problem}
+\newtheorem{exercise}[definition]{Exercise}
+
+\numberwithin{theorem}{section}
+\numberwithin{definition}{section}
+\numberwithin{equation}{section}
+
+\def\reals{{\mathbb R}}
+\def\torus{{\mathbb T}}
+\def\integers{{\mathbb Z}}
+\def\rationals{{\mathbb Q}}
+\def\naturals{{\mathbb N}}
+\def\complex{{\mathbb C}\/}
+\def\distance{\operatorname{distance}\,}
+\def\support{\operatorname{support}\,}
+\def\dist{\operatorname{dist}\,}
+\def\Span{\operatorname{span}\,}
+\def\degree{\operatorname{degree}\,}
+\def\kernel{\operatorname{kernel}\,}
+\def\dim{\operatorname{dim}\,}
+\def\codim{\operatorname{codim}}
+\def\trace{\operatorname{trace\,}}
+\def\dimension{\operatorname{dimension}\,}
+\def\codimension{\operatorname{codimension}\,}
+\def\nullspace{\scriptk}
+\def\kernel{\operatorname{Ker}}
+\def\p{\partial}
+\def\Re{\operatorname{Re\,} }
+\def\Im{\operatorname{Im\,} }
+\def\ov{\overline}
+\def\eps{\varepsilon}
+\def\lt{L^2}
+\def\curl{\operatorname{curl}}
+\def\divergence{\operatorname{div}}
+\newcommand{\norm}[1]{ \|  #1 \|}
+\def\expect{\mathbb E}
+\def\bull{$\bullet$\ }
+\def\det{\operatorname{det}}
+\def\Det{\operatorname{Det}}
+\def\rank{\mathbf r}
+\def\diameter{\operatorname{diameter}}
+
+\def\t2{\tfrac12}
+
+\newcommand{\abr}[1]{ \langle  #1 \rangle}
+
+\def\newbull{\medskip\noindent $\bullet$\ }
+\def\field{{\mathbb F}}
+\def\cc{C_c}
+
+\newenvironment{solution}
+  {\begin{proof}[Solution]}
+  {\end{proof}}
+
+
+
+% \renewcommand\forall{\ \forall\,}
+
+% \newcommand{\Norm}[1]{ \left\|  #1 \right\| }
+\newcommand{\Norm}[1]{ \Big\|  #1 \Big\| }
+\newcommand{\set}[1]{ \left\{ #1 \right\} }
+%\newcommand{\ifof}{\Leftrightarrow}
+\def\one{{\mathbf 1}}
+\newcommand{\modulo}[2]{[#1]_{#2}}
+
+\def\bd{\operatorname{bd}\,}
+\def\cl{\text{cl}}
+\def\nobull{\noindent$\bullet$\ }
+
+\def\scriptf{{\mathcal F}}
+\def\scriptq{{\mathcal Q}}
+\def\scriptg{{\mathcal G}}
+\def\scriptm{{\mathcal M}}
+\def\scriptb{{\mathcal B}}
+\def\scriptc{{\mathcal C}}
+\def\scriptt{{\mathcal T}}
+\def\scripti{{\mathcal I}}
+\def\scripte{{\mathcal E}}
+\def\scriptv{{\mathcal V}}
+\def\scriptw{{\mathcal W}}
+\def\scriptu{{\mathcal U}}
+\def\scriptS{{\mathcal S}}
+\def\scripta{{\mathcal A}}
+\def\scriptr{{\mathcal R}}
+\def\scripto{{\mathcal O}}
+\def\scripth{{\mathcal H}}
+\def\scriptd{{\mathcal D}}
+\def\scriptl{{\mathcal L}}
+\def\scriptn{{\mathcal N}}
+\def\scriptp{{\mathcal P}}
+\def\scriptk{{\mathcal K}}
+\def\scriptP{{\mathcal P}}
+\def\scriptj{{\mathcal J}}
+\def\scriptz{{\mathcal Z}}
+\def\scripts{{\mathcal S}}
+\def\scriptx{{\mathcal X}}
+\def\scripty{{\mathcal Y}}
+\def\frakv{{\mathfrak V}}
+\def\frakG{{\mathfrak G}}
+\def\aff{\operatorname{Aff}}
+\def\frakB{{\mathfrak B}}
+\def\frakC{{\mathfrak C}}
+
+\def\suchthat{\mathrel{}:\mathrel{}}
+\def\symdif{\,\Delta\,}
+\def\mustar{\mu^*}
+\def\muplus{\mu^+}
+
+\def\soln{\noindent {\bf Solution.}\ }
+
+
+%\pagestyle{empty}
+%\setlength{\parindent}{0pt}
+
+\begin{document}
+
+\begin{center}{\bf Math 185 --- UCB, Fall 2016 --- William Guss}
+\\
+{\bf Problem Set 6, due October 25th}
+\end{center}
+
+\medskip \noindent {\bf (57.1)}\ . \\
+
+\emph{Note:} In the following problem we use that the contour $C$ is homotopic to the circle surrounding the
+singularity in the analytic domain of each integrand. \\
+
+(a) $\int_C \frac{e^{-z}}{z - (\pi i/ 2)};$.
+\begin{solution}
+ 	Using the cauchy integral formula we get that
+ 	\begin{equation*}
+ 		\int_C \frac{e^{-z}}{z - (\pi i/ 2)} = e^{-(\pi i/2)} 2\pi i = -i 2 \pi i= 2\pi.	
+ 	\end{equation*}
+ \end{solution} 
+ (b) $\int_C \frac{\cos(z)/(z^2 + 8)}{z - 0} dz;$
+ \begin{solution}
+ 	Using the cauchy integral formula we get that
+ 	\begin{equation*}
+ 	\int_C \frac{\cos(z)/(z^2 + 8)}{z - 0} dz = 2\pi i \cos(0)/8 = \pi i/4
+ 	\end{equation*}
+ \end{solution}
+  (c) $\int_C \frac{z/2}{z - (-1/2)} dz;$
+ \begin{solution}
+ 	Using the cauchy integral formula we get that
+ 	\begin{equation*}
+ 	\int_C \frac{z/2}{z - (-1/2)} dz = 2\pi i -1/4 = -\pi i/2
+ 	\end{equation*}
+ \end{solution}
+  (d) $\int_C \frac{\cosh z}{(z- 0)^{3+1}} dz;$
+ \begin{solution}
+ 	Using the cauchy integral formula for the derivative we get that
+ 	\begin{equation*}
+ 	\int_C \frac{\cosh z}{(z- 0)^{3+1}} dz = 2\pi i/6 \times \cosh^{(3)}(0) = 2\pi i/6 \times (-\sinh(0)) = 0
+ 	\end{equation*}
+ \end{solution}
+   (e) $\int_C \frac{\tan z/2}{(z- x_0)^{1+1}} dz;$
+ \begin{solution}
+ 	Using the cauchy integral formula for the derivative we get that
+ 	\begin{equation*}
+ 	\int_C \frac{\tan z/2}{(z- x_0)^{1+1}} dz = 2\pi i \times \tan^{(1)}(x_0/2) = \pi i \sec^2(x_0/2).
+ 	\end{equation*}
+ \end{solution}
+
+
+\medskip \noindent {\bf (57.2)}\ . \\
+(a) $g(z) = \frac{1}{z^2 + 4}$
+\begin{solution}
+	First $g(z) = \frac{1/(z+2i)}{(z-2i)}$ and so we can apply the cauchy integral formula and yield
+	\begin{equation*}
+		\int_C g(z)\ dz = \frac{2\pi i}{4i} = \frac{\pi}{2}
+	\end{equation*}
+\end{solution}
+(b) $g'(z) = \frac{1}{(z^2 + 4)^2}.$
+\begin{solution}
+	First $g'(z) = g(z)\times g(z)$ so $g'(z) = \frac{1/(z+2i)^2}{(z-2i)^2}$ and thus
+	\begin{equation*}
+		\int_C g'(z)\ dz =  \frac{d}{dz} \frac{2\pi i}{(z+2i)^2}\Big|_{z = 2i}  = \frac{-4\pi i}{(4i)^3} =\pi/16.
+	\end{equation*}
+\end{solution}
+
+
+
+\medskip \noindent {\bf (57.3)}\ Let $C$ be the circle $|z| = 3$, described in the positive sense. Show that if
+\begin{equation*}
+	g(z) = \int_C \frac{2s^2 - s - 2}{s-z}\ ds\;\;\;\;(|z| \neq 3)
+\end{equation*}
+then $g(2) = 8\pi i$.
+\begin{proof}
+	If $C$ is the boundary of the ball $B$ then $2 \in int(B)$ implies that the Cauchy integral formula is applicable in the evaluation of $g(2).$ Therefore
+	\begin{equation*}
+		g(z) = 2\pi (2z^2 - z - 2) = 2\pi i(8 -2 -2) = 8 \pi i.
+	\end{equation*}
+
+	Additionally if $|z| \geq 3$ then the singularity of the integrand is no longer within the contour and so the integral has value $0$ by the anylicity of the elementary functions of which the integrand is composed (Cauchy-Goursat).
+\end{proof}
+
+\medskip \noindent {\bf (57.4)}\ Let $C$ be any simple closed contour, described in the postive sense in the $z$ plane, and write
+\begin{equation*}
+	g(z) = \int_C \frac{s^3 + 2s}{(s-z)^3}\ ds.
+\end{equation*}
+It follows that $g(z) = 6\pi i z$ when $z$ is inside $C$ and that $g(z) = 0$ when $z$ is outside.
+\begin{proof}
+	This exercise is in the same flavor as the previous. Let $C$ be the boundary of some manifold $B$; that is $C = \partial B$. When $z$ is inside of $C$, $z \in int(B)$. Therefore $C$ is homotopic to a manifold $S^1$ containing $z$
+	and the Cauchy-Integral formula applies; that is,
+	\begin{equation*}
+		\int_C \frac{s^3 + 2s}{(s-z)^3}\ ds =  \frac{2\pi i}{2!} (6z) = 6z\pi i.
+	\end{equation*}
+
+	In the case that $z$ is outside of $C$ then, $z \notin B$ and so $\partial B$ is homotopic to a manifold $S^1$ not containing any singularities as the analyic integrand does not contain singularities on the interior of $B$.  By the Cauchy-Goursat theorem we have that 
+	\begin{equation*}
+		\int_C \frac{s^3 + 2s}{(s-z)^3}\ ds = 0
+	\end{equation*}
+	when $z$ is outside of $C$. 
+\end{proof}
+
+
+\medskip \noindent {\bf (57.5)}\ Show that if $f$ is analytic within and on a simple closed contour $C$ and $z_0$ is not on $C$, then
+\begin{equation*}
+	\int_C \frac{f'(z)}{z- z_0}\ dz = \int_C \frac{f(z)}{(z-z_0)^2}\ dz.
+\end{equation*}
+\begin{proof}
+	If $f$ is analytic on and within the simple contour, we have that $f'$ exists and is analytic on the simple closed contour by  Theorem 1 of Sec 57. Again since $C$ is a simple closed contour $C$ is the boundary of a manifold $B$,
+	such that $f$ and $f'$ are analytic on $B$. This is the interior manifold as before. 
+
+	If $z_0 \in B$ then $z_0 \in int(B) $ and $z_0 \notin \partial B = C$. Therefore we can homotop $C$ to some $S^1$ inside of $\int B$ such that $z_0$ is inside of $S^1$ and so the Cauchy-Integral theorem applies and we yield
+	\begin{equation*}
+	\int_C \frac{f'(z)}{z- z_0}\ dz = 2\pi i f'(z_0) = 2\pi i/1! f'(z_0) = \int_C \frac{f(z)}{(z-z_0)^2}\ dz.
+	\end{equation*}
+
+	If $z_0 \notin B$ then the integrand in both equations is analytic on $B$ and $B$ is fully connected and contains no holes. Thus the Cauchy Goursat theorem gives
+	\begin{equation*}
+	\int_C \frac{f'(z)}{z- z_0}\ dz = 0 = \int_C \frac{f(z)}{(z-z_0)^2}\ dz.
+	\end{equation*}
+
+	Thus the two contour integrals are equal.
+\end{proof}
+
+\medskip \noindent {\bf (57.7)}\ Let $C$ be the unit circle $z = e^{i\theta}$ with $\theta \in [-\pi, \pi]$. For any real
+constant $a,$
+\begin{equation*}
+	\int_C \frac{e^{az}}{z}\ dz = 2\pi i.
+\end{equation*}
+Additionally
+\begin{equation*}
+	\int_0^\pi e^{a \cos \theta} \cos(a \sin \theta) d\theta = \pi.
+\end{equation*}
+\begin{proof}
+	By the analyicity of $\exp(a \cdot)$ we can apply directly the Cauchy integral formula and get
+	\begin{equation*}
+		\int_C \frac{e^{az}}{z}\ dz = 2\pi i e^{0\times a} = 2 \pi i.
+	\end{equation*}
+
+	Next expanding the $1$-form we get that
+ 	\begin{equation*}
+ 	\begin{aligned}
+		2\pi i = \int_C \frac{e^{az}}{z}\ dz  &= i\int_0^\pi \frac{e^{a(\cos(\theta) + i \sin(\theta))}}{e^{i\theta}} e^{i\theta}\ d\theta - i\int_0^{-\pi} \frac{e^{a(\cos(\theta) + i \sin(\theta))}}{e^{i\theta}} e^{i\theta}\ d\theta  \\
+		&= 	i\left(\int_0^\pi e^{a(\cos(\theta) + i \sin(\theta))}\ d\theta -  \int_0^{-\pi} e^{a(\cos(\theta) + i \sin(\theta))}\ d\theta\right) \\
+		&= 	i\int_0^\pi e^{a(\cos(\theta) + i \sin(\theta))}\ d\theta  +  \dots \\
+		&= i \int_0^\pi e^{a(\cos(\theta))} e^{ai\sin(\theta)}\ d\theta + \dots\\
+		&= i \int_0^\pi e^{a(\cos(\theta))} \cos(a\sin(\theta)) + i\sin(a\sin(\theta)) d\theta + \dots \\
+		&= i \int_0^\pi e^{a(\cos(\theta))} \cos(a\sin(\theta)) + i\sin(a\sin(\theta)) d\theta \\ 
+		&+ i \int_0^\pi e^{a(\cos(\theta))} \cos(a\sin(\theta)) - i\sin(a\sin(\theta)) d\theta \\
+		&= 2i \int_0^\pi e^{a(\cos(\theta))} \cos(a\sin(\theta))\ d\theta
+ 	\end{aligned}
+	\end{equation*}
+	The last two equations were given by $\sin$ an odd function and $\cos$ and even function (on the reparameterization of the integrals the $\cos$ keeps its sign and $\sin$ switches). 
+	Therefore, dividing by $2i$ on each side we get
+	\begin{equation*}
+		\int_0^\pi e^{a \cos \theta} \cos(a \sin \theta) d\theta = \pi.
+	\end{equation*}
+\end{proof}
+
+\medskip \noindent {\bf (59.1)}\ Suppose $f(z)$ is entire and the harmonic function $u(x,y) = Re[f(z)]$ has
+an upperbound $u_0$; that is $u(x,y) \leq u_0$ for all points in $(z,y)$ in the $xy$ plane. Show 
+that $u(x,y)$ must be constant throughout the plane.
+\begin{proof}
+	If $f(z)$ is entire and its real part $u(x,y)$ has an upperbound, then the function $g(z) = e^{f(z)} = e^{u(x,y)}e^{i Im(f(z))} \leq e^{u_0} e^{i Im(f(z))}$ and since $|e^{i q}| \leq 1$ for all $q \in \mathbb{R}$ it follow that
+	$|g(z)| \leq e^{u_0}.$ By the entirety of $g$ and Louiville's theorem, it follows that $g(z)$ is constant on its entire domain. Lastly every $g$ in the family of functions $log(g) = log(e^{z_0}) \equiv z_0 + i2\pi n$, $n \in \mathbb{N}$ and $z_0$ constant is therefore constant. Lastly $f \in log(g)$ since $g = e^f$, thus $f$ is constant throughout its domain, ie. the $xy$ plane.
+\end{proof}
+
+\medskip \noindent {\bf (59.2)}\ Let a function $f$ be continuous on a closed bounded region $R$ and let it be analytic and not constant throughout the interior of $R$. Assuming that $f(z) \neq 0$ anywhere in $R$, then $|f(z)|$ has a minimum value $m \in R$ which occurs on the boundary of $R$ and never in the interior.
+\begin{proof}
+ 	We examine the function $g(z) = 1/f(z)$ which is analytic in $int(R)$ since $f(z) \neq 0$ everywhere in $R$ and $f$ analytic in $int(R)$. Since 
+ 	$g$ is not constant by the Maximum modulus principle, $|g|$ has no maximum value in $int(R)$. By $|g|$ continuous on $R$ $R$ compact we have from undergraduate real analysis that (105) that $|g|$ attains a maximum on $R$, however this maximum cannot be in $int(R)$ so it must be in $\partial R$ since compactness gives $R = \int(R) \sqcup \partial R.$ Lastly if $|g|$ is a maximum then $1/|g|$ is a minimum, thus $|f|$ attains a minimum on $\partial R$. This completes the proof.
+ \end{proof} 
+
+
+\medskip \noindent {\bf (59.4)}\ Let $R$ be the region depicted in the book. that taht the modulus of the entire function $f(z) = \sin z$ has a maximum value in $R$ at the boundary point $z = (\pi/2) + i$.
+\begin{proof}
+ 	By the previous theorem $|f|$ can only attain a maximum on $\partial R$ by the compactness of $R$ (see the book, it is a product of closed intervals and in the product topology $R$ must be closed.) Now we claim that the maximum point is $z = (\pi/2) + i$.
+
+ 	Recall that $|f(z)|^2 = \sin^2(x) + \sinh(y)$ by section 37. Then in $\partial R$ we must find $x$ such that $\sin^2(x)$ is maximized. Since $x \in [0, \pi]$, we know that $\sin$ achieves a maximum at $\pi/2$ from Math 1A. Next since $\sinh^2$ is montone increasing the largest possible value of $Im(z), z \in \partial z$  achieves the maximum. Thus $y = 1$ and so $|f(z)|^2$ is maximal at $z = (\pi/2) + i$. Therefore $|f(z)|$ is maximal there too.
+ \end{proof} 
+
+ \medskip \noindent {\bf (59.7)}\ Let the function $f = u + iv$ be continous on a closed bounded region $R$ suppose that it is analytic and not constant in the interior $R$. Show that $u(x,y)$ has maximum and minimum values in $R$ which are reached on the boundary of $R$ and never the interior, where it is harmonic.
+ \begin{proof}
+ 	First $|f|$ and thus $|f|^2$ has no extremal values for $z \in int(R)$. Thus $|f|^2 = |u|^2 + |v|^2$ is maximal for $(x,y) \in \partial R$ since $R$ is compact and $f$ analytic implies $|f|$ and therefore $|f|^2$ continuous. Additionally Exercise $5$ implies that $u$ attains a minimum in $\partial R$ and by the compactness of $\partial R$ and the continuity of $u$ in $\partial R$, $u$ also attains a maximum. Letting $g = -if$ and applying the prvious logic to $u' = v$ we get that $v$ attains a minimum and a maximum in $\partial R$.
+
+ 	Thus the theorem holds.
+ \end{proof}
+\end{document}\end

@@ -1,0 +1,375 @@
+\documentclass[11pt]{amsart}
+
+\usepackage{amsmath,amsthm}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{enumerate}
+\usepackage{fullpage}
+ \usepackage{euscript}
+% \makeatletter
+% \nopagenumbers
+\usepackage{verbatim}
+\usepackage{color}
+\usepackage{hyperref}
+
+\usepackage{fullpage,tikz,float}
+\usepackage{tikz-cd}
+%\usepackage{times} %, mathtime}
+
+\textheight=600pt %574pt
+\textwidth=480pt %432pt
+\oddsidemargin=15pt %18.88pt
+\evensidemargin=18.88pt
+\topmargin=10pt %14.21pt
+
+\parskip=1pt %2pt
+
+% define theorem environments
+\newtheorem{theorem}{Theorem}    %[section]
+%\def\thetheorem{\unskip}
+\newtheorem{proposition}[theorem]{Proposition}
+%\def\theproposition{\unskip}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\def\theconjecture{\unskip}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{sublemma}[theorem]{Sublemma}
+\newtheorem{fact}[theorem]{Fact}
+\newtheorem{observation}[theorem]{Observation}
+%\def\thelemma{\unskip}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+%\def\thedefinition{\unskip}
+\newtheorem{notation}[definition]{Notation}
+\newtheorem{remark}[definition]{Remark}
+% \def\theremark{\unskip}
+\newtheorem{question}[definition]{Question}
+\newtheorem{questions}[definition]{Questions}
+%\def\thequestion{\unskip}
+\newtheorem{example}[definition]{Example}
+%\def\theexample{\unskip}
+\newtheorem{problem}[definition]{Problem}
+\newtheorem{exercise}[definition]{Exercise}
+
+\numberwithin{theorem}{section}
+\numberwithin{definition}{section}
+\numberwithin{equation}{section}
+
+\def\reals{{\mathbb R}}
+\def\torus{{\mathbb T}}
+\def\integers{{\mathbb Z}}
+\def\rationals{{\mathbb Q}}
+\def\naturals{{\mathbb N}}
+\def\complex{{\mathbb C}\/}
+\def\distance{\operatorname{distance}\,}
+\def\support{\operatorname{support}\,}
+\def\dist{\operatorname{dist}\,}
+\def\Span{\operatorname{span}\,}
+\def\degree{\operatorname{degree}\,}
+\def\kernel{\operatorname{kernel}\,}
+\def\dim{\operatorname{dim}\,}
+\def\codim{\operatorname{codim}}
+\def\trace{\operatorname{trace\,}}
+\def\dimension{\operatorname{dimension}\,}
+\def\codimension{\operatorname{codimension}\,}
+\def\nullspace{\scriptk}
+\def\kernel{\operatorname{Ker}}
+\def\p{\partial}
+\def\Re{\operatorname{Re\,} }
+\def\Im{\operatorname{Im\,} }
+\def\ov{\overline}
+\def\eps{\varepsilon}
+\def\lt{L^2}
+\def\curl{\operatorname{curl}}
+\def\divergence{\operatorname{div}}
+\newcommand{\norm}[1]{ \|  #1 \|}
+\def\expect{\mathbb E}
+\def\bull{$\bullet$\ }
+\def\det{\operatorname{det}}
+\def\Det{\operatorname{Det}}
+\def\rank{\mathbf r}
+\def\diameter{\operatorname{diameter}}
+
+\def\t2{\tfrac12}
+
+\newcommand{\abr}[1]{ \langle  #1 \rangle}
+
+\def\newbull{\medskip\noindent $\bullet$\ }
+\def\field{{\mathbb F}}
+\def\cc{C_c}
+
+
+
+% \renewcommand\forall{\ \forall\,}
+
+% \newcommand{\Norm}[1]{ \left\|  #1 \right\| }
+\newcommand{\Norm}[1]{ \Big\|  #1 \Big\| }
+\newcommand{\set}[1]{ \left\{ #1 \right\} }
+%\newcommand{\ifof}{\Leftrightarrow}
+\def\one{{\mathbf 1}}
+\newcommand{\modulo}[2]{[#1]_{#2}}
+
+\def\bd{\operatorname{bd}\,}
+\def\cl{\text{cl}}
+\def\nobull{\noindent$\bullet$\ }
+
+\def\scriptf{{\mathcal F}}
+\def\scriptq{{\mathcal Q}}
+\def\scriptg{{\mathcal G}}
+\def\scriptm{{\mathcal M}}
+\def\scriptb{{\mathcal B}}
+\def\scriptc{{\mathcal C}}
+\def\scriptt{{\mathcal T}}
+\def\scripti{{\mathcal I}}
+\def\scripte{{\mathcal E}}
+\def\scriptv{{\mathcal V}}
+\def\scriptw{{\mathcal W}}
+\def\scriptu{{\mathcal U}}
+\def\scriptS{{\mathcal S}}
+\def\scripta{{\mathcal A}}
+\def\scriptr{{\mathcal R}}
+\def\scripto{{\mathcal O}}
+\def\scripth{{\mathcal H}}
+\def\scriptd{{\mathcal D}}
+\def\scriptl{{\mathcal L}}
+\def\scriptn{{\mathcal N}}
+\def\scriptp{{\mathcal P}}
+\def\scriptk{{\mathcal K}}
+\def\scriptP{{\mathcal P}}
+\def\scriptj{{\mathcal J}}
+\def\scriptz{{\mathcal Z}}
+\def\scripts{{\mathcal S}}
+\def\scriptx{{\mathcal X}}
+\def\scripty{{\mathcal Y}}
+\def\frakv{{\mathfrak V}}
+\def\frakG{{\mathfrak G}}
+\def\aff{\operatorname{Aff}}
+\def\frakB{{\mathfrak B}}
+\def\frakC{{\mathfrak C}}
+
+\def\symdif{\,\Delta\,}
+\def\mustar{\mu^*}
+\def\muplus{\mu^+}
+
+\def\soln{\noindent {\bf Solution.}\ }
+
+
+%\pagestyle{empty}
+%\setlength{\parindent}{0pt}
+
+\begin{document}
+
+\begin{center}{\bf Math 202A --- UCB, Fall 2016 --- M.~Christ}
+\\
+{\bf Problem Set 13, due Wednesday November 30}
+\end{center}
+
+\medskip \noindent {\bf (13.1)}\ (Folland problem 4.22)\ 
+Let $X$ be a topological space, an d let $(Y, d)$ be a complete metric space.
+Let $(f_n)$ be a seuqnece of functions in $Y^X$ that satisfies
+$\sup_{x\in X} \lim_{m,n\to\infty} d(f_m(x), f_n(x)) = 0$. \\
+\noindent \textbf{(a)} Show that there exists an $f \in Y^X$ so that
+$\sup_{x\in X} d(f_n(x), f(x)) \to 0.$
+\begin{proof}
+	We will first construct $f$ and show that the the uniform norm distance tends to $0$. 
+	As $Y$ is a complete metric space under $d$ and for every $x$, $\lim_{m,n\to\infty} d(f_m(x), f_n(x))$
+	is bounded by $\sup_{x\in X} \lim_{m,n\to\infty} d(f_m(x), f_n(x)) = 0$, the sequence $(f_m(x))_m$ is cauchy
+	and thus has a limit, say $f(x).$ Now define $f: X \to Y$ so that $x \mapsto f(x)$ as defined previously for every
+	$x$. We have shown that this function is well defined.
+
+	We now claim that $\sup_{x\in X} d(f_n(x), f(x)) \to 0.$ First\footnote{We will abuse notation and 
+	write $\lim_n \sup_{x \in X} d(f_n(x), f(x)) = \lim_n\sup_{j\geq n} \sup_{x \in X} d(f_j(x), f(x))$, but we 
+	do not assume the limit exists. In fact we will show that the the $\lim \sup_n$ is bounded above by $0$ and the sequence is bounded below by $0$ so the limit is $0.$ }
+ 	\begin{equation*}
+		\begin{aligned}
+		\lim_{n\to \infty }\sup_{x \in X} d(f_n(x), f(x)) &=  \lim_{n\to \infty }\sup_{x \in X} \lim_{m\to \infty}d(f_n(x), f_m(x)) \\
+		&= \lim_{n\to \infty }\sup_{x \in X} \lim_{m\to \infty}  \sup_{k \geq m} d(f_n(x), f_k(x)) \\
+		&\leq \lim_{n\to \infty }\lim_{m\to \infty}  \sup_{x \in X}  \sup_{k \geq m} d(f_n(x), f_k(x)) \;\;\;\text{(sup of dec. seq at x)} \\
+		&\leq \lim_{n\to \infty }\lim_{m\to \infty}  \sup_{k \geq m} \sup_{x \in X}   d(f_n(x), f_k(x)) \;\;\;\text{(sup of maximal distances over x.)} \\
+		& = \lim_{m,n\to \infty }  \sup_{x \in X}   d(f_n(x), f_k(x)) = 0 \;\;\;\text{(existence by hypothesis)}
+		\end{aligned}
+	\end{equation*}
+	This completes the proof. 
+\end{proof}
+\noindent \textbf{(b)} Show that $f$ is unique. 
+\begin{proof}
+	Suppose that $f$ is not unique, that is there is a $g \neq f$ so that $\sup_{x\in X} d(f_n(x), g(x)) \to 0.$ Then
+	for every $n$
+	\begin{equation*}
+		\sup_x d(f(x), g(x)) \leq  \sup_x \left(d(f(x), f_n(x)) +  d(f_n(x), g(x))\right) \leq  \sup d(f(x), f_n(x)) + \sup d(g(x), f_n(x)).
+	\end{equation*}
+	But then $\sup d(g(x), f_n(x)) \to 0$ and $\sup d(f(x), f_n(x)) \to 0$ implies that $\sup_x d(f(x), g(x)) = 0$;
+	thus for every $x, $ $f(x) = g(x)$, and $f = g$; a contradiction to the existence of $g$. Therefore $f$ is unique.
+\end{proof}
+\noindent \textbf{(c)} Show that if every function $f_n$ is continuous then so is $f$.
+\begin{proof}
+	Let $f_n$ and $f$ be given as above. Then for every $\epsilon > 0$, there is an $N$ so that for all $n \geq N$
+	$\sup_{x\in X} d(f_n(x), f(x)) < \epsilon/3.$ Then by continuity of $f_n$ there is an open neighborhood $U_n \subset X$ of $x$ so that for all $y \in U_n$ $d(f_n(x), f_n(y)) < \epsilon/3.$ Finally
+	\begin{equation*}
+	\begin{aligned}
+		d(f(x), f(y)) &\leq d(f(x), f_n(x)) + d(f_n(x), f_n(y)) + d(f_n(y), f(y)) \\
+		&\leq d(f_n(x), f_n(y)) + 2\sup_{x\in X} d(f_n(x), f(x)) < 2/3\epsilon + \epsilon/3 = \epsilon.
+	\end{aligned}
+	\end{equation*}
+	Thus for every $\epsilon$, there is an open neighborhood of $x$ so that for all $y$ in that neighborhood, $d(f(x), f(y)) < \epsilon$.
+
+\end{proof}
+\medskip \noindent {\bf (13.2)}\ Give an elementary proof of the Tietze Extension Theorem for the special case in which
+$X = \mathbb{R}.$
+\begin{proof}
+	If $A$ is a closed subset of $\mathbb{R}$ and $f: A \to [a,b]$ is continuous, we wish to show the existence of a continuous function $F: \mathbb{R} \to [a,b]$ so that $F|_A = f.$ The main idea of our proof is that since $f$ is
+	defined on a closed subset of $\mathbb{R}$ we need only work to define $F$ on the open compliment of $A$ which
+	from elementary real analysis is just the countable union of open intervals.
+
+	In the trivial case that $A = \mathbb{R}$ or $A = \emptyset$, let $F = f$ or $F = c$ respectively, the first is obviously a continuous extension and the second is a trivial extension since $f$ is undefined for every $x \in \mathbb{R}$. 
+
+	Otherwise recall from real analysis that $\mathbb{R} \setminus A = B$ is an open subset of $\mathbb{R}$ and so is
+	the countable union of disjoint open intervals $O_n$. We will essentially define $F$ as the affine interpolation of $f$ on these open intervals. First assume that $O_n = (a_n, b_n)$ where $a_n, b_n$ are finite; we will address the nonfinite cases later. Define $$F|_{[a_n,b_n]}: x \mapsto \frac{f(b_n) - f(a_n)}{b_n - a_n}(x - a_n) + f(a_n).$$
+	$F|_{[a_n,b_n]}(a_n) = f(a_n)$ and $F|_{[a_n,b_n]}(b_n) = f(b_n)$. Furthermore from $104$, $F|_{[a_n,b_n]}$ is continuous for all $x \in {[a_n,b_n]}$ as $F|_{[a_n,b_n]}$ is just the affine linear interpolation of $f(a_n)$ and $f(b_n)$. If there are $O_n$ so that $a_n = -\infty$ or $b_n = \infty$ then  let $F|_{(a_n,b_n]}: x \mapsto f(b_n)$
+	or $F|_{[a_n,b_n)}: x \mapsto f(a_n)$ respectively. In this case these functions are just constant and so $F|_{O_n}$ is also continuous. Lastly let $F|_A = f,$ and then $F: \mathbb{R} \to [a,b]$ so that $F$ satisfies all of the previous restrictions\footnote{This is defined since we described the restriction of $F$ on all $x$ in $\mathbb{R} \setminus A \cup A = \mathbb{R}.$}
+
+	By the continuity of $f$ on $A$ and the previous arguments $F$ is continuous with respect to the whole topology on $\mathbb{R}$ at least on $A^o$ and $B^o = B.$ 
+	As for continuity at $A \setminus A^o = C$, we observe that $cl(A) = A$ and so $C = \partial A$. From real analysis the boundary of a closed set cannot contain any open intervals as $A^o$ is the countable union of open intervals, and if $\partial A$ contained an open interval, then $A^o$ would not be the largest open set containing $A$, therefore $\partial A = \{y \in A\}$ so that if $v,w \in \partial A$ $v < w$ or $w < v$. Now as $\delta \to 0,  \sup f((v - \delta, v+ \delta) \cap A) - \inf f((v - \delta, v+ \delta) \cap A) \to 0$. Observe that now $\sup F((v - \delta, v+ \delta)) = f((v - \delta, v+ \delta) \cap A)$ since on $(v - \delta, v+ \delta) \setminus A$
+	$F$ is defined on some collection of $O_n$ to never achieve values larger than $f$ on the end points on which it must be defined. Likewise for the infimum $\inf F((v - \delta, v+ \delta)) = \inf f((v - \delta, v+ \delta) \cap A)$. Therefore $\sup F((v - \delta, v+ \delta)) - \inf F((v - \delta, v+ \delta)) \to 0$ and $F$ is continuous at $v \in \partial A$.
+
+	 Therefore $F$ is continuous on $A^o$ and $\partial A$ and $A^c$ with respect to the global topology so it is continuous. This completes the proof.
+	\end{proof}
+\medskip \noindent {\bf (13.3)}\ Show that any product of connected topological spaces is connected.\\
+\textbf{Lemma.} Product of fininteley many connected spaces is connected:
+\begin{proof}
+	Take two spaces $A, B$ connected. Then to show that the produce $A \times B$ is conencted, first let $i_A^b: A \to A \times \{b\}, b\in B$ be the inclusion mapping. The inclusion map is category theoretically a bijection when $b$ is a singleton, so we need only show that the map is continuous and open. If $V \subset A \times \{b\}$ is open then it inherits the product topology so without loss of generality assume it is from the base and so $V = \pi_1^{-1}(C) \cap \pi^{-1}_1(D) \cap A \times \{b\}$
+where $C \subset A$ open and $D \subset B$ open. Then $b \in \pi^{-1}_1(D)$ otherwise $V$ would be the emptyset, thus $V = C \times \{b\}$ and the inverse of the map is $C$ which is open in $A$. Since we have shown every open set is of this form, take any $C \subset A$ open and the $i_{A}^b = C \times \{b\}$ which is open. Therefore the map is a homemorphism. Since the product is commutative the argument holds for the inclusion map $i_B^a$ for any $a \in A$. Now we will show that every $(a,b) \in A \times B$ belong to the same maximally connected component by showing they belong to a conencted component and there is a common element to all of those connected components (invoking a proof from a previous exercise.) Fix $(c,d) \in A \times B$. Then for all $(a,b)$, its clear that $(a,b) \in i_A^d(A) \cup i_B^a(B)$ and symmetricly $(a,b) \in I_A^b \cup i_A^c(B)$
+both of which are connected as they are the union of the continuous images of two connected sets. Thus
+ $(a,b) \in i_A^d(A) \cup i_B^a(B) \cup I_A^b \cup i_A^c(B) \ni (c,d)$ and so $(c,d)$ is common to every connected component contianing every element of the space and so the space itself is connected.
+
+ Then induct on a finite product to yield the result.
+\end{proof}
+
+We now prove the exercise.
+\begin{proof}
+We will use the classic constancy argument. First let $D = \{0,1\}$ with the topology inherited from $\mathbb{R}$. Then a continuous closed map $f: C \to D$ is constant if and only if $C$ is a connected topological space. If $f: C \to D$ is constant for all $f$, but for contradiction that $C$ were not connected, then $C = A \sqcup B$ with $A,B$ clopen disjoint non-trival. Then let $f:A \to 0, B \to 1$ and so trivially $f$ is closed since all elements of $P(D)$ are closed. Since every element of $P(D)$ is open then the inverse of subsets of $D$ is either $C$, $A$, or $B$, which are all open by $C$ disconnected. But this contradicts the fact that all closed continuosu maps are constant, so $C$ must be connected. In the other direction, if $C$ is connected, then the image of any $f$ must be connected, so must be either $1$ or $0$ but not $D$ and so every $f$ must be constant.
+
+Now to the problem, let $X = \prod_A X_a$. Then let $X_a$ connected for all $a$. Take any $f: X \to D$ to be a continuous function with $X$ endowed with the product topology. Take any point $x$ in $X$ and let $M$ be it maximally connected component; from a previous exercise $M = \bigcup_{K} K$ where $K$ is a connected subset of $X$ which contains $x$ and $M$ is connected obviously. Then $f(M)$ is connected and so is $cl(f(M)$,
+since $M \subset X$ and $f$ is a closed continuous map $cl(f(M)) \subset f(X)$. We  would like to show that $f$
+is constant.
+
+For contradiction suppose there is a $y \in D$ so that $f(X) \setminus cl(f(M)) \ni y$, that is there is (are) some
+$z \in X$ so $f(z) = y$ and not $f(z) \in cl(f(M)).$ Then take an openneighboorhood $T$ of $y$ which is disjoint from $f(M)$; this is possible in $D$ because $f(M)$ is constant. By the continuity of $f$, $f^{-1}(T) = W$ is open and so we can take a neighborhood of $z \in W$ which is contained by $W$ and is also in the neighborhood base. Then there are open sets so that $z \in \bigcap_{1}^m \pi^{-1}_{a_n}(A_{a_n})$ and this intesection is a subset of $W$.  Let $v$ so that $v_a =z_a$ for those finite $a \in \{a_n\}$ and otherwise $v_a = x_a$ where $x \in M$ was the element defined in the previous paragraph. Now $x$ and $v$ both agree except for the coordinates in $\{a_n\}$ so they are both contained in an equivalence class $Y_x$ of points in $X$ which agree with $y$ except for on $\{a_n\}$. Now $Y_x$ is bijective to $\prod_{a \in \{a_n\}}  X_a$ as the continuous projection map provides an injection since for all $q \in Y_x$, $q$ is uniqueley determined on $a_n$ and of course the projection map is surjective. Now for any $q \in Y_x$ take an openneighborhood of $V$ of $q$ then every $p \in V$ is uniqueley determined by its coordinates $\{a_n\}$ so $V = \bigcap_{b \in Q \subset \{a_n\}} \pi_b^{-1}(U_b) \cap Y_x$. With $U_b$ open in $X_b$. Thereforee $\pi_b(V) = U_b$ for all $b \in Q$ implie that $\pi_{\{a_n\}}(V) = \bigcap_{b\in Q} \pi_b^{-1}(U_b)$ is open in $\prod_{a \in \{a_n\}} X_{a}.$ Therefore $Y_x$ 
+is homemorphic to this subspace, and this subspace is connected by the Lemma!. This contradicts  the fact that $f(v) \in T$ as $Y_x$ is a subset of the maximal component $M$ which contains $x$ and $v$, and thus $f(Y_x) \subset cl(f(M)).$ Therefore there are are no elements whose image is not in closure of the image of the maximally connected component $M$ and so so $f$ is constant. Therefore $X$ is connected.
+\end{proof}
+
+\medskip \noindent {\bf (13.4)}\ Let $X$ be a topological space equipped with with an equivalence realtion, $\tilde X$ the set of equivalence classes, $\pi: X \to \tilde X$ the map taking each $x \in X$ to its equivalence class, and $\scriptt = \{U \subset \tilde X\ :\ \pi^{-1}(U) \in \scriptt_X\}$. \\
+\noindent \textbf{(a)} Show that $\scriptt$ is a topology on $X$.
+\begin{proof}
+	First we show that $\tilde X \in \scriptt$. Since $\pi$ is a surjection onto $\tilde X$ it follows that $\pi^{-1}(\tilde X) = X \in \scriptt_X$ and so $\tilde X \in \scriptt$. Additionally $\pi^{-1}(\emptyset) = \emptyset \in \scriptt_X$ so $\emptyset \in \scriptt$. Now take any $U_\alpha \in \scriptt$ with an arbitrary index set $\alpha \in A$. We claim that $\bigcup_{\alpha} U_\alpha \in \scriptt$. First by the definition of preimage 
+	\begin{equation*}
+	\pi^{-1}\left(\bigcup_{\alpha \in A} U_\alpha\right) = \bigcup_{\alpha \in A} \pi^{-1}\left( U_\alpha\right) \in \scriptt_X
+	\end{equation*}
+	since $\pi^{-1}\left( U_\alpha\right) \in \scriptt_X$ are open in $X$ and the topology $\scriptt_X$ is closed under arbitrary union. Lastly consider the finite intersection of $U_m \in \scriptt$; that is, 
+	We claim that $\bigcap_{1}^n U_m \in \scriptt$. First by the definition of preimage 
+	\begin{equation*}
+	\pi^{-1}\left(\bigcap_{m=1}^n U_m\right) = \bigcap_{m=1}^n  \pi^{-1}\left( U_m\right) \in \scriptt_X
+	\end{equation*}
+	since $\pi^{-1}\left( U_\alpha\right) \in \scriptt_X$ are open in $X$ and the topology $\scriptt_X$ is closed under finite intersection.
+
+	Thus $\scriptt$ satisfies the definition of a topology.
+\end{proof}
+
+\noindent \textbf{(b)} Show that if $Y$ is a topological space, $f: \tilde X \to Y$ is continuous if and only if 
+$f \circ \pi$ is continuous.
+\begin{proof}
+Suppose that $f: \tilde X \to Y$ is continuous and $\scriptt_Y$ denotes the topology of $Y$. Then for any open $V \in \scriptt_Y$, $f^{-1}(V) \in \scriptt,$ but then $\scriptt_X \ni \pi^{-1}( f^{-1}(V)) = (f\circ \pi)^{-1}(V).$ Thus the preimage mapping $(f\circ \pi)^{-1}$ preserves the topology $\scriptt_Y$ and so $f \circ \pi: X \to Y$ is continuous. 
+
+In the other direction if $f \circ \pi: X \to Y $ is continuous then for every open neighborhood of $(f \circ \pi)(x),$ say $V$ there is an open neighborhood of $x$, say $U$, so that $(f \circ \pi)(U) \subset V.$ Then $\pi(U) = W \ni \pi(x)$ is a neighboorhood of $\pi(x)$ so that $f(W) \subset V$. Thus take $W^o$ and then $f(W^o) \subset V$. Now since $\pi$ is surjective for every $\tilde x \in \tilde X$ pick any $x \in \pi^{-1}(x)$. Then for any $V$ as above there is an open neighboorhood $W^o$  of $\tilde x$ so that $f(W^o) \subset C$. Therefore $f: \tilde X \to Y$ is continuous.
+\end{proof}
+
+\noindent \textbf{(c)} Show that $\tilde X$ is $T_1$ iff every equivalence class is closed.
+\begin{proof}
+	Suppose that $(\tilde X, \scriptt)$ is $T_1$. Then $X \setminus \{\tilde x\} \in \scriptt$ for every $\tilde x \in \tilde X$ and so
+	$\pi^{-1}(\tilde X \setminus \{\tilde x\}) \in \scriptt_X.$ Now since $\pi$ maps every $x$ into its exact equivalence class and the fundamental theorem of equivalence relations states that the equivalence classes of $x$ form a partiiton of the space $\pi^{-1}(\tilde X \setminus \{\tilde x\}) \cap \pi^{-1}(\{\tilde x\}) = \emptyset$
+	and $\pi^{-1}(\tilde X \setminus \{\tilde x\}) \cup \pi^{-1}(\{\tilde x\}) = X$. Therefore $X \setminus  \pi^{-1}(\tilde X \setminus \{\tilde x\}) =  \pi^{-1}(\{\tilde x\}) = [x]_\sim$ for some $x;$ that is $[x]_\sim$ is the compliment of an open set and so $[x]_\sim$ is closed. Since we argued this for every $\tilde x$ and $\pi$ is surjective, we get that for every $x \in X$, $[x]_\sim$ is closed.
+
+	Suppose that every equivalence class is closed. Then for every $x \in X$, $X \setminus [x]_\sim \in \scriptt_X.$  
+	Now take any $\{\tilde x\} \subset \tilde X.$ It follows that $\pi^{-1}(X \setminus \{\tilde x\}) = \pi^{-1}(\tilde X) \setminus \pi^{-1}(\tilde x) = X \setminus [x]_\sim \in \scriptt_X$ and so $\tilde X \setminus \{\tilde x\}\in \scriptt$ for every $\tilde x$ and so singletons are closed in $\tilde X$ and thus $(\tilde X, \scriptt)$ is $T_1$.
+\end{proof}
+
+\medskip \noindent {\bf (13.5)}\ Let $(X, \scriptt)$ be compact and Hausdorff. \\ 
+\noindent \textbf{(a)} Let $\scriptt'$ be strictly stronger than $\scriptt$ on $X$. Show that $(X, \scriptt')$ is not compact.
+\begin{proof}
+	Suppose that $\scriptt' \supset \scriptt$ and $\scriptt' \neq \scriptt$ and $\scriptt'$ compact. Let $
+	id: (X, \scriptt') \to (X, \scriptt)$ so that $id(x) = x$. Then if $V \in \scriptt$ $id^{-1}(V) = V \in \scriptt'$
+	by our assumption that $\scriptt'$ is a stronger topology. Therefore $id$ is a continuous bijection. Then by Proposition
+	4.28, $(X, \scriptt')$ compact and $(X, \scriptt)$ Hausdorff implies that $id$ is a homeomorphism. Therefore $\scriptt' = \scriptt.$ This is a contradiction ahd so $\scriptt$ cannot be compact.
+\end{proof}
+\noindent \textbf{(b)} Let $\scriptt'$ be strictly weaker than $\scriptt$ on $X$. Show that $(X, \scriptt')$ is not Hausdorff.
+\begin{proof}
+	Suppose that $\scriptt' \subset \scriptt$ and $\scriptt' \neq \scriptt$ and $\scriptt'$ Hausdorff.  Let $
+	id: (X, \scriptt) \to (X, \scriptt')$ so that $id(x) = x$. Then if $V \in \scriptt'$ $id^{-1}(V) = V \in \scriptt$
+	by our assumption that $\scriptt'$ is a weaker topology. Therefore $id$ is a continuous bijection. Then by Proposition
+	4.28, $(X, \scriptt)$ compact and $(X, \scriptt')$ Hausdorff implies that $id$ is a homeomorphism. Therefore $\scriptt' = \scriptt.$ This is a contradiction ahd so $\scriptt$ cannot be Hausdorff.
+\end{proof}
+\medskip \noindent {\bf (13.6)}\ Let $X$ be a topological space. Show that following are equivalent: (i) $X$ is normal; (ii) $X$ satisfies the conclusion of Urysohn's Lemma; (iii) $X$ satisfies the conclusion of the Tietze Extension Theorem.
+\begin{proof}
+	Trivially\footnote{$X$ normal is a hypothesis of both propositions.} (i) implies (ii) and (iii). We will now show that (ii) implies (i) and (iii) implies (ii).
+
+	First suppose that $X$ satisfies the conclusions of Urysohn's Lemma, that is for $A, B$ closed disjoint in $X$ then
+	there is a continuous function $f: X \to [0,1]$ so that $f(A)= \{1\}$ and $f(B) = \{0\}.$ Now when $0< \epsilon < 1$ consider the open set $V_\epsilon = (\epsilon, 1]$ then $A \subset f^{-1}(V_\epsilon)$.  Additionaly consider the open set $U_\epsilon = (\epsilon, 1]$ then $B \subset f^{-1}(U_\epsilon)$. We claim that $f^{-1}(U_\epsilon) \cap f^{-1}(V_\epsilon) = \emptyset.$ By the set operation homomorphism property of the preimage, we have that $$ \emptyset = f^{-1}(\emptyset)  =f^{-1}(U_\epsilon \cap V_\epsilon) = f^{-1}(U_\epsilon) \cap f^{-1}(V_\epsilon).$$
+	Therefore $A, B$ are contained in open sets which are disjoint. Since this holds for every $A, B$, the space $X$ is normal.
+
+	Now suppose that $X$ satisfies the conclusion of the Tietze Extension Theorem. Then take any two closed disjoint sets $A, B$ in $X$. Let $f: A \cup B \to [0,1]$ so that $f(A) = \{0\}$ and $f(B) = \{1\}.$ Since $A, B$, $A \cup B$ is closed. Now for every $x \in A \cup B$, $x \in A$ or $x \in B$ but not both. Assume that $x \in A$. Then
+	$f(x) = 0$ and for every open neighborhood $V$ of $f(x)$ in $[0,1]$ we claim that $f^{-1}(V)$ is open. since $f(A \cup B) = \{0, 1\}$ then $V$ must contain $0$ and need not contain $1$. In the case that $0, 1 \in V$ we have that
+	$f^{-1}(V) = A \cup B$ which is the whole space $A \cup B$ and therefore is open in the relative subspace topology. Otherwise $f^{-1}(V) = A$ which is closed in the relative subspace topology since $A \cap A \cup B = A$ and $A$ is closed globally. Since $B$ is closed in the global topology and $B \cap A \cup B = B$, then $B$ is closed in the subspace topology. By the disjointness of $A$ and $B$, $A \cup B \setminus B = A$ and so $A$ is open in the subspace topology. Therefore $f^{-1}(V) = A$ which is an open neighborhood of $x \in A$. The same argument can be made by replacing symbols to show that $f$ is continuous for $x \in B$.
+
+	Then the Tietze extension theorem gives a continuous extension $F: X \to [0,1]$ so that $F|_{A \cup B} = f;$ that is $f|_A = 0$ and $f|_B = 1$, therefore the conclusion of Urysohn's Lemma is satisfied.
+
+	We have thus shown that $(ii) \implies (i) \implies (iii) \implies (i)$ and thus all of the conditions are equivalent.
+\end{proof}
+
+
+\medskip \noindent {\bf (13.7)}\ Show that every sequentially compact topological space is countably compact.
+\begin{proof}
+	Suppose that $X$ is sequentially compact. Then given any sequence $(x_n)_n$ then there is a subsequence which converges to some $x \in X;$ namely $x_{n_k} \to x.$ If $\scriptv$ is a countable open cover of $X$, then we would like to show that there is a finite subcover. Proposition 4.21 implies that $X$ is countable compact if and only if for every countable family $\{F_n\}$ of
+	closed sets with the finite intersection property ($\bigcap_{n\in B\subset\mathbb{N}} F_n \neq \emptyset$ ), it follows that
+$\bigcap_{n=1}^\infty F_n \neq \emptyset.$
+
+	To show compactness we will show the dual property with closed sets. Let $\{F_n\}$ be given with the above property and then let choose $x_n$ so that $x_n \in \bigcap_{m=1}^n F_m.$ Such an $x_n$ exists for every $n$ by the finite intersection property, and there is a subsequence $x_{n_k}$ which converges to $x$ in $X$. Suppose $x \not\in \bigcap_{n=1}^\infty F_n$, then there is an $m$ so that $x \not\in F_m$. Therefore by $F_m$ closed $x \not\in acc(F_m).$ By definition for all $j >m$, $x_{n_j} \in \bigcap_{p=1}^{x_{n_j}} F_p \subset F_m$. Therefore the sequence $(x_{n_k})_{k=m}^\infty$ is entirely contained in $F_m$.
+	Now since $x \notin acc(F_m)$, it follows that $x \notin acc\left(\{x_{n_k}\}_{k=m}^\infty\right)$ and so
+	there is a neighborhood $V$ of $x$ so that $\{x_{n_k}\}_{k=m}^\infty \cap (V \setminus \{x\}) = \emptyset$, 
+	and therefore exists a neighborhood so that for all $k \geq m$, and for all $j > k$ $x_{n_j} \notin V$ and so $x_{n_k} \not\to x,$ (unless of course $x_{n_k} = x$ becomes constant at somepoint in the sequence, in which case $x \in F_m$, but this is not possible.) This is a contradiction, and so $x \in \bigcap_{m=1}^\infty F_m$ and thus $X$ is countably compact.
+\end{proof}
+
+\medskip \noindent {\bf (13.8)}\ Show that if $X$ is countably compact, then every sequence in $X$ has a cluster point and additionally if $X$ is also first countable then $X$ is sequentially compact.
+\begin{proof}
+	Let $(x_n)$ be some sequence in $X$. Let $S_m = \{x_n\}_{n=m}^\infty$ be the value set of the sequence starting at $m$. Finally let $G = \bigcap_{n=1}^\infty acc(S_n).$  When $n \leq m$, $S_m \subset S_n$ and so $acc(S_m) \subset acc(S_n)$. Therefore take any finite $B \subset\mathbb{N}.$ There is a maximal element say $k = \max B$, and thus $acc(S_j) \supset acc(S_k)$ so the intersection of accumulation points of the partial sequence value sets is non-empty; that is the family $(acc(S_n))_{n\in \mathbb{N}}$ has the finite intersection property and every member is closed in $X$. Hence by the countable compactness of $X$, $G$ is non-empty. We claim that if $x \in G$ then $x$ is a cluster point of the sequence.
+
+	Taking $x \in G$ then forall $m$ and for all neighborhoods $V$ of $x$ then $V \cap S_m$ is non-tivial. Hence forall neighborhoods and forall $m$, there exists an $n > m$ so that $x_n \in S_m$ and $x_n \in V$. Therefore $(x_n)$ is in $V$ infinitely often and so $x$ is a cluster point of the sequence.
+
+	Supposing additionally that $X$ is a first countable space, then in Homework 11, exercize $11.4$ (or equivalently Folland 4.7) we showed that if $x$ is a cluster point of a sequence in a first countable sequence, then there is a subsequence which converges to $x$. Adopting the results of this exercise to the previous proof, $x \in G$ is a cluster point of $(x_n)$ and so there is a subsequence which converges to it. Therefore for any sequence in $X$ there is a convergent subsequence (the existence of a cluster point guarenteed), and so $X$ is sequentially compact.
+
+	This completes the proof.
+\end{proof}
+
+\medskip \noindent {\bf (13.9)}\ If $X$ is normal, then $X$ is countably compact iff $C(X) = BC(X).$
+\begin{proof}
+	Suppose that $X$ is countably compact. Now if $f \in C(X)$, then $f: X \to \mathbb{C}$ has the property that $f(X)$
+	is countably compact. Since $\mathbb{C}$ is second countable then $f(X)$ is sequentially compact. Additionally since $\mathbb{C}$ is a metric space, from the theory of metric spaces we know that sequentiall compactness implies compactness which implies total boundedness and closedness (Heine Borel in $\mathbb{R}^2 \simeq \mathbb{C})$\footnote{Closedness comes from $\mathbb{C}$ metric spaces being Hausfordd.} Therefore $f(X)$ is bounded and so $f$ is bounded; that is $C(X) \subset B(X).$ Then $BC(X) = B(X) \cap C(X) = C(X).$
+
+	Now suppose that $X$ is not countably countably compact, then by 13.7, $X$ is not sequentially compact, and 
+	so there is a sequence with no convergent subsequence. Therefore there is a sequence without a cluster point.
+	Take such a sequence, say $(x_n).$ Then we claim that the value set $S = \{x_n\}_{n=1}^\infty$ is closed. If $x \in acc(S)$ we wish to show that $x \in S$. 
+
+	Suppose for the sake of contradiciton that $x \notin S$, then because the sequence has no cluster points, there is a neighborhood of $x$ say $W$ so that there is an $N$ so that $x_n \notin W$ when $n > N.$ Then if $S_n = S \setminus \{x_{n}\}_{n=1}^m$ it follows that $S_n \cap W = \emptyset$ for all $n > N.$ Since $x$ is an accumulation point it must then be that $S \cap W \ni x_k \neq x$ when $k \leq N.$ Now consider any neighborhood $V \subset W$ of $x$, then $\emptyset \neq V \cap S = V \cap S \setminus S_N$ and so $x \in acc(S \setminus S_N).$ However, $x$ 
+	is $T_4$, and therefore $S \setminus S_N$ is  closed because it is a finite set of points. Therefore $acc(S \setminus S_N) \subset S \setminus S_N \subset S$, which contradicts $x \notin S$. Therefore $acc(S) \subset S$ and so $S$ is closed.
+
+	Now let $f : S \to \mathbb{C}$ so that $f(x) = \max \{n \in \mathbb{N}\ :\ x_n = x \} + 0i$. Such a maximum is defined because $x_n$ cannot cluster at any $x \in S$; that is, $\{n \in \mathbb{N}\ :\ x_n = x\}$ must be finite since $(x_n)$ has no cluster points and cannot visit $x$ infiniteley many times. We claim the function is not bounded. Suppose that there were an $N$ so that 
+	for all $x \in S$ $|\max \{n \in \mathbb{N}\ :\ x_n = x\}| \leq N$. Then if $m > N$, $x_m \in S$ since $N$ is finite 
+	and additionally $N \geq |f(x_m)| = \max \{n \in \mathbb{N}\ :\ x_n = x\} = m > N$ which is a contradiction so, $f$
+	cannot be bounded. 
+
+	To show $f$ is continuous on $S$ with respect to its subspace topology take any closed subset $K$ of $\mathbb{C}$, then it suffices to show that $f^{-1}(K)$ is a closed subset of $X$. Since $S \sim \mathbb{N}$ there are two cases: If $f^{-1}(K)$ is finite then it is closed by $X$ a $T_4$ topological space. If it is not then it is countable. For each $y \in f^{-1}(K)$ clearly the integer $f(y) = \max \{ n : x_n = y\}$ is unique as the natural numbers have a linear order and if $x_f(y) = y$ and $y \neq z$ then $x_f(y) \neq z$. If $y_k$ is an enumeration of $f^{-1}(K)$ then let $x_{f(y_k)}$ be a subsequence of $x_n$. As $f(y_k)$ does not repeat integers by the aforementioned uniqeuness, if $k \neq j$ then $y_k \neq y_j$ and so $f(y_k) \neq f(y_j)$ and so $x_{f(y_k)} \neq x_{f(y_j)}$ and so finally $(x_{f(y_k)})_{k=1}^\infty$ does not repeat elements infinitely many times. Because $(x_n)$ does not have any cluster points the non-repeatability of $x_{f(y_k)}$ implies that $(x_{f(y_k)})$ has no cluster points. Observing that the value set $S(K) = \{x_{f(y_k)}\}_{k=1}^\infty$ is exactly $f^{-1}(K)$, we use the logic showing that $(x_n)$ was closed to conclude that $S(K)$ is closed in $X;$ therefore $S(K)$ is closed in $S$. Hence $f$ is continuous.
+
+	Now by Corrolary $4.17$, it follows that $f$ can be extended to some $F \in C(X)$ so that $F|_S = f.$ Therefore $F$
+	is an unbounded continuous function on $X$ and so $BC(X) \neq C(X).$
+\end{proof}
+\end{document}\end
+	

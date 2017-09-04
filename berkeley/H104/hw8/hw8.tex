@@ -1,0 +1,184 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%                      Homework 8                            %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[letter]{article}
+
+\usepackage{lipsum}
+\usepackage[pdftex]{graphicx}
+\usepackage[margin=1.5in]{geometry}
+\usepackage[english]{babel}
+\usepackage{listings}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{framed} 
+\usepackage{amsmath}
+\usepackage{titling}
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{definition}{Definition}
+
+\newenvironment{menumerate}{%
+  \edef\backupindent{\the\parindent}%
+  \enumerate%
+  \setlength{\parindent}{\backupindent}%
+}{\endenumerate}
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%
+%% DOF INFO %%%
+%%%%%%%%%%%%%%%
+\newcommand{\bHWN}{8}
+\newcommand{\bFLASS}{MATH H104}
+
+\title{\bFLASS: Homework \bHWN}
+\author{William Guss\\26793499\\wguss@berkeley.edu}
+
+\fancyhead[L]{\bFLASS}
+\fancyhead[FO]{Homework \bHWN}
+\fancyhead[FE]{GUSS}
+\fancyhead[R]{\thepage}
+\fancyfoot[LR]{}
+\fancyfoot[F]{}
+\usepackage{csquotes}
+
+%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+
+%%%%%%% Be sure to set the counter and use menumerate
+%30, 31, 34, 36, 37, 50, 52, 53, 55.
+\begin{menumerate}
+
+
+\setcounter{enumi}{29}
+	\item I'll prove this one in reverse, first defining the general $\beta$ cantor set.
+	\begin{definition}
+		The $\beta$ cantor set, $F_\beta$, is defined as an iterative process of which the first iteration is defined for $0 < \beta < 1$ by taking the middle $\beta$ of $[0,1]$ and letting $F^1_\beta$ be the remaining two intervals of outermeasure $\frac{1-\beta}{2}.$ In general, at any iteration of the process $n$, $F^n_\beta$ is comprised of $2^n$ pieces, each of outer measure $P_n.$ The process for generating $P_{n+1}$ is the same as for the first iteration: remove $P_n\beta$ from each piece of outer measure $P_n$ and yield two pieces of outer measure $P_n(1-\beta)/2.$ Lastly, $F_\beta \subset F_\beta^n\subset F_\beta^{n-1.}$ for all $n.$
+	\end{definition}
+
+	\begin{theorem}
+		For any $0 < \beta < 1,$ $F_\beta$ is a zero set.
+	\end{theorem}
+	\begin{proof}
+	To show this, for every $\epsilon > 0$ we need to find a countable collection of open sets which cover $F_\beta$ and have outer measure less than $\epsilon.$ By the definition of $F_n$ we have that at any iteration $n$ the total outer measure is $P_n2^n.$ Thus we solve the recurrance relation, $$P_n = P_{n-1}\frac{(1-\beta)}{2},$$ by letting $P_n = \frac{(1-\beta)}{2}$ and solving for the initial conditions that $P_0 = 1.$ Thus the total outer measure of $F^n_\beta$ is defined as 
+	$$outer(F^n_\beta) = \frac{(1-\beta)^n}{2^n}2^n = (1-\beta)^n \to 0$$
+	by $0<1-\beta<1.$ So for every $\epsilon$ there is a large enough $N$ such that by extending $F_\beta^N$ to a very close open interval containing $F_\beta^N$ and thereby $F_\beta,$ the outer measure is less than $\epsilon.$ So $F_\beta$ is a zero set.
+	\end{proof}
+
+	It follows simply that the middle fourths cantor set is a zero-set.
+
+	\item Again I'll provide a definition for the general fat cantor set and apply it to the specifc definition provided.
+	\begin{definition}
+		The fat $\beta$ cantor set, $F_\beta$, is defined as an iterative process of which the first iteration is defined for $0 < \beta < 1$ by taking the middle $\beta^n$ of $[0,1]$ and letting $F^1_\beta$ be the remaining two intervals of outermeasure $\frac{1-\beta^n}{2}.$ In general, at any iteration of the process $n$, $F^n_\beta$ is comprised of $2^n$ pieces, each of outer measure $P_n.$ The process for generating $P_{n+1}$ is the same as for the first iteration: remove $P_n\beta^n$ from each piece of outer measure $P_n$ and yield two pieces of outer measure $P_n(1-\beta^n)/2.$ Lastly, $F_\beta \subset F_\beta^n\subset F_\beta^{n-1.}$ for all $n.$
+	\end{definition}
+
+	\begin{theorem}
+		The fat $\beta$ cantor set is not zero set.
+	\end{theorem}
+	\begin{proof}
+	We essentially need to show that as $F_\beta^n$ approaches $F_\beta$, the outer measure of $F_\beta^n$ does not tend towards $0$. By the definition of $F_n$ we have that at any iteration $n$ the total outer measure is $P_n2^n.$ Thus we solve the recurrance relation, $$P_n = P_{n-1}\frac{(1-\beta^n)}{2}.$$ Using intuition from the $\beta$ canot set case, we let $P_n$ be for the form $$P_n = \frac{(1-\beta^n)^{a_n}}{2^N}$$ for some sequence $a_n$ depending on $n.$ Then we can find $a_n$ by considering the ratio $P_n/P_{n-1}.$ This essentially yields that $a_n - a_{n-1} = 1.$ Ommitting the application of variation of parameters to this recurrence relation, we yield $a_n = n.$ Thus the total outer measure of $F^n_\beta$ is defined as 
+	$$outer(F^n_\beta) = \frac{(1-\beta^n)^n}{2^n}2^n = (1-\beta^n)^n \to 1$$
+	by $0<1-\beta<1.$ So there could not possibly be a sequence of countable open coverings of $F_\beta$ with outer measure approaching $0.$ This completes the proof.
+	\end{proof}
+
+	In the particular case of the problem, letting $\beta = 1/4$ apply the previous theorem, and yield that the outer measure of the fat cantor set is $1.$ This is remarkable!
+
+	\begin{theorem}
+		The property that $S$ is a zero set is not topological.
+	\end{theorem}
+	\begin{proof}
+		It suffices to show that for two sets $A,B$ which are homeomorphic, the zero set property does not hold. Clearly $F_\beta \cong C_\beta$ since they are both cantor spaces. Howerver Thoerem $2$ states that $F_\beta$ is not a zero set, whereas $C_\beta$ is. So by counter example, the zero set property is not topological.
+	\end{proof}
+
+\setcounter{enumi}{33}
+\item I give a proof of the general case first for functions which map open sets in $\mathbb{R}.$
+	\begin{theorem}
+		Let $f:U \subset \mathbb{R} \to \mathbb{R}$ be a continuously differentiable map with a set of critical points $C$. Then, $f(C)$ has outer measure $0.$
+	\end{theorem}
+	\begin{proof}
+		Take some closed interval inside of $U$, say $K.$ Then let $J:K^2 \to \mathbb{R}$ maps $x,y \in K$ to $$\frac{-f'(x)(y-x) - f(x) -f(y)}{|y-x|}$$ when $y\neq x$ and $0$ otherwise. Since $J$ is composed of a continuously differentiable function $f$ then it is uniformly continuous and can approach $0$ simply. 
+
+		Now we wish to show that $f(C)$ has measure $0$ using the above function. In particular, for every $\epsilon > 0$, divide $K$ into $N$ sub intervals of length $outer(K)/N$ satisfying $|J(x,y)| < \epsilon$ for $x,y$ in a self-similar interval. If $x \in K_l$ (a sub interval) is in this case a critical value, we have that $$J(x,y) < \epsilon \implies |f(y)-f(x)| < |y-x|\epsilon \leq  \frac{outer(K)}{N}\epsilon.$$
+		Since this holds for arbitrary $y$, $|f(y) - f(y')| < 2\epsilon  \frac{outer(K)}{N}.$ Now taking the countable union of these subintervals containing critical value, we yield that $outer(f(C \cap K)) < 2\epsilon outer (f(K))$. This implies directly that the outer measure of cricial values over $K$ is 0. 
+
+		By the second countability of $\mathbb{R}$ we can build $C$ from these intervals in a countable union, and therefore, the outer measure of $f(C)$ is $0$.
+	\end{proof}
+
+	This theorem shows the first case for $[a,b]$ because adjoining the end points does not actually add any outer measure to the set $C.$ Furthermore, the theorem holds in $\mathbb{R}$ as it is an open set of itself.
+
+\setcounter{enumi}{35}
+\item Again, consider the following theorem.
+	\begin{theorem}
+		Any $f: \mathbb{R} \to \mathbb{R}$ has at most countably many jump discontinuities.
+	\end{theorem}
+	\begin{proof}
+		Recall that $f$ is jump discontinuous at $a$ if and only if both $\lim_{x\to c^+} f(x)$ and $\lim_{x \to c^-} f(x)$ exist but are either mutually unequal or unequal to $f(c)$ if it exists. This implies that for some $\epsilon$, $f$ is continuous on both $(c-\epsilon,c)$ and $(c,c+\epsilon)$. Let these intervals be called $c_-, c_+.$ Then if $$S = \left\{c \in \mathbb{R} \ | \ \text{c is a jump discontinuity of }f\right\},$$ let $\mathcal{B}$ be the collection of those disjoint intervals surrounding the jump discontinuities. The collection can be made to consist of disjoint intervals by taking $\epsilon$ small enough for each $c.$
+
+		Since there exists a rational in each of these disjoint intervals, we then can assign to $b\in \mathcal{B}$ a rational. It follows that, $S \sim \mathcal{B} \sim \mathbb{Q} \sim \mathbb{N}.$ The proof is complete.
+	\end{proof}
+
+	The example provided in $(b)$ clearly has no jump discontinuities, since the limit from the right does not exist at $0.$
+
+	The example from $(c)$ has discontinuities at $\mathbb{Q}$ but since $\mathbb{Q}$ as a subset of $\mathbb{R}$ has no isolated points, there are no jump discontinuities. qed.
+
+
+\item No consider the following counterexample. Let $f(x)$ be defined such that if $x < 0, f(x)  = \sin(|\frac{1}{x}|)$, if $x = 0, f(x) = 0$, and if $x > 0, f(x) = \frac{1}{x}.$ Since the limit as $x \to 0$ from the right of $f$ does not exist, there is a discontinuity of the second kind there. It is clear however that in the interval $(-1,1)$ the function does not satisfy the intermediate value property. Take for example $x = -1$ and $x=1/2$. Does there exist a $\theta$ in between those two values such that $f(\theta) = 1.5$? No. There cannot exist such a $\theta$, for if $\theta \leq 0$ tjem $f(\theta) \leq 1$ and if $0 < \theta < 1/2$, $f(\theta) > 2.$ So $f$ does not posess the intermediate value property.
+
+
+\setcounter{enumi}{49}
+\item Observe this simple counter-example. We define $f : [0,1] \to [0,1]$ such that $x$ uses the following mapping. If $x \in C_\beta$ then it maps to the corresponding fat cantor set $F_\beta$ in an order preserving fashion. Otherwise, it maps to $1-x$, or essentially the identity function in reverse order. Since $f$ has only a set of discontinuities with outer measure $0$, it is integrable, but in the inverse case, this is not true as $F_\beta$ has positive outer measure by Theorem $2$.
+
+\setcounter{enumi}{51}
+\item We use this first general theorem to show the properties of rieman integrability.
+
+	\begin{theorem}
+	If $h: [c,d] \supset f([a,b]) \to [e,f]$ is continuous and $f:[a,b] \to \mathbb{R}$ is Riemann integrable, then the composition $h \circ f$ is Riemann integrable.
+	\end{theorem}
+	\begin{proof}
+		Recall that $f$ satisfies the Riemann integrability criterion if and only if for every $\epsilon > 0$ there is a partition such that $$(M_i-m_i) < \frac{\epsilon}{b-a},$$ where $M_i = \sup_{x\in I_i} f(x)$, and $m_i = \inf_{x\in I_i} f(x).$ By $[c,d]$ compact we have that for every $\gamma > 0$ there exists a $\delta$ such that $$|x,y| < \delta \implies |\phi(x) - \phi(y)| < \frac{\gamma}{f-e}.$$ Let $\alpha$ satisfy $h(f(\alpha)) = \sup_w h(f(w)).$ Likewise, let $\beta$ satisfy $h(f(\beta)) = \inf_w h(f(w)).$ Then clearly $|f(\alpha) - f(\beta)| < \epsilon/(b-a).$ Pick $\epsilon$ such that $\epsilon/(b-a) < \delta$, and we have that $$|h(f(\alpha)) - h(f(\beta))| = \sup_w h(f(x)) - \inf_w h(f(x)) < \frac{\gamma}{f-e}.$$ Therefore for any $\gamma > 0$ there is a partition $P$ such that $U(h \circ f, P) - L (h \circ f, P) <\gamma.$ This completes the proof.
+	\end{proof}
+
+	In the specific problem, $(a)$ holds by the above  theorem, by supplying $h = |x|.$ The statement of $(b)$ does not by counter example: Take $f: x \mapsto x$ if $x \notin F_\beta$ otherwise, $x \mapsto -x.$ In this case $|f| = id \in \mathcal{R},$ but $f$ cannot be Riemann integrable since it is discontinuous on a non-zero set. Furthermore, $(c)$ holds since $h: x \mapsto 1/x$ is continuous on $[0<c,d>c].$ The converse direction could not hold since if $f^2 < 0$ for all $x$, $f$ has no real values and cannot be Riemann integrable. For $(f)$ take $h: x \mapsto x^{1/3},$ continuous, and $(f)$ is tautological. For $(g)$ take $h: x \mapsto x^{1/2},$ for $x \geq 0$, and the result holds by the above theorem. 
+
+\item We propose a similar theorem to Theorem 6, except for functions of two variables.
+
+
+	\begin{theorem} Provided $f,g:[a,b] \to \mathbb{R}$ are Riemann integrable, let $K \subset \mathbb{R}^2$ with $K \supset f([a,b]) \times g([a,b])$ and $[e,f] \subset \mathbb{R}$ be two compact sets.
+	If $h: K \to [e,f]$ is continuous then the composition $h \circ (f,g)$ is Riemann integrable.
+	\end{theorem}
+	\begin{proof}
+		Recall that $f,g$ satisfies the Riemann integrability criterion if and only if for every $\epsilon > 0$ there are paritions $P_1,P_2$ and a refinement $P = P_1 \cup P_2$ such that $$(M_i-m_i) < \frac{\epsilon}{2(b-a)} \wedge (M'_i-m'_i) < \frac{\epsilon}{2(b-a)}$$ where $M_i = \sup_{x\in I_i} f(x)$, $m_i = \inf_{x\in I_i} f(x)$, $M'_i = \sup_{x\in I_i} g(x)$, and $m'_i = \inf_{x\in I_i} g(x)$ for $I_i \subset P.$ 
+
+		By $K$ compact, $h$ uniformly continuous, and we have that for every $\gamma > 0$ there exists a $\delta$ such that 
+			$$d(w_1,w_2) < \delta \implies |\phi(w_1) - \phi(w_2)| < \frac{\gamma}{f-e}.$$ 
+		Let $\alpha$ satisfy $h(f(\alpha),g(\alpha)) = \sup_x h(f(w),g(w)).$ Likewise, let $\beta$ satisfy $h(f(\beta),g(\beta)) = \inf_x h(f(w),g(w)).$ 
+		 Then clearly $|f(\alpha) - f(\beta)| < \epsilon/(2(b-a))$ and $|g(\alpha) - g(\beta)| < \epsilon/(2(b-a)).$
+		  Pick $\epsilon$ such that $\epsilon/(b-a) < \delta$, and we have that by the triangle inequality $d((f(\alpha),g(\alpha))(f(\beta),g(\beta)) < \delta$. Simply, this realtion yields,
+		  	$$|h(f(\alpha),g(\alpha)) - h(f(\beta),g(\beta))| = \sup_w h(f(x)) - \inf_w h(f(x)) < \frac{\gamma}{f-e}.$$
+		  Therefore for any $\gamma > 0$ there is a partition $P$ such that $U(h \circ (f,g), P) - L (h \circ (f,g), P) <\gamma.$ This completes the proof.
+	\end{proof}
+
+	Observe that $\min(x,y), \max(x,y)$ are continuous on $K$ compact a subset of $\mathbb{R}^2.$ Apply Theorem 7, and $\max(f,g),\min(f,g) \in \mathcal{R}.$
+
+	\setcounter{enumi}{54}
+	\item Let $f:\mathbb{R}\to\mathbb{R}$ be definedd as follows. Given some $\beta,$ the denote $C$ as the countable union of the cantor set $C_\beta$ offset onto the interval $[k,k+1]$ for $k \in \mathbb{Z}$. Imagine putting cantor dust on every interval of length $1$ starting from $[0,1]$. The let $f: x \mapsto x$ iff $x \in C$, otherwise, $x \mapsto 0$. The improper integral over $\mathbb{R}$ is $\int_0^\infty f
+	\  dx + \int_0^{-\infty} f\  dx = 0 + 0$ since $C$ has outer measure 0. Furthermore, $f$ is unbounded.
+
+\end{menumerate}
+
+
+
+\end{document}

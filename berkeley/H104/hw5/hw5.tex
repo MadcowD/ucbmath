@@ -1,0 +1,159 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%                      Homework 5                            %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[letter]{article}
+
+\usepackage{lipsum}
+\usepackage[pdftex]{graphicx}
+\usepackage[margin=1.5in]{geometry}
+\usepackage[english]{babel}
+\usepackage{listings}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{framed} 
+\usepackage{amsmath}
+\usepackage{titling}
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{definition}{Definition}
+
+\newenvironment{menumerate}{%
+  \edef\backupindent{\the\parindent}%
+  \enumerate%
+  \setlength{\parindent}{\backupindent}%
+}{\endenumerate}
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%
+%% DOC INFO %%%
+%%%%%%%%%%%%%%%
+\newcommand{\bHWN}{5}
+\newcommand{\bCLASS}{MATH H104}
+
+\title{\bCLASS: Homework \bHWN}
+\author{William Guss\\26793499\\wguss@berkeley.edu}
+
+\fancyhead[L]{\bCLASS}
+\fancyhead[CO]{Homework \bHWN}
+\fancyhead[CE]{GUSS}
+\fancyhead[R]{\thepage}
+\fancyfoot[LR]{}
+\fancyfoot[C]{}
+\usepackage{csquotes}
+
+%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+
+%%%%%%% Be sure to set the counter and use menumerate
+\setcounter{section}{2}
+\begin{menumerate}
+	\setcounter{enumi}{55}
+	\item \emph{Prove the following.}
+		\begin{theorem}
+			The 2-sphere is not homeomorphic to the plane.
+		\end{theorem}
+		\begin{proof}
+			For this proof we make use of the heine-borel theorem and the preservation of topological properties through embedding. Take the two sphere $S^2.$ Take the embedding $h: S^2 \to S \subset \mathbb{R}^3.$ This embedding exists as $S = \{r \in \mathbb{R}^3 \ | \ \|x\| = 1\}$ is a natural image. By the Heine-Borel theorem $S$ is compact because it is closed and bounded. Then, because $h$ is an embedding, $S^2$ is also compact, a topological invariant. By $\mathbb{R}^2$ not compact, we have that $S^2 \ncong \mathbb{R}^2$, and the proof is complete.
+		\end{proof}
+	\setcounter{enumi}{56}
+	\item Prove the following.
+		\begin{theorem}
+			If $S$ is connected, its interior may be disconnected.
+		\end{theorem}
+		\begin{proof}
+			Consider the following counter example. Denote the closed $r$-ball $B^c_r(y) = \{x \in \mathbb{R}^2\ |\ \|x-y\| \leq r\}$ furthermore let the open$r$-ball $B^o_r$ be the interior of $B^c_r(y).$ If $S = B^c_1(-1,0) \cup B^c_1(1,0)$, then the interior of $S$ is clearly $B^o_1(-1,0) \cup B^o_1(1,0).$ Since these two sets are disjoint, we have that $int(S) =B^o_1(-1,0) \sqcup B^o_1(1,0).$ Lastly since $B^o_1(-1,0)$ and $B^o_1(1,0)$ open in $int(S)$, they are also closed since they are compliments. The counter example is complete as $int(S)$ is disconnected in contrast to $S$ connected.
+		\end{proof}
+	\item \emph{Theorem 49 states that the closure of a connected set is connected.}
+		\begin{menumerate}
+		\item \emph{The closure of a disconnected set is disconnected.}If $M$ disconnected then, $M = A \sqcup B$ for $A,B$ disjoint clopen subsets of $M.$ The closure of $M$ is the intersection of all; closed sets containing $M$, which is trivially $M.$ Hence the closure of $M$ is $M$ which is disconnected.
+		\item \emph{What about the interior of a disconnected set?} If $M$ is disconnected, then the interior of $M$ is the union of sets in the topology of $M.$ Since $M$ is clopen and in the topology of $M$, the interior of $M$ is maximally $M.$ Therefore, the interior of $M$ is disconnected. 
+		\end{menumerate}
+	\setcounter{enumi}{58}
+	\item 
+	\item \emph{Prove the following.}
+		\begin{menumerate}
+			\item \emph{Integer domain:}
+				\begin{theorem}
+					If $f: M \to \mathbb{Z}$ is continuous, then $M$ connected implies that $f(M) = \{c\}$ is a singleton.
+				\end{theorem}
+				\begin{proof}
+					Suppose for the sake of contradiction that $B = \{a \in M\ |\ f(a) \neq c\}$ is non=empty.
+					Then $f(M) = \{c\} \sqcup f(B) \subset \mathbb{Z}.$ By $\mathbb{Z}$ disconnected, we have that $f(M)$ is discoinnected. This is a contradiction to $M$ connected, implies $f(M)$ connected (by continuity). Hence, $f(M)$ is a singleton.
+				\end{proof}
+			\item \emph{Rational domain:}
+				\begin{lemma}
+					$\mathbb{Q}$ is totally disconnected.
+				\end{lemma}
+				\begin{proof}
+					We will show the theorem if for every $x,y \in \mathbb{Q}$ there exist $A,B$ separations of $\mathbb{Q}$ with $x\in A, x \in B$. Without loss of generality, assume $x < y.$ Since between two rationals there is an irrational, take the the irrational $z$ to be in between $x$ and $y$. Let $A' = (-\infty, z)$ and $B' = (z, \infty).$ Then if $A = A'_\mathbb{Q} = A' \cap \mathbb{Q}$ and $B = B'_\mathbb{Q}$, we have that $\mathbb{Q} = (-\infty,z)_\mathbb{Q} \sqcup (z, \infty)_\mathbb{Q} = A \sqcup B.$ Clearly $x \in A, y \in B$. Therefore $\mathbb{Q}$ is totally disconnected.
+				\end{proof}
+
+				\begin{theorem}
+					If $f:M\to\mathbb{Q}$ continuous, $M$ connected implies that $f(M)$ is trivially the singleton.
+				\end{theorem}
+				\begin{proof}
+					Suppose $f(M)$ is not trival (not the singleton, nor empty), then $f(M) \subset \mathbb{Q}$ implies that $f(M)$ is totally disconnected by the previous lemma. This is a contradiction to $M$ connected, by $M$ connected implies $f(M)$ connected. Therefore $f(M)$ is the singleton.
+				\end{proof}
+		\end{menumerate}
+	\setcounter{enumi}{71}
+	\item \emph{Connectedness of graphs}
+		\begin{menumerate}
+			\item \emph{Hyperbola connection}
+			\begin{theorem}
+				Let $H = \{ (x,y) \in \mathbb{R}^2\ |\ xy = 1\},$ and $X$ be the $x$-axis. If $S = H \cup X$, then $S$ is disconnected.
+			\end{theorem}
+			\begin{proof}
+				We show first that $H$ is open. $H$ is open if and only if for every $p\in H$, there exists an $\epsilon > 0$ such that $d(p,q) < \epsilon \implies q \in H$. Furthermore if $q \in H, q \notin X.$ There fore if we show that $q \in X$ causes a contradiction, $q$ must be in $H.$ Suppose that $q \in X$ or that $H$ is not open. Take $\epsilon = 1/p_1$. Then $$d(p,q) = \sqrt{d(p_1,q_1)^2 + d(1/p_2, 0)^2} < \epsilon$$Clearly $p_1 = p_2$ if the above expression holds. Hence $d(1/p_2,0) < \epsilon = 1/p_2$ which is a contradiction. Therefore $q \in H$, and $H$ open. 
+				$H$ is also closed since it is closed in its parent metric space $\mathbb{R}^2.$ Therefore $H$ is clopen and disjoint from $X$ which implies that $S$ is disconnected.
+			\end{proof}
+
+			\item \emph{Positive definite functions}
+			\begin{theorem}
+				Let $f:(0,\infty) \to \mathbb{R}$ be always positive. If $G = f((0,\infty))$ then $S = G \cup X$ is not always disconnected.
+			\end{theorem}
+			\begin{proof}
+				Consider the following example. Let $f(x) = x$ across the same domain as above. We show that $G$ is not closed in $S.$ $G$ is not closed if and only if it does not contain all of its limit points in $S.$ Consider the sequence $x_n = ((1/n,1/n))_\mathbb{N}.$ By the main limit theorem (see Foundations of Analysis, Joseph E. Taylor), we have that $x_n \to (0,0) \in X.$ Therefore $G$ does not contain all of its limit points in $S,$ and essentially $S = G \sqcup X$ is not the disjoint union of two proper clopen subsets!  
+			\end{proof}
+			\item \emph{What about if $f$ has a discontinuity?} If $f$ has exactly one discontinuity, we can again consider a counterexemplary case. Obviously for $G$ which are nowhere near the $x$-axis, $S$ is disconnected, but consider the following graph. Let $f$ map $x$ such that: if $x\in (0,1]$ $x\mapsto x$,  if $x \in (1,2)$, $x\mapsto -(x-1)$, if $x = 2$, $x\mapsto 1$, if $x \in (2,\infty), $ $x\mapsto (x-2).$ The graph can be seen in the margin. Upon examining sequences $x_n = ((1/n,1/n))$ and $y_n = (\frac{1+(n-1)2}{n},1/n)$ imply that $G$ is not closed and not seperable. Thus $S$ is connected.
+ 		\end{menumerate}
+	\setcounter{enumi}{101}
+	\item \emph{Peano surjection}
+		\begin{theorem}
+			No Peano curve is one-to-one.
+		\end{theorem}
+		\begin{proof}
+			A peano curve is a continuous surjective mapping $\tau: [0,1] \to E$ such that $E$ has a non-empty interior. To show that no peano curve is one-to-one, we need simply show that there does not exist a homeomorphism from $[0,1]$ to a set with a non-empty interior. Consider that the interior of a set is an open-set which is a member of its topology. Any set which is homeomorphic to the line must preserve the closedness of its interior. Since the interior of the interval is the emptyset, it is closed. However since $E$ has a non-empty only open interior, there cannot exist a preservation of closedness through a bicontinuous bijection. In otherwords, no homeomorphism exists. Therefore no Peano curve is one-to-one.
+		\end{proof}
+	\item Prove the following.
+		\begin{theorem}
+			There is a continuous surjection from $\mathbb{R} \to \mathbb{R}^n.$ 
+		\end{theorem}
+		\begin{proof}
+			Consider the following sequence of space filling curves, $f_n : [0,1] \to [-n,n]^n.$ These functions are continuous surjections by theorem $68$ using cantor surjections and linear functions in between each cantor map. Let $f_n(0) = f_n(1) = 0$ be the $0$ vector. Then we can construct a mapping which takes $[0,1] \mapsto f_1[0,1]$ and $[1,2] \mapsto f_2[0,1]$ infinitely and we yield a new mapping $f: [0,\infty) \to \mathbb{R}^m$ continuously surjectively. Finally construct $g$ which is the 0 vector if its domain is negative and $f$ applied to its positive domain. This completes the proof. 
+		\end{proof}
+	\setcounter{enumi}{107}
+	\item \emph{Identity mapping.}
+		\begin{theorem}
+			If $i: C_{max} \to C_{int}$ is the identity map, then it is isomorphic but not hemomorphic.
+		\end{theorem}
+		\begin{proof}
+		Clearly $i$ is an injection. To see this, if $i(f) \neq i(g),$ then $d_m(f,g) > 0.$ Hence $$0 < \|f -g \|_\infty < \|f-g\|_1 \implies f \neq g.$$  $i$ is also surjective. If $h' \in C_{int}$ then $\|h'-0\|_1 = d(h,0) \in \mathbb{R}$
+ 		\end{proof}
+\end{menumerate}
+
+\end{document}

@@ -1,0 +1,143 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%                      Homework _                            %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[letter]{article}
+
+\usepackage{lipsum}
+\usepackage[pdftex]{graphicx}
+\usepackage[margin=1.5in]{geometry}
+\usepackage[english]{babel}
+\usepackage{listings}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{framed} 
+\usepackage{amsmath}
+\usepackage{titling}
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{definition}{Definition}
+
+\newenvironment{menumerate}{%
+  \edef\backupindent{\the\parindent}%
+  \enumerate%
+  \setlength{\parindent}{\backupindent}%
+}{\endenumerate}
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%
+%% DOC INFO %%%
+%%%%%%%%%%%%%%%
+\newcommand{\bHWN}{2}
+\newcommand{\bCLASS}{MATH H105}
+
+\title{\bCLASS: Homework \bHWN}
+\author{William Guss\\26793499\\wguss@berkeley.edu}
+
+\fancyhead[L]{\bCLASS}
+\fancyhead[CO]{Homework \bHWN}
+\fancyhead[CE]{GUSS}
+\fancyhead[R]{\thepage}
+\fancyfoot[LR]{}
+\fancyfoot[C]{}
+\usepackage{csquotes}
+
+%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+\begin{menumerate}
+    \setcounter{enumi}{14}
+    \item 
+    \begin{theorem}
+        Let $f: \mathbb{R}^2 \to \mathbb{R}$ be a function so that
+        \begin{equation}
+            \begin{aligned}
+            (x,y) \mapsto \frac{xy}{x^2 + y^2} \\
+            (0,0) \mapsto 0.          
+            \end{aligned}          
+        \end{equation}   
+        Then, $f$ has partial derivatives at $(0,0)$ but is not differentiable
+        there.
+    \end{theorem}
+    \begin{proof}
+        By definition we take the partial derivative to be the limit
+        \begin{equation}
+            \begin{aligned}
+            \frac{\partial f}{\partial x} &= \lim_{t\to 0} \frac{f(x+h, y) - f(x,y)}{h} \\
+            &= \lim_{t\to 0} \frac{{(h)^2}}{h} \\
+            &= 0.
+            \end{aligned}
+         \end{equation} 
+         Since the closed form for $f$ is identical, we have the same definition
+         for $\partial f / \partial y.$
+
+         However, if $f$ is differentiable, then it is continuous at
+         $(0,0).$ But the limik along $y = x$, does not exist unabiguously
+         $$\lim_{x\to 0} \frac{x^2}{x^2 + x^2} = \frac12 \neq 0 .$$
+         Therefore it could not possibly differentiable at $(0,0).$
+    \end{proof}
+    \item Yass!!!!!!!!!!!!!!!!!!!!!!!!
+        
+             We build the matrix of partials accordingly! 
+            Using partial differnetiation we get 
+            \begin{equation}
+                (Df)_p = \left[
+                \begin{array}{cc}
+                    1 & 0 \\
+                    \cos 1 & 0 \\
+                    \sin 1 & 0
+                \end{array}
+                \right].
+            \end{equation}
+        \begin{equation}
+                (Dg)_q = \left[
+                \begin{array}{ccc}
+                     0 & 0 & 0
+                \end{array}
+                \right].
+            \end{equation}
+         \begin{equation}
+            (Dg\circ f)_p = (Dg)_q\circ (Df)_p = 0.
+            \end{equation}
+        We get that 
+        \begin{equation}
+            g \circ f = w(s,t) = (st)(s\cos t) + (s\cos t) (s \sin t) + (s \sin t)(st)       
+        \end{equation}
+        and so the pial derivatives at least contain $s$ in every term:
+        \begin{equation}
+        \begin{aligned}
+            D_s w &= 2st(\cos t) + 2s \cos t \sin t + 2s t \sin t \\
+            D_t w &= s^2(\cos t - t\sin t) + s^2(\cos t \cos t - \sin t \sin t) + s^2 (\sin t + t \cos t)
+         \end{aligned} 
+        \end{equation}
+        These partials evaluate to 0 and so are 0.
+
+        The statement of multivariable chain rule for functions $g: \mathbb{R} \to \mathbb{R}^m, f:\mathbb{R}^m \to \mathbb{R}$ is that
+        $d/dt f \circ g = \sum \partial f/\partial g_i \partial g_i /\partial t$ which is the row vector
+        matrix $Df$ with the column vector $Dg.$
+    \item
+    \item
+    \item
+    \item
+    \item
+
+    \setcounter{enumi}{23}
+    \item
+    \item
+\end{menumerate}
+
+%%%%%%% Be sure to set the counter and use menumerate
+
+\end{document}

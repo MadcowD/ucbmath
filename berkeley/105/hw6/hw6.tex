@@ -1,0 +1,334 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%                      Homework _                            %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[letter]{article}
+
+\usepackage{lipsum}
+\usepackage[pdftex]{graphicx}
+\usepackage[margin=1.5in]{geometry}
+\usepackage[english]{babel}
+\usepackage{listings}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{framed} 
+\usepackage{amsmath}
+\usepackage{titling}
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{hairy}{Hairy Ball Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{definition}{Definition}
+\newtheorem{corollary}{Corollary}
+
+\newenvironment{menumerate}{%
+  \edef\backupindent{\the\parindent}%
+  \enumerate%
+  \setlength{\parindent}{\backupindent}%
+}{\endenumerate}
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%
+%% DOC INFO %%%
+%%%%%%%%%%%%%%%
+\newcommand{\bHWN}{6}
+\newcommand{\bCLASS}{MATH 105}
+
+\title{\bCLASS: Homework \bHWN}
+\author{William Guss\\26793499\\wguss@berkeley.edu}
+
+\fancyhead[L]{\bCLASS}
+\fancyhead[CO]{Homework \bHWN}
+\fancyhead[CE]{GUSS}
+\fancyhead[R]{\thepage}
+\fancyfoot[LR]{}
+\fancyfoot[C]{}
+\usepackage{csquotes}
+
+%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+
+%%%%%%% Be sure to set the counter and use menumerate
+\begin{menumerate}
+\item Show some things.
+	\begin{menumerate}
+		\item \emph{Show that the definition of linear outer measure is unaeffected if we demand that the intervals $I_k$ in the coverings be closed instead of open.}
+		\begin{definition}
+			The linear outer measure of a set $A \subset \mathbb{R}$ is given by
+			\begin{equation}
+				m^*A = \inf \left\{\sum_k |I_k| : \{I_k\}\text{ is a covering of A by open intervals}\right\}.
+			\end{equation}
+		\end{definition}
+		\begin{definition}
+			The closed linear outer measure of a set $ \subset \mathbb{R}$ is given by
+			\begin{equation}
+				\bar m^*A = \inf \left\{\sum_k |\bar I_k| : \{\bar I_k\}\text{ is a covering of A by \textbf{closed} intervals}\right\}.
+			\end{equation}
+		\end{definition}
+		\begin{theorem}
+			Definition $1$ and definition $2$ give equivalent measures.
+		\end{theorem}
+		\begin{proof}
+			Take some set $A$ and obtain its linear outer measure $m^*A$. By the definition of infimum,
+			$m^* A$ is the limit of outer measures of finer and finer countable 
+			coverings of $A.$ The same argument can be made for $\bar m^* A$, except for $\bar I_k$ closed.
+
+			Let the two respective sequences of coverings be given by $\mathcal{C}_i$ and $\bar{\mathcal{C}_i}$. Clearly 
+			\begin{equation}
+				m^*A \leftarrow m_i^* A  = \sum_{C \in \mathcal{C}_i} |C| = \bar m_i^* A  =
+				 \sum_{\bar C \in  \bar{\mathcal{C}_i}} |\bar C|\to \bar m^*A
+			\end{equation}
+			And so $m^*A = \bar m^*A.$ This follows subtly from $m(I) = m(\bar I) = b-a$. The proof is complete.
+		\end{proof}
+		\item The middle thirds cantor set has a covering by closed intervals 
+		$C_i$ whose constituent area is $1/3^i$ and so the infimum has area $0.$
+		\item How open should I really be? \begin{theorem}
+			The outer measure of an interval can be taken without without conditions onc closedness/openess.
+		\end{theorem}
+		\begin{proof}
+			Consider that any other covering of $A$ besides that depicted in definition 1 and definition 2, has area in between those two coverings by monotonicity of outer measure. Therefore $m^*A \leq \nu A \leq \bar m^* A \implies \nu A = m^* A.$
+		\end{proof}
+
+		\item The same thing holds for planar outer measure, since effectiveley 
+		$S$ as a rectangle is the product of $n$ intervals. Furthermore, we can approximate any recatngle (open, closed, clopen, or neither) $\pm \epsilon$ by a bunch of squares. 
+	\end{menumerate}
+	\setcounter{enumi}{2}
+	\item
+	\begin{theorem}
+		All lines are zero sets.
+	\end{theorem}
+	\begin{proof}
+		Recall that (from the book) all rigid transformations $T: \mathbb{R}^n \to \mathbb{R}^n$ are meseometries. Take any rotation and translation $\phi.$ By the exercise $m(\mathbb{R} \times \{a\}) = 0$ implies that
+		$m(\phi(\mathbb{R} \times  \{a\})) = m(\mathbb{R} \times \{a\}) = 0.$ 
+	\end{proof}
+	\begin{theorem}
+		All $n-1$ hyperplanes are zero sets in $\mathbb{R}^n.$
+	\end{theorem}
+	\begin{proof}
+		Recall proposition $2$ (from the book) then without loss of generality apply the meaeomorphism in the previous proof.
+	\end{proof}
+	\item Higher dimensional Lemmas!
+	\begin{lemma}
+		The boundary of an $n$-dimensional ball is an $n$-dimensional zero set.
+	\end{lemma}
+	\begin{proof}
+		If $\Delta$ is the closed unit ball in $\mathbb{R}^n$, then $0 < m\Delta < \infty$ since $[-1/\sqrt{2},1/\sqrt{2}]^n \subset [-1,1]^0n.$ The
+		unit sphere $S^{n-1}$ is the boundry of $\Delta.$ It is sandwhiched
+		between balls $\Delta_-$ of radius $1 - \epsilon$ and $\Delta_+$ of radius $1+\epsilon.$ Corollary $8$ implies
+		\begin{equation}
+			m(\Delta_-) = (1- \epsilon)^n m\Delta < m \Delta < (1+ \epsilon)^n m \Delta = m(\Delta_+).	
+		\end{equation}
+		Measurability implies that $m(\Delta_+ \setminus \Delta_-) = m(\Delta_+) - m(\Delta_-) = ((1 + \epsilon)^n - (1 - \epsilon)^n)m \Delta.$
+		This gives us 
+		\begin{equation}
+			m\left(S^{n-1}\right) \leq ((1 + \epsilon)^n - (1 - \epsilon)^n) m\Delta =2\left(\sum_{i=0}^n \begin{pmatrix}
+				n \\
+				i
+			\end{pmatrix} \epsilon^{n-i} \right) m\Delta.
+		\end{equation}
+		Since $\epsilon > 0$ is arbitrary, we get $m(S^{n-1}) = 0.$
+	\end{proof}
+	\begin{lemma}
+		Every open cube is a countable disjoint union of open balls plus a zero set.
+	\end{lemma}
+	\begin{proof}
+		Let $S \subset \mathbb{R}^n$ be an open cube. It contains a compact ball $\Delta$ whose volume is greater than $1/2^n$ of the volume of the cube. This follows from 
+		\begin{equation}
+			\frac{m(\Delta)}{m(S)} = \frac{\pi^{n/2}}{\Gamma(\frac{n}{2} + 1)} > \frac{1}{2^{n}}. 	
+		\end{equation}
+		The difference $U_1 = S \setminus \Delta$ is an open subset of $S$ with $m(U_1) < m(S)((2^n - 1)/2^n).$ It is therefore the disjoint countable union of small open cubes $S_i$ plus a zero set. Each cube contains a ball is volume is greater than $1/2^n$ of the volume of each cube, and so the total volume of the small balls are more than $1/2^n$ the volume of the small cubes.  So we get that the difference is $U_2$ whose total volume is less than $m(U_1)(((2^n - 1)/2^n)) = ((2^n - 1)^2/2^{2n}).$
+
+		Repeating this process we get \begin{equation*}
+			m(U_k) = \frac{(2^n -1)^k}{2^{kn}} \implies \ln(m(U_k)) =
+			\ln((2^n - 1)^k) - \ln(2^{kn}) = k(\ln(2^n - 1)) - n\ln(2)) \to 0  
+		\end{equation*}
+		since $\ln(2^n - 1) \to n \ln (2).$ In other words, repition gives
+		smaller and smaller compact balls with total measure equal to $m(S)$.
+		Lemma $10$ implies that the measure of a closed ball is the same as the measure of its interor, which completes the proof that $S$ consists of countably many disjoint open cubes plus a zero set.
+	\end{proof}
+	\begin{theorem}
+		An affine motion $T: \mathbb{R}^n \to \mathbb{R}^n$ is a meseomorphism. It multiplies measure by $|\det T|.$
+	\end{theorem}
+	\begin{proof}
+		Assume that $Tv = Mv$ where $M$ is an invertible matrix. 
+		We first claim that if $Z$ is  a zero set then so is $TZ$. Given any $\epsilon > 0$ there is a countable covering of $Z$ by boxes  $R_k$ with total volume $< \epsilon.$ Each $R_k$ can be covered by cubes with total volume $m(R_k) + \epsilon/2^k.$ Hence $Z$ can be covered by countably many cubes $S_i$ with volume $2\epsilon.$ The $T$ image of each $S_i$ is contained in a cube with edge length $\|T\| diam S_i.$ This finally gives, $TZ$ contained by cubes whose total volume is
+		\begin{equation}
+			\sum(\|T\| diam S_i)^n = \sum n^{n/2} \|T\|^n |S_i| \leq 2n^{n/2} \|T\|^2\epsilon.
+		\end{equation}
+		Since $\epsilon > 0$ is as  small as we like, we have $m(TZ) = 0.$
+
+		Next we claim that orthogonal transformations are meseometries. Let $O:\mathbb{R}^n \to \mathbb{R}^n$ be orthogonal. It carries the ball $B(r,p),$ to the ball $B(r, Op),$ which is a translate of $B(r,p).$ Let $S$ be a cube. The previous lemma implies that $S = \bigsqcup B_i \cup Z$ where $B_i$ are n-balls and $Z$ is a zero set. The O-image of $B_i$ is
+		a ball of equal measure, and the $O$-image of $Z$ is a zeroset. Hence,
+		$m(OS) = mS.$ Given $\epsilon > 0,$ there is a countable covering of $A$ by cubes $S_i$ with $\sum |S_i| < m^*A + \epsilon$. Thus $\{O(S_i)\}$ covers $OA$ and has total area $< m^*A + \epsilon.$ We therefore get
+		\begin{equation}
+		  	m^*(OA) \leq m^*A.
+		  \end{equation}  
+
+		Since $O^{-1}$ is also orthogonal, it too does not increase outer measure. Theorem $7$ implies that $O$ is a meseometry.
+
+		Finally, we use Polar Form to write
+		\begin{equation}
+			M = O_1 D O_2
+		\end{equation}
+		where $O_1, O_2$ are orthogonal and $D$ is diagonal. Since $O_1$ and $O_2$ are meseometries and by Corrolary $8$ D is a meseomorphism which multiplies measire bt $|det D| =|det T|,$ the proof is complete. 
+	\end{proof}
+	\item Interesting general stuff for $\mathbb{R}!$
+	\begin{theorem}
+		Every closed set in $\mathbb{R}^n$ is a $G_\delta$ set, furthermore
+		every open set is a $F_\sigma$ set.
+	\end{theorem}
+	\begin{proof}
+		Take $S \subset N$ to be some closed set. Then for every $n\in \mathbb{N}$
+		let 
+		\begin{equation}
+			O_n = \bigcup_{x \in S} B\left(x, \frac{1}{n}\right),	
+		\end{equation}
+		where $B(p,r),$ is the open ball of radius $r$ at $p.$
+		Then clearly \begin{equation}
+			\bigcap_{n=1}^\infty O_n = S,
+		\end{equation}
+		and $S$ is a $G_\delta$ set. Let $Y$ be some open set in $N.$ Then
+		$Y^c$ is closed and therefore is an $G_\delta$ set. That is, there exist
+		some open family $\{O_n\}$ so
+		that 
+		\begin{equation}
+				Y^c = \bigcap_{n=1}^\infty O_n \implies {Y^c}^c = \bigcup_{n=1}^\infty O_n^c
+		\end{equation}
+		and $Y$ is an $F_\sigma$ set.
+	\end{proof}
+	\setcounter{enumi}{6}
+	\item \emph{Prove that inner measure is translation invariant.}
+	Observe that trnaslation, $T: \mathbb{R}^n \to \mathbb{R}^n$ is an affine motion
+	with $|det T| = 1.$ This can be seen from linear algebra class using an augmented matrix!
+	Furthermore all dialations are affine motions so we propose the following theorems
+	warranting that
+	\begin{theorem}
+		A set $E$ is measurable if and only if $m^*E = m_*E.$
+	\end{theorem}
+	which will be shown in Question 9.
+	\begin{lemma}
+		The boundary of an $n$-dimensional ball is an $n$-dimensional zero inner measure set.
+	\end{lemma}
+	\begin{proof}
+		If the outer measure of a set is $0,$ then the inner measure must be $0.$
+	\end{proof}
+	\begin{lemma}
+		Every open cube is a countable disjoint union of open balls plus a zero inner measure set.
+	\end{lemma}
+	\begin{proof}
+		If it is true for a zero outer measure set, then it must be that the inner measure of such 
+		a set is a zero set. Furthermore, a ball is measurable so inner measure is outer measure.
+	\end{proof}
+	\begin{theorem}
+		An affine motion $T: \mathbb{R}^n \to \mathbb{R}^n$ is a inner meseomorphism. It multiplies inner measure by $|\det T|.$
+	\end{theorem}
+	\begin{proof}
+		Assume that $Tv = Mv$ where $M$ is an invertible matrix. 
+		We first claim that if $Z$ is  a zero inner measure set then so is $TZ$. Given any $\epsilon > 0$ there is a countable covering of $Z$ by boxes  $R_k$ with total inner volume $< \epsilon.$ Each $R_k$ can be covered by cubes with total volume $m_*(R_k) + \epsilon/2^k.$ Hence $Z$ can be covered by countably many cubes $S_i$ with innern volume $2\epsilon.$ The $T$ image of each $S_i$ is contained in a cube with inner edge length $\|T\| diam S_i.$ This finally gives, $TZ$ contained by cubes whose total inner volume is
+		\begin{equation}
+			\sum(\|T\| diam S_i)^n = \sum n^{n/2} \|T\|^n |S_i| \leq 2n^{n/2} \|T\|^2\epsilon.
+		\end{equation}
+		Since $\epsilon > 0$ is as  small as we like, we have $m_*(TZ) = 0.$
+
+		Next we claim that orthogonal transformations are inner meseometries. Let $O:\mathbb{R}^n \to \mathbb{R}^n$ be orthogonal. It carries the ball $B(r,p),$ to the ball $B(r, Op),$ which is a translate of $B(r,p).$ Let $S$ be a cube. The previous lemma implies that $S = \bigsqcup B_i \cup Z$ where $B_i$ are n-balls and $Z$ is an inner measure zero set. The O-image of $B_i$ is
+		a ball of equal inner measure, and the $O$-image of $Z$ is an inner measure zero set. Hence,
+		$m_*(OS) = m_*S.$ Given $\epsilon > 0,$ there is a countable covering of $A$ by cubes $S_i$ with $\sum |S_i| < m_*A + \epsilon$. Thus $\{O(S_i)\}$ covers $OA$ and has total inner volume $< m_*A + \epsilon.$ We therefore get
+		\begin{equation}
+		  	m_*(OA) \leq m_*A.
+		  \end{equation}  
+
+		Since $O^{-1}$ is also orthogonal, it too does not increase inner measure. Theorem $7$ implies that $O$ is an inner meseometry.
+
+		Finally, we use Polar Form to write
+		\begin{equation}
+			M = O_1 D O_2
+		\end{equation}
+		where $O_1, O_2$ are orthogonal and $D$ is diagonal. Since $O_1$ and $O_2$ are inner meseometries and by Corrolary $8$ D is an inner meseomorphism which multiplies inner measure by $|det D| =|det T|,$ the proof is complete. 
+	\end{proof}
+	Therefore translations are mesometries.
+
+	\setcounter{enumi}{8}
+	\item The if and only if of measure theory. We take the approach of Folland's book.
+		Let $X$ be an open bounded subset of some measure space for which a measure $\nu$ is defined
+		which induces the outer and inner measure on the space. For example, in Labesgue measure theory
+		take $X$ to be a massive rectangle. For some algebra in the power 
+		set of $X$ denote $F_\sigma$ to be the collection of countable unions of set in that algebra.
+		Then denote $F_\sigma\delta$ to be the collection of countable intersections of sets in $F_\sigma.$
+	\begin{theorem}
+		For every $E \subset X$ nonempty and for any $\epsilon > 0,$ there exists $E\subeset A \in F_\sigma$ so
+		that $m^*(A) \leq m^*(E) + \epsilon.$
+	\end{theorem}
+	\begin{proof}
+		The covering which induces the outer measure of $E$ is an $G_\delta$ set induced by sets
+		for which $\nu$ is defined and contain $E.$ Therefore by our previous theorem, its complement
+		is an $F_\sigma$ set, say $A' \subset E$ not proper. Since $A'$ is an $F_\sigma$, set it is 
+		the countable union of closed sets in $X$. Using the axiom of choice, repeat the following process:
+		Remove sets from the collection defining $A'$ in an enumerable fashion until the resulting
+		$F_\sigma$ union of that collection has outer measure less than $A'.$ This resulting set, 
+		$A$ is $F_\sigma$ and has the following property:
+		\begin{equation}
+			m^*(A) \leq E + \epsilon.	
+		\end{equation}
+	\end{proof}
+	\begin{theorem}
+		For some measure space $(M, \mathfrak{M}, \mu),$ we have that $A \subset X$ gives $\mu^*(A) = \mu_*(A),$ then $A \in \mathfrak{M}.$
+	\end{theorem}
+	\begin{proof}
+		Let $\mu$ be some measure on $\mathfrak{M}.$ For any $X \subset M,$ we define
+		the outer measure of $X$ induced by $\mu$
+		\begin{equation}
+			\mu^*X = \inf\left\{\mu(S): S \in \mathfrak{M} \wedge S \supset X\right\}.
+		\end{equation}
+		Dually we define the inner measure induced by $\mu$ as
+		\begin{equation}
+				\mu_*X = \sup\left\{\mu(S): S \in \mathfrak{M} \wedge S \subset X\right\}.
+		\end{equation}
+<<<<<<< HEAD
+		Now suppose that $\mu_*X = \mu^*X.$ We claim that $A \in \mathfrak{M}.$ 
+		The set $A$ is measurable if and only if for every test set $X \subset M$,
+		we get
+		\begin{equation}
+			\mu^*(A) = \mu^*(X \cap A) + \mu^*(X^c \cap A).
+		\end{equation}
+		Observe that for any $F$
+=======
+		Now suppose that $\mu_*X = \mu^*X.$ We claim that $X \in \mathfrak{M}.$ 
+		The set $A$ is measurable if and only if for every test set $X \subset M$,
+		we get
+		\begin{equation}
+			\mu^*(A) = \mu^*(A \cap X) + \mu^*(A^c \cap X).
+		\end{equation}
+		
+		Take some open subset of $M$, say $H$ which contains $A$ with finite measure $\nu$ which induces $m^*.$
+		Then clearly,
+		$m^*(A) = m_*(A) = \nu(H) - m^*(A).$ Since $\nu(H)$ is finite we are allowed to use the following 
+		\begin{equation}
+			m^*(H) = \nu(H) = m^*(A) + m^*(A^c).
+		\end{equation}
+		By the previous theorem for every $\epsilon,$ in particular every $n$ such that $1/n = \epsilon$,
+		there is a $B_n \in M_\sigma$ so that $B_n \subset A,$ and $\mu^*(B_n) = \mu^*(A) + 1/n.$ 
+		We get that the infinite intersection of the family $\{B_n\}$ has the property that
+		\begin{equation}
+			m^*(A) \leq m^*(\bigcap B_n) \leq m^*(B_n) \leq m^*(A) + 1/n.
+		\end{equation}
+		We know that this infinite intersection forms an algebra on the sigma algebra of $H$
+		so it is measurable. Letting $n$ be as large as we like,
+		$m^*(A) + m^(A^c) = m^*(A) + m^*(B\cap A^c) + m^*(A^c),$
+		we therefore get that $A$ is measurable by the previous theorem and the first logic of the proof.
+>>>>>>> 9f28e18ffaeda32d447b123d164d7fe9dee00ff0
+	\end{proof}
+\end{menumerate} 
+\end{document}

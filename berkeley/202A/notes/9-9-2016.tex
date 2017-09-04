@@ -1,0 +1,231 @@
+
+
+\documentclass[letter]{article}
+
+\usepackage{lipsum}
+\usepackage[pdftex]{graphicx}
+\usepackage[margin=1.5in]{geometry}
+\usepackage[english]{babel}
+\usepackage{listings}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{framed} 
+\usepackage{amsmath}
+\usepackage{titling}
+
+
+
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{fact}{Fact}
+\newtheorem{example}{Example}
+\newtheorem{definition}{Definition}
+\newtheorem{proposition}{Proposition}
+
+\newenvironment{menumerate}{%
+  \edef\backupindent{\the\parindent}%
+  \enumerate%
+  \setlength{\parindent}{\backupindent}%
+}{\endenumerate}
+
+
+
+\textheight=600pt %574pt
+\textwidth=480pt %432pt
+\oddsidemargin=15pt %18.88pt
+\evensidemargin=15pt
+\topmargin=10pt %14.21pt
+
+\parskip=1pt %2pt
+
+\def\reals{{\mathbb R}}
+\def\torus{{\mathbb T}}
+\def\integers{{\mathbb Z}}
+\def\rationals{{\mathbb Q}}
+\def\naturals{{\mathbb N}}
+\def\complex{{\mathbb C}\/}
+\def\distance{\operatorname{distance}\,}
+\def\support{\operatorname{support}\,}
+\def\dist{\operatorname{dist}\,}
+\def\Span{\operatorname{span}\,}
+\def\degree{\operatorname{degree}\,}
+\def\kernel{\operatorname{kernel}\,}
+\def\dim{\operatorname{dim}\,}
+\def\codim{\operatorname{codim}}
+\def\trace{\operatorname{trace\,}}
+\def\dimension{\operatorname{dimension}\,}
+\def\codimension{\operatorname{codimension}\,}
+\def\kernel{\operatorname{Ker}}
+\def\Re{\operatorname{Re\,} }
+\def\Im{\operatorname{Im\,} }
+\def\eps{\varepsilon}
+\def\lt{L^2}
+\def\bull{$\bullet$\ }
+\def\det{\operatorname{det}}
+\def\Det{\operatorname{Det}}
+\def\diameter{\operatorname{diameter}}
+\def\symdif{\,\Delta\,}
+\newcommand{\norm}[1]{ \|  #1 \|}
+\newcommand{\set}[1]{ \left\{ #1 \right\} }
+\def\one{{\mathbf 1}}
+\def\cl{\text{cl}}
+
+\def\newbull{\medskip\noindent $\bullet$\ }
+\def\nobull{\noindent$\bullet$\ }
+
+
+
+\def\scriptf{{\mathcal F}}
+\def\scriptq{{\mathcal Q}}
+\def\scriptg{{\mathcal G}}
+\def\scriptm{{\mathcal M}}
+\def\scriptb{{\mathcal B}}
+\def\scriptc{{\mathcal C}}
+\def\scriptt{{\mathcal T}}
+\def\scripti{{\mathcal I}}
+\def\scripte{{\mathcal E}}
+\def\scriptv{{\mathcal V}}
+\def\scriptw{{\mathcal W}}
+\def\scriptu{{\mathcal U}}
+\def\scriptS{{\mathcal S}}
+\def\scripta{{\mathcal A}}
+\def\scriptr{{\mathcal R}}
+\def\scripto{{\mathcal O}}
+\def\scripth{{\mathcal H}}
+\def\scriptd{{\mathcal D}}
+\def\scriptl{{\mathcal L}}
+\def\scriptn{{\mathcal N}}
+\def\scriptp{{\mathcal P}}
+\def\scriptk{{\mathcal K}}
+\def\scriptP{{\mathcal P}}
+\def\scriptj{{\mathcal J}}
+\def\scriptz{{\mathcal Z}}
+\def\scripts{{\mathcal S}}
+\def\scriptx{{\mathcal X}}
+\def\scripty{{\mathcal Y}}
+\def\frakv{{\mathfrak V}}
+\def\frakG{{\mathfrak G}}
+\def\frakB{{\mathfrak B}}
+\def\frakC{{\mathfrak C}}
+
+
+
+
+%%%%%%%%%%%%%%%
+%% DOC INFO %%%
+%%%%%%%%%%%%%%%
+\newcommand{\bHWN}{ }
+\newcommand{\bCLASS}{MATH 202A}
+
+\title{\bCLASS: Notes }
+\author{Scribe: William Guss}
+\usepackage{csquotes}
+
+%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+\noindent \textbf{Remark.} In mathematics, the key discovery is usually a definition!
+
+\begin{definition}
+	Let $\mu^*: \scriptp(X) \to [0,\infty]$ be an outer measure.
+\end{definition}
+
+\begin{definition}
+	$A \subset X$ is $\mu^*$-measurable, if for all $E \subset X,$
+	\begin{equation*}
+		\mu^*(E) = \mu^*(E \cap A) + \mu^*(E \setminus A)
+	\end{equation*}
+\end{definition}
+
+\begin{theorem}
+	$\scriptm$ is a $\sigma$-algebra and $\mu^*|_\scriptm$ is a measure on $\scriptm$.
+\end{theorem}
+
+\noindent \textbf{Remark.} You could easily make a $\sigma$-algebra on $X$ by letting $\scriptm = \set{\emptyset, X}, \mu(\emptyset) = 0$ and $\mu(X) = \mu^*(X)$.
+\begin{proof}
+	Last time we prove that $\scriptm$ was an algebra using Venn-Diagrams. We also proved if $A, B \in \scriptm$ and $A \cap B = \emptyset$ then $\mu^*(A \cup B) = \mu^*(A) + \mu^*(B).$
+
+	Now suppose that $A_n \in \scriptm$ is Cartheodory measurable for all $n \in \mathbb{N}$. We wish to show $A = \bigcup_n A_n \in \scriptm$. Define $B_1 = A_1$, and $B_n = A_n \setminus \bigcup_{k=1}^{n-1}.$ We have that $B_k \in \scriptm$ and they are pairwise disjoint. So
+	$A = \bigsqcup_k B_k$. Now consider
+	\begin{equation*}
+		\begin{aligned}
+			\mu^*(E) &\geq \mu^*\left(E \cap \left(\bigcup_{k=1}^n B_k\right)\right) + \mu^*\left((E \setminus \bigcup_{k=1}^n B_k)\right) \\
+			&\geq 	\mu^*\left(E \cap \left(\bigcup_{k=1}^n B_k\right)\right) + \mu^*(E \setminus A).
+		\end{aligned}
+	\end{equation*}
+	Recall that  $E \subset X$ and $A,B \in \scriptm$ and $A \cap B = \emptyset$ then $$\mu^*(A \cup B) \cap E) = \mu^*(A \cap E) + \mu^*(B \cap E).$$
+	So for every $n$
+	\begin{equation*}
+		\mu^*(E) \geq 
+		\sum_{k=1}^n \mu^*(E \cap B_k) + \mu^*(E \setminus A).
+	\end{equation*} 
+	The series is bounded and therefore as $n \to \infty$
+	\begin{equation*}
+		\mu^*(E) \geq 
+		\sum_{k=1}^\infty \mu^*(E \cap B_k) + \mu^*(E \setminus A).
+	\end{equation*}
+	With $E \cap A \subset \bigcup_{k} E \cap B_k$ so $\mu^*(E \cap A) \leq \sum_{k=1}^\infty \mu^*(E \cap B_k)$ by countable subaddativity. Therefore 
+	\begin{equation*}
+		\mu^*(E) \geq \mu^*(E \cap A) + \mu^*(E \setminus A)
+	\end{equation*}
+	and so $A$ is measurable; that is $A \in \scriptm$. Therefore $\scriptm$ is closed under countable unions.
+
+	Now we want to show that $\mu^*|_\scriptm$. However this is implicit, by applying the above argument to $E = A$; that is, if $A = \bigcup_k B_k, B_k \in \scriptm$ and $B_k$ pairwise disjoint
+	\begin{equation*}
+		\mu^*(A) = \sum_{k=1}^\infty \mu^*(A \cap B_k) + \mu^*(E \setminus A) = \sum_{k=1}^\infty \mu^*( B_k) + \mu^*(\emptyset).
+	\end{equation*}
+	This completes the proof.
+\end{proof}
+\noindent \textbf{Remark.} The measure $\mu := \mu^*|_\scriptm$ is a complete measure.
+\begin{proof}
+	Suppose $A \in \scriptm$ and $\mu^*(A) = 0$ and $B \subset A$ not necisarrily measurable. Certainly $\mu^*(B) \leq \mu^*(A) = 0.$ The set $E \setminus B = E \setminus A \cup A \setminus B$ so $\mu^*(E \setminus B) \leq \mu^*( E \setminus A) + \mu^*( \cup A \setminus B)$ so we conclude 
+	$\mu^*(E \setminus B) = \mu^*(E \setminus A)$. For any set $E$
+	\begin{equation*}
+		\mu^*(E) \geq \mu^*(E \cap A) + \mu^*(E \setminus A) \geq \mu^*(E \cap B) + \mu^*(E \setminus B)
+	\end{equation*}
+	by $A$ measurable! Therefore $B$ is measurable!
+\end{proof}
+
+\begin{definition}
+	A pre measure $\mu_0$ on an algebra $\scripta$ is a $\mu_0: \scripta \to [0, \infty]$ such that $\mu_0(\emptyset) = 0$ and $\mu_0(A \cup B) = \mu_0(A) + \mu_0(B)$ if $A,B \in \scripta$ disjoint. Additionally
+	\begin{equation*}
+		\mu_0\left(\bigcup_n^\infty A_n\right) = \sum_{n}^\infty
+	\end{equation*}
+	iff $A_n \in \scripta$ and pairwise disjoint.
+\end{definition}
+\begin{theorem}
+	Let $\mu_0$ be a premeasure on an algebra $\scripta$. Define $\mu^*$ from $\mu_0, \scripte = \scripta$, and use the same construction as before. Let $\scriptm, \mu = \mu^*|_\scriptm$ be the construction from Carthedory's theorem. Then every $\scripta \subset \scriptm$ and $\mu$ and $ \mu_0$ agree on $\scripta$.
+
+	(Thm 3) In addition if $\mu_0$ is $\sigma$-finite then the extension of $\mu_0$ to $\scriptm$.
+\end{theorem}
+\begin{proof}
+		Consider $\set{E_j \in \scriptm}$ so that $\bigcup E_j \supset E$ and $E_j \in \scripte = \scripta$. First
+		\begin{equation*}
+			\begin{aligned}
+				\sum_j \mu_0(E_j) &= \sum_j \mu_0(E_j \cap A) + \mu_0(E_j \setminus A) \\
+				&= \sum_j \mu_0(E_j \cap A) + \sum_j \mu_0(E_j \setminus A)
+ 			\end{aligned}
+		\end{equation*}
+		Furthermore $\set{E_J \cap A: j \in \mathbb{N}}$ covers $E \cap A$ and $\set{E_j \setminus A}$ covers $E \cap A$. Therefore 
+		\begin{equation*}
+			\sum_j \mu_0(E_j \cap A) + \sum_j \mu_0(E_j \setminus A) \geq \mu^*(E \cap A) + \mu^*(E \setminus A) 
+		\end{equation*}
+		Therefore for all covers of $E$ by $E_j \in \scripta$ it follows that
+		\begin{equation*}
+			\inf_{(E_J) \subset \scriptm}\mu_0\left(\sum_j \mu_0 (E_j)\right) = \mu^*(E) \geq 	\mu^*(E \cap A) + \mu^*(E \setminus A) 
+		\end{equation*}
+
+
+		Suppose that $\nu$ is a measure on $\scriptm$ and $\nu \equiv \mu_0$ on $\scripta$. We claim that $\nu(E) \leq \mu(E)$ for all $E \in \scriptm$. Consider any countable cover of $E$ by $E_j \in \scripta$. So $$\nu(E) \leq \sum)j \nu(E_j) = \sum_j \mu_0(E_j).$$ Take the $\inf$ over all such covers and 
+		\begin{equation*}
+			\nu(E) \leq \sum_j \nu(E_j) = \sum_j \mu(E_j).
+		\end{equation*}
+\end{proof}
+
+
+%%%%%%% Be sure to set the counter and use menumerate
+
+\end{document}	

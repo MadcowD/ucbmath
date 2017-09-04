@@ -1,0 +1,280 @@
+\documentclass[11pt]{amsart}
+
+\usepackage{amsmath,amsthm}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{enumerate}
+\usepackage{fullpage}
+ \usepackage{euscript}
+% \makeatletter
+% \nopagenumbers
+\usepackage{verbatim}
+\usepackage{color}
+\usepackage{hyperref}
+
+\usepackage{fullpage,tikz,float}
+\usepackage{tikz-cd}
+%\usepackage{times} %, mathtime}
+
+\textheight=600pt %574pt
+\textwidth=480pt %432pt
+\oddsidemargin=15pt %18.88pt
+\evensidemargin=18.88pt
+\topmargin=10pt %14.21pt
+
+\parskip=1pt %2pt
+
+% define theorem environments
+\newtheorem{theorem}{Theorem}    %[section]
+%\def\thetheorem{\unskip}
+\newtheorem{proposition}[theorem]{Proposition}
+%\def\theproposition{\unskip}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\def\theconjecture{\unskip}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{sublemma}[theorem]{Sublemma}
+\newtheorem{fact}[theorem]{Fact}
+\newtheorem{observation}[theorem]{Observation}
+%\def\thelemma{\unskip}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+%\def\thedefinition{\unskip}
+\newtheorem{notation}[definition]{Notation}
+\newtheorem{remark}[definition]{Remark}
+% \def\theremark{\unskip}
+\newtheorem{question}[definition]{Question}
+\newtheorem{questions}[definition]{Questions}
+%\def\thequestion{\unskip}
+\newtheorem{example}[definition]{Example}
+%\def\theexample{\unskip}
+\newtheorem{problem}[definition]{Problem}
+\newtheorem{exercise}[definition]{Exercise}
+
+\numberwithin{theorem}{section}
+\numberwithin{definition}{section}
+\numberwithin{equation}{section}
+
+\def\reals{{\mathbb R}}
+\def\torus{{\mathbb T}}
+\def\integers{{\mathbb Z}}
+\def\rationals{{\mathbb Q}}
+\def\naturals{{\mathbb N}}
+\def\complex{{\mathbb C}\/}
+\def\distance{\operatorname{distance}\,}
+\def\support{\operatorname{support}\,}
+\def\dist{\operatorname{dist}\,}
+\def\Span{\operatorname{span}\,}
+\def\degree{\operatorname{degree}\,}
+\def\kernel{\operatorname{kernel}\,}
+\def\dim{\operatorname{dim}\,}
+\def\codim{\operatorname{codim}}
+\def\trace{\operatorname{trace\,}}
+\def\dimension{\operatorname{dimension}\,}
+\def\codimension{\operatorname{codimension}\,}
+\def\nullspace{\scriptk}
+\def\kernel{\operatorname{Ker}}
+\def\p{\partial}
+\def\Re{\operatorname{Re\,} }
+\def\Im{\operatorname{Im\,} }
+\def\ov{\overline}
+\def\eps{\varepsilon}
+\def\lt{L^2}
+\def\curl{\operatorname{curl}}
+\def\divergence{\operatorname{div}}
+\newcommand{\norm}[1]{ \|  #1 \|}
+\def\expect{\mathbb E}
+\def\bull{$\bullet$\ }
+\def\det{\operatorname{det}}
+\def\Det{\operatorname{Det}}
+\def\rank{\mathbf r}
+\def\diameter{\operatorname{diameter}}
+
+\def\t2{\tfrac12}
+
+\newcommand{\abr}[1]{ \langle  #1 \rangle}
+
+\def\newbull{\medskip\noindent $\bullet$\ }
+\def\field{{\mathbb F}}
+\def\cc{C_c}
+
+
+
+% \renewcommand\forall{\ \forall\,}
+
+% \newcommand{\Norm}[1]{ \left\|  #1 \right\| }
+\newcommand{\Norm}[1]{ \Big\|  #1 \Big\| }
+\newcommand{\set}[1]{ \left\{ #1 \right\} }
+%\newcommand{\ifof}{\Leftrightarrow}
+\def\one{{\mathbf 1}}
+\newcommand{\modulo}[2]{[#1]_{#2}}
+
+\def\bd{\operatorname{bd}\,}
+\def\cl{\text{cl}}
+\def\nobull{\noindent$\bullet$\ }
+
+\def\scriptf{{\mathcal F}}
+\def\scriptq{{\mathcal Q}}
+\def\scriptg{{\mathcal G}}
+\def\scriptm{{\mathcal M}}
+\def\scriptb{{\mathcal B}}
+\def\scriptc{{\mathcal C}}
+\def\scriptt{{\mathcal T}}
+\def\scripti{{\mathcal I}}
+\def\scripte{{\mathcal E}}
+\def\scriptv{{\mathcal V}}
+\def\scriptw{{\mathcal W}}
+\def\scriptu{{\mathcal U}}
+\def\scriptS{{\mathcal S}}
+\def\scripta{{\mathcal A}}
+\def\scriptr{{\mathcal R}}
+\def\scripto{{\mathcal O}}
+\def\scripth{{\mathcal H}}
+\def\scriptd{{\mathcal D}}
+\def\scriptl{{\mathcal L}}
+\def\scriptn{{\mathcal N}}
+\def\scriptp{{\mathcal P}}
+\def\scriptk{{\mathcal K}}
+\def\scriptP{{\mathcal P}}
+\def\scriptj{{\mathcal J}}
+\def\scriptz{{\mathcal Z}}
+\def\scripts{{\mathcal S}}
+\def\scriptx{{\mathcal X}}
+\def\scripty{{\mathcal Y}}
+\def\frakv{{\mathfrak V}}
+\def\frakG{{\mathfrak G}}
+\def\aff{\operatorname{Aff}}
+\def\frakB{{\mathfrak B}}
+\def\frakC{{\mathfrak C}}
+
+\def\symdif{\,\Delta\,}
+\def\mustar{\mu^*}
+\def\muplus{\mu^+}
+
+\def\soln{\noindent {\bf Solution.}\ }
+
+
+%\pagestyle{empty}
+%\setlength{\parindent}{0pt}
+
+\begin{document}
+
+\begin{center}{\bf Math 202A --- UCB, Fall 2016 --- William Guss}
+\\
+{\bf Problem Set 14, dueeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee}
+\end{center}
+
+\medskip \noindent {\bf (14.1)}\ (Folland problem 4.65)\ Let $U$ be an open subset of $\mathbb{C}$, and let $\{f_n\}$ be a sequence of holomorphic functions on $U$. If $\{f_n\}$ is uniformly bounded on compact subset of $U$, there is a subsequence  that converges uniformly to a holomorphic function on compact subset of $U$.
+\begin{proof}
+	If $U$ is an open subset of $\mathbb{C}$ and $\{f_n\}$ is uniformly bounded on compact subset of $U$, then for any compact of $U$, say $K$, $f_n|_K$ is holomorphic. Additionally, since $\mathbb{C}$ is a second countable LCH space with the open ball topology, $f_n|_K$ is holomorphic on countably many fully connected precompacts, and therefore is analytic there. To lastly characterize $f_n$, uniform boundeness on $K$ is equivalen to the existence of a real number $M$ so that for all $n$, $|f_n(k)| \leq M$ when $k \in K$. Therefore $f_n|_K \not\to g$ where $g$ is singular on any $K$.
+
+ 	Now for any compact $K \subset U$ that is without loss of generality fully connected, and for any $x \in K$. The analycity of $f_n$ for all $n$ lets us consider
+ 	\begin{equation*}
+ 		\begin{aligned}
+ 			f_n(x) - f_m(x) = \frac{1}{2\pi i} \int_{C_R(x)} \frac{f_n(y) - f_m(y)}{y - x}\ dy \\
+ 			|f_n(x) - f_m(x)| \leq \frac{1}{2\pi} \int_{C_R(x)} \left|\frac{f_n(y) - f_m(y)}{y - x}\right|\ dy \leq \frac{M 4\pi R^2}{2 \pi R}\\
+ 		\end{aligned}
+ 	\end{equation*}
+ 	By the unform boundedness of the sequence and the moduli bound of the function $|y-x|$. Therefore given $\epsilon >0$
+ 	There is a $R = \epsilon/{6M}$ so that for all $n,m$, $|f_n(x) - f_m(x)| \leq \epsilon/3.$ Now by $f_1$ continous on $K$ take $\delta = \min(R, \delta_1)$ so that $\delta_1$ is the radius of the domain $C_{\delta_1}(x)$ on which $f_1$ takes values near $x$ of moduli difference less than $\epsilon/3.$ Then when $y \in C_{\delta}(x)$ for any $m$
+ 	\begin{equation*}
+ 	\begin{aligned}
+ 		|f_m(x) - f_m(y)| &\leq |f_m(x) - f_1(x) + f_1(x) - f_1(y) + f_1(y) - f_m(y)| \\
+ 	&\leq |f_m(x) - f_1(x)| + |f_1(x) - f_1(y)| + |f_1(y) - f_1(y)|
+ 	\\
+ 	&< \epsilon/3 + \epsilon/3 + \epsilon/3 = \epsilon\;\;\; :)
+ 	\end{aligned}
+ 	\end{equation*}
+ 	Therefore $f_n$ is equicontinuous on any compact. Returning to a more general setting, we can place $x,y \in U$ arbitrarily becasue $\mathbb{C}$ is an LCH space, we can find a compact ball around $x$ anywehre in $U$ and then proceed with the proof. Therefore $f_n$ is econtinuous on $U.$
+
+ 	 Then by the Arzela-Ascoli Theorem II, there is an $f \in C(U)$ so that some subsequence of $\{f_n\}$ converges to $f$ uniformly on compact sets. Then from compelx analysis, uniform convergence of analytic functions preserves analycity and so $f$ is analytic.
+\end{proof}
+\medskip \noindent {\bf (14.2)}\ (Folland problem 4.63) Let $K \in C([0,1] \times [0,1])$. For $f \in C([0,1]$, let $Tf(x) = \int_0^1 K(x,y) f(y)\ dy.$ Then $Tf \in C([0,1])$, and $\{Tf\ : \|f\|_u \leq 1\}$ is precompact on $C([0,1])$.
+\begin{proof}
+	We will use A-A Thoerem 1 to show that $\scriptf = \{Tf\ : \|f\|_u \leq 1\}$ is precompact. In order to do,
+	we must first show that $Tf \in C([0,1])$ for any $f \in C([0,1])$ and furthermore that $\scriptf$ is pointwise bounded, and equicontinuous.
+
+	To assert the first claim, we will show that $T$ is a bounded linear operator between $T: C([0,1]) \to C([0,1])$ 
+	and then use a basic theorem of functional analysis to assert its continuity. First since $[0,1]^2$ is compact in the box
+	topology (and the product topology by Tychnov) as a subset of a Hausforff space, it is closed and bounded. Additionally $K$ is then bounded by $M_K$. Additionally every $f \in C([0,1])$ is bounded in absolute value by $M_f \geq \|f\|_u.$ Therefore $\|Tf\|_u \leq M_K\|f_u\|$ and so $T$ is a bounded operator. Next for any $f,g \in C([0,1]), T(f+g) = \int K_x (f+ g)\ dy = \int K_x f\ dy + \int K_x g\ dy = Tf + Tg$ so the operator is bounded. Lastly we need show continuity of $Tf$ on $[0,1].$
+
+	By uniformy continuity of $f$ on $x$, given any $\epsilon$, there is a $\delta$ so that $|x-y| < \delta$ implies  $|T[f](x) - T[f](y)| \leq \|T\||f(x) - f(y)| \leq \|T\|\epsilon$. Therefore let $\delta' = \min\{\delta, \epsilon/\|T\|\}$ and $Tf$ is continuous. Therefore $T: C([0,1])) \to C([0,1])$ is a bounded linear operator and on the topology of uniform convergence $T$ is continuous. 
+
+	Next we need show taht $\scriptf$ is equicontinuous. For any $Tf \in \scriptf$ we know that $\|f\|_u \leq 1$ and therefore $\|Tf\|_u =\|T\|\|f\|_u$. Let any $\epsilon$ be given and fix $Tf \in \scriptf$, by uniform continuity of $Tf$ for all $\epsilon > 0$ there is a $\delta$ with  for any $x,y \in [0,1]$ and $|x -y| < \delta$, then $|Tf(x) - Tf(y)| < \epsilon/3.$ Furthermore $\|Tf -Tg\|_u \leq \|T\|\|f-g\|_u$. In particular $|Tf(x) - Tg(x)| = |\int K(x,y) (f(y) - g(y))\ dy| \leq \|g -y\|_u\ \int |K(x,y)|\ dy.$
+
+	Now by the continuity of $K(x,y)$ we have that 
+	\begin{equation*}
+		\|g-y\|_u\int_{[0,1]} |K(x,y)|\ dy = \|g-y\|_u F(x) \in C([0,1])
+	\end{equation*}
+	Fix a particualr $Tf \in \scriptf$ and let $\delta$ be its continuity constant around $x$ for $\epsilon/3.$
+	Then take $\delta' = \min\{\delta, \gamma\}$ where $\gamma$ is the continuity constant of $F$ around $x$ for $\epsilon/3$; that is the $\gamma$ so that $|x-y| < \gamma$ implies $|F(x) - F(y)| < \epsilon/3$. Then when $|x-y| < \delta'$ we have that
+	\begin{equation*}
+ 	\begin{aligned}
+ 		|Tg(x) - fg(y)| &\leq |Tg(x) - Tf(x) + Tf(x) - Tf(y) + Tf(y) - Tg(y)| \\
+ 	&\leq |Tg(x) - Tf(x)| + |Tf(x) - Tg(y)| + |Tg(y) - Tf(y)|
+ 	\\
+ 	&< \epsilon/3 + \epsilon/3 + \epsilon/3 = \epsilon\;\;\; :)
+ 	\end{aligned}
+ 	\end{equation*}
+
+ 	Then $\scriptf$ is precompact on $C([0,1]).$
+\end{proof}
+In hindsight, proving contionuity of $T$ was pretty useless, lol.\\
+
+\medskip \noindent {\bf (14.3)}\ (Folland problem 4.66) Show that $1 - \sum_1^\infty c_nt^n$ is the maclaurin series for $(1-t)^{1/2}$ on compacta of $(-1,1)$. 
+\begin{proof}
+	First recall that
+	\begin{equation*}
+		c_n = \frac{1}{n!}\prod_{m=1}^n \frac{2m-3}{2}.
+	\end{equation*}
+	Then if we compute the series
+	\begin{equation*}
+		1 + \sum_{n=1}^\infty c_nt^n = 1 + \left(-\frac{1}{2}\right) \sum_{n=1}^\infty \frac{t^n}{n!} \prod_{m=1}^{n-1} \frac{2m - 1}{2}.
+	\end{equation*}
+	The difference of any two partial of the absolute series when $j \leq k$ is just
+	\begin{equation*}
+		\begin{aligned}
+			\left|1 + \sum_{n=1}^k |c_nt^n|  - 1 - \sum_{n=1}^j |c_nt^n|\right| &=  \left|\left(-\frac{1}{2}\right) \sum_{n=1}^k \frac{|t^n|}{n!} \prod_{m=1}^{n-1} \frac{2m - 1}{2} - \left(-\frac{1}{2}\right) \sum_{n=1}^j \frac{|t^n|}{n!} \prod_{m=1}^{n-1} \frac{2m - 1}{2}\right| \\
+			&= \frac{1}{2}\left|\left(\sum_{n=j}^k \frac{|t^n|}{n!} \prod_{m=1}^{n-1} \frac{2m - 1}{2} \right)\right| \\
+			& = \frac{1}{2} \left|\prod_{m=1}^{j-2} \frac{2m - 1}{2}  \right|\left|\sum_{n=j}^k \frac{|t^n|}{n!} \prod_{m=j-1}^{n-1} \frac{2m - 1}{2} \right| \\
+			&\leq  \frac{1}{2} \left|\prod_{m=1}^{j-2} \frac{2m - 1}{2}  \right|\sum_{n=j}^k \frac{1}{n!} \prod_{m=j-1}^{n-1} \frac{2m - 1}{2};\;\;\;\;\;\;|t| < 1 \\
+			&=  \frac{1}{{2^{j-1}}} (j-2)!! \sum_{n=j}^k \frac{(n-1)!!}{(j-1)!!\cdot n!2^{n-j}}\;\;\;\cdot !!\text{ is the double factorial}\\ 
+			&\leq  \frac{2^{j/2} (j/2)! }{{2^{j-1}}} \sum_{n=j}^k \frac{2^{\frac{n-1}{2}} ((n-1)/2)!}{n!2^{n-j}} \\
+			&\leq  \frac{ 1 }{{2^{(j-2)/2}} \prod_{j/2}^{j} n} \sum_{n=j}^k \frac{2^{\frac{2j-n-1}{2}} ((n-1)/2)!j!}{n!} \\
+			&\leq \sum_{n=1}^{k-j} \frac{(j/2)!(((j+n)-1)/2)!}{ 2^{n/2}(j+n)!} \leq \sum_{n=j}^{k} \frac{((n-1)/2)!}{ 2^{n/2}\prod_{j/2}^{n}{m}}  \\
+			&\leq \frac{1}{2^{j/2}} \sum_{n=j}^{k} \frac{((n-1)/2)!}{ 2^{(n-j)/2}\prod_{j/2}^{n}{m}} \to 0\;\; j,k \to \infty.
+		\end{aligned}
+	\end{equation*}
+	Therefore the series is uniformly convergent when $t \leq 1$, and so on compact subsets of $(-1,1)$ the uniform convergence of $1 + \sum_{n=1}^\infty c_n t^n$ yields\footnote{Undergraduate real analysis.} that if $f(t) = 1 + \sum_{n=1}^\infty c_n t^n$ then $f'(t) =  \sum_{n=1}^\infty n c_n t^{n-1}.$
+	Since $f'(t) =  \sum_{n=1}^\infty n c_n t^{n-1}$ then
+	 \begin{equation*}
+	 	\begin{aligned}
+	 		-2(1-t)f'(t) = 2(t-1)\sum_{n=1}^\infty n c_n t^{n-1} &= 2\sum_{n=1}^\infty n c_n t^{n} - 2\sum_{n=1}^\infty n c_n t^{n-1} \\
+	 		&= 2 \sum_{n=1}^\infty n c_n(t^{n} - t^{n-1}) \\
+	 		&= 2(-(-1/2))t^0 + 2c_1 t - 2c_2t + 4c_2t^2 - 6c_3t^2 + \cdots \\
+	 		&= 1 + \sum_{n=1}^\infty 2(c_n - (n+1)c_{n+1})  t^n  \\
+	 		&= 1 + \sum_{n=1}^\infty   t^n  2\left(\frac{1}{n!}\prod_{m=1}^n \frac{2m-3}{2} - \frac{n+1}{(n+1)!}\prod_{m=1}^n \frac{2m-3}{2}\right) \\
+	 		&= 1 + \sum_{n=1}^\infty   \frac{t^n}{n!}  2 \prod_{m=1}^n \frac{2m-3}{2} \left(1 - \frac{1}{2}\right) \\
+	 		&= f(t).
+	 	\end{aligned}
+	 \end{equation*}
+	 Therefore $f'(t) = -2(1-t)f'(t).$  Now multiplying by $(1-t)^{-1/2} f(t)$ we take the derivitive thereof and get 
+	 $((1-t)^{-1/2} f(t))' = (1/2)(1-t)^{-3/2} f(t) + (1-t)^{-1/2} f'(t)$. Therefore 
+	 $((1-t)^{-1/2} f(t))' = -(1-t)^{-3/2}(1-t)f(t) + (1-t)^{-1/2} f'(t) = 0.$ So $(1-t)^{-1/2} f(t)$ is constant. Finally
+	 $f(0) = 1$ and thus $f(t) = (1-t)^{1/2}.$ This completes the proof.
+\end{proof}
+
+\medskip \noindent {\bf (14.4)}\ Let $X,Y$ be compact Hausdorff spaces. Show that the algebra generated by all products of functions $(x,y) \mapsto f(x)g(y)$, where $f \in C(X)$ and $g \in C(Y)$ is dense in $C(X \times Y).$
+\begin{proof}
+	Let $\scripta$ be the set of functions mentioned in the problem. Clearly $\scripta$ is a subalgebra since it is by definition the minimal family closed under multiplication and addition containing all $p \in C(X \times Y)$ such that $p = (x,y) \mapsto f(x)g(y)$ for some $g \in C(Y), f \in C(X)$. We need to show that this algebra sepeartes points. Take any distinct $(x,y), (w,z) \in X \times Y$. Since $X, Y$ are compact Hausdorff spaces, they are normal and so by Urhysohn's lemma the following functions exist. Let $f \in C(X)$ so that $f(x) = 1, f(w) = 0.$ Let $g \in C(Y)$ so that $g(y) = 1$ and $g(z) = 0.$ Additionally let $h \in C(X)$ so that $h(x) = 0, h(w) = 1$ and $k \in C(Y)$ so that $k(y) = 0$ and $k(z) = 1.$ Then there are clearly $p: (a,b) \mapsto f(a)g(b)$ and $q: (a,b) \mapsto h(a)k(b)$ so that $p,q \in \scripta$ and aitionally $p(x,y) = 1 \neq q(x,y) = 0$ and $p(w,z) = 0 \neq q(w,z) = 1.$ Therefore $\scripta$ seperates points.
+
+	Since multiplication is a continuous operator on $\mathbb{C}^2$ it follows that all $p \in G$ where $G$ is the generating family of $\scripta$ are continuous, and continuous functions on $X \times Y$ are closed under algebraic operations (pointwise multiplication and addition). Additionally $\scripta$ is closed under conjugation since the generating family is closed under c.c. $\overline{fg} = \overline{f}\overline{g}$ where $\overline{f} \in C(X), \overline{g} \in C(Y)$. Lastly the non-zero constant map is in both $C(X)$ and $C(Y)$ so it is also in $\scripta$\footnote{This is a proof that $\scripta$ saitisifies the second condition of the theorem. }so by the  Complex Stone-Weierstrass Theorem we have $cl(\scripta) = C(X \times Y).$
+\end{proof}
+
+\medskip \noindent {\bf (14.5)}\ let $X = [0,1]^A$ where $A \neq \emptyset.$ Show that algebra generated by all coordinate maps $\pi_\alpha: X \to [0,1]$ together with the constant function $1$ is dense in $C(X).$
+\begin{proof}
+	Let $\scripta$ be the subalgebra described in the statement of the problem. The generating set of coordinate maps are continuous. We need show that $\scripta$ seperates points. Take any $x, y \in X$, distinct. Then $x = \prod_{\alpha \in A} x_\alpha \neq y = \prod_{\alpha \in A} y_\alpha$. Therefore there must be a $\alpha \in A$ so that $\pi_\alpha(x) = x_\alpha \neq y_\alpha = \pi_\alpha(y)$. So for every pair of distinct points $x,y \in X$ there is an $\alpha$ such that $\pi_\alpha$ seperates $x,y$ in $[0,1] \subset \mathbb{C}$. Therefore $\scripta$ seperates points. Next if $\overline{\pi_\alpha} = Re(\pi_\alpha) - iIm(\pi_\alpha) = Re(\pi_\alpha) = \pi_\alpha.$ Therefore $\scripta$ is generated by a family which is closed under complex conjugation and so  $\scripta$ is closed under complex conjugation. Lastly since the constant map $1$ is in $\scripta$ it cannnot be a subset of $\{f \in C(X)\ : f(x_0) = 0\}.$ Therefore by the Stone-Weierstrass theorem $cl(\scripta) = C(X).$ This completes the proof.
+	\end{proof}
+
+\end{document}\end
+	

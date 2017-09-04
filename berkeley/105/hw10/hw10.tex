@@ -1,0 +1,196 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%                      Homework _                            %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[letter]{article}
+
+\usepackage{lipsum}
+\usepackage[pdftex]{graphicx}
+\usepackage[margin=1.5in]{geometry}
+\usepackage[english]{babel}
+\usepackage{listings}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{framed} 
+\usepackage{amsmath}
+\usepackage{titling}
+\usepackage{fancyhdr}
+\usepackage[mathcal]{euscript}
+\pagestyle{fancy}
+
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{definition}{Definition}
+
+\newenvironment{menumerate}{%
+  \edef\backupindent{\the\parindent}%
+  \enumerate%
+  \setlength{\parindent}{\backupindent}%
+}{\endenumerate}
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%
+%% DOC INFO %%%
+%%%%%%%%%%%%%%%
+\newcommand{\bHWN}{8}
+\newcommand{\bCLASS}{MATH 105}
+
+\title{\bCLASS: Homework \bHWN}
+\author{William Guss\\26793499\\wguss@berkeley.edu}
+
+\fancyhead[L]{\bCLASS}
+\fancyhead[CO]{Homework \bHWN}
+\fancyhead[CE]{GUSS}
+\fancyhead[R]{\thepage}
+\fancyfoot[LR]{}
+\fancyfoot[C]{}
+\usepackage{csquotes}
+
+%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+\begin{menumerate}
+    \setcounter{enumi}{42}
+    \item \begin{theorem}
+    	Let $g(y) = \int_0^\infty e^{-x}\sin(x + y)\ dx$. The function is differentiable with respect to $g(y).$ 
+    \end{theorem}
+    \begin{proof}
+ 		Labesgue Dominated Convergance theorem.
+ 		Consider the following construction.
+ 		\begin{equation}
+ 		   	\begin{aligned}
+                \lim_{h \to 0} \frac{g(y) + g(h + y)}{h} &= \frac{1}{h} \int \gamma(y) + \int \gamma(h+y) \\
+                 &= \int \frac{ e^{-x}sin(x+y)\ + e^{-x}sin(x+y+h)}{h}\ dx \\
+                 &=  \int f_h\ d\mu(x).
+            \end{aligned}
+ 		   \end{equation}   
+           where $\mu$ is Lebesgue regular measure. We would like to use the dominated convergence theorem to show that this 
+           sequence of integrals converges to a limit. First we must show that $f_h$ converges to $f$ almpost everywhere.
+           We know from Math $1B$ that the limit of $f_h$ is the derivative  of $\gamma,$ and $\gamma$ is clearly a
+           differentiable function. So it is obviouse that $f_h \to f.$
+
+           Furthermore we know that $\gamma(x)$ is dominated by $e^-{x}$. Observe that 
+           $e^{-x} \geq f_h(x)$ almost everywhere since $\sin(x+y+h) \leq 1.$
+
+           Therefore by the dominated convergence thereom $f_h\to f(x)$ is integrable with respect to the measure $\mu,$
+           and $\int f_h \to \int f = L$ is the derivatice of $g(y)$ at $y.$ Since we did this for abitrary $y$ $g$
+           is differentiable everywhere. :)
+    \end{proof}
+    \setcounter{enumi}{45}
+    \item  
+    \begin{theorem}
+        
+    \end{theorem}
+    \textbf{Office Hours:} We know that $f$ is rieman integrable since it has one point of fiscontinuity. Therefore we can use calculus.
+    Consider the integratipon by parts. We have
+    \begin{equation}
+    	\int_0^1 \frac{\pi}{x}\sin \frac{\pi}{x}\ dx = x \cos \frac{\pi}{x} |^1_a  - \int_a^1 \cos \frac{\pi}{x}\ dx.
+    \end{equation}
+    Clearly the right hand side converges to $0$ since it is enveloped by $x.$ The right hand side can be considered as follows.
+    Look at the intervals $[1/(k+1), 1/k]$. In this case,  f
+    we can bound the integral along this interval by the rectangle of area
+    \begin{equation}
+    	B_k = \frac{1}{k} - \frac{1}{k+1} = \frac{1}{(k+1)k}.
+    \end{equation}
+    Accounting for the negative oscilation of the $\cos(\pi/k)$ we get that for $k$ even
+    \begin{equation}
+    	\int_{\frac{1}{k+2}}^\frac{1}{k} \cos\frac {\pi}{x}\ dx \leq \frac{2}{(k+2)(k+1)k}. 
+    \end{equation}
+    This is obvious since
+    \begin{equation}
+    	\int_{\frac{1}{k+2}}^{\frac{1}{k+1}} \cos\frac{\pi}{x}\ dx \leq \sum_{\frac{1}{k+2}}^\frac{1}{k+1} -1\;\;\;\;
+    	\int_{\frac{1}{k+1}}^{\frac{1}{k}} \cos\frac{\pi}{x}\ dx \leq \sum_{\frac{1}{k+}}^\frac{1}{k} 1
+    \end{equation}
+    and we take the sum of the bound and get the same inequality. Essentially we are given a very nice bound
+    \begin{equation}
+    	\ 0 \leq \int_{\frac{1}{k+2}}^\frac{1}{k} \cos \frac{\pi}{x}\ dx
+    	 \leq \frac{2}{(k+2)(k+1)k}.
+    \end{equation}
+    We then know that the difference of $k=m$ and $k=n$ decreases at least cubically and
+    so the series of summing the integrals is cauchy and bounded by the series
+    \begin{equation}
+    	a = \sum_{k=0}^\infty \frac{2}{(k+2)(k+1)k}.
+    \end{equation}
+    So the function itself is Riemann integrable (improperly)!
+
+    Now look at the Labesgue integrability condition. It must be that $|f|$ has finite integrable. The absolute value of $f$
+    however has area lowerbounded by $\sum 1/100k$ which diverges, therefore it could not be that the area under $|f|$ be finite
+    and so the function is not Labesgue integrable. 
+
+    \setcounter{enumi}{47}
+    \item The set $S_A$ is where $J'$ is greatert than $a$ we can cover the $S_A$ with intervals $x, x+h$ using a vitali covering. WE can extract
+    disjoint guys who effectively do the covering and whoe total length is approximateley the total measure of $S_A.$
+    \setcounter{enumi}{49}
+    \item Recall Theorem $66$ from the book.
+    \begin{theorem}
+        The circle or equivalently $[0,1)$, splits into two nonmeasurable disjoint subset, that each has inner measure zero and outer measure one.
+    \end{theorem}
+    We then set out to prove the following theorem.
+    \begin{theorem}
+        Every measurable $E \subset \mathbb{R}$ with $mE > 0$ contains a nonmeasurable set $N$ with $m^*N = mE, m_*N = 0$ and for each 
+        $E' \subset E$ we have $m(E') = m^*(N\cap E').$
+    \end{theorem}
+    \begin{proof}
+        Since $E$ is measurable it is the union of an open set $F$ and a zeroset $Z.$ Since $F \subset \mathbb{R}$ it is the countable union of
+        disjoint open intervals
+        \begin{equation}
+            F = \bigsqcup_{i=1}^{\eta\in \mathbb{Z} \cup \{\infty\}} I_i.
+        \end{equation}
+        Let $T_i$ be the rigid transformation which maps $(0,1) \to I_i$ with absolute determinant $m(I_i).$ 
+        Then take doppleganger set of $(0,1), N_{(0,1)}$ and consider the new set
+        \begin{equation}
+        N = \bigsqcup_{i=1}^\eta T_i(N_{(0,1)})
+        \end{equation}
+        with $\eta$ as before. This set has inner measure $0$ and outer measure $\sum_{i} m(I_i) = m(E)$ and so is not measurable!
+
+        Now take any measurable subset of $E$, say $E'.$ In the same sense that we constructed $N,$ $N \cap E'$
+        is also not measurable. It furthermore follows that $m^*(N \cap E') = m^*(E')$ since we construct $E$
+        as a disjoint union of open intervals all of which are strict subsets of the respective $I_i$ forming $E.$
+
+        To complete this statement, we must show that the outer measure of these subsets, say $I_i'$ intersect $T_i(N_{(0,1)})$
+        have measure $m(I_i').$  Outer measure is importantly additive, therefore 
+        \begin{equation}
+            \begin{aligned}
+                 m^*(I_i) = m^*(I_i') + m^*({I_i'}^c\cap I_i) &= m^*(T_i(N_{(0,1)})) \\
+                &= m^*((T(N_{(0,1)}) \cap I_i')^{c}\cap I_i) + m^*(I_i') \\
+               \implies m^*(I_i') &= m^*(T(N_{(0,1)}) \cap I_i')
+            \end{aligned}
+        \end{equation}
+        using Lemma $20$.
+        This completes the proof.
+    \end{proof} 
+    \setcounter{enumi}{51}
+    \item Show the following theorem.
+    \begin{theorem}
+        If $f$ is a measurable function then
+        \begin{equation}
+            (dp(\mathcal{U}f) \cap \mathcal{U}f)^y = dp(\mathcal{U}f^y) \cap \mathcal{U}f^y.
+        \end{equation}    
+     \end{theorem} 
+     \begin{proof}
+        W must show that every $x \in (dp(\mathcal{U}f) \cap \mathcal{U}f)^y = dp(\mathcal{U}f^y)$ is also a member of  $dp(\mathcal{U}f^y) \cap \mathcal{U}f^y.$
+        If $x \in (dp(\mathcal{U}f) \cap \mathcal{U}f)^y$ then equivalently
+        we have
+        \begin{equation}
+            x \in \{p = (\rho,\gamma) \ |\  \gamma = y \wedge p \in \mathcal{U}f \wedge p\ \text{density point of }\mathcal{U}f \}
+          \end{equation}  
+     By Theorem $49,$ we have that $\rho$ is a density point of $\mathcal{U}f^y$. Next we must show that if $\gamma = y$ and $p \in \mathcal{U}f$
+     then $x \in \mathcal{U}f^y$ This however is the definitions of $\mathcal{U}f^y.$ So it must be that $x \in dp(\mathcal{U}f^y) \cap \mathcal{U}f^y.$.
+
+     In the opposite direction we can again use the same logic. Theorem $49$
+     puts $x \in \mathcal{U}f^y $ in $(\mathcal{U}f)^y.$ Applying the same under graph logic as before the proof is complete.
+     \end{proof}
+43, 46,48,50,52
+\end{menumerate}
+%%%%%%% Be sure to set the counter and use menumerate
+
+\end{document}

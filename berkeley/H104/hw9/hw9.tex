@@ -1,0 +1,152 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%                      Homework 9                            %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[letter]{article}
+
+\usepackage{lipsum}
+\usepackage[pdftex]{graphicx}
+\usepackage[margin=1.5in]{geometry}
+\usepackage[english]{babel}
+\usepackage{listings}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{framed} 
+\usepackage{amsmath}
+\usepackage{titling}
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{definition}{Definition}
+
+\newenvironment{menumerate}{%
+  \edef\backupindent{\the\parindent}%
+  \enumerate%
+  \setlength{\parindent}{\backupindent}%
+}{\endenumerate}
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%
+%% DOC INFO %%%
+%%%%%%%%%%%%%%%
+\newcommand{\bHWN}{9}
+\newcommand{\bCLASS}{MATH H104}
+
+\title{\bCLASS: Homework \bHWN}
+\author{William Guss\\26793499\\wguss@berkeley.edu}
+
+\fancyhead[L]{\bCLASS}
+\fancyhead[CO]{Homework \bHWN}
+\fancyhead[CE]{GUSS}
+\fancyhead[R]{\thepage}
+\fancyfoot[LR]{}
+\fancyfoot[C]{}
+\usepackage{csquotes}
+
+%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+%#59, 61-63, 67-70.
+	\begin{menumerate}
+		\setcounter{enumi}{58}
+		\item %59
+
+		\begin{theorem}
+			If $\sum a_n$ converges and $a_n \geq 0,$ then show $\sum \sqrt{a_n}/n$ converges.
+		\end{theorem}
+
+		\begin{proof}
+			Let $x = (\sqrt{a_n})_n$, $y = \left(\frac{1}{n}\right)_n$. Clearly $y \in \ell_1,$ and since $\sum a_n \to c,$ $a_n \to 0$ implies that $\sqrt{a_n} \to 0.$ Therefore, $x \in \ell_1.$ Since $\ell_1$ is an inner product space, the cauchy schwartz inequality gives, 
+			$$0 \leq \sum_{n=1}^\infty \frac{\sqrt{a_n}}{n} = \langle x,y \rangle \leq |x||y| = \sqrt{\sum_{n=1}^\infty a_n} \sqrt{\sum_{n=1}^\infty \frac{1}{n^2}} = \sqrt{\frac{c}{6}}\pi$$
+			and so the series is bounded and therefore converges.
+		\end{proof}
+
+		\setcounter{enumi}{60}
+		\item Consider the following $\{a_n\} \in \ell_1.$ We say that $a_n = 1/4^n$ if $n$ odd and $a_n = 1/2^n$ otherwise. Clearly $$0 < \sum_{n\in\mathbb{N}}a_n = \sum_{n\ \text{odd}} \frac{1}{4^n} + \sum_{n\ \text{even}} \frac{1}{2^n} < \sum \frac{1}{2^n} < \sum \frac{1}{n^2} = \frac{\pi^2}{6}.$$ So the series converges. Let $\rho_N = \sup_{n>N} |a_{n+1}|/|a_n| = \sup_{n>N} 2^n = \infty$. So clearly $\rho = \lim \rho_N = \infty,$ and yet the series converges. If we were to suppose that $\lambda = \rho$ then the test would be wrong since $\lambda > 1$ implies divergence. So it must be the case that the test is inconclusive when $\rho \geq 1.$
+
+		\item 
+		\begin{theorem}
+			Let $\{a_n\} \in \ell_1$ be a monotonically non-increasing sequence. Then, the series $\sum a_n$ converges if and only if the associated dyadic series 
+			$$a_1 + 2a_2 +4a_4 + 8a_8 + \cdots = \sum 2^k a_{2^k}$$
+			converges.
+		\end{theorem}
+
+		\begin{proof}
+		Suppose that $\sum 2^na_{2^n}$ converges. Since the sequence is monotone decreasing, we have that $a_1 \geq a_1$, $2a_2 > a_2 + a_3, \dots, 2^ka_{2^k} > a_{2^k} + \dots + a_{2^{k+1}}.$ In other words the series is dominated by the dyagic series. Therefore by the comparison test, the series must converge. The reverse proof is similar.
+		\end{proof}
+
+		\item \begin{theorem}
+			The series $\sum 1/(k(\log k)^p)$ diverges for $p \leq 1$ and converges for $p > 1.$
+		\end{theorem}
+		\begin{proof}
+		 We will show the theorem using the integral test. In particular, we need only show that the function $$f(x) = \frac{1}{x\log^px}$$ has convergent/divergent improper integrals for the corresponding $p$-cases. In the special case of $p = 1$ simple $\upsilon$-substituion yields that, $\int_2^\infty f(x)\ dx =  \log(\log(x))|_2^n \to \infty.$ When $p \neq 1$, we have that the indefinite integral is $$F(n) = \int_2^n \frac{1}{x\log^px}\ dx = \frac{\log^{1-p}(x)}{1-p}\Bigg|_2^n.$$ It is clear in the  case that $p>1,$ the log function is in the denominator and therefore $F(n) \to 0 + \log^p(2)/(1-p) \in \mathbb{R}.$ Otherwise, for $p < 1, F(n) \to \infty.$ Therefore, by the integral test we have that the series converges for $p >1$ and diverges otherwise.
+		\end{proof}
+
+		\setcounter{enumi}{66}
+		\item
+		\begin{theorem}
+			Let $\{a_k\} \in \ell_1$ such that $a_k$ has the same sign for all $k.$
+			The series $\sum a_k$ converges if and only if $\prod (a_k +1)$ converges.
+		\end{theorem}
+		\begin{proof}
+			The infinite product $\prod (a_k +1)$ converges if and only if $$\log\left(\prod_{k =1}^\infty a_k +1\right) = \sum_{k=1}^\infty \log(a_k+1)$$ converges. If $\sum a_n $ converges then $a_n \to 0$, and if $\sum a_n$ does not converge then we do not grant this. By the comparison test $\lim ln(1+a_n)/a_n = 1$ if and only if $\sum a_n$ converges if and only if the infinite product converges. This completes the proof.  
+		\end{proof}
+		\item Here is confirmation of the existence of an unrelation between the convergence of a series and the related infinite product,.
+		\begin{menumerate}
+			\item Suppose a series is defined as the infinite sum of a sequence $a_k = (-1)^k/\sqrt{k}$. We first show that such a series converges. Consider that $a_k \leq f(x) = (-1)^xx^{-0.5}$ for all $x = k.$ So we simply must show convergence of the improper integral of $f(x)$. Recall that $(-1)^x = e^{i\pi x},$ then
+			$$\int_1^\infty(-1)^xx^{-0.5}\ dx \sim \int_{\mathbb{R}^+} e^{i\pi x} x^{-0.5}\ dx = \mathcal{L}\{t^{-0.5}\} = \frac{\Gamma(1/2)}{(\pi)^{\frac{1}{2}}}$$
+			So at least the series converges. Consider the infinite product in terms of its partial products. Specifically we consider the partial products in pairs, $c_n*c_{n+1} = (1 +k^{-0.5} + (k+1)^{-0.5} + (k^2+k)^{-0.5})$ and so $$\prod_{k=1}^\infty (1 + a_k)=  \prod_{k=1}^\infty (1 +(2k)^{-0.5} + (2k+1)^{-0.5} + (2k(2k+1))^{-0.5})$$  
+			which converges if and only if $\sum_{k=1}^\infty b_k + c_k + \frac{1}{\sqrt k}$ converges, which it does not. Therefore the infinite product can't converge.
+
+			\item Let $b_k = e_k/k + (-1)^k/\sqrt{k}.$ Clearly $\sum b_k$ diverges since $\sum b_k = \sum e_k/k + \sum (-1)^k/\sqrt{k} \geq 0.5\sum 1/n + (1- \sqrt{2})\zeta(1/2) = \infty.$ However, by performing the same grouping of two test on the infinite product we get that the product converges if and only if $$\sum \frac{1}{n} + \frac{1}{\sqrt{n}} - \frac{1}{n\sqrt{n+1}} - \frac{1}{\sqrt{n}\sqrt{n+1}} - \frac{1}{\sqrt{n+1}}$$ converges. This is true if and only if $\sum n^{-3/2}$ converges (which it does by the integral test.) Thus, here is an example where the infinite product converges and the sum does not.
+		\end{menumerate}
+
+		\item 
+		\begin{theorem}
+			If $\sum a_k \to a$ then $\sum a_{\beta(k)} \to a$ for $a_k > 0$ and any bijection $\beta: \mathbb{N} \to \mathbb{N}.$
+		\end{theorem}
+		\begin{proof}
+			If $\sum {a_k} \to a$ for every $\epsilon > 0$ there are only finiteley many $n$ for which $|\sum_{k}^n a_k - L|$ is greater than $\epsilon.$ Since $a_k > 0$, we have that $\sum^n_k a_k$ is a monotone increasing sequence. It is bounded by its limit, for it could never be more. In any given arrangement, we observe the same monotonicity property and the same bound. To see this, suppose that upon rearrangement, there were an $N$ such that $\sum_k^N a_{\beta(k)} > L.$ This implies that the original series has a partial sum $1\to\beta(N)$ such that $\sum^{\beta(N)}_{k=1} a_k > L$, a contradiction to the monotone convergence theorem. Therefore the rearrangement is bounded by $L$ and the monotone convergence theorem implies that the rearrangment converges thereto. 
+
+			This completes the proof.
+		\end{proof}
+
+	\begin{theorem} 
+			If $\sum a_k \to a$ then $\sum a_{\beta(k)} \to a$ for $a_k$ absolutely convergent and any bijection $\beta: \mathbb{N} \to \mathbb{N}.$
+		\end{theorem}
+		\begin{proof}
+
+			If $\sum {a_k} \to a$ by its absolute convergence, we have that for every $\epsilon > 0$ there are only finiteley many $k$ such that $|\sum |a_k| - L| > \epsilon$. Suppose that upon rearrangement, this were not the case. Let $$K  =\max\{k\ :\ |\sum |a_k| - L| > \epsilon \}.$$ Then if there infiniteley many $k$ such that the rearrangement of the absolutele series is larger that $\epsilon$ away from $L$, we have that 
+			$$L - \sum_{k=1}^\infty |a_{\beta(k)}| = \sum_{k \in \beta^{-1}(\{1,\dots,K\})} |a_k| + \sum^\infty_{j = \max \beta^{-1}(\{1,\dots,K\})}|a_j| + O(i)$$ 
+			where $O(i)$ is some sum of the remaining terms not accounted for by those two pervious sums. By the definition of conditional convergence, there are ifiniteley many $n > K$ such that $\sum a_n < \epsilon$. In the case the above sum, there are infiniteley many $J > \max\{\beta^{-1}(\{1,\dots,K\}$ such that the partial sum is within $\epsilon$ of $L$, a contradiction! Therefore the series converges absoluteley.
+
+			This completes the proof.
+
+			An alternative proof is given by observing that $\sum |a_k|$ satisfies theorem $5.$ Thus its rearrangment converges and therefore the rearrangement of $\sum a_k$ converges absoluteley. (This is a much more elegant proof.)
+		\end{proof}
+		
+
+		\item 
+
+		\begin{theorem}
+			Let $a$ be a real number. If $\sum a_k$ is a conditionally convergent series, then there exists a rearrangement of its terms such that the rearrangment converges to $a.$
+		\end{theorem}
+		\begin{proof}
+			Take the first $n_1$ positive terms such that their sum is more than $a.$ This is possible since $\sum a_k$ is conditionally convergent, and in particular if every possible positive term is taken, the series diverges to infinity. Then take the first $n_2$ negative terms such that the series $S_{n_1}^++S_{n_2}^- <a. $ Repeating this process without stopping has at every step that for $\epsilon > 0$ and $k$ large enough $S_{n_{2k+1}}^++S_{n_{2k}} - S_{n_{2k-2}}^++S_{n_{2k-1}} < \epsilon$ by the cauchy convergence criterion. So eventually the series must converge to $a$.
+		\end{proof} 
+
+		This is remarkable! One could then take the previous proof, but at every step increase $S$ by a small amount and yield a divergent rearrangement. It is now easy to make the following jump: a series is absoluteley convergent if and only if every rearrangement converges. The proof is given by a combination of theorem 5 and 6. If a series is absoluteley convergent then it converges upon rearrangment. If a series is not absoluteley convergent, but just convergent, then it does not converge upon all rearrangements, therefore, it must be the case that rearranged convergence implies absolute convergence. This completes the inference.
+	\end{menumerate}
+
+\end{document}

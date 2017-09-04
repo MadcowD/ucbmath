@@ -1,0 +1,92 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%                      Homework 1                            %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[letter]{article}
+
+\usepackage{lipsum}
+\usepackage[pdftex]{graphicx}
+\usepackage[margin=1.5in]{geometry}
+\usepackage[english]{babel}
+\usepackage{listings}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{framed} 
+\usepackage{amsmath}
+\usepackage{titling}
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{definition}{Definition}
+
+\newenvironment{menumerate}{%
+  \edef\backupindent{\the\parindent}%
+  \enumerate%
+  \setlength{\parindent}{\backupindent}%
+}{\endenumerate}
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%
+%% DOC INFO %%%
+%%%%%%%%%%%%%%%
+\newcommand{\bHWN}{1}
+\newcommand{\bCLASS}{MATH 105}
+
+\title{\bCLASS: Homework \bHWN}
+\author{William Guss\\26793499\\wguss@berkeley.edu}
+
+\fancyhead[L]{\bCLASS}
+\fancyhead[CO]{Homework \bHWN}
+\fancyhead[CE]{GUSS}
+\fancyhead[R]{\thepage}
+\fancyfoot[LR]{}
+\fancyfoot[C]{}
+\usepackage{csquotes}
+
+%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+
+%%%%%%% Be sure to set the counter and use menumerate
+\setcounter{section}{4}
+\section{Multivariable Calculus}
+\begin{menumerate}
+	\setcounter{enumi}{2}
+	\item %3
+	Prove the following.
+	\begin{theorem}
+		Let $T: V\to W$ be a linear transformation between normed spaces. Then, 
+		\begin{equation}
+			\begin{aligned}
+				\|T\| &= \sup \{|Tv|\;:\;|v| < 1 \} \\
+				 &= \sup \{|Tv|\;:\;|v| \leq 1 \} \\
+				 &= \sup \{|Tv|\;:\;|v| = 1 \} \\
+				 &= \inf \{M\;:\;v \in V \implies |Tv| \leq M|v| \}
+			\end{aligned}
+		\end{equation}
+	\end{theorem}x	  	 x	
+
+	\setcounter{enumi}{3}
+	\item %4
+
+	\setcounter{enumi}{5}
+	\item %6
+
+	\setcounter{enumi}{11}
+	\item %12
+
+	\item %13
+\end{menumerate}
+
+\end{document}

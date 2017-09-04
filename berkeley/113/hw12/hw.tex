@@ -1,0 +1,568 @@
+\documentclass[11pt]{amsart}
+
+\usepackage{amsmath,amsthm}
+\usepackage{amssymb}
+%\usepackage{graphicx}
+%\usepackage{enumerate}
+\usepackage{fullpage}
+% \usepackage{euscript}
+% \makeatletter
+% \nopagenumbers
+\usepackage{verbatim}
+\usepackage{color}
+\usepackage{hyperref}
+%\usepackage{times} %, mathtime}
+
+\textheight=600pt %574pt
+\textwidth=480pt %432pt
+\oddsidemargin=15pt %18.88pt
+\evensidemargin=18.88pt
+\topmargin=10pt %14.21pt
+
+\parskip=1pt %2pt
+
+\def\reals{{\mathbb R}}
+\def\torus{{\mathbb T}}
+\def\integers{{\mathbb Z}}
+\def\rationals{{\mathbb Q}}
+\def\naturals{{\mathbb N}}
+\def\complex{{\mathbb C}\/}
+\def\distance{\operatorname{distance}\,}
+\def\support{\operatorname{support}\,}
+\def\dist{\operatorname{dist}\,}
+\def\Span{\operatorname{span}\,}
+\def\degree{\operatorname{degree}\,}
+\def\kernel{\operatorname{kernel}\,}
+\def\dim{\operatorname{dim}\,}
+\def\codim{\operatorname{codim}}
+\def\trace{\operatorname{trace\,}}
+\def\dimension{\operatorname{dimension}\,}
+\def\codimension{\operatorname{codimension}\,}
+\def\kernel{\operatorname{Ker}}
+\def\Re{\operatorname{Re\,} }
+\def\Im{\operatorname{Im\,} }
+\def\eps{\varepsilon}
+\def\lt{L^2}
+\def\bull{$\bullet$\ }
+\def\det{\operatorname{det}}
+\def\Det{\operatorname{Det}}
+\def\diameter{\operatorname{diameter}}
+\def\symdif{\,\Delta\,}
+\newcommand{\norm}[1]{ \|  #1 \|}
+\newcommand{\set}[1]{ \left\{ #1 \right\} }
+\newcommand{\group}[2]{\left\langle #1, #2\right\rangle}
+\def\one{{\mathbf 1}}
+\def\cl{\text{cl}}
+
+\def\newbull{\medskip\noindent $\bullet$\ }
+\def\nobull{\noindent$\bullet$\ }
+
+
+
+\def\scriptf{{\mathcal F}}
+\def\scriptq{{\mathcal Q}}
+\def\scriptg{{\mathcal G}}
+\def\scriptm{{\mathcal M}}
+\def\scriptb{{\mathcal B}}
+\def\scriptc{{\mathcal C}}
+\def\scriptt{{\mathcal T}}
+\def\scripti{{\mathcal I}}
+\def\scripte{{\mathcal E}}
+\def\scriptv{{\mathcal V}}
+\def\scriptw{{\mathcal W}}
+\def\scriptu{{\mathcal U}}
+\def\scriptS{{\mathcal S}}
+\def\scripta{{\mathcal A}}
+\def\scriptr{{\mathcal R}}
+\def\scripto{{\mathcal O}}
+\def\scripth{{\mathcal H}}
+\def\scriptd{{\mathcal D}}
+\def\scriptl{{\mathcal L}}
+\def\scriptn{{\mathcal N}}
+\def\scriptp{{\mathcal P}}
+\def\scriptk{{\mathcal K}}
+\def\scriptP{{\mathcal P}}
+\def\scriptj{{\mathcal J}}
+\def\scriptz{{\mathcal Z}}
+\def\scripts{{\mathcal S}}
+\def\scriptx{{\mathcal X}}
+\def\scripty{{\mathcal Y}}
+\def\frakv{{\mathfrak V}}
+\def\frakG{{\mathfrak G}}
+\def\frakB{{\mathfrak B}}
+\def\frakC{{\mathfrak C}}
+
+\newtheorem{corollary}{Corollary}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{definition}{Definition}
+
+\def\soln{\noindent {\bf Solution.}\ }
+
+\begin{document}
+
+\begin{center}{\bf Math 113 --- Problem Set 12 --- William Guss} \end{center}
+
+
+\bigskip
+
+
+\medskip \noindent {\bf (P196. 1)}\ Describe the field $F$ od quotients of the integral squbdomain $D = \{n + mi\ |\ n,m \in \mathbb{Z}\}$ of $\mathbb{C}$.\\
+\emph{Solution}. The field of quotients of $D$ is 
+the Gaussian rationals; that is $F = Quot(D) = \{p + qi\ |\ p, q \in \mathbb{Q}\}.$ \\
+\medskip \noindent {\bf (P196. 2)}\ Describe the field $F$ od quotients of the integral squbdomain $D = \{n + m\sqrt{2}\ |\ n,m \in \mathbb{Z}\}$ of $\mathbb{R}$.\\
+\emph{Solution}. The field of quotients of $D$ is 
+the rationals on the standard integer part and the algebraic part; that is $Quot(D) = \{p + q\sqrt{2}\ |\ p, q \in \mathbb{Q}\}.$ \\
+\medskip \noindent {\bf (P207. 9)}\ Let $F = E = \mathbb{Z}_7$. Compute the following evaluation homomorphism:
+\begin{equation*}
+	\phi_3[(x^4 + 2x)(x^3 - 3x^2 + 3)].
+\end{equation*}
+\emph{Solution}. Using the homomorphism property on Rings we get
+\begin{equation*}
+	\phi_3[(x^4 + 2x)(x^3 - 3x^2 + 3)] = 
+	\phi_3[(x^4 + 2x)]\cdot_7
+	\phi_3[x^3 - 3x^2 + 3)] =
+	(\phi_3[x^4] +_7 \phi_3[2x])\cdot_7(\phi_3[x^3] -_7 \phi_3[3\cdot_7x^2] +_7 \phi_3[3]).
+\end{equation*}
+We then evaluate $3^4 \mod 7 = 4, \phi_3[2x] = 6, \phi_3[x^3] = 6, \phi_3[3\cdot_7x^2] = 6, 3 =3$. Therefore
+\begin{equation*}
+	\phi_3[(x^4 + 2x)(x^3 - 3x^2 + 3)] = (4 +_7 6)\cdot_7(6 -_7 6 +_7 3) = (4 +_7 6)\cdot_73 = 3\cdot_73.
+\end{equation*}
+Thus we yield $\phi_3[(x^4 + 2x)(x^3 - 3x^2 + 3)] = 2.$\\
+
+\medskip \noindent {\bf (P207. 13)}\ Find all the zeroes of the following polynomial
+\begin{equation*}
+	x^3 + 2x + 2 \text{ in } \mathbb{Z}_7.
+\end{equation*}
+\emph{Solution.} We compute all possible evaluations as follows
+\begin{equation*}
+	\begin{aligned}
+		x = 0 &\;\;\;\;\; \phi_0[f(x)] = 0^3 +_7 3\cdot_70 +_7 2 = 2\\
+x = 1 &\;\;\;\;\; \phi_1[f(x)] = 1^3 +_7 3\cdot_71 +_7 2 = 5\\
+x = 2 &\;\;\;\;\; \phi_2[f(x)] = 2^3 +_7 3\cdot_72 +_7 2 = 0\\
+x = 3 &\;\;\;\;\; \phi_3[f(x)] = 3^3 +_7 3\cdot_73 +_7 2 = 0\\
+x = 4 &\;\;\;\;\; \phi_4[f(x)] = 4^3 +_7 3\cdot_74 +_7 2 = 4\\
+x = 5 &\;\;\;\;\; \phi_5[f(x)] = 5^3 +_7 3\cdot_75 +_7 2 = 4\\
+x = 6 &\;\;\;\;\; \phi_6[f(x)] = 6^3 +_7 3\cdot_76 +_7 2 = 6\\
+	\end{aligned}
+\end{equation*}
+\medskip \noindent {\bf (P243. 1)}\ Describe all ring homomorphisms of $\mathbb{Z} \times \mathbb{Z}$ \emph{into} $\mathbb{Z} \times \mathbb{Z}.$ \\
+\emph{Solution.} Consider any such injective ring homomorphism, $\phi$, between the direct product of $\mathbb{Z}$ with itself into itself. To understand any ring homomorphism, then we must consider the initial objects in the product; that is $(1,0), (0,1)$ and their operations, as we can generate the addition group in the image using the successor function in the preimage on these elements (by the cyclicity of $\mathbb{Z}.$) 
+
+The multiplicitive identity of $\prod \mathbb{Z} = (1, \cdots, 1);$ thus any such $\phi$ has $\phi(1,1) = (1,1).$ Now consider that $(1,0)\cdot(0,1) = (0,0).$ Therefore $\phi(1,0)\cdot\phi(0,1)= \phi(0,0) = 0.$ We know that for some $a, b\in\mathbb{Z}$, $\phi(1,0) = (a,0)$ or $(0,a)$ and $\phi(0,1) = (b,0)$ or $(0,b)$. We use the additioni property of the homormorphism and get that $\phi(0,1) + \phi (1,0) = \phi((0,1)+(1,0)) = \phi(1,1) = (1,1)$ and so $a = b= 1,$ because there are no elements so that $2a =1$ or $2b = 1$,. Therefore ($\phi(1,0) = (1,0)$ and $\phi(0,1) = (0,1)$) or ($\phi(1,0) = (0,1)$ and $\phi(0,1) = (1,0)$). 
+
+We then can take any $(x,y) \in \mathbb{Z}$ and observe that 
+\begin{equation*}
+	\phi(x,y) =\phi\left(\sum_1^x (1,0) + \sum_1^y (0,1)\right). 
+\end{equation*}
+Therefore we can only have two such $\phi$; that is,
+\begin{equation*}
+\begin{aligned}
+	&\phi\left(\sum_1^x (\pm1,0) + \sum_1^y (0,\mp1)\right) =\left(\sum_1^x \pm1 , \sum_1^y \mp1\right) = (x,y) \\
+	\text{or } & \phi\left(\sum_1^x (\pm1,0) + \sum_1^y (0,\mp1)\right) =\left(\sum_1^y \pm1, \sum_1^x \mp1 \right) = (y,x).
+\end{aligned}
+\end{equation*}
+This classifies all such homomorphisms.\\
+\medskip \noindent {\bf (P243. 2)}\ Find all integers so that $\mathbb{Z}_n$ cointaisn a subring isomorphic to $\mathbb{Z}_2$. \\
+\emph{Solution.} First $n$ must be even as for a subring to be isomorphic, $n$ must be even; that is there is an $m$ so that $n = 2m$. Then the subgroup $\langle{\{0, m\} , +_n}\rangle$ is isomorphic to $\mathbb{Z}_2$. Now we must find such $n$ that this particular subgroup is also a subring of $\mathbb{Z}_n$ isomorphic under multiplication to $\mathbb{Z}_2$. For this to be the case we need that $\phi(m\times m) = 1 \simeq 1\times_2 1 = 1	$ that is $m \times_n m = m.$ We know that $0 = n\times_n n = 2m \times_n 2m = 4 (m \times_n m)$ and thus if $n$ is divisible by $4$ we have $n^2/_\mathbb{Z}4 \equiv m \times_n m = 0. $ Therefore $n$ cannot be divisible by $4$ but must be even so $n = 4j + 2$ for some $j \in \mathbb{Z}.$ Now our sub group is $\{(4j +2)/2, 0\} = \{2j + 1, 0\}$ and $m$ is odd. Now $m^2 = (2j +_n1)^2 = 4j^2 +_n 4j +_n 1.$ Taking this quantity modulo $n = 4j+_n2$, we get $m^2 = 4j^2 +_n 4j +_n 1 = (4j +_n 2)\cdot_nj +_n 2j +_n1 = 2j +_n 1 = m.$ Therefore, we construct the subring
+\begin{equation*}
+ 	\langle\{0, 2j+1\}, +_n, \cdot_n\rangle
+ \end{equation*} 
+ and claim an isomorphism, $\phi(0) = 0m \phi(2j+1)= 1.$ This map ios a bijection and maps the additive identity to the additive identity and the multiplicitive identity to the multiplicitive identity. Additionally the subring is closed uner multiplication as we've just shown, and is closed under addition since $2j +_n2 +_n 2j +_n 2 = 4j +_n 2 = n = 0$.
+
+ Therefore every $\mathbb{Z}_n$ where $n$ is even and not divisible by $4$ has a subring which is isomorphic to $\mathbb{Z},$ as shown above by exhaustion through cases.\\
+
+\medskip \noindent {\bf (P243. 3)}\ Find all ideals $N$ of $\mathbb{Z}_12$. In each case compute $\mathbb{Z}_{12} / N$; that is, finda  known ring to which the quotient ring is isomorphic.\\
+\emph{Solution.} Because $\mathbb{Z}_{12}$ is a cyclic additive group, all the elements generate an ideal in $\mathbb{Z}_{12}$, so we will exhaust all generators and find the unique set of ideals for the ring.
+
+We now try $(0) \subset \mathbb{Z}_{12}$.
+\begin{equation*}
+\begin{aligned}
+I_0 &= \{[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]\} \\
+0+ I_0 &= \{[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]\}\\
+0 I_0 &= \{[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]\} \subset I_0 \\
+1+ I_0 &= \{[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]\}\\
+1 I_0 &= \{[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]\} \subset I_0 \\
+2+ I_0 &= \{[2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2]\}\\
+2 I_0 &= \{[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]\} \subset I_0 \\
+3+ I_0 &= \{[3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3]\}\\
+3 I_0 &= \{[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]\} \subset I_0 \\
+4+ I_0 &= \{[4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4]\}\\
+4 I_0 &= \{[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]\} \subset I_0 \\
+5+ I_0 &= \{[5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5]\}\\
+5 I_0 &= \{[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]\} \subset I_0 \\
+6+ I_0 &= \{[6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6]\}\\
+6 I_0 &= \{[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]\} \subset I_0 \\
+7+ I_0 &= \{[7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7]\}\\
+7 I_0 &= \{[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]\} \subset I_0 \\
+8+ I_0 &= \{[8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8]\}\\
+8 I_0 &= \{[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]\} \subset I_0 \\
+9+ I_0 &= \{[9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9]\}\\
+9 I_0 &= \{[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]\} \subset I_0 \\
+10+ I_0 &= \{[10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10]\}\\
+10 I_0 &= \{[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]\} \subset I_0 \\
+11+ I_0 &= \{[11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11]\}\\
+11 I_0 &= \{[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]\} \subset I_0 \\
+\end{aligned}
+\end{equation*}
+Therefore $(0)$ is an ideal.
+To compute the quotient ring we
+We now try $(1) \subset \mathbb{Z}_{12}$.
+\begin{equation*}
+\begin{aligned}
+I_1 &= \{[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]\} \\
+0+ I_1 &= \{[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]\}\\
+0 I_1 &= \{[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]\} \subset I_1 \\
+1+ I_1 &= \{[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]\}\\
+1 I_1 &= \{[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]\} \subset I_1 \\
+2+ I_1 &= \{[2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]\}\\
+2 I_1 &= \{[0, 2, 4, 6, 8, 10, 0, 2, 4, 6, 8, 10]\} \subset I_1 \\
+3+ I_1 &= \{[3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]\}\\
+3 I_1 &= \{[0, 3, 6, 9, 0, 3, 6, 9, 0, 3, 6, 9]\} \subset I_1 \\
+4+ I_1 &= \{[4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]\}\\
+4 I_1 &= \{[0, 4, 8, 0, 4, 8, 0, 4, 8, 0, 4, 8]\} \subset I_1 \\
+5+ I_1 &= \{[5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]\}\\
+5 I_1 &= \{[0, 5, 10, 3, 8, 1, 6, 11, 4, 9, 2, 7]\} \subset I_1 \\
+6+ I_1 &= \{[6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17]\}\\
+6 I_1 &= \{[0, 6, 0, 6, 0, 6, 0, 6, 0, 6, 0, 6]\} \subset I_1 \\
+7+ I_1 &= \{[7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18]\}\\
+7 I_1 &= \{[0, 7, 2, 9, 4, 11, 6, 1, 8, 3, 10, 5]\} \subset I_1 \\
+8+ I_1 &= \{[8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]\}\\
+8 I_1 &= \{[0, 8, 4, 0, 8, 4, 0, 8, 4, 0, 8, 4]\} \subset I_1 \\
+9+ I_1 &= \{[9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]\}\\
+9 I_1 &= \{[0, 9, 6, 3, 0, 9, 6, 3, 0, 9, 6, 3]\} \subset I_1 \\
+10+ I_1 &= \{[10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21]\}\\
+10 I_1 &= \{[0, 10, 8, 6, 4, 2, 0, 10, 8, 6, 4, 2]\} \subset I_1 \\
+11+ I_1 &= \{[11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22]\}\\
+11 I_1 &= \{[0, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1]\} \subset I_1 \\
+\end{aligned}
+\end{equation*}
+Therefore $(1)$ is an ideal.
+To compute the quotient ring we
+We now try $(2) \subset \mathbb{Z}_{12}$.
+\begin{equation*}
+\begin{aligned}
+I_2 &= \{[0, 2, 4, 6, 8, 10, 0, 2, 4, 6, 8, 10]\} \\
+0+ I_2 &= \{[0, 2, 4, 6, 8, 10, 0, 2, 4, 6, 8, 10]\}\\
+0 I_2 &= \{[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]\} \subset I_2 \\
+1+ I_2 &= \{[1, 3, 5, 7, 9, 11, 1, 3, 5, 7, 9, 11]\}\\
+1 I_2 &= \{[0, 2, 4, 6, 8, 10, 0, 2, 4, 6, 8, 10]\} \subset I_2 \\
+2+ I_2 &= \{[2, 4, 6, 8, 10, 12, 2, 4, 6, 8, 10, 12]\}\\
+2 I_2 &= \{[0, 4, 8, 0, 4, 8, 0, 4, 8, 0, 4, 8]\} \subset I_2 \\
+3+ I_2 &= \{[3, 5, 7, 9, 11, 13, 3, 5, 7, 9, 11, 13]\}\\
+3 I_2 &= \{[0, 6, 0, 6, 0, 6, 0, 6, 0, 6, 0, 6]\} \subset I_2 \\
+4+ I_2 &= \{[4, 6, 8, 10, 12, 14, 4, 6, 8, 10, 12, 14]\}\\
+4 I_2 &= \{[0, 8, 4, 0, 8, 4, 0, 8, 4, 0, 8, 4]\} \subset I_2 \\
+5+ I_2 &= \{[5, 7, 9, 11, 13, 15, 5, 7, 9, 11, 13, 15]\}\\
+5 I_2 &= \{[0, 10, 8, 6, 4, 2, 0, 10, 8, 6, 4, 2]\} \subset I_2 \\
+6+ I_2 &= \{[6, 8, 10, 12, 14, 16, 6, 8, 10, 12, 14, 16]\}\\
+6 I_2 &= \{[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]\} \subset I_2 \\
+7+ I_2 &= \{[7, 9, 11, 13, 15, 17, 7, 9, 11, 13, 15, 17]\}\\
+7 I_2 &= \{[0, 2, 4, 6, 8, 10, 0, 2, 4, 6, 8, 10]\} \subset I_2 \\
+8+ I_2 &= \{[8, 10, 12, 14, 16, 18, 8, 10, 12, 14, 16, 18]\}\\
+8 I_2 &= \{[0, 4, 8, 0, 4, 8, 0, 4, 8, 0, 4, 8]\} \subset I_2 \\
+9+ I_2 &= \{[9, 11, 13, 15, 17, 19, 9, 11, 13, 15, 17, 19]\}\\
+9 I_2 &= \{[0, 6, 0, 6, 0, 6, 0, 6, 0, 6, 0, 6]\} \subset I_2 \\
+10+ I_2 &= \{[10, 12, 14, 16, 18, 20, 10, 12, 14, 16, 18, 20]\}\\
+10 I_2 &= \{[0, 8, 4, 0, 8, 4, 0, 8, 4, 0, 8, 4]\} \subset I_2 \\
+11+ I_2 &= \{[11, 13, 15, 17, 19, 21, 11, 13, 15, 17, 19, 21]\}\\
+11 I_2 &= \{[0, 10, 8, 6, 4, 2, 0, 10, 8, 6, 4, 2]\} \subset I_2 \\
+\end{aligned}
+\end{equation*}
+Therefore $(2)$ is an ideal.
+To compute the quotient ring we
+We now try $(3) \subset \mathbb{Z}_{12}$.
+\begin{equation*}
+\begin{aligned}
+I_3 &= \{[0, 3, 6, 9, 0, 3, 6, 9, 0, 3, 6, 9]\} \\
+0+ I_3 &= \{[0, 3, 6, 9, 0, 3, 6, 9, 0, 3, 6, 9]\}\\
+0 I_3 &= \{[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]\} \subset I_3 \\
+1+ I_3 &= \{[1, 4, 7, 10, 1, 4, 7, 10, 1, 4, 7, 10]\}\\
+1 I_3 &= \{[0, 3, 6, 9, 0, 3, 6, 9, 0, 3, 6, 9]\} \subset I_3 \\
+2+ I_3 &= \{[2, 5, 8, 11, 2, 5, 8, 11, 2, 5, 8, 11]\}\\
+2 I_3 &= \{[0, 6, 0, 6, 0, 6, 0, 6, 0, 6, 0, 6]\} \subset I_3 \\
+3+ I_3 &= \{[3, 6, 9, 12, 3, 6, 9, 12, 3, 6, 9, 12]\}\\
+3 I_3 &= \{[0, 9, 6, 3, 0, 9, 6, 3, 0, 9, 6, 3]\} \subset I_3 \\
+4+ I_3 &= \{[4, 7, 10, 13, 4, 7, 10, 13, 4, 7, 10, 13]\}\\
+4 I_3 &= \{[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]\} \subset I_3 \\
+5+ I_3 &= \{[5, 8, 11, 14, 5, 8, 11, 14, 5, 8, 11, 14]\}\\
+5 I_3 &= \{[0, 3, 6, 9, 0, 3, 6, 9, 0, 3, 6, 9]\} \subset I_3 \\
+6+ I_3 &= \{[6, 9, 12, 15, 6, 9, 12, 15, 6, 9, 12, 15]\}\\
+6 I_3 &= \{[0, 6, 0, 6, 0, 6, 0, 6, 0, 6, 0, 6]\} \subset I_3 \\
+7+ I_3 &= \{[7, 10, 13, 16, 7, 10, 13, 16, 7, 10, 13, 16]\}\\
+7 I_3 &= \{[0, 9, 6, 3, 0, 9, 6, 3, 0, 9, 6, 3]\} \subset I_3 \\
+8+ I_3 &= \{[8, 11, 14, 17, 8, 11, 14, 17, 8, 11, 14, 17]\}\\
+8 I_3 &= \{[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]\} \subset I_3 \\
+9+ I_3 &= \{[9, 12, 15, 18, 9, 12, 15, 18, 9, 12, 15, 18]\}\\
+9 I_3 &= \{[0, 3, 6, 9, 0, 3, 6, 9, 0, 3, 6, 9]\} \subset I_3 \\
+10+ I_3 &= \{[10, 13, 16, 19, 10, 13, 16, 19, 10, 13, 16, 19]\}\\
+10 I_3 &= \{[0, 6, 0, 6, 0, 6, 0, 6, 0, 6, 0, 6]\} \subset I_3 \\
+11+ I_3 &= \{[11, 14, 17, 20, 11, 14, 17, 20, 11, 14, 17, 20]\}\\
+11 I_3 &= \{[0, 9, 6, 3, 0, 9, 6, 3, 0, 9, 6, 3]\} \subset I_3 \\
+\end{aligned}
+\end{equation*}
+Therefore $(3)$ is an ideal.
+To compute the quotient ring we
+We now try $(4) \subset \mathbb{Z}_{12}$.
+\begin{equation*}
+\begin{aligned}
+I_4 &= \{[0, 4, 8, 0, 4, 8, 0, 4, 8, 0, 4, 8]\} \\
+0+ I_4 &= \{[0, 4, 8, 0, 4, 8, 0, 4, 8, 0, 4, 8]\}\\
+0 I_4 &= \{[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]\} \subset I_4 \\
+1+ I_4 &= \{[1, 5, 9, 1, 5, 9, 1, 5, 9, 1, 5, 9]\}\\
+1 I_4 &= \{[0, 4, 8, 0, 4, 8, 0, 4, 8, 0, 4, 8]\} \subset I_4 \\
+2+ I_4 &= \{[2, 6, 10, 2, 6, 10, 2, 6, 10, 2, 6, 10]\}\\
+2 I_4 &= \{[0, 8, 4, 0, 8, 4, 0, 8, 4, 0, 8, 4]\} \subset I_4 \\
+3+ I_4 &= \{[3, 7, 11, 3, 7, 11, 3, 7, 11, 3, 7, 11]\}\\
+3 I_4 &= \{[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]\} \subset I_4 \\
+4+ I_4 &= \{[4, 8, 12, 4, 8, 12, 4, 8, 12, 4, 8, 12]\}\\
+4 I_4 &= \{[0, 4, 8, 0, 4, 8, 0, 4, 8, 0, 4, 8]\} \subset I_4 \\
+5+ I_4 &= \{[5, 9, 13, 5, 9, 13, 5, 9, 13, 5, 9, 13]\}\\
+5 I_4 &= \{[0, 8, 4, 0, 8, 4, 0, 8, 4, 0, 8, 4]\} \subset I_4 \\
+6+ I_4 &= \{[6, 10, 14, 6, 10, 14, 6, 10, 14, 6, 10, 14]\}\\
+6 I_4 &= \{[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]\} \subset I_4 \\
+7+ I_4 &= \{[7, 11, 15, 7, 11, 15, 7, 11, 15, 7, 11, 15]\}\\
+7 I_4 &= \{[0, 4, 8, 0, 4, 8, 0, 4, 8, 0, 4, 8]\} \subset I_4 \\
+8+ I_4 &= \{[8, 12, 16, 8, 12, 16, 8, 12, 16, 8, 12, 16]\}\\
+8 I_4 &= \{[0, 8, 4, 0, 8, 4, 0, 8, 4, 0, 8, 4]\} \subset I_4 \\
+9+ I_4 &= \{[9, 13, 17, 9, 13, 17, 9, 13, 17, 9, 13, 17]\}\\
+9 I_4 &= \{[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]\} \subset I_4 \\
+10+ I_4 &= \{[10, 14, 18, 10, 14, 18, 10, 14, 18, 10, 14, 18]\}\\
+10 I_4 &= \{[0, 4, 8, 0, 4, 8, 0, 4, 8, 0, 4, 8]\} \subset I_4 \\
+11+ I_4 &= \{[11, 15, 19, 11, 15, 19, 11, 15, 19, 11, 15, 19]\}\\
+11 I_4 &= \{[0, 8, 4, 0, 8, 4, 0, 8, 4, 0, 8, 4]\} \subset I_4 \\
+\end{aligned}
+\end{equation*}
+Therefore $(4)$ is an ideal.
+To compute the quotient ring we
+We now try $(5) \subset \mathbb{Z}_{12}$.
+\begin{equation*}
+\begin{aligned}
+I_5 &= \{[0, 5, 10, 3, 8, 1, 6, 11, 4, 9, 2, 7]\} \\
+0+ I_5 &= \{[0, 5, 10, 3, 8, 1, 6, 11, 4, 9, 2, 7]\}\\
+0 I_5 &= \{[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]\} \subset I_5 \\
+1+ I_5 &= \{[1, 6, 11, 4, 9, 2, 7, 12, 5, 10, 3, 8]\}\\
+1 I_5 &= \{[0, 5, 10, 3, 8, 1, 6, 11, 4, 9, 2, 7]\} \subset I_5 \\
+2+ I_5 &= \{[2, 7, 12, 5, 10, 3, 8, 13, 6, 11, 4, 9]\}\\
+2 I_5 &= \{[0, 10, 8, 6, 4, 2, 0, 10, 8, 6, 4, 2]\} \subset I_5 \\
+3+ I_5 &= \{[3, 8, 13, 6, 11, 4, 9, 14, 7, 12, 5, 10]\}\\
+3 I_5 &= \{[0, 3, 6, 9, 0, 3, 6, 9, 0, 3, 6, 9]\} \subset I_5 \\
+4+ I_5 &= \{[4, 9, 14, 7, 12, 5, 10, 15, 8, 13, 6, 11]\}\\
+4 I_5 &= \{[0, 8, 4, 0, 8, 4, 0, 8, 4, 0, 8, 4]\} \subset I_5 \\
+5+ I_5 &= \{[5, 10, 15, 8, 13, 6, 11, 16, 9, 14, 7, 12]\}\\
+5 I_5 &= \{[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]\} \subset I_5 \\
+6+ I_5 &= \{[6, 11, 16, 9, 14, 7, 12, 17, 10, 15, 8, 13]\}\\
+6 I_5 &= \{[0, 6, 0, 6, 0, 6, 0, 6, 0, 6, 0, 6]\} \subset I_5 \\
+7+ I_5 &= \{[7, 12, 17, 10, 15, 8, 13, 18, 11, 16, 9, 14]\}\\
+7 I_5 &= \{[0, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1]\} \subset I_5 \\
+8+ I_5 &= \{[8, 13, 18, 11, 16, 9, 14, 19, 12, 17, 10, 15]\}\\
+8 I_5 &= \{[0, 4, 8, 0, 4, 8, 0, 4, 8, 0, 4, 8]\} \subset I_5 \\
+9+ I_5 &= \{[9, 14, 19, 12, 17, 10, 15, 20, 13, 18, 11, 16]\}\\
+9 I_5 &= \{[0, 9, 6, 3, 0, 9, 6, 3, 0, 9, 6, 3]\} \subset I_5 \\
+10+ I_5 &= \{[10, 15, 20, 13, 18, 11, 16, 21, 14, 19, 12, 17]\}\\
+10 I_5 &= \{[0, 2, 4, 6, 8, 10, 0, 2, 4, 6, 8, 10]\} \subset I_5 \\
+11+ I_5 &= \{[11, 16, 21, 14, 19, 12, 17, 22, 15, 20, 13, 18]\}\\
+11 I_5 &= \{[0, 7, 2, 9, 4, 11, 6, 1, 8, 3, 10, 5]\} \subset I_5 \\
+\end{aligned}
+\end{equation*}
+Therefore $(5)$ is an ideal.
+To compute the quotient ring we
+We now try $(6) \subset \mathbb{Z}_{12}$.
+\begin{equation*}
+\begin{aligned}
+I_6 &= \{[0, 6, 0, 6, 0, 6, 0, 6, 0, 6, 0, 6]\} \\
+0+ I_6 &= \{[0, 6, 0, 6, 0, 6, 0, 6, 0, 6, 0, 6]\}\\
+0 I_6 &= \{[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]\} \subset I_6 \\
+1+ I_6 &= \{[1, 7, 1, 7, 1, 7, 1, 7, 1, 7, 1, 7]\}\\
+1 I_6 &= \{[0, 6, 0, 6, 0, 6, 0, 6, 0, 6, 0, 6]\} \subset I_6 \\
+2+ I_6 &= \{[2, 8, 2, 8, 2, 8, 2, 8, 2, 8, 2, 8]\}\\
+2 I_6 &= \{[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]\} \subset I_6 \\
+3+ I_6 &= \{[3, 9, 3, 9, 3, 9, 3, 9, 3, 9, 3, 9]\}\\
+3 I_6 &= \{[0, 6, 0, 6, 0, 6, 0, 6, 0, 6, 0, 6]\} \subset I_6 \\
+4+ I_6 &= \{[4, 10, 4, 10, 4, 10, 4, 10, 4, 10, 4, 10]\}\\
+4 I_6 &= \{[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]\} \subset I_6 \\
+5+ I_6 &= \{[5, 11, 5, 11, 5, 11, 5, 11, 5, 11, 5, 11]\}\\
+5 I_6 &= \{[0, 6, 0, 6, 0, 6, 0, 6, 0, 6, 0, 6]\} \subset I_6 \\
+6+ I_6 &= \{[6, 12, 6, 12, 6, 12, 6, 12, 6, 12, 6, 12]\}\\
+6 I_6 &= \{[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]\} \subset I_6 \\
+7+ I_6 &= \{[7, 13, 7, 13, 7, 13, 7, 13, 7, 13, 7, 13]\}\\
+7 I_6 &= \{[0, 6, 0, 6, 0, 6, 0, 6, 0, 6, 0, 6]\} \subset I_6 \\
+8+ I_6 &= \{[8, 14, 8, 14, 8, 14, 8, 14, 8, 14, 8, 14]\}\\
+8 I_6 &= \{[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]\} \subset I_6 \\
+9+ I_6 &= \{[9, 15, 9, 15, 9, 15, 9, 15, 9, 15, 9, 15]\}\\
+9 I_6 &= \{[0, 6, 0, 6, 0, 6, 0, 6, 0, 6, 0, 6]\} \subset I_6 \\
+10+ I_6 &= \{[10, 16, 10, 16, 10, 16, 10, 16, 10, 16, 10, 16]\}\\
+10 I_6 &= \{[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]\} \subset I_6 \\
+11+ I_6 &= \{[11, 17, 11, 17, 11, 17, 11, 17, 11, 17, 11, 17]\}\\
+11 I_6 &= \{[0, 6, 0, 6, 0, 6, 0, 6, 0, 6, 0, 6]\} \subset I_6 \\
+\end{aligned}
+\end{equation*}
+Therefore $(6)$ is an ideal.
+To compute the quotient ring we
+We now try $(7) \subset \mathbb{Z}_{12}$.
+\begin{equation*}
+\begin{aligned}
+I_7 &= \{[0, 7, 2, 9, 4, 11, 6, 1, 8, 3, 10, 5]\} \\
+0+ I_7 &= \{[0, 7, 2, 9, 4, 11, 6, 1, 8, 3, 10, 5]\}\\
+0 I_7 &= \{[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]\} \subset I_7 \\
+1+ I_7 &= \{[1, 8, 3, 10, 5, 12, 7, 2, 9, 4, 11, 6]\}\\
+1 I_7 &= \{[0, 7, 2, 9, 4, 11, 6, 1, 8, 3, 10, 5]\} \subset I_7 \\
+2+ I_7 &= \{[2, 9, 4, 11, 6, 13, 8, 3, 10, 5, 12, 7]\}\\
+2 I_7 &= \{[0, 2, 4, 6, 8, 10, 0, 2, 4, 6, 8, 10]\} \subset I_7 \\
+3+ I_7 &= \{[3, 10, 5, 12, 7, 14, 9, 4, 11, 6, 13, 8]\}\\
+3 I_7 &= \{[0, 9, 6, 3, 0, 9, 6, 3, 0, 9, 6, 3]\} \subset I_7 \\
+4+ I_7 &= \{[4, 11, 6, 13, 8, 15, 10, 5, 12, 7, 14, 9]\}\\
+4 I_7 &= \{[0, 4, 8, 0, 4, 8, 0, 4, 8, 0, 4, 8]\} \subset I_7 \\
+5+ I_7 &= \{[5, 12, 7, 14, 9, 16, 11, 6, 13, 8, 15, 10]\}\\
+5 I_7 &= \{[0, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1]\} \subset I_7 \\
+6+ I_7 &= \{[6, 13, 8, 15, 10, 17, 12, 7, 14, 9, 16, 11]\}\\
+6 I_7 &= \{[0, 6, 0, 6, 0, 6, 0, 6, 0, 6, 0, 6]\} \subset I_7 \\
+7+ I_7 &= \{[7, 14, 9, 16, 11, 18, 13, 8, 15, 10, 17, 12]\}\\
+7 I_7 &= \{[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]\} \subset I_7 \\
+8+ I_7 &= \{[8, 15, 10, 17, 12, 19, 14, 9, 16, 11, 18, 13]\}\\
+8 I_7 &= \{[0, 8, 4, 0, 8, 4, 0, 8, 4, 0, 8, 4]\} \subset I_7 \\
+9+ I_7 &= \{[9, 16, 11, 18, 13, 20, 15, 10, 17, 12, 19, 14]\}\\
+9 I_7 &= \{[0, 3, 6, 9, 0, 3, 6, 9, 0, 3, 6, 9]\} \subset I_7 \\
+10+ I_7 &= \{[10, 17, 12, 19, 14, 21, 16, 11, 18, 13, 20, 15]\}\\
+10 I_7 &= \{[0, 10, 8, 6, 4, 2, 0, 10, 8, 6, 4, 2]\} \subset I_7 \\
+11+ I_7 &= \{[11, 18, 13, 20, 15, 22, 17, 12, 19, 14, 21, 16]\}\\
+11 I_7 &= \{[0, 5, 10, 3, 8, 1, 6, 11, 4, 9, 2, 7]\} \subset I_7 \\
+\end{aligned}
+\end{equation*}
+Therefore $(7)$ is an ideal.
+To compute the quotient ring we
+We now try $(8) \subset \mathbb{Z}_{12}$.
+\begin{equation*}
+\begin{aligned}
+I_8 &= \{[0, 8, 4, 0, 8, 4, 0, 8, 4, 0, 8, 4]\} \\
+0+ I_8 &= \{[0, 8, 4, 0, 8, 4, 0, 8, 4, 0, 8, 4]\}\\
+0 I_8 &= \{[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]\} \subset I_8 \\
+1+ I_8 &= \{[1, 9, 5, 1, 9, 5, 1, 9, 5, 1, 9, 5]\}\\
+1 I_8 &= \{[0, 8, 4, 0, 8, 4, 0, 8, 4, 0, 8, 4]\} \subset I_8 \\
+2+ I_8 &= \{[2, 10, 6, 2, 10, 6, 2, 10, 6, 2, 10, 6]\}\\
+2 I_8 &= \{[0, 4, 8, 0, 4, 8, 0, 4, 8, 0, 4, 8]\} \subset I_8 \\
+3+ I_8 &= \{[3, 11, 7, 3, 11, 7, 3, 11, 7, 3, 11, 7]\}\\
+3 I_8 &= \{[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]\} \subset I_8 \\
+4+ I_8 &= \{[4, 12, 8, 4, 12, 8, 4, 12, 8, 4, 12, 8]\}\\
+4 I_8 &= \{[0, 8, 4, 0, 8, 4, 0, 8, 4, 0, 8, 4]\} \subset I_8 \\
+5+ I_8 &= \{[5, 13, 9, 5, 13, 9, 5, 13, 9, 5, 13, 9]\}\\
+5 I_8 &= \{[0, 4, 8, 0, 4, 8, 0, 4, 8, 0, 4, 8]\} \subset I_8 \\
+6+ I_8 &= \{[6, 14, 10, 6, 14, 10, 6, 14, 10, 6, 14, 10]\}\\
+6 I_8 &= \{[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]\} \subset I_8 \\
+7+ I_8 &= \{[7, 15, 11, 7, 15, 11, 7, 15, 11, 7, 15, 11]\}\\
+7 I_8 &= \{[0, 8, 4, 0, 8, 4, 0, 8, 4, 0, 8, 4]\} \subset I_8 \\
+8+ I_8 &= \{[8, 16, 12, 8, 16, 12, 8, 16, 12, 8, 16, 12]\}\\
+8 I_8 &= \{[0, 4, 8, 0, 4, 8, 0, 4, 8, 0, 4, 8]\} \subset I_8 \\
+9+ I_8 &= \{[9, 17, 13, 9, 17, 13, 9, 17, 13, 9, 17, 13]\}\\
+9 I_8 &= \{[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]\} \subset I_8 \\
+10+ I_8 &= \{[10, 18, 14, 10, 18, 14, 10, 18, 14, 10, 18, 14]\}\\
+10 I_8 &= \{[0, 8, 4, 0, 8, 4, 0, 8, 4, 0, 8, 4]\} \subset I_8 \\
+11+ I_8 &= \{[11, 19, 15, 11, 19, 15, 11, 19, 15, 11, 19, 15]\}\\
+11 I_8 &= \{[0, 4, 8, 0, 4, 8, 0, 4, 8, 0, 4, 8]\} \subset I_8 \\
+\end{aligned}
+\end{equation*}
+Therefore $(8)$ is an ideal.
+To compute the quotient ring we
+We now try $(9) \subset \mathbb{Z}_{12}$.
+\begin{equation*}
+\begin{aligned}
+I_9 &= \{[0, 9, 6, 3, 0, 9, 6, 3, 0, 9, 6, 3]\} \\
+0+ I_9 &= \{[0, 9, 6, 3, 0, 9, 6, 3, 0, 9, 6, 3]\}\\
+0 I_9 &= \{[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]\} \subset I_9 \\
+1+ I_9 &= \{[1, 10, 7, 4, 1, 10, 7, 4, 1, 10, 7, 4]\}\\
+1 I_9 &= \{[0, 9, 6, 3, 0, 9, 6, 3, 0, 9, 6, 3]\} \subset I_9 \\
+2+ I_9 &= \{[2, 11, 8, 5, 2, 11, 8, 5, 2, 11, 8, 5]\}\\
+2 I_9 &= \{[0, 6, 0, 6, 0, 6, 0, 6, 0, 6, 0, 6]\} \subset I_9 \\
+3+ I_9 &= \{[3, 12, 9, 6, 3, 12, 9, 6, 3, 12, 9, 6]\}\\
+3 I_9 &= \{[0, 3, 6, 9, 0, 3, 6, 9, 0, 3, 6, 9]\} \subset I_9 \\
+4+ I_9 &= \{[4, 13, 10, 7, 4, 13, 10, 7, 4, 13, 10, 7]\}\\
+4 I_9 &= \{[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]\} \subset I_9 \\
+5+ I_9 &= \{[5, 14, 11, 8, 5, 14, 11, 8, 5, 14, 11, 8]\}\\
+5 I_9 &= \{[0, 9, 6, 3, 0, 9, 6, 3, 0, 9, 6, 3]\} \subset I_9 \\
+6+ I_9 &= \{[6, 15, 12, 9, 6, 15, 12, 9, 6, 15, 12, 9]\}\\
+6 I_9 &= \{[0, 6, 0, 6, 0, 6, 0, 6, 0, 6, 0, 6]\} \subset I_9 \\
+7+ I_9 &= \{[7, 16, 13, 10, 7, 16, 13, 10, 7, 16, 13, 10]\}\\
+7 I_9 &= \{[0, 3, 6, 9, 0, 3, 6, 9, 0, 3, 6, 9]\} \subset I_9 \\
+8+ I_9 &= \{[8, 17, 14, 11, 8, 17, 14, 11, 8, 17, 14, 11]\}\\
+8 I_9 &= \{[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]\} \subset I_9 \\
+9+ I_9 &= \{[9, 18, 15, 12, 9, 18, 15, 12, 9, 18, 15, 12]\}\\
+9 I_9 &= \{[0, 9, 6, 3, 0, 9, 6, 3, 0, 9, 6, 3]\} \subset I_9 \\
+10+ I_9 &= \{[10, 19, 16, 13, 10, 19, 16, 13, 10, 19, 16, 13]\}\\
+10 I_9 &= \{[0, 6, 0, 6, 0, 6, 0, 6, 0, 6, 0, 6]\} \subset I_9 \\
+11+ I_9 &= \{[11, 20, 17, 14, 11, 20, 17, 14, 11, 20, 17, 14]\}\\
+11 I_9 &= \{[0, 3, 6, 9, 0, 3, 6, 9, 0, 3, 6, 9]\} \subset I_9 \\
+\end{aligned}
+\end{equation*}
+Therefore $(9)$ is an ideal.
+To compute the quotient ring we
+We now try $(10) \subset \mathbb{Z}_{12}$.
+\begin{equation*}
+\begin{aligned}
+I_10 &= \{[0, 10, 8, 6, 4, 2, 0, 10, 8, 6, 4, 2]\} \\
+0+ I_10 &= \{[0, 10, 8, 6, 4, 2, 0, 10, 8, 6, 4, 2]\}\\
+0 I_10 &= \{[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]\} \subset I_10 \\
+1+ I_10 &= \{[1, 11, 9, 7, 5, 3, 1, 11, 9, 7, 5, 3]\}\\
+1 I_10 &= \{[0, 10, 8, 6, 4, 2, 0, 10, 8, 6, 4, 2]\} \subset I_10 \\
+2+ I_10 &= \{[2, 12, 10, 8, 6, 4, 2, 12, 10, 8, 6, 4]\}\\
+2 I_10 &= \{[0, 8, 4, 0, 8, 4, 0, 8, 4, 0, 8, 4]\} \subset I_10 \\
+3+ I_10 &= \{[3, 13, 11, 9, 7, 5, 3, 13, 11, 9, 7, 5]\}\\
+3 I_10 &= \{[0, 6, 0, 6, 0, 6, 0, 6, 0, 6, 0, 6]\} \subset I_10 \\
+4+ I_10 &= \{[4, 14, 12, 10, 8, 6, 4, 14, 12, 10, 8, 6]\}\\
+4 I_10 &= \{[0, 4, 8, 0, 4, 8, 0, 4, 8, 0, 4, 8]\} \subset I_10 \\
+5+ I_10 &= \{[5, 15, 13, 11, 9, 7, 5, 15, 13, 11, 9, 7]\}\\
+5 I_10 &= \{[0, 2, 4, 6, 8, 10, 0, 2, 4, 6, 8, 10]\} \subset I_10 \\
+6+ I_10 &= \{[6, 16, 14, 12, 10, 8, 6, 16, 14, 12, 10, 8]\}\\
+6 I_10 &= \{[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]\} \subset I_10 \\
+7+ I_10 &= \{[7, 17, 15, 13, 11, 9, 7, 17, 15, 13, 11, 9]\}\\
+7 I_10 &= \{[0, 10, 8, 6, 4, 2, 0, 10, 8, 6, 4, 2]\} \subset I_10 \\
+8+ I_10 &= \{[8, 18, 16, 14, 12, 10, 8, 18, 16, 14, 12, 10]\}\\
+8 I_10 &= \{[0, 8, 4, 0, 8, 4, 0, 8, 4, 0, 8, 4]\} \subset I_10 \\
+9+ I_10 &= \{[9, 19, 17, 15, 13, 11, 9, 19, 17, 15, 13, 11]\}\\
+9 I_10 &= \{[0, 6, 0, 6, 0, 6, 0, 6, 0, 6, 0, 6]\} \subset I_10 \\
+10+ I_10 &= \{[10, 20, 18, 16, 14, 12, 10, 20, 18, 16, 14, 12]\}\\
+10 I_10 &= \{[0, 4, 8, 0, 4, 8, 0, 4, 8, 0, 4, 8]\} \subset I_10 \\
+11+ I_10 &= \{[11, 21, 19, 17, 15, 13, 11, 21, 19, 17, 15, 13]\}\\
+11 I_10 &= \{[0, 2, 4, 6, 8, 10, 0, 2, 4, 6, 8, 10]\} \subset I_10 \\
+\end{aligned}
+\end{equation*}
+Therefore $(10)$ is an ideal.
+To compute the quotient ring we
+We now try $(11) \subset \mathbb{Z}_{12}$.
+\begin{equation*}
+\begin{aligned}
+I_11 &= \{[0, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1]\} \\
+0+ I_11 &= \{[0, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1]\}\\
+0 I_11 &= \{[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]\} \subset I_11 \\
+1+ I_11 &= \{[1, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2]\}\\
+1 I_11 &= \{[0, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1]\} \subset I_11 \\
+2+ I_11 &= \{[2, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3]\}\\
+2 I_11 &= \{[0, 10, 8, 6, 4, 2, 0, 10, 8, 6, 4, 2]\} \subset I_11 \\
+3+ I_11 &= \{[3, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4]\}\\
+3 I_11 &= \{[0, 9, 6, 3, 0, 9, 6, 3, 0, 9, 6, 3]\} \subset I_11 \\
+4+ I_11 &= \{[4, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5]\}\\
+4 I_11 &= \{[0, 8, 4, 0, 8, 4, 0, 8, 4, 0, 8, 4]\} \subset I_11 \\
+5+ I_11 &= \{[5, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6]\}\\
+5 I_11 &= \{[0, 7, 2, 9, 4, 11, 6, 1, 8, 3, 10, 5]\} \subset I_11 \\
+6+ I_11 &= \{[6, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7]\}\\
+6 I_11 &= \{[0, 6, 0, 6, 0, 6, 0, 6, 0, 6, 0, 6]\} \subset I_11 \\
+7+ I_11 &= \{[7, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8]\}\\
+7 I_11 &= \{[0, 5, 10, 3, 8, 1, 6, 11, 4, 9, 2, 7]\} \subset I_11 \\
+8+ I_11 &= \{[8, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9]\}\\
+8 I_11 &= \{[0, 4, 8, 0, 4, 8, 0, 4, 8, 0, 4, 8]\} \subset I_11 \\
+9+ I_11 &= \{[9, 20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10]\}\\
+9 I_11 &= \{[0, 3, 6, 9, 0, 3, 6, 9, 0, 3, 6, 9]\} \subset I_11 \\
+10+ I_11 &= \{[10, 21, 20, 19, 18, 17, 16, 15, 14, 13, 12, 11]\}\\
+10 I_11 &= \{[0, 2, 4, 6, 8, 10, 0, 2, 4, 6, 8, 10]\} \subset I_11 \\
+11+ I_11 &= \{[11, 22, 21, 20, 19, 18, 17, 16, 15, 14, 13, 12]\}\\
+11 I_11 &= \{[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]\} \subset I_11 \\
+\end{aligned}
+\end{equation*}
+Therefore $(11)$ is an ideal.
+To compute the quotient ring we
+
+
+Now we compute the quotient ring isomorphism $\mathbb{Z}_12 / I_0 \simeq \mathbb{Z}_{12}$ obviously. Additionally
+$\mathbb{Z}_{12} / I_1 = \mathbb{Z}_{12}$ since there are no distinct additive cosets of $I_1$ in $\mathbb{Z}_{12}$ besides the $0$ additive group whose multiplication property is distributive with multiplication. $\mathbb{Z}_{12}/I_2 \simeq \mathbb{Z}_6$.  $\mathbb{Z}_{12}/I_3 \simeq \mathbb{Z}_{4}$.  $\mathbb{Z}_{12}/I_4 \simeq \mathbb{Z}_3$.   $\mathbb{Z}_{12}/I_5 \simeq \mathbb{Z}_{12}$.  $\mathbb{Z}_{12}/I_6 \simeq \mathbb{Z}_2$.   $\mathbb{Z}_{12}/I_7 \simeq \mathbb{Z}_{12}$.  $\mathbb{Z}_{12}/I_8 \simeq \mathbb{Z}_4$.  $\mathbb{Z}_{12}/I_9 \simeq \mathbb{Z}_3$.  $\mathbb{Z}_{12}/I_{10} \simeq \mathbb{Z}_2$.   $\mathbb{Z}_{12}/I_{11} \simeq \mathbb{Z}_{12}$. 
+
+
+\end{document}\end

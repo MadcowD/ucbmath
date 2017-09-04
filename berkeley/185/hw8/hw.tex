@@ -1,0 +1,527 @@
+ \documentclass[11pt]{amsart}
+
+\usepackage{amsmath,amsthm}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{enumerate}
+\usepackage{fullpage}
+% \usepackage{euscript}
+% \makeatletter
+% \nopagenumbers
+\usepackage{verbatim}
+\usepackage{color}
+\usepackage{hyperref}
+%\usepackage{times} %, mathtime}
+
+\textheight=600pt %574pt
+\textwidth=480pt %432pt
+\oddsidemargin=15pt %18.88pt
+\evensidemargin=18.88pt
+\topmargin=10pt %14.21pt
+
+\parskip=1pt %2pt
+
+% define theorem environments
+\newtheorem{theorem}{Theorem}    %[section]
+%\def\thetheorem{\unskip}
+\newtheorem{proposition}[theorem]{Proposition}
+%\def\theproposition{\unskip}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\def\theconjecture{\unskip}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{sublemma}[theorem]{Sublemma}
+\newtheorem{fact}[theorem]{Fact}
+\newtheorem{observation}[theorem]{Observation}
+%\def\thelemma{\unskip}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+%\def\thedefinition{\unskip}
+\newtheorem{notation}[definition]{Notation}
+\newtheorem{remark}[definition]{Remark}
+% \def\theremark{\unskip}
+\newtheorem{question}[definition]{Question}
+\newtheorem{questions}[definition]{Questions}
+%\def\thequestion{\unskip}
+\newtheorem{example}[definition]{Example}
+%\def\theexample{\unskip}
+\newtheorem{problem}[definition]{Problem}
+\newtheorem{exercise}[definition]{Exercise}
+
+\numberwithin{theorem}{section}
+\numberwithin{definition}{section}
+\numberwithin{equation}{section}
+
+\def\reals{{\mathbb R}}
+\def\torus{{\mathbb T}}
+\def\integers{{\mathbb Z}}
+\def\rationals{{\mathbb Q}}
+\def\naturals{{\mathbb N}}
+\def\complex{{\mathbb C}\/}
+\def\distance{\operatorname{distance}\,}
+\def\support{\operatorname{support}\,}
+\def\dist{\operatorname{dist}\,}
+\def\Span{\operatorname{span}\,}
+\def\degree{\operatorname{degree}\,}
+\def\kernel{\operatorname{kernel}\,}
+\def\dim{\operatorname{dim}\,}
+\def\codim{\operatorname{codim}}
+\def\trace{\operatorname{trace\,}}
+\def\dimension{\operatorname{dimension}\,}
+\def\codimension{\operatorname{codimension}\,}
+\def\nullspace{\scriptk}
+\def\kernel{\operatorname{Ker}}
+\def\p{\partial}
+\def\Re{\operatorname{Re\,} }
+\def\Im{\operatorname{Im\,} }
+\def\ov{\overline}
+\def\eps{\varepsilon}
+\def\lt{L^2}
+\def\curl{\operatorname{curl}}
+\def\divergence{\operatorname{div}}
+\newcommand{\norm}[1]{ \|  #1 \|}
+\def\expect{\mathbb E}
+\def\bull{$\bullet$\ }
+\def\det{\operatorname{det}}
+\def\Det{\operatorname{Det}}
+\def\rank{\mathbf r}
+\def\diameter{\operatorname{diameter}}
+
+\def\t2{\tfrac12}
+
+\newcommand{\abr}[1]{ \langle  #1 \rangle}
+
+\def\newbull{\medskip\noindent $\bullet$\ }
+\def\field{{\mathbb F}}
+\def\cc{C_c}
+
+\newenvironment{solution}
+  {\begin{proof}[Solution]}
+  {\end{proof}}
+
+
+
+% \renewcommand\forall{\ \forall\,}
+
+% \newcommand{\Norm}[1]{ \left\|  #1 \right\| }
+\newcommand{\Norm}[1]{ \Big\|  #1 \Big\| }
+\newcommand{\set}[1]{ \left\{ #1 \right\} }
+\newcommand{\parens}[1]{ \left( #1 \right) }
+%\newcommand{\ifof}{\Leftrightarrow}
+\def\one{{\mathbf 1}}
+\newcommand{\modulo}[2]{[#1]_{#2}}
+
+\def\bd{\operatorname{bd}\,}
+\def\cl{\text{cl}}
+\def\nobull{\noindent$\bullet$\ }
+
+\def\scriptf{{\mathcal F}}
+\def\scriptq{{\mathcal Q}}
+\def\scriptg{{\mathcal G}}
+\def\scriptm{{\mathcal M}}
+\def\scriptb{{\mathcal B}}
+\def\scriptc{{\mathcal C}}
+\def\scriptt{{\mathcal T}}
+\def\scripti{{\mathcal I}}
+\def\scripte{{\mathcal E}}
+\def\scriptv{{\mathcal V}}
+\def\scriptw{{\mathcal W}}
+\def\scriptu{{\mathcal U}}
+\def\scriptS{{\mathcal S}}
+\def\scripta{{\mathcal A}}
+\def\scriptr{{\mathcal R}}
+\def\scripto{{\mathcal O}}
+\def\scripth{{\mathcal H}}
+\def\scriptd{{\mathcal D}}
+\def\scriptl{{\mathcal L}}
+\def\scriptn{{\mathcal N}}
+\def\scriptp{{\mathcal P}}
+\def\scriptk{{\mathcal K}}
+\def\scriptP{{\mathcal P}}
+\def\scriptj{{\mathcal J}}
+\def\scriptz{{\mathcal Z}}
+\def\scripts{{\mathcal S}}
+\def\scriptx{{\mathcal X}}
+\def\scripty{{\mathcal Y}}
+\def\frakv{{\mathfrak V}}
+\def\frakG{{\mathfrak G}}
+\def\aff{\operatorname{Aff}}
+\def\frakB{{\mathfrak B}}
+\def\frakC{{\mathfrak C}}
+
+\def\suchthat{\mathrel{}:\mathrel{}}
+\def\symdif{\,\Delta\,}
+\def\mustar{\mu^*}
+\def\muplus{\mu^+}
+
+\def\soln{\noindent {\bf Solution.}\ }
+
+
+%\pagestyle{empty}
+%\setlength{\parindent}{0pt}
+
+\begin{document}
+
+\begin{center}{\bf Math 185 --- UCB, Fall 2016 --- William Guss}
+\\
+{\bf Problem Set 8, due November 22th}
+\end{center}
+\medskip \noindent {\bf (77.1.a)}\ Find the residue at $z = 0$ of the function (a) $\frac{1}{z+z^2}.$
+\begin{solution}
+	Observe that $f(z) = \frac{1}{z+z^2} = \frac{1}{z}\frac{1}{1+z}.$ Then $f(z) = \frac{1}{z} \cdot \left[\frac{1}{1-z} \circ (-z)\right].l$ Therefore when $z$ is small enough
+	\begin{equation*}
+		f(z) = \frac{1}{z}\sum_{n=0}^\infty (-1)^n z^n \implies c_{-1} = \frac{(-1)^0}{z} + \sum_{n=0}^\infty (-1)^{n+1}z^n.
+	\end{equation*}
+	Therefore the residue of the function at $z = 0$ is $1.$
+\end{solution}
+\medskip \noindent {\bf (77.2.b)}\ Use Cauchy's residue theorem (Sec. 76) to evaluate the integral of each of these functions $|z| = 3$ in the positive sense.	The said function is $e^{-z}/(z-1)^2.$
+\begin{solution}
+	By Theorem 1. Section 80, we have that because $f(z) = \phi(z)/(z-1)^2$, where $\phi(z) = e^{-z},$ then
+	$Res_{z=1} f(z) = \phi^{(2-1)}(1)/(2-1)! = -1/e.$ Therefore by the Cauchy Residue theorem we have that
+	$int(C) \ni 1$ implies that
+	\begin{equation*}
+		\int_C f(z)\ dz = {2\pi i} Res_{z=1} f(z) = \frac{-2\pi i}{e}.
+	\end{equation*}
+\end{solution}
+\medskip \noindent {\bf (77.4.a)}\ Use the theorem in Sec. 77 involving a single residue to evaluate the integral 
+of $\frac{z^5}{1-z^3}$ around the circle $|z| = 2$ in the positive sense.
+\begin{solution}
+	By the Theorem 2. Section 77, because the function $f$ in question is analytic everywhere in the finite plane except for a finite number of singular points interior to a positvely oriented simple close curve (this is because $f(z)$ is singular when $z^3 = 1$ or when $z$ is the $3^{rd}$ roots of unity), we can evaluate the contour integral by using an inversion at infinity.
+	\begin{equation*}
+		\int_C f(z)\ dz = 2\pi i Res_{z = 0} \left[\frac{1}{z^2} f\left(\frac{1}{z}\right)\right].
+	\end{equation*}
+	Therefore we do algebra and yield
+	\begin{equation*}
+		\begin{aligned}
+			\left[\frac{1}{z^2} f\left(\frac{1}{z}\right)\right] = \frac{1}{z^2} \frac{1}{z^5(1 - \frac{1}{z^3})} =  \frac{1}{z^2} \frac{1}{z^5 - z^2} = \frac{1}{z^4(z^3 - 1)}.
+		\end{aligned}
+	\end{equation*}
+	To evaluatate the residue at $0$, observe that by the above algebra $\left[\frac{1}{z^2} f\left(\frac{1}{z}\right)\right]$ has a pole of order $4$ at $z = 0.$ Therefore, we use the Theorem of section $80$ because we may redefine
+	$\left[\frac{1}{z^2} f\left(\frac{1}{z}\right)\right]$ so that
+	\begin{equation*}
+		\left[\frac{1}{z^2} f\left(\frac{1}{z}\right)\right] = \phi(z)/(z-0)^4;\;\;\;\;\phi(z) = \frac{1}{z^3 - 1}.
+	\end{equation*}
+	Therefore under that theorem
+	\begin{equation*}
+		Res_{z=0} \left[\frac{1}{z^2} f\left(\frac{1}{z}\right)\right]  = \frac{\phi^{(4-1)}(0)}{(4-1)!} = \frac{1}{3!}\left[\frac{-3z^2}{(z^3 - 1)^2}\right]^{(2)}_{z=0}.
+	\end{equation*}
+	Continuing this evaluation,
+	\begin{equation*}
+	\begin{aligned}
+	\frac{1}{3!}\left[\frac{-3z^2}{(z^3 - 1)^2}\right]^{(2)}_{z=0} = \frac{1}{3!}\left[\frac{-6z(z^3-1)^2 + 6(z^3 - 1)z^2\cdot 3z^2}{(z^3 - 1)^4}\right]^{(1)}_{z=0} &= \frac{1}{3!}\left[\frac{(z^3 - 1)( 18z^4- 6z^4+6z)}{(z^3 - 1)^4}\right]^{(1)}_{z=0}\\
+	&= \left[\frac{(z^3 - 1)( 2z^4 +z)}{(z^3 - 1)^4}\right]^{(1)}_{z=0}\\
+	&= \left[\frac{ 2z^4 +z}{(z^3 - 1)^3}\right]^{(1)}_{z=0}\\
+	\end{aligned}
+	\end{equation*}
+	Finally taking the next derivative we get
+	\begin{equation*}
+		\begin{aligned}
+		\left[\frac{ 2z^4 +z}{(z^3 - 1)^3}\right]^{(1)}_{z=0} &=\left[\frac{ (z^3 - 1)^3(8z^3 +1) - (z^3 - 1)^2(3z^2)(2z^4+z)}{(z^3 - 1)^6}\right]^{(0)}_{z=0}\\	
+		&=\left[\frac{ (z^3 - 1)(8z^3 +1) - (3z^2)(2z^4+z)}{(z^3 - 1)^4}\right]_{z=0}\\	
+		&=\frac{ (0- 1)(0 +1) - (3\cdot 0^3)(2\cdot 0^4+ 0)}{(0 - 1)^4}\\	
+		&={ -1 - 0} = -1.\\	
+		\end{aligned}
+	\end{equation*}
+	Therefore the residue is $-1$ and hence we get $\int_C f(z)\ dz = -2\pi i.$ The easier way to compute this would have been by writing the Laurent series of $1/z^2f(1/z)$ and then computing $c_{-1}.$
+\end{solution}
+
+
+\medskip \noindent {\bf (77.4.b)}\ Use the theorem in Sec. 77 involving a single residue to evaluate the integral 
+of $\frac{1}{1+z^2}$ around the circle $|z| = 2$ in the positive sense.
+\begin{solution}
+	By the Theorem 2. Section 77, because the function $f$ in question is analytic everywhere in the finite plane except for a finite number of singular points interior to a positvely oriented simple close curve (this is because $f(z) = 1/((z-i)(z+i)), |\pm i| \leq 2$), we can evaluate the contour integral by using an inversion at infinity.
+	\begin{equation*}
+		\int_C f(z)\ dz = 2\pi i Res_{z = 0} \left[\frac{1}{z^2} f\left(\frac{1}{z}\right)\right].
+	\end{equation*}
+	Therefore we do algebra and yield
+	\begin{equation*}
+		\begin{aligned}
+			\left[\frac{1}{z^2} f\left(\frac{1}{z}\right)\right] = \frac{1}{z^2} \frac{1}{(\frac{1}{z} - i)(\frac{1}{z} + i)} = \frac{1}{z^2(\frac{1}{z^2} + 1)} = \frac{1}{1 + z^2} = f(z)
+		\end{aligned}
+	\end{equation*}
+	But since there is no singularity at $z = 0$ for this function, the residue is $0$, and so the contour integral evaluates as 
+	\begin{equation*}
+		\int_C f(z)\ dz = 0.
+	\end{equation*}
+\end{solution}
+\medskip \noindent {\bf (77.5)}\ Let $C$ denote the circle $|z| =1$, taken counter clockwise, and use the following steps to show that 
+\begin{equation*}
+	\int_C exp\left(z + \frac{1}{z}\right)\ dz = 2\pi i \sum_{n=0}^\infty \frac{1}{n!(n+1)!}.
+\end{equation*}
+(a) By using the Maclauren series for $e^z$ and referring to Theorem 1 in Sec 71, which justifies the trerm by term integration that is to be used, write the above integral as
+\begin{equation*}
+	\sum_{n=0}^\infty \frac{1}{n!} \int_C z^n exp\left(\frac{1}{z}\right)\ dz.
+\end{equation*}
+\begin{proof}
+	First recall that we can write $e^z$ in terms of its unique McLaurin series at $z=0$; that is,
+	\begin{equation*}
+		exp(z + 1/z) exp(z)exp(1/z) = \sum_{n=0}^\infty \frac{z^n}{n!}exp(1/z).
+	\end{equation*}
+	Using Theorem 1, Sec. 71, the series of partial sums converges uniformly and multiplication by a fixed function maintains uniform equicontinuinity from real analysis. Therefore we can integrate the function by examining the limit of the parital sums of the integrals; that is,
+	\begin{equation*}
+		\int_C exp\left(z + \frac{1}{z}\right)\ dz = \sum_{n=0}^\infty \frac{1}{n!}\int_C z^n exp\left(\frac{1}{z}\right)\ dz.
+	\end{equation*}
+\end{proof}
+(b) Apply the theorem in Sec 76 to evaluate the integrals appearing in part(a) to arrive at the desired result.
+\begin{proof}
+	Now we must evaluate each term of the sum to derive the result. Recall from Cauchy's Residue theorem that 
+	\begin{equation*}
+		\int_C z^n exp\left(\frac{1}{z}\right)\ dz = 2\pi i Res_{z=0}z^n exp\left(\frac{1}{z}\right).
+	\end{equation*}
+	We examine the laurent series for $exp(1/z)$ and yield
+	\begin{equation*}
+		z^n exp\left(\frac{1}{z}\right) = z^n \sum_{j=0}^\infty \frac{1}{j!z^{j}}
+	\end{equation*}
+	Hence the coefficient $c_{-1} = Coeff[z^{n}/((n+1)!z^{n+1})] = 1/(n+1)!.$ Now applying residue theory we get
+	\begin{equation*}
+	\int_C exp\left(z + \frac{1}{z}\right)\ dz = 2\pi i \sum_{n=0}^\infty \frac{1}{n!(n+1)!}.
+	\end{equation*}
+	This completes the proof.
+\end{proof}
+\medskip \noindent {\bf (77.6)}\ Suppose that $f$ is analytic throughout the entire plane except for a finite number of singular points $S = \{z_1, z_2, \cdots, z_n\}$ Show that 
+\begin{equation*}
+	\sum_{z_s \in S} Res_{z= z_s}\ f(z) + Res_{z=\infty}\ f(z) = 0.
+\end{equation*}
+\begin{proof}
+	First by $f$ analytic except for a finite number of points we can find a simple closed contour positvely oriented $C$ containing all of them; that is, by the finiteness of $S$, and $\mathbb{C}$ Hausdorff, the set of singular points for $f$ can be covered by disjoint open balls and so every $z_s \in S$ is isolated. Applying the Cauchy Residue theorem,
+	\begin{equation*}
+		\int_C f(z)\ dz = 2\pi i \sum_{z_s \in S} Res_{z= z_s}\ f(z).
+	\end{equation*}
+	Additionally by definition since $\mathbb{C} \setminus int(C)$ contains no singularities, $f$ is analytic there and the definition of the resiude of $f$ at infinity is satisfied by  the reversall of our closed contour $C$. Thus
+	\begin{equation*}
+		\int_{-C} f(z)\ dz = 2\pi i\ Res_{z=\infty}\ f(z).
+	\end{equation*}
+	By the properties of $k$-cells, the reversal of orientation of $C$ over the same $k$-form is antisymmetric. Therefore
+	\begin{equation*}
+		 2\pi i \sum_{z_s \in S} Res_{z= z_s}\ f(z) = \int_C f(z)\ dz = -\int_{-C} f(z)\ dz = -2\pi i\ Res_{z=\infty}\ f(z).
+	\end{equation*}
+	Hence, it follows that 
+	\begin{equation*}
+	\sum_{z_s \in S} Res_{z= z_s}\ f(z) = - Res_{z=\infty}\ f(z) \implies 0 = 
+	\sum_{z_s \in S} Res_{z= z_s}\ f(z) + Res_{z=\infty}\ f(z).
+	\end{equation*}
+	This completes the proof.
+\end{proof}
+\medskip \noindent {\bf (77.7)}\ Let the degrees of the polynomials $P(z) = a_0 + \cdots a_nz^n$
+and $Q(z) = b_0 + \cdots + b_m z^m$ be such that $m \geq n+2$. If all of the zeroes of $Q(z)$ are interior to a simple closed contour $C$ then
+\begin{equation*}
+	\int_C \frac{P(z)}{Q(z)}\ dz = 0.
+\end{equation*}
+\begin{proof}
+	If $C$ contains all of the zeroes of $Q(z)$ it then contains all of the singularities of $\frac{P(z)}{Q(z)}.$ Thus we apply the reuslt shown in the previous exercise; that is, for all of the zeroes $S$ of $Q(z)$
+	\begin{equation*}
+		\sum_{z_s \in S} Res_{z= z_s}\ f(z) = - Res_{z=\infty}\ P(z)/Q(z)
+	\end{equation*}
+	It remains to evaluate the residue at infinity. First take some clockwise curve $C_0(R)$ which is just the reversal of $C$ when $R= 0$. Then as $R \to \infty$ let $C(R)$ expand outwards towards $\infty$. We then have that
+	\begin{equation*}
+		2\pi i Res_{z=\infty}\ P(z)/Q(z) = \int_{C_0(R)} \frac{P(z)}{Q(z)}\ dz.
+	\end{equation*}
+	We first will bound the contour integral
+	\begin{equation*}
+		\left |\int_{C_0(R)} \frac{P(z)}{Q(z)}\ dz\right| \leq l(C_0(R))\cdot \sup_{z \in C_0(R)[I]} |P(z)/Q(z)| \leq 2\pi R \cdot \frac{K}{R^2}
+	\end{equation*}
+	using Theorem 1. of Sec 47. We got the bound of $K/R^2$ for some constant $K$ because in the limit $deg(P) \leq deg(Q) - 2$, so there is some constant\footnote{To see this observe that the argument of the parameter to the quotient function does not depend on the angle in the supremum and furthermore from Real Anlysis the modulo of these two functions is a rational polynomial whose divisor has order $\geq 2$.} $K$ large enough so that in the limit $|P(e^{i\theta}E)/Q(e^{i^\theta}R)|$ is proportional or subsumed by $K/R^2$. Therefore letting $R\to \infty$ and applying the property of path deformations, for every $\epsilon$ there is an $R$ so that
+	\begin{equation*}
+	|2\pi i Res_{z=\infty } f(z)| = \left |\int_{C_0(R)} \frac{P(z)}{Q(z)}\ dz\right| < \epsilon
+	\end{equation*}
+	and thus $|2\pi i Res_{z=\infty } f(z)| = 0$ yields $2\pi i Res_{z=\infty } f(z) = 0$, by positive definiteness of $|\cdot |.$ Finally
+	\begin{equation*}
+	2\pi i \sum_{z_s \in S} Res_{z= z_s}\ f(z) = - Res_{z=\infty}\ P(z)/Q(z) = -0 = 0
+	\end{equation*}
+	By the Cauchy Residue theorem we observe that
+	\begin{equation*}
+		\int_C \frac{P(z)}{Q(z)} \ dz= 2\pi i \sum_{z_s \in S} Res_{z= z_s}\ f(z) = 0.
+	\end{equation*}
+	This completes the proof.
+
+\end{proof}
+\medskip \noindent {\bf (81.1)}\  In each case show that any singular point of the function is a pole. Determine the order of each pole, and find the corresponding residue $B$.\\
+(a) $f(z) = \frac{z+1}{z^2 + 9}.$
+\begin{solution}
+	Let $f$ be a function on $z$, then we can factor $f$ so that
+	\begin{equation*}
+		f(z) = \frac{z+1}{z^2 + 9} = \frac{z+1}{(z -3i)(z+3i)} = \frac{\phi_1(z)}{z -3i} = \frac{\phi_2(z)}{z+3i}.
+	\end{equation*}
+	In this case $\phi_1(z) = (z+1)/(z+3i)$ and $f$ has a singularity at $z = 3i$, in which case $\phi_1(3i) \neq 0$, and so $z = 3i$ is a pole of order $1$ for the function. Additionally $z = -3i$ is a pole of order $2$ because $\phi_2(-3i) \neq 0.$ The residues are corespondingly just $\phi_1(3i) = (3i + 1)/6i = 1/2 - i/6$. Symmetrically $\phi_2(-3i) = (1 - 3i)/(-6i) = 1/2 + i/6.$
+\end{solution}
+(b) $f(z) = \frac{z^2 + 2}{z - 1}.$
+\begin{solution}
+	The function only has on singularity at $z = 1$ and can be rewritten as $\phi(z)/(z-1)$ where $\phi(z) = z^2 +2$. Therefore the singularity is a simple pole and we evaluate its residue as $\phi(1) = 1 +2 = 3.$ 
+\end{solution}
+(c) $f(z) = \left(\frac{z}{2z+1}\right)^3$.
+\begin{solution}
+	We can factor $f$ so that
+	\begin{equation*}
+		\left(\frac{z}{2z+1}\right)^3 = \frac{z^3}{(2z+1)^3} = \frac{z^3}{8(z+1/2)^3} = \frac{z^3}{8(z - (-1/2))^3}
+	\end{equation*}
+	and so the function has a singularity at $2z +1 = 0 \implies z = -1/2.$ So we yield that $\phi(z) = 1/8z^3$. Then applying the residue theorem we get $1/8 d^2/dz^2 z^3 = 6z/8|_{z=-1/2} -3/8.$ Finally we observe that the residue is $(-3/8)/2! = -3/16.$ This completes the  solution.
+\end{solution}
+(d) $f(z) = \frac{e^z}{z^2 + \pi^2}.$
+\begin{solution}
+	We can factor $f$ so that
+	\begin{equation*}
+		f(z) = \frac{e^z}{z^2 + \pi^2} = \frac{e^z}{(z - i\pi)((z + i\pi)}
+	\end{equation*}
+	Yielding two simple poles at $z = i\pi$ and $z = -i\pi$ using $\pi_1(z) = e^z/(z+i\pi) \neq 0\;\; (z = i\pi)$ and $\phi_2(z) = e^z/(z-i\pi) \neq 0\;\; (z = -i\pi)$ respectively. Applying the theorem of chapter 81 we evaluate the residues by directly evaluating each $\phi_i$. Thus getting
+	\begin{equation*}
+		\phi_1(i\pi) = -1/(2\pi i) = -i/2\pi\;\;\;\;	\phi_2(-i\pi) = -1/(-2\pi i) = i/2\pi
+	\end{equation*}
+\end{solution}
+\medskip \noindent {\bf (81.5)}\  Find the value of the integral
+\begin{equation*}
+	\int_C \frac{dz}{z^3(z+4)}
+\end{equation*}
+taken counterclockwise around the circle (a) $|z| =2$;
+\begin{solution}
+	First on the interior of $C$ the singularity $z = 0$ is a third order pole with $\phi(z) = 1/(z+4).$ Taking
+	the second derivative of $\phi(z),$ we yield $2/(z+4)^3|_{z= 0} = 2/4^3 = 1/32.$ Lastly we obserfve that
+	\begin{equation*}
+	\int_C \frac{dz}{z^3(z+4)} = 2\pi i\ Res_{z=0}\ f(z) =\frac{2\pi i}{2\cdot 32} =  \pi i/32.
+	\end{equation*}
+\end{solution}
+
+
+  (b) $|z+2| =3.$
+  \begin{solution}
+  	When $C$ is defined as in $B$ then $|0 + 2| \leq 3$ and $|-4 + 2| = |2| \leq 3$ so
+  		\begin{equation*}
+	\int_C \frac{dz}{z^3(z+4)} = 2\pi i\ ( Res_{z=0}\ f(z) +  Res_{z=-4}\ f(z)) =  \pi i/32 + 2\pi i  Res_{z=4}\ f(z).
+	\end{equation*}
+	Now we need classify the singularity at $z = 4.$ First We observe that $\phi(z) = 1/z^3$ and so $\phi(4) \neq 0$ yielding that $z = 4$ is a simple pole of the function. Then the residue is just $\phi(4) = 1/64.$ Therefore
+	\begin{equation*}
+	\int_C \frac{dz}{z^3(z+4)} = 2\pi i\ ( Res_{z=0}\ f(z) +  Res_{z=-4}\ f(z)) =  \pi i/32 + 2\pi i/64 = 0.
+	\end{equation*}
+	This completes the solution.
+  \end{solution}
+\medskip \noindent {\bf (81.6)}\  Evaluate the integral
+\begin{equation*}
+	\int_C \frac{\cosh \pi z}{z(z+i)(z-i)}\ dz
+\end{equation*}
+in the positive sense.
+\begin{solution}
+	First since $C$ is the positively oriented curve so that $|z| = 2$, then all of the singularities of the function are contained; that is,
+	\begin{equation*}
+	\int_C \frac{\cosh \pi z}{z(z+i)(z-i)}\ dz = 2\pi i(Res_{z=i}\ f(z) + Res_{z=-i}\ f(z) + Res_{z=0}\ f(z)).
+	\end{equation*}
+	We claim that all of the singularities are simple poles. First observe that $\cosh \pi z = 0$ if and only if $z = ni - i/2$ where $n$ is any integer. Therefore $\phi_i(z)=\cosh(z)/\prod_{z_j \in S \setminus\{z_i\}}(z-z_j)$ is nonzero at $z = z_i \in S$ where $S$ is the set of singularities. Therefore redcalling that $\cosh (\pi i )= -1$ and $\cosh (-\pi i) = -1$ we get that 
+	\begin{equation*}
+		2\pi i(Res_{z=i}\ f(z) + Res_{z=-i}\ f(z) + Res_{z=0}\ f(z)) = 2\pi i \sum_{z_i \in S} \phi_i(z_i) 
+	\end{equation*}
+	which we then get is
+	\begin{equation*}
+		2\pi i \sum_{z_i \in S} \phi_i(z_i) = 2\pi i(-1/(i\cdot 2i) + 1/(i\cdot(-i)) + -1/(-i\cdot -2i) ) = 4\pi i.
+	\end{equation*}
+	Thus we get
+	\begin{equation*}
+		\int_C \frac{\cosh \pi z}{z(z+i)(z-i)}\ dz  =  4\pi i.
+	\end{equation*}
+\end{solution}
+\medskip \noindent {\bf (81.7)}\ Evaluate $\int_C f(z)\; dz$ when $C$ is the p.o.s.c.c. withw $|z| =3$. \\
+(a) $f(z) = \frac{(3z+2)^2}{z(z-1)(2z+5)}.$
+\begin{solution}
+	Observe that the singularities of $f$, $S$, are so that $S \subset int(C).$ Therefore we apply the residue theorem of secion $77$ and evaluate $\int_C f\ dz = 2\pi i \ Res_{z=0}\ (1/z^2)f(1/z).$ The evaluation of the residue is as follows.
+	\begin{equation*}
+	\begin{aligned}
+		\frac{1}{z^2}f\left(\frac{1}{z}\right) &= \frac{z\left(\frac{3}{z}+2\right)^2}{z^2 \parens{\frac{1}{z} - 1}\parens{\frac{2}{z} + 5}} = \frac{z \parens{ \frac{3}{z} + 2}^2}{\parens{1-z}\parens{2+5z}}\\
+		&= \frac{ \parens{ {3} + 2z}^2}{z\parens{1-z}\parens{2+5z}} = \frac{\phi(z)}{z};\;\;\; \phi(z) = \frac{z \parens{ {3} + 2z}^2}{\parens{1-z}\parens{2+5z}} 
+	\end{aligned}
+	\end{equation*}
+
+	Therefore the reparameterization of $f$ has a simple pole at $z = 0$ and the residue is just $\phi(0).$ This gives
+	$\int_C f\ dz = 2\pi i \ Res_{z=0}\ (1/z^2)f(1/z). = 2\pi i 9/2 = 9\pi i.$
+\end{solution}
+(b) $f(z) = \frac{z^3 e^{1/z}}{1+z^3}$
+\begin{solution}
+		Observe that the singularities of $f$, $S$, are so that $S \subset int(C).$ Therefore we apply the residue theorem of secion $77$ and evaluate $\int_C f\ dz = 2\pi i \ Res_{z=0}\ (1/z^2)f(1/z).$ The evaluation of the residue is as follows.
+	\begin{equation*}
+	\begin{aligned}
+		\frac{1}{z^2}f\left(\frac{1}{z}\right) &= \frac{e^z}{z^3\parens{1 + \frac{1}{z^3}}z^2} = \frac{e^z}{(1 + z^3)z^2} \\
+		&= \frac{\phi(z)}{z^2};\;\;\;\phi(z) = \frac{e^z}{1 + z^3} 
+	\end{aligned}
+	\end{equation*}
+	Because $\phi(0) \neq 0$, the reparameterization of $f$ has a order two pole at $z = 0$ so we comptue the residue by first computing the second derivative.
+	\begin{equation*}
+		\begin{aligned}
+			\parens{\frac{e^z}{1 + z^3}}'' &= \parens{\frac{e^z(z^3 +1) - 3e^zz^2}{(z^3 + 1)^2}}' = \parens{\frac{e^z}{z^3 + 1}\parens{1 - \frac{3z^2}{z^3 + 1}}}'\\
+			&= \frac{e^z}{z^3 + 1}\parens{1 - \frac{3z^2}{z^3 + 1}}^2 - \frac{e^z}{z^3 + 1}\parens{\frac{6z(z^3+1) - 9z^4}{(z^3 + 1)^2}} \\
+			&= \frac{e^z}{z^3 + 1}\parens{\parens{1 - \frac{3z^2}{z^3 + 1}}^2 -\frac{9z^2}{(z^3 + 1)^2} - \frac{6z}{z^3 + 1}  } \\
+			&=_{_{_{z=0}}} \frac{1}{1}\parens(1 - 0 - 0) = 1.
+		\end{aligned}
+	\end{equation*}
+	Therefore we have that 
+	$\int_C f\ dz = 2\pi i \ Res_{z=0}\ (1/z^2)f(1/z). = 2\pi i \phi''(0)/(2-1)! = 2\pi i.$
+\end{solution}
+\medskip \noindent {\bf (83.3)}\ Show that \\
+(a) $Res_{z = \pi i/2}\ \frac{\sinh}{z^2 \cosh z} = \frac{-4}{\pi^2}.$
+\begin{proof}
+	Let $f(z) = \frac{\sinh}{z^2 \cosh z} = p(z)/q(z).$ In this case the the singularity $z_0 = i\pi /2$, 
+	$p(z) \neq 0$ by definition of $\sinh.$ Furthermore, $q'(z_0) = 2z_0\cosh(z_0)   -z_0^2 \sinh(z_0) = -z_0^2 \sinh(z_0) \neq 0$. Therefore we apply Theorem $2$ of Section $83$ and yield
+	\begin{equation*}
+		Res_{z = \pi i/2}\ \frac{\sinh}{z^2 \cosh z} = -\frac{\sinh(z_0)}{z_0^2 \sinh(z_0)} = \frac{-4}{\pi^2}
+	\end{equation*}
+\end{proof}
+(b) $Res_{z = \pi i}\ \frac{e^{zt}}{\sinh z} + Res_{z = -\pi i}\ \frac{e^{zt}}{\sinh z} $
+\begin{proof}
+Let $f(z) = \frac{e^{zt}}{\sinh z} = p(z)/q(z).$ In this case the the singularity $z_0 = \pm i\pi$, 
+	$p(z) \neq 0$ by definition of $exp(\cdot)$ Furthermore, $q'(z_0) = \cosh(z_0) = \neq 0$. Therefore we apply Theorem $2$ of Section $83$ and yield
+	\begin{equation*}
+		Res_{z = \pi i/2}\ \frac{e^{zt}}{\sinh z}  + Res_{z = -\pi i/2}\ \frac{e^{zt}}{\sinh z}  = \frac{e^{ i \pi t}}{\cosh( i \pi)} + \frac{e^{ -i \pi t}}{\cosh( -i \pi)} = -\parens{e^{i\pi t} + e^{i \pi t}} = - 2 \cos(\pi t).
+	\end{equation*}
+	This completes the proof.
+\end{proof}
+\medskip \noindent {\bf (83.5)}\ Let $C$ denote the positvely oriented circle $|z| = 2$, then evaluate\\
+(a) $\int_C \tan z\ dz;$
+\begin{solution}
+	Let $f(z) = \tan z = \frac{\sin z}{\cos z} = p(z)/q(z).$ The set of singularities $S$  contains $\cos z = 0, |z| \leq 2$ that is $S = \{\pm \pi/2\}$. Therefore
+	\begin{equation*}
+		\int_C f(z)\ dz = 2\pi i\sum_{z_0 \in S} Res_{z= z_0}\ f(z)
+	\end{equation*}
+	and we thus evaluate the residues. Since $p(z) \neq 0$ for all $z \in S$, we use Theorem 2.
+	\begin{equation*}
+		2\pi i\sum_{z_0 \in S} Res_{z= z_0}\ f(z) = 2\pi i\parens{-\frac{\sin(\pi/2)}{\sin(\pi/2)} -\frac{\sin(-\pi/2)}{\sin(-\pi/2)}} = 2\pi i\cdot (-2) = - 4\pi i.
+	\end{equation*}
+\end{solution}
+(b) $\int_C \frac{dz}{\sinh 2z}.$
+\begin{solution}
+	Let $f(z) = \frac{1}{\sinh 2z} = p(z)/q(z).$ The set of singularities $S$  contains $\sinh 2 z = 0, |z| \leq 2$ that is $S = \{\pm i\pi/2, 0\}$. Therefore
+	\begin{equation*}
+		\int_C f(z)\ dz = 2\pi i\sum_{z_0 \in S} Res_{z= z_0}\ f(z)
+	\end{equation*}
+	and we thus evaluate the residues. Since $p(z) \neq 0$ for all $z \in S$, we use Theorem 2.
+	\begin{equation*}
+		2\pi i\sum_{z_0 \in S} Res_{z= z_0}\ f(z) = 2\pi i\parens{\frac{1}{2 \cosh(i\pi)} + 	\frac{1}{2\cosh(-i\pi)} + \frac{1}{2\cosh(0)}} = 2\pi i\cdot (-1/2) = -\pi i.
+	\end{equation*}
+\end{solution}
+\medskip \noindent {\bf (83.6)}\ Let $C_N$ denote the positvely oriented  boundary of the square whose edges lie 
+along the lines $x = \pm\parens{N + \frac{1}{2}}\pi $, $y = \pm \parens{N+\frac{1}{2}}\pi$ where $N$ is a positive integer. Show that
+\begin{equation*}
+	\int_{C_N} \frac{dz}{z^2 \sin z} = 2\pi i\parens{\frac{1}{6} 2 \sum_{n=1}^N \frac{(-1)^n}{n^2\pi^2}}.
+\end{equation*}
+Then show that the value of this integral tends to zero as $N \to \infty,$ and point out how $\sum_{n=1}^\infty.$
+\begin{proof}
+	Let $f(z) = \frac{1}{z^2 \sin z} = p(z)/q(z).$ Then for every $N$ the set of singularities for $f$ contained in $int(C_N)$ is $S_N = \{0\} \cup \{\pi n\}_{n=1}^N$ from a previous chapter, as that is when $\sin z$ is $0$. Therefore we apply theorem $2$ and yield that the residue of $f(z)$ at every $z_0 \in S_N \setminus \{0\}$ is $\phi(z_0) = p(z_0)/q'(z_0).$ Thus we calculate $q'(z) = 2z \sin z + z^2 \cos z.$ Observe that at every $z_0 \in S$, the left term in the sum is $0$ so we have that $q'(z_0) = z^2 \cos z$. Finally we apply the residue theorem and yield that
+	\begin{equation*}
+	\begin{aligned}
+		\int_{C_N} f(z)\ dz &= 2\pi i\parens{Res_{z= 0}\ f(z) + \sum_{z_0 \in S_N \setminus \{0\}} Res_{z= z_0} f(z) } \\
+		 &= 2\pi i\parens{Res_{z= 0}\ f(z) + \sum_{z_0 \in S_N \setminus \{0\}} \frac{1}{z_0^2 \cos z_0}  }
+		 \\&= 2\pi i\parens{Res_{z= 0}\ f(z) + \sum_{n=1}^N \frac{1}{(\pi n)^2 \cos (\pi n)} + \sum_{n=1}^N \frac{1}{(-\pi n)^2 \cos (- \pi n)}  }\\
+		  &= 2\pi i\parens{Res_{z= 0}\ f(z) + \sum_{n=1}^N \frac{1}{(\pi n)^2 \cos (\pi n)} + \sum_{n=1}^N \frac{1}{(\pi n)^2 \cos( \pi n)}  }  \\&= 2\pi i\parens{Res_{z= 0}\ f(z) + 2\sum_{n=1}^N \frac{1}{(\pi n)^2 (-1)^n} } \\
+		  &= 2\pi i\parens{Res_{z= 0}\ f(z) + 2\sum_{n=1}^N \frac{(-1)^n}{\pi^2 n^2 } }
+	\end{aligned}
+	\end{equation*}
+	To calculate the residue of $1/f$ at $0$, we recall that the function $z^2 \sin z$ has the following derivatives at $0$; $(1/f)' = 2z \sin z + z^2 \cos z$, $(1/f)'' = 2 \sin z + 4z \cos z + z^2 \sin z,$ $(1/f)''' = 6 \cos z + 4z \sin z + f'$. Therefore $q$ has a zero of order 3 at $0$ Therefore $q(z) = z^3 g(z)$ for some $g(z)$ by Theorem 1 of section 82. Equipped with this knowledge, we take the laurent series representation $\sin z = z- z^3/6 + +  \cdots$.
+	Then $1/sin z = 1/(z(1 - z^2/6+ \cdots)) = (1/z)(1 + z^2/6 + \cdots)$ from Section 73. We finally compute 
+	$1/(z^2 \sin z) = 1/z^3 + 1/6z + \cdots$ so the residue is $1/6.$ 
+
+	Finally we arive at
+	\begin{equation*}
+		\int_{C_N} f(z)\ dz = 2\pi i\parens{\frac{1}{6} + 2\sum_{n=1^N} \frac{(-1)^n}{\pi^2 n^2 } }.
+	\end{equation*}
+	Since in Sec 47 we showed that the integral tends to zero as $N$ tends to infinity, we yield that under the Residue theorem of infinity 
+	\begin{equation*}
+		 \lim_{N\to \infty} -2\pi i\parens{\frac{1}{6} + 2\sum_{n=1}^N \frac{(-1)^n}{\pi^2 n^2 } }= 0 \implies \lim_{N\to \infty} 1/6 = \lim_{N\to \infty} - 2\sum_{n=1}^N \frac{(-1)^n}{\pi^2 n^2 } 
+	\end{equation*}
+	Therefore $\pi^2/12 = \sum_{n=1}^\infty (-1)^{n+1}/n^2.$
+	\end{proof}
+
+\end{document}\end
