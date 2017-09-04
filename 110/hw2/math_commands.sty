@@ -1,0 +1,542 @@
+\usepackage{braket}
+
+% Custom environments
+\newlength{\textequationwidth}
+\NewDocumentEnvironment{textequation}{o}{
+    \IfNoValueTF{#1}{%
+        \ntextequation%
+    }%
+    {%
+        \ytextequation{#1}%
+    }
+}
+{
+    \IfNoValueTF{#1}{%
+        \endntextequation%
+    }%
+    {%
+        \endytextequation%
+    }%
+}
+\NewEnviron{ytextequation}[1]{%
+    \setlength{\textequationwidth}{.875\textwidth-\leftmargin-\rightmargin}
+    \begin{equation}\label{#1}%
+        \pbox{\textequationwidth}{%
+            \BODY%
+        }%
+    \end{equation}
+}
+\NewEnviron{ntextequation}{%
+    \setlength{\textequationwidth}{.875\textwidth-\leftmargin-\rightmargin}%
+    \begin{equation}%
+        \pbox{\textequationwidth}{%
+            \BODY%
+        }%
+    \end{equation}
+}
+\NewEnviron{textequation*}{%
+    \setlength{\textequationwidth}{.9\textwidth-\leftmargin-\rightmargin}%
+    \begin{equation*}%
+    \pbox{\textequationwidth}{%
+    \BODY%
+    }%
+    \end{equation*}
+}
+
+% Custom commands
+\newcommand{\raisemath}[1]{\mathpalette{\raisem@th{#1}}}
+\newcommand{\raisem@th}[3]{\raisebox{#1}{$#2#3$}}
+\def\widebreve#1{\mathop{\vbox{\m@th\ialign{##\crcr\noalign{\kern3\p@}%
+      \brevefill\crcr\noalign{\kern3\p@\nointerlineskip}%
+      $\hfil\displaystyle{#1}\hfil$\crcr}}}\limits}
+
+\def\brevefill{$\m@th \setbox\z@\hbox{$\braceld$}%
+  \bracelu\leaders\vrule \@height\ht\z@ \@depth\z@\hfill\braceru$}
+
+% Redefines math font commands for convenience
+\usepackage{mathrsfs} % Required for \mathscr
+
+\let\oldmathcal\mathcal         % euscript and urwchancal override \mathcal, so we save it
+\usepackage[mathcal]{euscript}  % Required for \matheus
+\let\matheus\mathcal
+\let\mathcal\oldmathcal
+
+\newcommand{\mbb}{\mathbb}
+\newcommand{\mbf}{\mathbf}
+\newcommand{\mcal}{\mathcal}
+\newcommand{\meus}{\matheus}
+\newcommand{\mfrak}{\mathfrak}
+\newcommand{\mrm}{\mathrm}
+\newcommand{\mscr}{\mathscr}
+\newcommand{\msf}{\mathsf}
+\newcommand{\ombb}{\omathbb}
+\newcommand{\vmbb}{\vmathbb}
+
+\newcommand{\ceqq}{\coloneqq}
+\newcommand{\eqqc}{\eqqcolon}
+
+% Aliases (mostly to make notation consistent and easier to change)
+\newcommand{\alg}{\mcal}
+\newcommand{\basis}{\mcal}
+\newcommand{\cat}{\mbf} % Categories
+\newcommand{\collection}[1]{\mscr{\MakeUppercase{#1}}} % Collections of sets
+\newcommand{\cover}{\collection}
+\newcommand{\uniformity}[1]{\widetilde{\cover{#1}}}
+\newcommand{\coverage}[1]{\widetilde{\mcal{\MakeUppercase{#1}}}} % Coverages (on a site)
+\newcommand{\filter}{\mcal}
+\newcommand{\functor}{\mbf} % Functors
+\newcommand{\lattice}[1]{\mcal{\MakeUppercase{#1}}} % Lattices
+\newcommand{\sheaf}[1]{\mscr{\MakeUppercase{#1}}} % Sheaves'
+\newcommand{\topology}{\collection}
+
+% 'Punctuation'
+\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
+\newcommand{\blank}{{-}}
+\newcommand{\blankdot}{{\cdot}}
+\DeclarePairedDelimiter{\closedint}{[}{]}
+\newcommand{\comma}{{,}}
+\newcommand{\coordinates}[2]{[#1]_{#2}} % With respect to a basis.
+\DeclarePairedDelimiter{\coord}{\langle}{\rangle}
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+\DeclarePairedDelimiter{\floor}{\lfloor}{\rfloor}
+\DeclarePairedDelimiter{\openint}{(}{)}
+\DeclarePairedDelimiterX{\@innerprod}[2]{\langle}{\rangle}{#1\, \delimsize\vert\mathopen{}\, #2}
+\NewDocumentCommand{\innerprod}{s o o}{%
+    \IfNoValueTF{#2}{%
+        \IfNoValueTF{#3}{%
+            \@innerprod{\blank}{\blank}%
+        }{%
+            \IfBooleanTF{#1}{%
+                \@innerprod*{\blank}{#3}%
+            }{%
+                \@innerprod{\blank}{#3}%
+            }%
+        }%
+    }{%
+        \IfNoValueTF{#3}{%
+            \IfBooleanTF{#1}{%
+                \@innerprod*{#2}{\blank}%
+            }{%
+                \@innerprod{#2}{\blank}%
+            }%
+        }{%
+            \IfBooleanTF{#1}{%
+                \@innerprod*{#2}{#3}%
+            }{%
+                \@innerprod{#2}{#3}%
+            }%
+        }%
+    }%
+}
+
+% Operations
+\DeclareMathOperator{\Ad}{Ad}
+\DeclareMathOperator{\adj}{adj}
+\DeclareMathOperator{\Ann}{Ann}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\Arg}{Arg}
+\DeclareMathOperator{\ad}{ad}
+\DeclareMathOperator{\arccot}{arccot}
+\DeclareMathOperator{\arctanh}{arctanh}
+\DeclareMathOperator{\ari}{ari} % Arity
+\DeclareMathOperator{\Bal}{Bal} % Balanced hull
+\DeclareMathOperator{\BalCon}{BalCon} % Balanced-convex hull
+\DeclareMathOperator{\Ball}{Ball}
+\DeclareMathOperator{\Bil}{Bil}
+\DeclareMathOperator{\Bo}{B} % For ``boundaries'' in homological algebra
+\DeclareMathOperator{\Bor}{Bor}
+\newcommand{\bpmod}[1]{\, (\! \bmod{#1})}
+\DeclareMathOperator{\Char}{Char}
+\DeclareMathOperator{\CO}{CO}
+\newcommand{\Cech}{\check{\mathrm{C}}}
+\DeclareMathOperator{\Cen}{Cen}
+\newcommand{\Ch}{\mbf{Ch}}
+\DeclareMathOperator{\Cls}{Cls}
+\DeclareMathOperator{\ClsBalCon}{ClsBalCon} % Closed balanced convex hull
+\DeclareMathOperator{\Cmp}{Cmp}
+\DeclareMathOperator{\Coima}{Coim}
+\DeclareMathOperator{\Con}{Con} % Convex hull
+\DeclareMathOperator{\co}{co}
+\DeclareMathOperator{\coima}{coim}
+\newcommand{\comp}{\mathsf{c}}
+\newcommand{\Cl}{\operatorname{\mathbb{C}l}}
+\DeclareMathOperator{\Cliff}{Cl}
+\DeclareMathOperator{\Coker}{Coker}
+\DeclareMathOperator{\Cone}{Cone}
+\DeclareMathOperator{\Conn}{Conn}
+\DeclareMathOperator{\ch}{ch}
+\DeclareMathOperator{\codim}{codim}
+\DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\colim}{colim}
+\DeclareMathOperator{\csch}{csch}
+\newcommand{\Curl}{\vec{\nabla}\times}
+\DeclareMathOperator{\D}{D}
+\DeclareMathOperator{\Der}{Der}
+\DeclareMathOperator{\Disk}{Disk}
+\newcommand{\Div}{\vec{\nabla}\cdot}
+\DeclareMathOperator{\Dom}{Dom}
+\DeclareMathOperator{\Dynk}{Dynk}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\diam}{diam}
+\newcommand{\dif}{\mathop{}\!\mathrm{d}}
+\DeclareMathOperator{\dist}{dist}
+\DeclareMathOperator{\Eig}{Eig}
+\DeclareMathOperator{\EV}{E}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Ext}{Ext}
+\DeclareMathOperator{\Erf}{Erf}
+\DeclareMathOperator{\ev}{ev}
+\DeclareMathOperator{\Flow}{Flow}
+\DeclareMathOperator{\Fred}{Fred}
+\DeclareMathOperator{\Free}{Free}
+\DeclareMathOperator{\Gal}{Gal}
+\newcommand{\Grad}{\vec{\nabla}}
+\DeclareMathOperator{\Gr}{Gr}
+\DeclareMathOperator{\Grtdk}{Grtdk} % Grothendieck topology generated by a collection of preovers
+\DeclareMathOperator{\gauge}{gauge} % Minkowski gauge
+\DeclareMathOperator{\Ho}{H}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Ima}{Im}
+\DeclareMathOperator{\Imag}{Im}
+\DeclareMathOperator{\Ind}{Ind}
+\DeclareMathOperator{\Index}{Index}
+\DeclareMathOperator{\Inj}{\cat{Inj}}
+\DeclareMathOperator{\Inn}{Inn}
+\DeclareMathOperator{\Int}{Int}
+\DeclareMathOperator{\Iso}{Iso}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\ima}{im}
+\DeclareMathOperator{\ind}{ind} % Index of an operator
+\newcommand{\ineq}{\mspace{-1mu}\mathrel{\raisebox{.072em}{\in}\mspace{-8.5mu}\raisebox{.07em}{\scalebox{.85}[1.05]{\_}}}}
+\newcommand{\inneq}{\ineq \makebox[0pt]{\hspace*{-1em}\raisebox{-.12em}[0pt][0pt]{\scalebox{.65}[.22]{\textbf{/}}}}}
+\DeclareMathOperator{\Ker}{Ker}
+\DeclareMathOperator{\Kill}{Kill}
+\DeclareMathOperator{\Leb}{L} % Lebesgue spaces
+\DeclareMathOperator{\Lan}{\mbf{Lan}} % Left Kan extension
+\DeclareMathOperator{\lcm}{lcm}
+\DeclareMathOperator{\Lie}{Lie} % Unique simply-connected Lie group of a finite-dimensional real Lie algebra
+\newcommand{\lie}{\mfrak{lie}} % Lie algebra of a Lie group
+\newcommand{\legendre}[2]{\left( \frac{#1}{#2}\right)} % Legendre symbol
+\DeclareMathOperator{\Matrix}{Matrix}
+\DeclareMathOperator{\MaxSpec}{MaxSpec} % Maximal ideals
+\DeclareMathOperator{\Mor}{Mor}
+\DeclareMathOperator{\meas}{m} % Measure
+\NewDocumentCommand{\metric}{o o}{\IfNoValueTF{#1}{\IfNoValueTF{#2}{\abs{\blankdot \comma \blankdot}}{\abs*{\blankdot \comma \, #2}}}{\IfNoValueTF{#2}{\abs*{#1\comma \blankdot}}{\abs*{#1\comma \, #2}}}}
+\DeclareMathOperator{\Nil}{Nil}
+\DeclareMathOperator{\NilRad}{NilRad}
+\DeclareMathOperator{\Nor}{Nor}
+\NewDocumentCommand{\norm}{o}{\IfNoValueTF{#1}{\| \blankdot \|}{\left\| #1\right\|}}
+\DeclareMathOperator{\Obj}{Obj}
+\DeclareMathOperator{\Open}{Open}
+\renewcommand{\o}{\mathrm{o}}
+\DeclareMathOperator{\op}{op}
+\DeclareMathOperator{\Pf}{Pf}
+\DeclareMathOperator{\Plot}{Plot}
+\DeclareMathOperator{\Points}{Points}
+\DeclareMathOperator{\Pos}{Pos} % Positive linear functionals
+\DeclareMathOperator{\Pro}{\cat{Pro}}
+\DeclareMathOperator{\PShv}{PShv}
+\DeclareMathOperator{\proj}{proj}
+\newcommand{\q}{\mathrm{q}}
+\DeclareMathOperator{\Rad}{Rad}
+\DeclareMathOperator{\Ran}{\mbf{Ran}}
+\DeclareMathOperator{\Rank}{Rank}
+\DeclareMathOperator{\Real}{Re}
+\DeclareMathOperator{\Refl}{Refl}
+\DeclareMathOperator{\Res}{Res}
+\newcommand\restr[2]{{% we make restriction an ordinary symbol
+  \left.\kern-\nulldelimiterspace % automatically resize the bar with \right
+  #1 % the function
+%  \vphantom{\big|} % pretend it's a little taller at normal size
+  \right|_{#2} % this is the delimiter
+  }}
+  \newcommand\corestr[2]{{% we make corestriction an ordinary symbol
+  \left.\kern-\nulldelimiterspace % automatically resize the bar with \right
+  #1 % the function
+%  \vphantom{\big|} % pretend it's a little taller at normal size
+  \right|^{\raisemath{-.35ex}{#2}} % this is the delimiter
+  }}
+ \newcommand\bounds[3]{{% we make restriction an ordinary symbol
+  \left.\kern-\nulldelimiterspace % automatically resize the bar with \right
+  #1 % the function
+%  \vphantom{\big|} % pretend it's a little taller at normal size
+  \right|_{#2}^{#3} % this is the delimiter
+  }}
+\DeclareMathOperator{\Roots}{Roots} % Roots of a Lie algebra
+\DeclareMathOperator{\rk}{rk}
+\DeclareMathOperator{\Schwartz}{\mscr{S}} % The Schwartz space
+\DeclareMathOperator{\Shv}{Shv} % Category of sheaves
+\DeclareMathOperator{\Sieve}{Sieve} % Sieve generated by a precover
+\DeclareMathOperator{\Span}{Span}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\Spin}{Spin}
+\DeclareMathOperator{\Star}{Star}
+\DeclareMathOperator{\Syl}{Syl} % Collection of Sylow subgroups
+\NewDocumentCommand{\seminorm}{o}{\IfNoValueTF{#1}{|\blankdot |}{\left| #1\right|}}
+\DeclareMathOperator{\singsupp}{singsupp}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\Td}{Td} % Todd class
+\DeclareMathOperator{\Tor}{Tor}
+\DeclareMathOperator{\Tot}{Tot}
+\DeclareMathOperator{\Tp}{Tp}
+\DeclareMathOperator{\TZero}{T0}
+\NewDocumentCommand{\tangent}{m o}{%    For tangent space/bundle
+    \IfNoValueTF{#2}{%
+        \operatorname{T}(#1)%
+    }%
+    {%
+        \operatorname{T}_{#2}(#1)%
+    }%
+}
+\newcommand{\LDer}{\vmbb{L}} % Derived functors
+\newcommand{\RDer}{\vmbb{R}}
+\DeclareMathOperator{\tp}{tp}
+\DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\vol}{vol}
+\DeclareMathOperator{\UniAlg}{UniAlg}
+\DeclareMathOperator{\UniCov}{UniCov}
+\DeclareMathOperator{\Weights}{Weights}
+\DeclareMathOperator{\Weyl}{Weyl}
+\DeclareMathOperator{\Zo}{Z} % For cycles in the context of homological algebra.  (The "o" is because the analogous commands for homology and boundaries are \Ho and \Bo respectively.)
+
+\def\re@DeclareMathSymbol#1#2#3#4{%
+    \let#1=\undefined
+    \DeclareMathSymbol{#1}{#2}{#3}{#4}}
+% no OMX used 
+\expandafter\ifx\csname npxmath@scaled\endcsname\relax
+  \let\npxmath@@scaled\@empty%
+\else
+  \edef\npxmath@@scaled{s*[\csname npxmath@scaled\endcsname]}%
+\fi
+\DeclareFontEncoding{LMX}{}{}
+\DeclareFontSubstitution{LMX}{npxexx}{m}{n}
+\DeclareFontFamily{LMX}{npxexx}{}
+\DeclareFontShape{LMX}{npxexx}{m}{n}{<-> \npxmath@@scaled zplexx}{}
+\DeclareSymbolFont{lettersA}{U}{npxmia}{m}{it}
+\re@DeclareMathSymbol{\epsilonup}{\mathord}{lettersA}{15}
+\renewcommand{\epsilon}{\epsilonup} % The preceding lines are to use the symbol \epsilonup from the newpx package.  We then use this for \epsilon as the other fonts use the same symbol for \epsilon and \varepsilon
+
+% Relations
+\DeclareFontFamily{U}{mathb}{\hyphenchar\font45}
+\DeclareFontShape{U}{mathb}{m}{n}{
+      <5> <6> <7> <8> <9> <10> gen * mathb
+      <10.95> mathb10 <12> <14.4> <17.28> <20.74> <24.88> mathb12
+      }{}
+\DeclareSymbolFont{mathb}{U}{mathb}{m}{n}
+\DeclareMathSymbol{\llcurly}     {3}{mathb}{"CE}
+\DeclareMathSymbol{\ggcurly}     {3}{mathb}{"CF} % The preceding lines are to use the symbols \llcurly and \ggcurly from mathabx package (which itself conflicts with amsmath)
+
+\newcommand*{\llcurlyeq}{\mathrel{\vbox{\offinterlineskip\hbox{\scalebox{.9}{$\llcurly$}}\vskip-.6ex\hbox{$-$}\vskip-.75ex}}}
+\newcommand*{\ggcurlyeq}{\mathrel{\vbox{\offinterlineskip\hbox{\scalebox{.9}{$\ggcurly$}}\vskip-.6ex\hbox{$-$}\vskip-.75ex}}}
+
+%% code from mathabx.sty and mathabx.dcl
+\DeclareFontFamily{U}{mathx}{\hyphenchar\font45}
+\DeclareFontShape{U}{mathx}{m}{n}{
+	<5> <6> <7> <8> <9> <10>
+	<10.95> <12> <14.4> <17.28> <20.74> <24.88>
+	mathx10
+}{}
+\DeclareSymbolFont{mathx}{U}{mathx}{m}{n}
+\DeclareFontSubstitution{U}{mathx}{m}{n}
+\DeclareMathAccent{\widecheck}{0}{mathx}{"71}
+\DeclareMathAccent{\wideparen}{0}{mathx}{"75} % The preceding lines are to use \widecheck and \wideparen
+
+
+\let\varprod\Top
+\let\varcoprod\Bot
+
+\newcommand{\st}{\ensuremath{\text{ s.t.~}}}
+
+\providecommand*{\twoheadrightarrowfill@}{%
+  \arrowfill@\relbar\relbar\twoheadrightarrow
+}
+\providecommand*{\twoheadleftarrowfill@}{%
+  \arrowfill@\twoheadleftarrow\relbar\relbar
+}
+\providecommand*{\xtwoheadrightarrow}[2][]{%
+  \ext@arrow 0579\twoheadrightarrowfill@{#1}{#2}%
+}
+\providecommand*{\xtwoheadleftarrow}[2][]{%
+  \ext@arrow 5097\twoheadleftarrowfill@{#1}{#2}%
+}
+\providecommand*{\rightarrowtailfill@}{%
+  \arrowfill@\relbar\relbar\rightarrowtail
+}
+\providecommand*{\leftarrowtailfill@}{%
+  \arrowfill@\leftarrowtail\relbar\relbar
+}
+\providecommand*{\xrightarrowtail}[2][]{%
+  \ext@arrow 0579\rightarrowtailfill@{#1}{#2}%
+}
+\providecommand*{\xleftarrowtail}[2][]{%
+  \ext@arrow 5097\leftarrowtailfill@{#1}{#2}%
+}
+
+% Redefines \c and patches \printbibliography so as to not cause a corresponding bug
+\let\cedilla\c % Because we want to redefine \c, so save it
+\renewcommand{\c}{\mrm{c}}
+\pretocmd{\printbibliography}{\let\c\cedilla}{}{} % Restores defautl behavior of \c for the bibliography
+\apptocmd{\printbibliography}{\renewcommand{\c}{\mrm{c}}}{}{} % returns to our desired redefinition
+
+% 'Constants'
+\newcommand{\e}{\mathrm{e}}
+\newcommand{\im}{\mathrm{i}\text{\hspace{1pt}}}
+\newcommand{\jm}{\mathrm{j}\text{\hspace{1pt}}}
+\newcommand{\km}{\mathrm{k}\text{\hspace{1pt}}}
+\newcommand{\kbar}{\mathchoice{\mspace{-.9mu}k\mspace{-9mu}\raisebox{.34ex}{\scalebox{1.2}[.65]{$\mathchar'26$}}\mspace{.9mu}}%
+	{\mspace{-.9mu}k\mspace{-9mu}\raisebox{.34ex}{\scalebox{1.2}[.65]{$\mathchar'26$}}\mspace{.9mu}}%
+	{\mspace{-.9mu}k\mspace{-9.5mu}\raisebox{.2ex}{\scalebox{.85}[.5]{$\mathchar'26$}}\mspace{.9mu}}%
+	{\mspace{-.9mu}k\mspace{-11.2mu}\raisebox{.23ex}{\scalebox{.65}[.32675]{$\mathchar'26$}}\mspace{.9mu}}%
+} % Definition will need to be recalibrated for other fonts
+
+% 'Sets'
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\renewcommand{\H}{\mathbb{H}}
+\newcommand{\K}{\mathbb{K}}
+\let\L\undefined % No ``\ReDeclareMathOperator'', so undefine \L first (it is the L with stroke that exists in Polish)
+\newcommand{\L}{\mathbb{L}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\roi}{{\scriptstyle{\mathcal{O}}}}    % Ring of integers
+\edef\Section{\S} % Because we want to use \S for something else
+\renewcommand{\S}{\mathbb{S}}
+\newcommand{\Z}{\mathbb{Z}}
+
+\DeclareMathOperator{\GL}{GL}
+\newcommand{\gl}{\mfrak{gl}}
+\DeclareMathOperator{\@O}{O}
+\renewcommand{\O}{\@O}
+\renewcommand{\o}{\mfrak{o}}
+\DeclareMathOperator{\SL}{SL}
+\renewcommand{\sl}{\mfrak{sl}}
+\DeclareMathOperator{\SO}{SO}
+\newcommand{\so}{\mfrak{so}}
+\DeclareMathOperator{\Sp}{Sp}
+\renewcommand{\sp}{\mfrak{sp}}
+\DeclareMathOperator{\SU}{SU}
+\newcommand{\su}{\mfrak{su}}
+%\DeclareMathOperator{\U}{U}
+\renewcommand{\u}{\mfrak{u}}
+
+% Categories
+\newcommand{\AlE}{\cat{AlE}}
+\newcommand{\Ab}{\cat{Ab}}
+\DeclareMathOperator{\Adj}{\cat{Adj}}
+\newcommand{\Alg}{\cat{Alg}}
+\newcommand{\Cat}{\cat{Cat}}
+\newcommand{\Com}{\cat{Com}}
+\newcommand{\Cring}{\cat{Cring}}
+\newcommand{\Crng}{\cat{Crng}}
+\newcommand{\Diff}{\cat{Diff}}
+\newcommand{\Field}{\cat{Field}}
+\newcommand{\Grp}{\cat{Grp}}
+\newcommand{\Hil}{\cat{Hil}}
+\newcommand{\Hol}{\cat{Hol}}
+\newcommand{\Lat}{\cat{Lat}}
+\newcommand{\LC}{\cat{LC}}
+\newcommand{\LCS}{\cat{LCS}}
+\newcommand{\Mag}{\cat{Mag}}
+\newcommand{\Man}{\cat{Man}}
+\newcommand{\Met}{\cat{Met}}
+\NewDocumentCommand{\Mod}{s m o}{%
+	\IfNoValueTF{#3}{%
+		\IfBooleanTF{#1}{%
+			\cat{Mod}\text{-}#2%
+		}{%
+			#2\text{-}\cat{Mod}%
+		}%
+	}%
+	{%
+		\IfBooleanTF{#1}{%
+			#3\text{-}\cat{Mod}\text{-}#2%
+		}{%
+			#2\text{-}\cat{Mod}\text{-}#3%
+		}%
+	}
+}
+\newcommand{\Pre}{\cat{Pre}}
+\newcommand{\Rg}{\cat{Rg}}
+\newcommand{\Rig}{\cat{Rig}}
+\newcommand{\Ring}{\cat{Ring}}
+\newcommand{\Rng}{\cat{Rng}}
+\newcommand{\Root}{\cat{Root}}
+\newcommand{\Semi}{\cat{Semi}}
+\renewcommand{\Set}{\cat{Set}} % Defined in braket package
+\newcommand{\Simp}{\cat{Simp}}
+\newcommand{\SN}{\cat{SN}}
+\renewcommand{\Top}{\cat{Top}}
+\newcommand{\TVS}{\cat{TVS}}
+\newcommand{\Uni}{\cat{Uni}}
+\newcommand{\Vect}{\cat{Vect}}
+
+
+
+% define theorem environments
+\newtheorem{theorem}{Theorem}    %[section]
+%\def\thetheorem{\unskip}
+\newtheorem{proposition}[theorem]{Proposition}
+%\def\theproposition{\unskip}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\def\theconjecture{\unskip}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{sublemma}[theorem]{Sublemma}
+\newtheorem{fact}[theorem]{Fact}
+\newtheorem{observation}[theorem]{Observation}
+%\def\thelemma{\unskip}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+%\def\thedefinition{\unskip}
+\newtheorem{notation}[definition]{Notation}
+\newtheorem{remark}[definition]{Remark}
+% \def\theremark{\unskip}
+\newtheorem{question}[definition]{Question}
+\newtheorem{questions}[definition]{Questions}
+%\def\thequestion{\unskip}
+\newtheorem{example}[definition]{Example}
+%\def\theexample{\unskip}
+\newtheorem{problem}[definition]{Problem}
+\newtheorem{exercise}[definition]{Exercise}
+
+
+
+
+\def\scriptf{{\mathcal F}}
+\def\scriptq{{\mathcal Q}}
+\def\scriptg{{\mathcal G}}
+\def\scriptm{{\mathcal M}}
+\def\scriptb{{\mathcal B}}
+\def\scriptc{{\mathcal C}}
+\def\scriptt{{\mathcal T}}
+\def\scripti{{\mathcal I}}
+\def\scripte{{\mathcal E}}
+\def\scriptv{{\mathcal V}}
+\def\scriptw{{\mathcal W}}
+\def\scriptu{{\mathcal U}}
+\def\scriptS{{\mathcal S}}
+\def\scripta{{\mathcal A}}
+\def\scriptr{{\mathcal R}}
+\def\scripto{{\mathcal O}}
+\def\scripth{{\mathcal H}}
+\def\scriptd{{\mathcal D}}
+\def\scriptl{{\mathcal L}}
+\def\scriptn{{\mathcal N}}
+\def\scriptp{{\mathcal P}}
+\def\scriptk{{\mathcal K}}
+\def\scriptP{{\mathcal P}}
+\def\scriptj{{\mathcal J}}
+\def\scriptz{{\mathcal Z}}
+\def\scripts{{\mathcal S}}
+\def\scriptx{{\mathcal X}}
+\def\scripty{{\mathcal Y}}
+\def\frakv{{\mathfrak V}}
+\def\frakG{{\mathfrak G}}
+\def\aff{\operatorname{Aff}}
+\def\frakB{{\mathfrak B}}
+\def\frakC{{\mathfrak C}}

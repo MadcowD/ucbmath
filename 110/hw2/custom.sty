@@ -1,0 +1,1018 @@
+% This contains code that I tend to reuse in several custom classes.
+
+\hbadness=6000  % To suppress
+\vbadness=6000  % spurious
+\tolerance=6000 % warnings
+
+\widowpenalty=10000 % To prevent single lines
+\clubpenalty=10000  % of a paragraph on a page
+
+% By default, these space factor codes are sent to 999, which means that intersentence spacing will *not* be used in cases like "Who am I?  I am", and we would need to manually take this into account (e.g. "Who am I\hbox{}?  I am").  I don't like this, so let's change that.  The only caveat now is that you will *always* have to take into account when you *don't* want this (e.g. in "J.~Gleason").  See pg. 76 of The TeXbook
+\sfcode`\A=1000
+\sfcode`\B=1000
+\sfcode`\C=1000
+\sfcode`\D=1000
+\sfcode`\E=1000
+\sfcode`\F=1000
+\sfcode`\G=1000
+\sfcode`\H=1000
+\sfcode`\I=1000
+\sfcode`\J=1000
+\sfcode`\K=1000
+\sfcode`\L=1000
+\sfcode`\M=1000
+\sfcode`\N=1000
+\sfcode`\O=1000
+\sfcode`\P=1000
+\sfcode`\Q=1000
+\sfcode`\R=1000
+\sfcode`\S=1000
+\sfcode`\T=1000
+\sfcode`\U=1000
+\sfcode`\V=1000
+\sfcode`\W=1000
+\sfcode`\X=1000
+\sfcode`\Y=1000
+\sfcode`\Z=1000
+
+\raggedbottom % To remove "Underfull vbox while output was active" warnings
+
+\usepackage{xparse} % For fancier methods of creating commands/environments
+\usepackage{calc} % For simpler calculation - used for spacing the index letter headings correctly
+
+\ExplSyntaxOn
+
+% The following commands are generic stack commands.
+% Create a stack by using "\seq_new:N \<stackname>" (need to use \ExplSyntaxOn first)
+% Push <thing> onto <stackname> by using "\push{\<stackname>}{<thing>}"
+% Pop the top element off <stackname> by using "\pop{\<stackname>}"
+% "\get{\<stackname>}" returns the top element of <stackname> (without popping).  "\get{\<stackname>}[\<variable>]" instead stores this element in the control sequence \<variable> (this might be needed for exapnsion reasons---\variable will now hold the expanded value---for example, "background color=\get{\backgroundcolorstack}" doesn't work).  This will throw an error if \<variable> has already been def'ed.  Use "\get{\<stackname>}[\<variable>]*" to suppress this error.
+\tl_new:N \temp
+\NewDocumentCommand{\push}{m m}{%
+	\seq_gpush:Nx #1 {#2}%
+}
+\NewDocumentCommand{\pop}{m}{%
+	\seq_gpop_left:NN #1 \temp%
+}
+% Stores the value of the top of the stack #1 in the control sequence #2.  Will throw an error if #2 is already def'ed, unless the star version is used
+\NewDocumentCommand{\get}{m o s}{%
+	\seq_get_left:NN #1 \temp%
+	\IfNoValueTF{#2}{%
+		\quark_if_no_value:NTF \temp {} {\tl_to_str:N \temp}%
+	}%
+	{%
+		\IfBooleanTF #3{\def#2{\relax}}{\newcommand{#2}{\relax}}
+		\quark_if_no_value:NTF \temp {} {\edef#2{\tl_to_str:N \temp}}%
+	}%
+}
+
+\seq_new:N \backgroundcolorstack
+\push{\backgroundcolorstack}{white}
+
+\ExplSyntaxOff
+
+
+\newlength{\defaultparindent}
+\setlength{\defaultparindent}{11pt}
+
+% Length stacks
+\usepackage{xstring}
+\edef\backslashstr{\detokenize{\xyz}}
+\StrLeft{\backslashstr}{1}[\backslashstr]
+
+\newtoks\parindentstack
+\parindentstack={\empty}
+\newtoks\parskipstack
+\parskipstack={\empty}
+\def\pushdimen#1#2{%
+	\StrGobbleLeft{\string#1}{1}[\stackname]%
+	\begingroup\edef\settoken{\endgroup\toks0={{\the #1}}}\settoken%
+	\begingroup\edef\act{\endgroup\global\csname\stackname stack\endcsname={\the\toks0 \the\csname\stackname stack\endcsname}}\act%
+	\setlength{\csname \stackname\endcsname}{#2}%
+}% push #1 onto #2
+\def\popdimen#1{%
+	\StrGobbleLeft{\string#1}{1}[\stackname]%
+	\edef\pact{\noexpand\finalset\the\csname\stackname stack\endcsname(tail){\stackname}}\pact%
+	\begingroup
+	\edef\act{\endgroup\noexpand\splitList\the\csname\stackname stack\endcsname(tail)\csname\stackname stack\endcsname}\act%
+}% pop from #1
+\def\splitList#1#2(tail)#3{%
+	\ifx#1\empty Can't pop an empty stack.\else\global#3={#2}\fi
+}
+\def\finalset#1#2(tail)#3{%
+	\ifx#1\empty\else\setlength{\csname#3\endcsname}{#1}\fi%
+}
+
+\newtoks\stepstack
+\stepstack={\empty}
+\def\pushcount#1#2{%
+	\begingroup\edef\settoken{\endgroup\toks0={{\csname the#1\endcsname}}}\settoken%
+	\begingroup\edef\act{\endgroup\global\csname#1stack\endcsname={\the\toks0 \the\csname #1stack\endcsname}}\act%
+	\setcounter{#1}{#2}%
+}% push #1 onto #2
+\def\popcount#1{%
+	\edef\pact{\noexpand\finalcountset\the\csname#1stack\endcsname(tail){#1}}\pact%
+	\begingroup
+	\edef\act{\endgroup\noexpand\splitList\the\csname#1stack\endcsname(tail)\csname#1stack\endcsname}\act%
+}% pop from #1
+\def\finalcountset#1#2(tail)#3{%
+	\ifx#1\empty\else\setcounter{#3}{#1}\fi%
+}
+
+\newcommand{\horizontalrule}{\noindent \rule{\textwidth}{1pt}} % Creates a horizontal line spanning the width of the text
+
+
+%----------------------------------------------------------------------------------------
+%	VARIOUS REQUIRED PACKAGES AND CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\usepackage{xpatch}
+
+\usepackage{xcolor} % Required for specifying colors by name
+\definecolor{ocre}{RGB}{243,102,25} % Define the orange color used for highlighting throughout the book
+\definecolor{darkcerulean}{rgb}{0.03, 0.27, 0.49}
+\definecolor{darkspringgreen}{rgb}{0.09, 0.45, 0.27}
+
+\usepackage[calc]{datetime2}
+\DTMnewdatestyle{defaultDate}{\renewcommand{\DTMdisplaydate}[4]{\number##3\ \DTMmonthname{##2}\ \number##1}\renewcommand{\DTMDisplaydate}{\DTMdisplaydate}}
+\DTMsetdatestyle{defaultDate}
+
+\usepackage{graphicx} % Required for including pictures
+\graphicspath{{pictures/}} % Specifies the directory where pictures are stored
+
+\usepackage{tikz} % Required for drawing custom shapes
+\usetikzlibrary{cd} % For tikzcd
+\usepackage[compat=1.1.0]{tikz-feynman} % For Feynman diagrams
+
+\usepackage{booktabs} % Required for nicer horizontal rules in tables
+
+\usepackage{xcolor} % Required for specifying colors by name
+\definecolor{ocre}{RGB}{243,102,25} % Define the orange color used for highlighting throughout the book
+\definecolor{darkblue}{rgb}{0,0,.6} % Used for links of theorem names
+\definecolor{fluorescentorange}{rgb}{1.0, 0.75, 0.0}
+
+\usepackage{environ} % Required in particular for the textequation environments
+
+\usepackage{footnote} % Required for savenotes environment
+
+%\usepackage{textcomp} % Without this gensymb will generate warnings
+\usepackage{gensymb} % Required for \degree
+
+\usepackage[fleqn]{mathtools} % Required for \DelcarePairedDelimeter and \coloneqq
+
+\usepackage{amsthm} % For math equations, theorems, symbols, etc (mathtools loads amsmath, so we don't need to load this itself.  amssymb loads amsfonts, so we don't need to load that explicitly either)
+
+\usepackage{pbox} % Required in particular for the textequation environments
+
+\usepackage{tensor}
+
+\usepackage{todonotes} % Used to insert ``to do'' notes into the text
+
+\usepackage{upgreek} % Used to write upright Greek characters
+
+\usepackage{siunitx} % For units
+\makeatletter		% siunitx uses \sp internally.  This conflicts with our \sp, so must redefine commands to take this into account.  Right now, only have need for \SI, but may need to patch other commands later.
+\def\oldsp{\relax}
+\let\si@sp\sp
+\let\oldSI\SI
+\renewcommand{\SI}[2]{%
+	\let\oldsp\sp%
+	\let\sp\si@sp%
+	\oldSI{#1}{#2}%
+	\let\sp\oldsp%
+}
+\makeatother
+
+%----------------------------------------------------------------------------------------
+%	FONTS
+%----------------------------------------------------------------------------------------
+
+\let\oldepsilon\epsilon % Replace \varpesilon but not \epsilon
+
+\usepackage[utf8]{luainputenc} % Allow for direct unicode input with LuaTeX
+\usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
+
+\usepackage[english]{babel} % English language/hyphenation (Polyglossia doesn't seem to work with the fonts we're using)
+
+\usepackage{csquotes} % Wants to come after inputenc
+
+\usepackage[tracking=true]{microtype} % Slightly tweak font spacing for aesthetics.  Needs to be loaded after fonts
+
+\usepackage{anyfontsize} % Otherwise will get warnings about font resizing
+\usepackage{newtxtext} % Should be loaded before all other text fonts (so before avant) 
+\usepackage{avant} % Use the Avantgarde font for headings
+\usepackage{newtxmath} % Must be loaded after all other text fonts (so after newtxtext and avant
+\let\omathbb\mathbb % Want to use nondefault font for blackboard bold
+\renewcommand{\mathbb}{\vvmathbb} % So change default and save old
+
+%----------------------------------------------------------------------------------------
+%	BIBLIOGRAPHY AND INDEX
+%----------------------------------------------------------------------------------------
+
+\usepackage[style=alphabetic]{biblatex}
+\addbibresource{bibliography.bib}
+
+\usepackage{imakeidx} % Required to make an index
+\makeindex
+\makeindex[name=notation,title=Index of notation,columns=3]
+% The below 'executes' \apptocmd{\hyperpage}{\vspace{0pt plus 0pt minus 4pt}}{}{} before it prints the notation index.  Each index entry ends with a \hyerpage command, and so this helps prevent overfull vboxes.  Looks too bad to use with the normal index, so only use this for notation index.  Change the glue values as needed.
+\xpretocmd{\printindex}{%
+	\ifthenelse{\equal{\detokenize{#1}}{\detokenize{notation}}}{\apptocmd{\hyperpage}{\vspace{0pt plus 0pt minus 0pt}}{}{}}{}
+}%
+{}%
+{}
+
+
+%----------------------------------------------------------------------------------------
+%	MAIN TABLE OF CONTENTS
+%----------------------------------------------------------------------------------------
+
+\setcounter{tocdepth}{3}
+\usepackage{titletoc} % Required for manipulating the table of contents
+
+\contentsmargin{0cm} % Removes the default margin
+
+% Part text styling
+\titlecontents{part}[0cm]
+{\addvspace{20pt}\centering\large\bfseries}
+{}
+{}
+{}
+
+% Chapter text styling
+\titlecontents{chapter}[1.25cm] % Indentation
+{\addvspace{12pt}\large\sffamily\bfseries} % Spacing and font options for chapters
+{\color{ocre!60}\contentslabel[\Large\thecontentslabel]{1.25cm}\color{ocre}} % Chapter number
+{\color{ocre}}  
+{\color{black}\normalsize\;\titlerule*[.5pc]{.}\;\color{ocre!60}\thecontentspage} % Page number
+
+% Section text styling
+\titlecontents{section}[1.25cm] % Indentation
+{\addvspace{3pt}\sffamily\bfseries} % Spacing and font options for sections
+{\contentslabel[\thecontentslabel]{1.25cm}} % Section number
+{}
+{\hfill\color{black}\thecontentspage} % Page number
+[]
+
+% Subsection text styling
+\titlecontents{subsection}[1.25cm] % Indentation
+{\addvspace{1pt}\sffamily\small} % Spacing and font options for subsections
+{\contentslabel[\thecontentslabel]{1.25cm}} % Subsection number
+{}
+{\ \titlerule*[.5pc]{.}\;\thecontentspage} % Page number
+[]
+
+% Subsubsection text styling
+\titlecontents{subsubsection}[1.25cm] % Indentation
+{\addvspace{1pt}\sffamily\footnotesize} % Spacing and font options for subsubsections
+{\contentslabel[\thecontentslabel]{1.25cm}} % Subsection number
+{}
+{\ \titlerule*[.5pc]{.}\;\thecontentspage} % Page number
+[]
+
+% List of figures
+\titlecontents{figure}[0em]
+{\addvspace{-5pt}\sffamily}
+{\thecontentslabel\hspace*{1em}}
+{}
+{\ \titlerule*[.5pc]{.}\;\thecontentspage}
+[]
+
+% List of tables
+\titlecontents{table}[0em]
+{\addvspace{-5pt}\sffamily}
+{\thecontentslabel\hspace*{1em}}
+{}
+{\ \titlerule*[.5pc]{.}\;\thecontentspage}
+[]
+
+
+%----------------------------------------------------------------------------------------
+%	PAGE HEADERS
+%----------------------------------------------------------------------------------------
+
+\usepackage{fancyhdr} % Required for header and footer configuration
+
+\pagestyle{fancy}
+\renewcommand{\sectionmark}[1]{\markright{\sffamily\normalsize\thesection\hspace{5pt}#1}{}} % Section text font settings
+\fancyhf{} \fancyhead[R]{\sffamily\normalsize\thepage} % Font setting for the page number in the header
+\renewcommand{\headrulewidth}{0.5pt} % Width of the rule under the header
+\addtolength{\headheight}{2.5pt} % Increase the spacing around the header slightly
+\renewcommand{\footrulewidth}{0pt} % Removes the rule in the footer
+\fancypagestyle{plain}{\fancyhead{}\renewcommand{\headrulewidth}{0pt}} % Style for when a plain pagestyle is specified
+
+%----------------------------------------------------------------------------------------
+%	SECTION NUMBERING IN THE MARGIN
+%----------------------------------------------------------------------------------------
+
+\makeatletter
+\renewcommand{\@seccntformat}[1]{\llap{\textcolor{ocre}{\csname the#1\endcsname}\hspace{1em}}}                    
+\renewcommand{\section}{\@startsection{section}{1}{\z@}
+	{-4ex \@plus -1ex \@minus -.4ex}
+	{1ex \@plus.2ex }
+	{\normalfont\large\sffamily\bfseries}}
+\renewcommand{\subsection}{\@startsection {subsection}{2}{\z@}
+	{-3ex \@plus -0.1ex \@minus -.4ex}
+	{0.5ex \@plus.2ex }
+	{\normalfont\sffamily\bfseries}}
+\renewcommand{\subsubsection}{\@startsection {subsubsection}{3}{\z@}
+	{-2ex \@plus -0.1ex \@minus -.2ex}
+	{.2ex \@plus.2ex }
+	{\normalfont\small\sffamily\bfseries}}                        
+\renewcommand\paragraph{\@startsection{paragraph}{4}{\z@}
+	{-2ex \@plus-.2ex \@minus .2ex}
+	{.1ex}
+	{\normalfont\small\sffamily\bfseries}}
+
+%----------------------------------------------------------------------------------------
+%	Math, references, and tcolorbox
+%---------------------------------------------------------------------------------------
+% Note:  This must come after section modifications
+
+% Must come before cleveref, but after as many other packages as possible
+\usepackage[pdfpagelabels,hyperfootnotes=false]{hyperref}
+\hypersetup{hidelinks,colorlinks=true,linkcolor=black,breaklinks=true,urlcolor= darkblue,citecolor=black,bookmarksopen=false}
+\usepackage{bookmark}
+\bookmarksetup{
+	open,
+	numbered
+}
+
+% Update \title and \author commands to affect pdf as well
+\apptocmd{\title}{\hypersetup{pdftitle={#1}}}{}{}
+\apptocmd{\author}{\hypersetup{pdfauthor={#1}}}{}{}
+
+% In \begin{align}\end{align} environments, footnotes will duplicated.  This is a fix for that
+\let\oldfootnote\footnote
+\makeatletter
+\renewcommand{\footnote}[1]{%
+	\ifmeasuring@
+	\chardef\@tempfn=\value{footnote}%
+	\footnotemark
+	\setcounter{footnote}{\@tempfn}%
+	\else
+	\iffirstchoice@
+	\oldfootnote{#1}%
+	\fi
+	\fi}
+\makeatother
+
+% This code makes \namerefs display in color
+\AtBeginDocument{%
+	\let\oldnameref\nameref%
+	\renewcommand{\nameref}[1]{{\hypersetup{linkcolor=darkblue}\oldnameref{#1}}}%
+}
+
+\newcommand{\crefnameref}[1]{{\hypersetup{linkcolor=darkblue}\cref{#1} \nameref{#1}}}
+\newcommand{\namerefpcref}[1]{\nameref{#1} (\cref{#1})}
+
+\numberwithin{equation}{section}
+\usepackage[capitalize,nameinlink,noabbrev]{cleveref}
+\crefname{section}{Section}{Sections}
+\crefname{subsection}{Subsection}{Subsections}
+\crefname{subsubsection}{Subsubsection}{Subsubsections}
+
+\usepackage{enumerate}
+\usepackage[shortlabels]{enumitem} % Customize lists
+\setlist[enumerate,1]{label=(\roman*).,ref=(\roman*),topsep=0.4\baselineskip} % Changes Arabic numerals to Roman numerals in enumerates  The "1" is the 'level' this affects
+\setlist[enumerate,2]{label=(\alph*).,ref=(\roman{enumi})(\alph*),topsep=0.4\baselineskip}
+\crefname{enumi}{}{}
+\crefrangeformat{enumi}{#3#1#4--#5#2#6} % #1 and #2 are references; #3,#4 and #5,#6 denote beginning and end of hyperlinks
+\crefname{enumii}{}{}
+\crefrangeformat{enumii}{#3#1#4--#5#2#6}
+\crefname{enumiii}{}{}
+\crefrangeformat{enumiii}{#3#1#4--#5#2#6}
+\crefname{enumiv}{}{}
+\crefrangeformat{enumiv}{#3#1#4--#5#2#6}
+\newlist{enumerateprime}{enumerate}{1} % "1" is the maxdepth
+\setlist[enumerateprime,1]{label=(\roman* $\! \! ^{\prime}$).,ref=(\roman* $\! \! ^{\prime}$),topsep=0.4\baselineskip}
+\setlist[enumerateprime,2]{label=(\alph* $^{\prime}$),ref=(\alph{enumi}$\! \! ^{\prime}$)(\alph* $\! \! ^{\prime}$),topsep=0.4\baselineskip}
+\crefname{enumerateprimei}{}{}
+\crefrangeformat{enumerateprimei}{#3#1#4--#5#2#6} % #1 and #2 are references; #3,#4 and #5,#6 denote beginning and end of hyperlinks
+\crefname{enumerateprimeii}{}{}
+\crefrangeformat{enumerateprimeii}{#3#1#4--#5#2#6}
+\crefname{enumerateprimeiii}{}{}
+\crefrangeformat{enumerateprimeiii}{#3#1#4--#5#2#6}
+\crefname{enumerateprimeiv}{}{}
+\crefrangeformat{enumerateprimeiv}{#3#1#4--#5#2#6}
+\newlist{data}{enumerate}{1} % "1" is the maxdepth
+\setlist[data]{label=(\Roman*).,ref=(\Roman*),topsep=0.4\baselineskip}
+\crefname{datai}{}{}
+\crefrangeformat{datai}{#3#1#4--#5#2#6} % #1 and #2 are references; #3,#4 and #5,#6 denote beginning and end of hyperlinks
+\crefname{dataii}{}{}
+\crefrangeformat{dataii}{#3#1#4--#5#2#6}
+\crefname{dataiii}{}{}
+\crefrangeformat{dataiii}{#3#1#4--#5#2#6}
+\crefname{dataiv}{}{}
+\crefrangeformat{dataiv}{#3#1#4--#5#2#6}
+\setlist{noitemsep}
+
+\usepackage{tcolorbox} % Required for creating the theorem, definition, exercise and corollary boxes.
+\tcbuselibrary{skins}
+\tcbuselibrary{breakable}
+\tcbuselibrary{theorems}
+\tcbuselibrary{hooks}
+
+% Fix "pop empty color page stack" warning
+\makeatletter
+\renewcommand\tcbtitle{\ifx\tcbtitletext\@empty\else%
+	{\kvtcb@fonttitle\kvtcb@haligntitle\kvtcb@before@title
+		\leavevmode\color{tcbcol@title}\tcbtitletext\kvtcb@after@title}\fi}
+\makeatother
+
+% This is to make \nameref comptabile with \newtcbtheorems
+\makeatletter
+\renewcommand{\new@tcbtheorem}[5][]{%
+	\@@newtcolorbox[auto counter,#1]{#2}[3][]{#4,%
+		title={\tcb@theo@title{#3}{\thetcbcounter}{##2}},%
+		list entry={\protect\numberline{\thetcbcounter}##2},%
+		code={\gdef\@currentlabelname{##2}\tcb@theo@label{#5}{##3}},%
+		##1}%
+	\@@newtcolorbox[#1,no counter,list inside=]{#2*}[2][]{#4,%
+		title={\tcb@theo@title{#3}{\@empty}{##2}},%
+		##1}%
+}
+\makeatother
+
+% Step counter for proofs
+\newcounter{step}
+\setcounter{step}{0}
+\crefname{step}{Step}{Steps}
+\newcounter{proofnumber} % step is reset, so in order for all the links to have unique anchors, must redefine \theHstep.  We use proofnumber to do this
+\renewcommand{\theHstep}{\arabic{proofnumber}.\arabic{step}}
+\NewDocumentCommand{\Step}{m o}{%
+	\stepcounter{proofnumber}%
+	\refstepcounter{step}%
+	\vspace*{0pt plus \baselineskip} % Good place to put glue to help out with underfull vbox warnings
+	\ifthenelse{\value{step}=1}{}{%
+		\par%
+		\blankline
+	}
+	\noindent
+	\textsc{Step  \thestep :  #1}\IfNoValueF{#2}{\label{#2}}
+	
+	\noindent\ignorespaces
+}
+\renewcommand{\qedsymbol}{$\blacksquare$}% Optional qed square
+
+\BeforeBeginEnvironment{proof}{%
+	\tcblower % Forces proofs to go in lower part of box
+	\pushdimen{\parindent}{\defaultparindent}%
+	\pushcount{step}{0}%
+}
+\AfterEndEnvironment{proof}{\popcount{step}\popdimen{\parindent}}
+
+\ifdef{\solution}{}{%
+	\newenvironment{solution}{\proof[Solution]}{\endproof}%
+	\BeforeBeginEnvironment{solution}{%
+		\tcblower % Forces proofs to go in lower part of box
+		\pushcount{step}{0}%
+	}
+	\AfterEndEnvironment{solution}{\popcount{step}}
+	\apptocmd{\solution}{\unskip}{}{} % Removes mysterious \vspace
+}
+
+
+\BeforeBeginEnvironment{thm}{%
+	\vspace*{0pt plus 3pt} % To help with underfull vbox warnings
+	\refstepcounter{equation}%
+	\push{\backgroundcolorstack}{black!5}%
+	\tikzcdset{background color=black!5}%
+}
+\AfterEndEnvironment{thm}{%
+	\vspace*{0pt plus 3pt} % To help with underfull vbox warnings
+	\pop{\backgroundcolorstack}%
+	\get{\backgroundcolorstack}[\tempcolor]*%
+	\tikzcdset{background color=\tempcolor}%
+}
+\newtcbtheorem[number freestyle={\noexpand\theequation},%
+crefname={Theorem}{Theorems}]%
+{thm}{Theorem}%
+{enhanced jigsaw,%
+	enforce breakable,%
+	shrink break goal=0.5\baselineskip,%
+	segmentation style=solid,%
+	theorem style=plain,%
+	fonttitle=\sffamily\upshape\bfseries\small,%
+	coltitle=ocre,%
+	description font=\sffamily\upshape\bfseries\small,%
+	description color=black,%
+	colframe=ocre,%
+	colback=black!5,%
+	boxrule=1pt,%
+	description delimiters={}{},%
+	separator sign={\nobreakspace {\color{black}---}},%
+	terminator sign={.\ },%
+	label separator=,
+	before upper app={\pushdimen{\parindent}{\defaultparindent}},%
+	after upper pre={\popdimen{\parindent}}}%
+{}
+
+\BeforeBeginEnvironment{mtm}{%
+	\vspace*{0pt plus 3pt} % To help with underfull vbox warnings
+	\refstepcounter{equation}%
+	\push{\backgroundcolorstack}{black!5}%
+	\tikzcdset{background color=black!5}%
+}
+\AfterEndEnvironment{mtm}{%
+	\vspace*{0pt plus 3pt} % To help with underfull vbox warnings
+	\pop{\backgroundcolorstack}%
+	\get{\backgroundcolorstack}[\tempcolor]*%
+	\tikzcdset{background color=\tempcolor}%
+}
+\newtcbtheorem[number freestyle={\noexpand\theequation},%
+crefname={Meta-theorem}{Meta-theorems}]%
+{mtm}{Meta-theorem}%
+{enhanced jigsaw,%
+	enforce breakable,%
+	shrink break goal=0.5\baselineskip,%
+	segmentation style=solid,%
+	theorem style=plain,%
+	fonttitle=\sffamily\upshape\bfseries\small,%
+	coltitle=ocre,%
+	description font=\sffamily\upshape\bfseries\small,%
+	description color=black,%
+	colframe=ocre,%
+	colback=black!5,%
+	boxrule=1pt,%
+	description delimiters={}{},%
+	separator sign={\nobreakspace {\color{black}---}},%
+	terminator sign={.\ },%
+	label separator=,
+	before upper app={\pushdimen{\parindent}{\defaultparindent}},%
+	after upper pre={\popdimen{\parindent}}}%
+{}
+
+\BeforeBeginEnvironment{exr}{%
+	\vspace*{0pt plus 3pt} % To help with underfull vbox warnings
+	\refstepcounter{equation}%
+	\push{\backgroundcolorstack}{ocre!10}%
+	\tikzcdset{background color=ocre!10}%
+}
+\AfterEndEnvironment{exr}{%
+	\vspace*{0pt plus 3pt} % To help with underfull vbox warnings
+	\pop{\backgroundcolorstack}%
+	\get{\backgroundcolorstack}[\tempcolor]*%
+	\tikzcdset{background color=\tempcolor}%	
+}
+\newtcbtheorem[number freestyle={\noexpand\theequation},%
+crefname={Exercise}{Exercises}]%
+{exr}{Exercise}%
+{enhanced jigsaw,%
+	enforce breakable,%
+	shrink break goal=0.5\baselineskip,%
+	segmentation style=solid,%
+	theorem style=plain,%
+	fonttitle=\sffamily\upshape\bfseries\small,%
+	coltitle=ocre,%
+	description font=\sffamily\upshape\bfseries\small,%
+	description color=black,%
+	colframe=ocre,%
+	colback=ocre!10,%
+	boxrule=0pt,%
+	leftrule=4pt,%
+	sharp corners,%
+	description delimiters={}{},%
+	separator sign={\nobreakspace {\color{black}---}},%
+	terminator sign={\ },%
+	label separator=,
+	before upper app={\pushdimen{\parindent}{\defaultparindent}},%
+	after upper pre={\popdimen{\parindent}}}%
+{}
+
+\BeforeBeginEnvironment{exm}{%
+	\vspace*{0pt plus 3pt} % To help with underfull vbox warnings
+	\refstepcounter{equation}%
+	\push{\backgroundcolorstack}{white}%
+	\tikzcdset{background color=white}%
+}
+\AfterEndEnvironment{exm}{%
+	\vspace*{0pt plus 3pt} % To help with underfull vbox warnings
+	\pop{\backgroundcolorstack}%
+	\get{\backgroundcolorstack}[\tempcolor]*%
+	\tikzcdset{background color=\tempcolor}%
+}
+\newtcbtheorem[number freestyle={\noexpand\theequation},%
+crefname={Example}{Examples}]%
+{exm}{Example}%
+{enhanced jigsaw,%
+	enforce breakable,%
+	shrink break goal=0.5\baselineskip,%
+	segmentation style=solid,%
+	theorem style=plain,%
+	before title app={{\tiny\ensuremath{\blacksquare}}\nobreakspace},%
+	fonttitle=\sffamily\upshape\bfseries\small,%
+	coltitle=black,%
+	description font=\sffamily\upshape\bfseries\small,%
+	description color=black,%
+	colframe=ocre,%
+	colback=white,%
+	opacityback=0.0,%
+	boxrule=0pt,%
+	leftrule=4pt,%
+	sharp corners,%
+	description delimiters={}{},%
+	separator sign={\nobreakspace {\color{black}---}},%
+	terminator sign={\ },%
+	label separator=,
+	before upper app={\pushdimen{\parindent}{\defaultparindent}},%
+	after upper pre={\popdimen{\parindent}}}%
+{}
+
+\BeforeBeginEnvironment{dfn}{%
+	\vspace*{0pt plus 3pt} % To help with underfull vbox warnings
+	\refstepcounter{equation}%
+	\push{\backgroundcolorstack}{white}%
+	\tikzcdset{background color=white}%
+}
+\AfterEndEnvironment{dfn}{%
+	\vspace*{0pt plus 3pt} % To help with underfull vbox warnings
+	\pop{\backgroundcolorstack}%
+	\get{\backgroundcolorstack}[\tempcolor]*%
+	\tikzcdset{background color=\tempcolor}%
+}
+\newtcbtheorem[number freestyle={\noexpand\theequation},%
+crefname={Definition}{Definitions}]%
+{dfn}{Definition}%
+{enhanced jigsaw,%
+	enforce breakable,%
+	shrink break goal=0.5\baselineskip,%
+	segmentation style=solid,%
+	theorem style=plain,%
+	fonttitle=\sffamily\upshape\bfseries\small,%
+	coltitle=black,%
+	description font=\sffamily\upshape\bfseries\small,%
+	description color=black,%
+	colframe=ocre,%
+	colback=white,%
+	opacityback=0.0,%
+	boxrule=0pt,%
+	leftrule=4pt,%
+	sharp corners,%
+	description delimiters={}{},%
+	separator sign={\nobreakspace {\color{black}---}},%
+	terminator sign={\ },%
+	label separator=,
+	before upper app={\pushdimen{\parindent}{\defaultparindent}},%
+	after upper pre={\popdimen{\parindent}}}%
+{}
+
+\BeforeBeginEnvironment{mdf}{%
+	\vspace*{0pt plus 3pt} % To help with underfull vbox warnings
+	\refstepcounter{equation}%
+	\push{\backgroundcolorstack}{white}%
+	\tikzcdset{background color=white}%
+}
+\AfterEndEnvironment{mdf}{%
+	\vspace*{0pt plus 3pt} % To help with underfull vbox warnings
+	\pop{\backgroundcolorstack}%
+	\get{\backgroundcolorstack}[\tempcolor]*%
+	\tikzcdset{background color=\tempcolor}%
+}
+\newtcbtheorem[number freestyle={\noexpand\theequation},%
+crefname={Meta-definition}{Meta-definitions}]%
+{mdf}{Meta-definition}%
+{enhanced jigsaw,%
+	enforce breakable,%
+	shrink break goal=0.5\baselineskip,%
+	segmentation style=solid,%
+	theorem style=plain,%
+	fonttitle=\sffamily\upshape\bfseries\small,%
+	coltitle=black,%
+	description font=\sffamily\upshape\bfseries\small,%
+	description color=black,%
+	colframe=ocre,%
+	colback=white,%
+	opacityback=0.0,%
+	boxrule=0pt,%
+	leftrule=4pt,%
+	sharp corners,%
+	description delimiters={}{},%
+	separator sign={\nobreakspace {\color{black}---}},%
+	terminator sign={\ },%
+	label separator=,
+	before upper app={\pushdimen{\parindent}{\defaultparindent}},%
+	after upper pre={\popdimen{\parindent}}}%
+{}
+
+\BeforeBeginEnvironment{ntn}{%
+	\vspace*{0pt plus 3pt} % To help with underfull vbox warnings
+	\refstepcounter{equation}%
+	\push{\backgroundcolorstack}{white}%
+	\tikzcdset{background color=white}%
+}
+\AfterEndEnvironment{ntn}{%
+	\vspace*{0pt plus 3pt} % To help with underfull vbox warnings
+	\pop{\backgroundcolorstack}%
+	\get{\backgroundcolorstack}[\tempcolor]*%
+	\tikzcdset{background color=\tempcolor}%
+}
+\newtcbtheorem[number freestyle={\noexpand\theequation},%
+crefname={Notation}{Notation}]%
+{ntn}{Notation}%
+{enhanced jigsaw,%
+	enforce breakable,%
+	shrink break goal=0.5\baselineskip,%
+	segmentation style=solid,%
+	theorem style=plain,%
+	fonttitle=\sffamily\upshape\bfseries\small,%
+	coltitle=black,%
+	description font=\sffamily\upshape\bfseries\small,%
+	description color=black,%
+	colframe=ocre,%
+	colback=white,%
+	opacityback=0.0,%
+	boxrule=0pt,%
+	leftrule=4pt,%
+	sharp corners,%
+	description delimiters={}{},%
+	separator sign={\nobreakspace {\color{black}---}},%
+	terminator sign={\ },%
+	label separator=,
+	before upper app={\pushdimen{\parindent}{\defaultparindent}},%
+	after upper pre={\popdimen{\parindent}}}%
+{}
+
+\BeforeBeginEnvironment{crl}{%
+	\vspace*{0pt plus 3pt} % To help with underfull vbox warnings
+	\refstepcounter{equation}%
+	\push{\backgroundcolorstack}{black!5}%
+	\tikzcdset{background color=black!5}%
+}
+\AfterEndEnvironment{crl}{%
+	\vspace*{0pt plus 3pt} % To help with underfull vbox warnings
+	\pop{\backgroundcolorstack}%
+	\get{\backgroundcolorstack}[\tempcolor]*%
+	\tikzcdset{background color=\tempcolor}%
+}
+\newtcbtheorem[number freestyle={\noexpand\theequation},%
+crefname={Corollary}{Corollaries}]%
+{crl}{Corollary}%
+{enhanced jigsaw,%
+	enforce breakable,%
+	shrink break goal=0.5\baselineskip,%
+	segmentation style=solid,%
+	theorem style=plain,%
+	fonttitle=\sffamily\upshape\bfseries\small,%
+	coltitle=ocre,%
+	description font=\sffamily\upshape\bfseries\small,%
+	description color=black,%
+	colframe=ocre,%
+	colback=black!5,%
+	boxrule=0pt,%
+	leftrule=4pt,%
+	sharp corners,%
+	description delimiters={}{},%
+	separator sign={\nobreakspace {\color{black}---}},%
+	terminator sign={\ },%
+	label separator=,
+	before upper app={\pushdimen{\parindent}{\defaultparindent}},%
+	after upper pre={\popdimen{\parindent}}}%
+{}
+
+\BeforeBeginEnvironment{lma}{%
+	\vspace*{0pt plus 3pt minus 3pt} % To help with underfull vbox warnings
+	\refstepcounter{equation}%
+	\push{\backgroundcolorstack}{black!5}%
+	\tikzcdset{background color=black!5}%
+}
+\AfterEndEnvironment{lma}{%
+	\vspace*{0pt plus 3pt} % To help with underfull vbox warnings
+	\pop{\backgroundcolorstack}%
+	\get{\backgroundcolorstack}[\tempcolor]*%
+	\tikzcdset{background color=\tempcolor}%
+}
+\newtcbtheorem[number freestyle={\noexpand\theequation},%
+crefname={Lemma}{Lemmas}]%
+{lma}{Lemma}%
+{enhanced jigsaw,%
+	enforce breakable,%
+	shrink break goal=0.5\baselineskip,%
+	segmentation style=solid,%
+	theorem style=plain,%
+	fonttitle=\sffamily\upshape\bfseries\small,%
+	coltitle=ocre,%
+	description font=\sffamily\upshape\bfseries\small,%
+	description color=black,%
+	colframe=ocre,%
+	colback=black!5,%
+	boxrule=0pt,%
+	leftrule=4pt,%
+	sharp corners,%
+	description delimiters={}{},%
+	separator sign={\nobreakspace {\color{black}---}},%
+	terminator sign={\ },%
+	label separator=,
+	before upper app={\pushdimen{\parindent}{\defaultparindent}},%
+	after upper pre={\popdimen{\parindent}}}%
+{}
+
+\BeforeBeginEnvironment{clm}{%
+	\vspace*{0pt plus 3pt minus 3pt} % To help with underfull vbox warnings
+	\refstepcounter{equation}%
+	\push{\backgroundcolorstack}{black!5}%
+	\tikzcdset{background color=black!5}%
+}
+\AfterEndEnvironment{clm}{%
+	\vspace*{0pt plus 3pt} % To help with underfull vbox warnings
+	\pop{\backgroundcolorstack}%
+	\get{\backgroundcolorstack}[\tempcolor]*%
+	\tikzcdset{background color=\tempcolor}%
+}
+\newtcbtheorem[number freestyle={\noexpand\theequation},%
+crefname={CLaim}{Claims}]%
+{clm}{Claim}%
+{enhanced jigsaw,%
+	enforce breakable,%
+	shrink break goal=0.5\baselineskip,%
+	segmentation style=solid,%
+	theorem style=plain,%
+	fonttitle=\sffamily\upshape\bfseries\small,%
+	coltitle=ocre,%
+	description font=\sffamily\upshape\bfseries\small,%
+	description color=black,%
+	colframe=ocre,%
+	colback=black!5,%
+	boxrule=0pt,%
+	leftrule=4pt,%
+	sharp corners,%
+	description delimiters={}{},%
+	separator sign={\nobreakspace {\color{black}---}},%
+	terminator sign={\ },%
+	label separator=,
+	before upper app={\pushdimen{\parindent}{\defaultparindent}},%
+	after upper pre={\popdimen{\parindent}}}%
+{}
+
+\BeforeBeginEnvironment{prp}{%
+	\vspace*{0pt plus 3pt} % To help with underfull vbox warnings
+	\refstepcounter{equation}%
+	\push{\backgroundcolorstack}{black!5}%
+	\tikzcdset{background color=black!5}%
+}
+\AfterEndEnvironment{prp}{%
+	\vspace*{0pt plus 3pt} % To help with underfull vbox warnings
+	\pop{\backgroundcolorstack}%
+	\get{\backgroundcolorstack}[\tempcolor]*%
+	\tikzcdset{background color=\tempcolor}%
+}
+\newtcbtheorem[number freestyle={\noexpand\theequation},%
+crefname={Proposition}{Propositions}]%
+{prp}{Proposition}%
+{enhanced jigsaw,%
+	enforce breakable,%
+	shrink break goal=0.5\baselineskip,%
+	segmentation style=solid,%
+	theorem style=plain,%
+	fonttitle=\sffamily\upshape\bfseries\small,%
+	coltitle=ocre,%
+	description font=\sffamily\upshape\bfseries\small,%
+	description color=black,%
+	colframe=ocre,%
+	colback=black!5,%
+	boxrule=0pt,%
+	leftrule=4pt,%
+	sharp corners,%
+	description delimiters={}{},%
+	separator sign={\nobreakspace {\color{black}---}},%
+	terminator sign={\ },%
+	label separator=,%
+	before upper app={\pushdimen{\parindent}{\defaultparindent}},%
+	after upper pre={\popdimen{\parindent}}}%
+{}
+
+\BeforeBeginEnvironment{mpr}{%
+	\vspace*{0pt plus 3pt} % To help with underfull vbox warnings
+	\refstepcounter{equation}%
+	\push{\backgroundcolorstack}{black!5}%
+	\tikzcdset{background color=black!5}%
+}
+\AfterEndEnvironment{mpr}{%
+	\vspace*{0pt plus 3pt} % To help with underfull vbox warnings
+	\pop{\backgroundcolorstack}%
+	\get{\backgroundcolorstack}[\tempcolor]*%
+	\tikzcdset{background color=\tempcolor}%
+}
+\newtcbtheorem[number freestyle={\noexpand\theequation},%
+crefname={Meta-proposition}{Meta-propositions}]%
+{mpr}{Meta-proposition}%
+{enhanced jigsaw,%
+	enforce breakable,%
+	shrink break goal=0.5\baselineskip,%
+	segmentation style=solid,%
+	theorem style=plain,%
+	fonttitle=\sffamily\upshape\bfseries\small,%
+	coltitle=ocre,%
+	description font=\sffamily\upshape\bfseries\small,%
+	description color=black,%
+	colframe=ocre,%
+	colback=black!5,%
+	boxrule=0pt,%
+	leftrule=4pt,%
+	sharp corners,%
+	description delimiters={}{},%
+	separator sign={\nobreakspace {\color{black}---}},%
+	terminator sign={\ },%
+	label separator=,
+	before upper app={\pushdimen{\parindent}{\defaultparindent}},%
+	after upper pre={\popdimen{\parindent}}}%
+{}
+
+\BeforeBeginEnvironment{cnj}{%
+	\vspace*{0pt plus 3pt} % To help with underfull vbox warnings
+	\refstepcounter{equation}%
+	\push{\backgroundcolorstack}{black!5}%
+	\tikzcdset{background color=black!5}%
+}
+\AfterEndEnvironment{cnj}{%
+	\vspace*{0pt plus 3pt} % To help with underfull vbox warnings
+	\pop{\backgroundcolorstack}%
+	\get{\backgroundcolorstack}[\tempcolor]*%
+	\tikzcdset{background color=\tempcolor}%
+}
+\newtcbtheorem[number freestyle={\noexpand\theequation},%
+crefname={Conjecture}{Conjectures}]%
+{cnj}{Conjecture}%
+{enhanced jigsaw,%
+	enforce breakable,%
+	shrink break goal=0.5\baselineskip,%
+	segmentation style=solid,%
+	theorem style=plain,%
+	fonttitle=\sffamily\upshape\bfseries\small,%
+	coltitle=black,%
+	description font=\sffamily\upshape\bfseries\small,%
+	description color=black,%
+	colframe=fluorescentorange,%
+	colback=black!5,%
+	boxrule=0pt,%
+	leftrule=4pt,%
+	sharp corners,%
+	description delimiters={}{},%
+	separator sign={\nobreakspace {\color{black}---}},%
+	terminator sign={\ },%
+	label separator=,
+	before upper app={\pushdimen{\parindent}{\defaultparindent}},%
+	after upper pre={\popdimen{\parindent}}}%
+{}
+
+%----------------------------------------------------------------------------------------
+%	REMARK ENVIRONMENTS
+%----------------------------------------------------------------------------------------
+
+\newenvironment{rmk}{
+	\par%
+	\vspace*{0pt plus 3pt minus 3pt} % To help with underfull vbox warnings
+	\small % Smaller font size
+	\begin{list}{}{
+			\leftmargin=35pt % Indentation on the left
+			\rightmargin=25pt%
+			\ignorespaces}%
+		\item % Indentation on the right
+		\makebox[-2.5pt]{%
+			\begin{tikzpicture}[overlay]
+			\node[draw=ocre!60,line width=1pt,circle,fill=ocre!25,font=\sffamily\bfseries,inner sep=2pt,outer sep=0pt] at (-15pt,0pt){\textcolor{ocre}{R}};%
+			\end{tikzpicture}
+		} % Orange R in a circle
+		\advance\baselineskip -1pt%
+		\noindent%
+		\unskip\unskip\unskip\unskip\unskip\unskip\unskip\unskip\unskip\unskip\unskip\unskip\unskip\unskip\unskip\unskip\unskip\unskip\unskip\unskip\unskip\unskip\unskip\unskip\unskip\unskip\unskip\unskip\unskip\unskip\unskip\unskip%
+	}%
+	{%
+	\end{list}%
+	\vspace*{0pt plus 3pt minus 3pt} % To help with underfull vbox warnings
+}
+
+\newenvironment{wrn}{
+	\par%
+	\vspace*{0pt plus 3pt minus 3pt} % To help with underfull vbox warnings
+	\small % Smaller font size
+	\begin{list}{}{
+			\leftmargin=35pt % Indentation on the left
+			\rightmargin=25pt%
+			\ignorespaces}%
+		\item % Indentation on the right
+		\makebox[-2.5pt]{%
+			\begin{tikzpicture}[overlay]
+			\node[draw=red!60,line width=1pt,circle,fill=red!25,font=\sffamily\bfseries,inner sep=2pt,outer sep=0pt] at (-15pt,0pt){\textcolor{red}{W}};%
+			\end{tikzpicture}
+		} % Orange R in a circle
+		\advance\baselineskip -1pt%
+		\pushdimen{\parindent}{0.9\defaultparindent}%
+		\pushdimen{\parskip}{0pt}
+		\noindent%
+		\unskip\unskip\unskip\unskip\unskip\unskip\unskip\unskip\unskip\unskip\unskip\unskip\unskip\unskip\unskip\unskip\unskip\unskip\unskip\unskip\unskip\unskip\unskip\unskip\unskip\unskip\unskip\unskip\unskip\unskip\unskip\unskip%
+	}%
+	{%
+		\popdimen{\parskip}%
+		\popdimen{\parindent}%
+	\end{list}%
+	\vspace*{0pt plus 3pt minus 3pt} % To help with underfull vbox warnings
+}
+
+\newcommand{\forwardref}{\begin{wrn}Warning:  This references material not yet covered.\end{wrn}}
+
+\newcommand{\blankline}{\vspace{\baselineskip}}
+\newcommand{\blni}{\blankline\noindent}
+\newcommand{\term}[1]{\textbf{\emph{#1}}}
+
+\RequirePackage{math_commands}

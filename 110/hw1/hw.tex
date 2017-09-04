@@ -1,0 +1,297 @@
+\documentclass[11pt]{amsart}
+
+\usepackage{amsmath,amsthm}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{enumerate}
+\usepackage{fullpage}
+\usepackage{tikz-cd}
+% \usepackage{euscript}
+% \makeatletter
+% \nopagenumbers
+\usepackage{verbatim}
+\usepackage{color}
+\usepackage{hyperref}
+
+\usepackage{fullpage,tikz,float}
+%\usepackage{times} %, mathtime}
+
+\textheight=600pt %574pt
+\textwidth=480pt %432pt
+\oddsidemargin=15pt %18.88pt
+\evensidemargin=18.88pt
+\topmargin=10pt %14.21pt
+
+\parskip=1pt %2pt
+
+% define theorem environments
+\newtheorem{theorem}{Theorem}    %[section]
+%\def\thetheorem{\unskip}
+\newtheorem{proposition}[theorem]{Proposition}
+%\def\theproposition{\unskip}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\def\theconjecture{\unskip}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{sublemma}[theorem]{Sublemma}
+\newtheorem{fact}[theorem]{Fact}
+\newtheorem{observation}[theorem]{Observation}
+%\def\thelemma{\unskip}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+%\def\thedefinition{\unskip}
+\newtheorem{notation}[definition]{Notation}
+\newtheorem{remark}[definition]{Remark}
+% \def\theremark{\unskip}
+\newtheorem{question}[definition]{Question}
+\newtheorem{questions}[definition]{Questions}
+%\def\thequestion{\unskip}
+\newtheorem{example}[definition]{Example}
+%\def\theexample{\unskip}
+\newtheorem{problem}[definition]{Problem}
+\newtheorem{exercise}[definition]{Exercise}
+
+\numberwithin{theorem}{section}
+\numberwithin{definition}{section}
+\numberwithin{equation}{section}
+
+\def\reals{{\mathbb R}}
+\def\torus{{\mathbb T}}
+\def\integers{{\mathbb Z}}
+\def\rationals{{\mathbb Q}}
+\def\naturals{{\mathbb N}}
+\def\complex{{\mathbb C}\/}
+\def\distance{\operatorname{distance}\,}
+\def\support{\operatorname{support}\,}
+\def\dist{\operatorname{dist}\,}
+\def\Span{\operatorname{span}\,}
+\def\degree{\operatorname{degree}\,}
+\def\kernel{\operatorname{kernel}\,}
+\def\dim{\operatorname{dim}\,}
+\def\codim{\operatorname{codim}}
+\def\trace{\operatorname{trace\,}}
+\def\dimension{\operatorname{dimension}\,}
+\def\codimension{\operatorname{codimension}\,}
+\def\nullspace{\scriptk}
+\def\kernel{\operatorname{Ker}}
+\def\p{\partial}
+\def\Re{\operatorname{Re\,} }
+\def\Im{\operatorname{Im\,} }
+\def\ov{\overline}
+\def\eps{\varepsilon}
+\def\lt{L^2}
+\def\curl{\operatorname{curl}}
+\def\divergence{\operatorname{div}}
+\newcommand{\norm}[1]{ \|  #1 \|}
+\def\expect{\mathbb E}
+\def\bull{$\bullet$\ }
+\def\det{\operatorname{det}}
+\def\Det{\operatorname{Det}}
+\def\rank{\mathbf r}
+\def\diameter{\operatorname{diameter}}
+
+\def\t2{\tfrac12}
+
+\newcommand{\abr}[1]{ \langle  #1 \rangle}
+
+\def\newbull{\medskip\noindent $\bullet$\ }
+\def\field{{\mathbb F}}
+\def\cc{C_c}
+
+
+
+% \renewcommand\forall{\ \forall\,}
+
+% \newcommand{\Norm}[1]{ \left\|  #1 \right\| }
+\newcommand{\Norm}[1]{ \Big\|  #1 \Big\| }
+\newcommand{\set}[1]{ \left\{ #1 \right\} }
+%\newcommand{\ifof}{\Leftrightarrow}
+\def\one{{\mathbf 1}}
+\newcommand{\modulo}[2]{[#1]_{#2}}
+
+\def\bd{\operatorname{bd}\,}
+\def\cl{\text{cl}}
+\def\nobull{\noindent$\bullet$\ }
+
+\def\scriptf{{\mathcal F}}
+\def\scriptq{{\mathcal Q}}
+\def\scriptg{{\mathcal G}}
+\def\scriptm{{\mathcal M}}
+\def\scriptb{{\mathcal B}}
+\def\scriptc{{\mathcal C}}
+\def\scriptt{{\mathcal T}}
+\def\scripti{{\mathcal I}}
+\def\scripte{{\mathcal E}}
+\def\scriptv{{\mathcal V}}
+\def\scriptw{{\mathcal W}}
+\def\scriptu{{\mathcal U}}
+\def\scriptS{{\mathcal S}}
+\def\scripta{{\mathcal A}}
+\def\scriptr{{\mathcal R}}
+\def\scripto{{\mathcal O}}
+\def\scripth{{\mathcal H}}
+\def\scriptd{{\mathcal D}}
+\def\scriptl{{\mathcal L}}
+\def\scriptn{{\mathcal N}}
+\def\scriptp{{\mathcal P}}
+\def\scriptk{{\mathcal K}}
+\def\scriptP{{\mathcal P}}
+\def\scriptj{{\mathcal J}}
+\def\scriptz{{\mathcal Z}}
+\def\scripts{{\mathcal S}}
+\def\scriptx{{\mathcal X}}
+\def\scripty{{\mathcal Y}}
+\def\frakv{{\mathfrak V}}
+\def\frakG{{\mathfrak G}}
+\def\aff{\operatorname{Aff}}
+\def\frakB{{\mathfrak B}}
+\def\frakC{{\mathfrak C}}
+
+\def\symdif{\,\Delta\,}
+\def\mustar{\mu^*}
+\def\muplus{\mu^+}
+
+\def\soln{\noindent {\bf Solution.}\ }
+
+
+%\pagestyle{empty}
+%\setlength{\parindent}{0pt}
+
+\begin{document}
+
+\begin{center}{\bf Math 110 --- Homework 1--- UCB, Summer 2017 --- William Guss}
+\end{center}
+
+\medskip \noindent {\textbf{(1.1) } Let $f: X \to Y$ be a function between nonempty sets. 
+\begin{enumerate}
+\item Show that $f$ is injective iff it has a left-inverse iff $f(x_1) = f(x_2)$ implies $x_1 = x_2$. 
+\begin{proof}
+	The map $f$ is injective if and only if for every $x_1 \neq x_2$, $f(x_1) \neq= f(x_2)$ (by definition). Thus (iff) in the contrapositive $f(x_1) = f(x_2)$ implies $x_1 = x_2$. Furthermore $f$ is surjective to its range and by its injectivity $(iff)$ its preimage on points of its range is always a signleton by the second iff condition. Therefore define $g$ to map points in $f[X]$ to their singleton preimage points. Then $g \circ f (x) = x.$
+\end{proof}
+\item Show that $f$ is surjective iff it has a right inverse iff for every $y \in Y$ there is some $x \in X$ such that $f(x) = y$.
+\begin{proof}
+	If $f$ is surjective then for every $y \in Y$ there exists an $x$ so that $f(x) = y.$ Define a map $g: Y \to X$ so that $g(y) = x$ where $f(x) = y$, this is defined if and only if $f$ is surjective. Then $f(g(y)) = y$ for every $y$ and thus ($iff$), $g$ is a right inverse of $f.$ The last $iff$ is by definition (Gleezy are u serious dude? I don't even know what is going on with this problem :( ) 
+\end{proof}
+\item Do your proof work if $X$ or $Y$ is empty? If not, find a counter-example. \\
+\noindent \emph{Solution.} If $X$ is empty then there is a unique function $f: X \to Y$ since $\emptyset$ is initial in the cateogry of sets\footnote{I am assuming that this category is well defined and has initial and terminal objects.} In the case of (1) is injective since there are no $x$ in the domain and thus the statement of $f$ being injective is a vacuous truth. Futhermore the statement of $f(x_1) = f(x_2)$ implies $x_1 = x_2$ is vacuously true since there are no $x \in \emptyset$. However the proof and construction of $g$ using singleton preimages fails (and generally $f$ has no left-inverse because functions with empty codomain do not exist in the category of sets.)
+
+In the case of (2) $f$ is never surjective since for every $y$ there does not exist an $x$ with $f(x) = y$ since there are no $x$ in the codomain, thus the proof holds. Since $f$ does not exist, it does not make sense to discuss right inverses of $f$ and so this part of the proof fails, as we cannot construct a $g$ if there no $f.$
+
+Suppose that $Y$ is an emptyset. Then in the case of $(1)$ there are no functions $f: X \to Y$ so every statement is vacuously true. Again the proof is a function on such candidate $f$, since none exist, then the proof 'works' for every $f: X \to \emptyset$. In the case of $(2)$ there are no funfctions $f: X \to Y$ and using the same logic, the proof is a functioin on such candidate $f$. Since none exist, the proof 'works'.
+\end{enumerate}
+\medskip \noindent {\textbf{(1.2) }
+\begin{enumerate}
+	\item Let $\mathbb{F}$ be a division ring and let $V$ be a vector space over $\mathbb{F}$. Show that $\alpha \cdot v = 0$ imples $\alpha = 0$ or $v = 0.$
+	\begin{proof}
+	If both $\alpha \neq 0$ and $v \neq 0$ then suppose $\alpha v = 0$. Then $0 = \alpha^{-1}0 = \alpha^{-1} \alpha v = 1v = v \neq 0$. So it could not be the case that $\alpha v = 0$ when $\alpha \neq 0$ and $v \neq 0$. Therefore $\alpha =0$ or $v = 0$ when $\alpha \cdot v = 0.$
+	\end{proof}
+	\item Find an example where this fails when $\mathbb{F}$ is not a division ring.  \\
+	\noindent \emph{Solution.} Let $\mathbb{F} = \mathbb{Z}_15$ and $V = \mathbb{Z}_15 \oplus \mathbb{Z}_15$. Then $5\cdot (3,3) = (15,15) \mod (15,15) = 0$ but $5 \neq 0$ and $(3,3) \neq (0,0).$ 
+\end{enumerate}
+
+\medskip \noindent {\textbf{(1.3) } Let $\mathbb{K}$ be a ring and let $T: V \to W$ be a linear transformation between $\mathbb{K}$-modules
+\begin{enumerate}
+	\item Show that $0 \cdot v = 0$ for all $v \in V$.
+	\begin{proof}
+		First, $0 = (0 \cdot v - 0 \cdot v) = (0 - 0) \cdot v = 0 \cdot v$ since $V$ is abelian and $\mathbb{K}$ is a ring.
+	\end{proof}
+	\item Show that $(-1) \cdot v = -v$ for all $v \in V$.
+	\begin{proof}
+		First $v + (-1) \cdot v = 1\cdot v + (-1) \cdot v = (1 -1)\cdot v = 0 \cdot v = 0$. Therefore by the uniqueness of $-v$ we have $-v = (-1)\cdot v.$
+	\end{proof}
+	\item Show that $T(0) = 0$.
+	\begin{proof}
+		Fix some $v \in V$. Then $T(0_V) = T(v + (-v)) = T(v + (-1)(v))  T(v) + (-1)T(v) = T(v) - T(v) = 0_W$.
+	\end{proof}
+	\item Show that $T(-v) = -T(v).$
+	\begin{proof}
+		For any $v \in V$, $T(-v) = T((-1)\cdot v) = (-1)\cdot T(v) = -T(v).$ This completes the proof.
+	\end{proof}
+\end{enumerate}
+\medskip \noindent {\textbf{(1.4) } Let $\mathbb{K}$ be a ring, and let $T: V \to W$ be a linear transformation between $\mathbb{K}$-modules.
+\begin{enumerate}
+\item Show that $Ker(T)$ is a subspace of $V$.
+\begin{proof}
+We shall check the subspace axioms on $Ker(T).$ Let $v,w \in Ker(T)$ then $T(v + w) = T(v) + T(w) = 0 + 0$ and so $v +w \in Ker(T).$ Furthermore $T(0) = 0$ implies $0 \in Ker(T).$ Additionally let $a \in \mathbb{K}$ then for $v \in Ker(T)$, $T(av) = a\cdot T(v) = 0$ by a previous exercise. 
+\end{proof}
+\item Show that $Im(T)$ is a subspace of $W$.
+\begin{proof}
+	We shall check the subspace axioms on $Im(T).$ Let $f(v), f(w) \in Im(T).$ Then $f(v) + f(w) = f(v + w) \in Im(T)$. Furthemore let $a \in \mathbb{K}$, then $a\cdot f(v) = f(a \cdot v) \in Im(T)$ as $a \cdot v \in V.$ Finally $T(0_V) = 0_W$ and so $0_W \in Im(T)$ by a previous exercise. Therefore $Im(T)$ satisfies the subspace axioms of $W$ and is a subspace.
+\end{proof}
+\end{enumerate}
+\medskip \noindent {\textbf{(1.5)} Let $V$ and $W$ be vector spaces over $\mathbb{R}$ and let $T: V \to W$ be a function so that $T(v_1 + v_2) = f(v_1) + f(v_2)$ for all $v_1, v_2 \in V$.
+\begin{enumerate}
+	\item Show that $T( \alpha \cdot v_ = \alpha \cdot T(v)$ for all $\alpha \in \mathbb{Q}.$ 
+	\begin{proof}
+		Since $\alpha \in \mathbb{Q}$ there are $a,b \in \mathbb{Z}$ so that $\alpha = a/b.$ Without loss of generality assume that $\alpha \geq 0.$ Then 
+	\begin{equation*}
+		T(\alpha v) = T\left(\sum^a_{i=1} \frac{v}{b}\right) = \sum_{i=1}^a T\left(v/b\right) = a T(v/b).
+	\end{equation*}
+	Multiplying we get
+	\begin{equation*}
+	b (a \cdot T\left(v/b\right)) = a \sum_{j=1}^b T\left(v/b\right) =  a\cdot T\left(\sum_{j=1}^b  \frac{v}{b}\right) =  a \cdot T\left(v\right). 
+	\end{equation*}
+	Therefore 
+	\begin{equation*}
+		\frac{a}{b}\cdot T\left(v\right) = \frac{b}{b} a \cdot T (v/b) = T\left(\frac{a}{b} v\right).
+	\end{equation*}
+	This completes the proof.
+	\end{proof}
+
+
+	\item Show that $T$ need not be linear.
+\end{enumerate}
+\medskip \noindent {\textbf{(1.6)} Let $V$ and $W$ be a vector space over $\mathbb{R}$ and let $T: V \to W$ be a function such that $T(\alpha v) = \alpha T(v)$ for all $v \in V$ and $\alpha \in \mathbb{R}.$  
+
+\medskip \noindent {\textbf{(1.7)} Let $\mathbb{K}$ be a ring, let $V$ be a $\mathbb{K}$-module, and let $W_1, W_2 \subset V$ be subspaces of $V.$
+
+\begin{enumerate}
+	\item Show that $W_1 \cap W_2$ is a subspace of $V$.
+	\begin{proof}
+		We show that $W_1 \cap W_2$ satisfies the subspace axioms. If $v, w \in W_1 \cap W_2$ then $v +w \in W_1$ and $v+w \in W_2$ since $v,w \in W_1$ and $v,w \in W_2.$ Furthermore for $\alpha \in \mathbb{K}$ it follows that for any $v$ $\alpha v \in W_1$ and $\alpha v \in W_2$ by $W_1, W_2$ subspaces thus $\alpha v \in W_1 \cap W_2.$ Finally $0 \in W_1$ and $0 \in W_2$, thus $0 \in W_1 \cap W_2$. Therefore $W_1 \cap W_2$ is a subspace. 
+	\end{proof}
+	\item Show that $W_1 \cup W_2$ is a subspace of $V$, iff $W_2 \subset W_1$ or $W_1 \subset W_2$.
+	\begin{proof}
+	Without loss of generality assume that $W_1 \subset W_2$. Then $W_1 \cup W_2 = W_2$ and by $W_2$ a subspace, $W_1 \cup W_2$ is a subspace.
+
+	In the other direction suppose that $W_1 \cup W_2$ is a subspace of $V$. Let $w,v \in W_1 \cup W_2$, then if $w \in W_1$ and $v \in W_2$, $v+w \in W_1 \cup W_2$ so $v +w \in W_1$ or $v+w \in W_2$. If $v+w \in W_1$ then $v+w -v = w \in W_1$ and so $W_2 \subset W_1$. Otherwise $v +w \in W_2$ implies $ v + w - w = v \in W_2$ and so $W_1 \subset W_2$.  
+	\end{proof}
+\end{enumerate}
+
+\medskip \noindent {\textbf{(1.8)} Let $V$ be a vector space and let $\scriptb \subset V$. Show TFAE.
+\begin{enumerate}
+ 	\item $\scriptb$ is a basis.
+ 	\item $\scriptb$ is a maximal linearly-independent set.
+ 	\item $\scriptb$ is a minimal spanning set.
+ \end{enumerate} 
+ \begin{proof}
+ 	Suppose that $\scriptb$ is a basis. Then by definition $\scriptb$ is linearly independent and spans $V$. Then suppose that $\scriptb$ is not maximal, then there is $w \in V$ so that $\scriptb \cup \{w\}$ is linearly independent. But since $w \in V$ and $span(\scriptb) = V$, $w = \sum_{v \in \scriptb} \alpha_v v$ and so $\scriptb \cup \{w\}$ is not linearly independent. Thus $\scriptb$ is a maximal linearly-independent set.
+
+ 	Supose that $\scriptb$ is a minimal spanning set. Then there is no $w \in \scriptb$ so that $\scriptb \setminus \{w\}$ also spans $V$. Suppose that there exists a $w \in \scriptb$ so that $w$ is a linear combination $w = \sum_{v \in \scriptb \setminus \{w\}} \alpha_v v$, then any $z \in V$ can be expressed as 
+ 	\begin{equation*}
+ 		z = \alpha_w w + \sum_{v \in \scriptb \setminus \{w\}} \alpha'_v v  = \sum_{v \in \scriptb \setminus \{w\}} (\alpha_v  + \alpha'_v) v  
+ 	\end{equation*}
+ 	and so $\scriptb \setminus \{w\}$ spans $V$ which contradicts the minimality of $\scriptb$. Therefore $\scriptb$ is a basis.
+
+ 	Finally suppose that $\scriptb$ is a maximally linearly independent set. Then for any $v \in V$ suppose that $v$ is not a linear combination of $\scriptb$ then $w \perp \scriptb$, but this would contradict the maximality of $\scriptb$. If $w \in \scriptb$ so that $\scriptb \setminus \{w\}$ spans $V$ then $w \in V$ implies that $w$ is a linear combination of $\scriptb \setminus \{w\}$ and so $w \not \perp \scriptb \setminus \{w\}$. This contradicts the linear indepdendence of $\scriptb$. Therefore $\scriptb$ must also be a minimal spanning set of $V.$
+
+ 	Since $(1) \implies (2)$ and $(3) \implies (1)$ and $(2) \implies (3)$, the statements are equivalent. 
+ \end{proof}
+
+ \medskip \noindent {\textbf{(1.9)} Define $T: \reals[x] \to \reals[x]$ by
+ \begin{equation*}
+ 	[T(p)](x) := \int_0^x dt\ p(t)
+ \end{equation*}
+ \begin{enumerate}
+ 	\item What is $Ker(T)?$ \\
+
+ 	\emph{Solution.} We claim that $Ker(T) = \{0\}.$  To see this
+ 	 let $0 \neq p  \in \reals[x]$. Then $$\int_{0}^x p(t)\ dt = \sum_{k=1}^n a_{k}/({k+1}) x^{n+1} \neq 0 + 0x + 0x^2 + \cdots$$. However $T(0) = 0$ since $\int_0^x 0\ dt = 0$.
+
+
+ 	\item What is $Im(T)?$ \\
+
+ 	\emph{Solution.} $Im(T) = \reals[x].$ To see this let $p \in \reals[x]$ with $n$ coefficients $a_i$. Then $q[x] = \sum_{i=1}^n i\times a_i  x^i$ has $T[q](x) = p[x]$ using the integration formula as above. Therefore $T$ is surjective and $Im[T] = \reals[x].$
+ \end{enumerate}
+
+ \end{document}\end
